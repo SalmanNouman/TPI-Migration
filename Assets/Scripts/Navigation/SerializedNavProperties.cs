@@ -30,10 +30,10 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
 
     private bool isUpdatingPosition;
     private bool isPanning;
+
     /// <summary>
     /// Loads and checks for player, PovCam, povCamPOV and Stores the position of the player
     /// </summary>
-
     private void Awake()
     {
         navigation = GetComponent<PointClickNavigation>();
@@ -62,13 +62,15 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
         }
         StorePositionAndRotation(player);
     }
+
     /// <summary>
-    /// initializes camera function calls it on start
+    /// Initializes camera function calls it on start
     /// </summary>
     private void Start()
     {
         StartCoroutine(InitializeCamera());
     }
+
     /// <summary>
     /// Initializes pov camera vertical and horizontal positions sends a log error if not there
     /// </summary>
@@ -86,6 +88,7 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
             Debug.LogError("CinemachinePOV component not found on assigned CinemachineVirtualCamera.");
         }
     }
+
     /// <summary>
     /// Saves the cameras vertical and horizontal axis then logs what those saved values are
     /// </summary>
@@ -99,8 +102,9 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
             Debug.Log($"Saved Camera Settings - Vertical: {povCamVerticalAxisValue}, Horizontal: {povCamHorizontalAxisValue}");
         }
     }
+
     /// <summary>
-    /// Disables recentering so that the camera stays in it's position instead of moving
+    /// Disables recentering so that the camera stays in its position instead of moving
     /// </summary>
     private void DisableRecentering()
     {
@@ -110,40 +114,45 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
             povCamPOV.m_VerticalRecentering.m_enabled = false;
         }
     }
+
     /// <summary>
-    /// stores the position and rotation of the player/camera
+    /// Stores the position and rotation of the player/camera
     /// </summary>
-    /// <param name="t"> Tramsfprm for rotation and position</param>
+    /// <param name="t">Transform for rotation and position</param>
     private void StorePositionAndRotation(Transform t)
     {
         rotation = t.rotation.eulerAngles;
         position = t.position;
     }
+
     /// <summary>
-    /// stores the waypoints transform details
+    /// Stores the waypoint's transform details
     /// </summary>
     /// <param name="waypoint">Waypoint information</param>
     public void GetWaypointDetails(Waypoint waypoint)
     {
         StorePositionAndRotation(waypoint.transform);
     }
+
     /// <summary>
-    /// the function called when the load button is selected 
+    /// The function called when the load button is selected 
     /// </summary>
     public void OnDeserialize()
     {
         StartCoroutine(SetPositionAndRotation());
     }
+
     /// <summary>
-    /// function called upon when save button is selected
+    /// Function called upon when save button is selected
     /// </summary>
     public void OnSerialize()
     {
         StorePositionAndRotation(player);
         SaveCameraSettings();
     }
+
     /// <summary>
-    /// sets position and rotation when load is selected
+    /// Sets position and rotation when load is selected
     /// </summary>
     /// <returns>null</returns>
     private IEnumerator SetPositionAndRotation()
@@ -152,15 +161,12 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
 
         isUpdatingPosition = true;
 
-
         yield return new WaitUntil(() => !cmBrain.IsBlending);
 
         player.position = position;
         player.rotation = Quaternion.Euler(rotation);
 
-
         yield return null;
-
 
         navigation.Player.Warp(position);
         navigation.LookAt(player);
@@ -171,15 +177,25 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
         yield return null;
         DisableRecentering();
     }
+
     /// <summary>
-    /// restores previous camera settings
+    /// Restores previous camera settings
     /// </summary>
-    private void RestoreCameraSettings() //restores previous camera settings
+    private void RestoreCameraSettings()
     {
         if (!povCamPOV) { return; }
         povCamPOV.m_VerticalAxis.Value = povCamVerticalAxisValue;
         povCamPOV.m_HorizontalAxis.Value = povCamHorizontalAxisValue;
 
         Debug.Log($"Restored Camera Settings - Vertical: {povCamVerticalAxisValue}, Horizontal: {povCamHorizontalAxisValue}");
+    }
+
+    /// <summary>
+    /// Logs the current timestamp using AnalyticsManager.
+    /// </summary>
+    private void LogTimestamp()
+    {
+        string timestamp = AnalyticsManager.Timestamp();
+        Debug.Log($"Timestamp: {timestamp}");
     }
 }

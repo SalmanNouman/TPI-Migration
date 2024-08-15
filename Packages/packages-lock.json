@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.microsoft.playfab": {
+      "version": "2.175.240809",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://upm.core.varlab.org:4873"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.3",
       "depth": 0,
@@ -174,6 +181,15 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "com.varlab.analytics": {
+      "version": "2.0.28",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.microsoft.playfab": "2.175.230901"
+      },
+      "url": "http://upm.core.varlab.org:4873"
     },
     "com.varlab.cloudsave": {
       "version": "1.0.1",

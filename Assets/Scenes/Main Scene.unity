@@ -604,6 +604,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PlayFabUsername: Development
+  LoginCompletedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 705681327}
+        m_TargetAssemblyTypeName: VARLab.DLX.LoginHandler, VARLab.DLX
+        m_MethodName: SendLoginEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PlayFabResponse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &705681328
 Transform:
   m_ObjectHideFlags: 0
@@ -902,6 +921,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1485784797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446886534590127038, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267130743330452262, guid: 997b7acd69703e14abc23a7bf65b98b7,
+        type: 3}
+      propertyPath: m_Name
+      value: Analytics Service
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 997b7acd69703e14abc23a7bf65b98b7, type: 3}
 --- !u!114 &1616318661 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5135504217506809092, guid: f9fbbfa829b7a524bb549c3e739464d6,
@@ -1071,3 +1158,4 @@ SceneRoots:
   - {fileID: 356010905}
   - {fileID: 705681328}
   - {fileID: 586031084}
+  - {fileID: 1485784797}
