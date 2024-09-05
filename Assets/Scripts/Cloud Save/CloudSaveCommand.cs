@@ -40,16 +40,24 @@ namespace VARLab.DLX
             $"\n\nNo arguments or `{ListKey}` serializes and prints the save data in memory " +
             $"(NOTE: this causes the save data to be serialized, so any `OnSerialize` actions will be performed). ";
 
+        /// <summary>
+        /// // Add listeners to log Cloud Save action attempts and their results
+        /// </summary>
+        /// <param name="handler"></param>
         public CloudSaveCommand(ExperienceSaveHandler handler)
         {
             saveHandler = handler;
 
-            // Add listeners to log Cloud Save action attempts and their results
             saveHandler.OnSaveComplete.AddListener(result => LogResult(result, SaveKey));
             saveHandler.OnLoadComplete.AddListener(result => LogResult(result, LoadKey));
             saveHandler.OnDeleteComplete.AddListener(result => LogResult(result, DeleteKey));
         }
 
+        /// <summary>
+        /// Uses Switch Statment to switch between logged keys Save, Load and Delete
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public bool Execute(CommandEventArgs args)
         {
             if (!saveHandler) { return false; }

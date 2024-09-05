@@ -6,7 +6,7 @@ namespace VARLab.DLX
 
     /// <summary>
     ///     A console command which prints information provided by 
-    ///     the <see cref="LoginHandler"/> controller.
+    ///     the <see cref="LearnerSessionHandler"/> controller.
     /// </summary>
     public class ScormCommand : ICommand
     {

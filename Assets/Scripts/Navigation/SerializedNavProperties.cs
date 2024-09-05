@@ -28,9 +28,13 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
     private CinemachinePOV povCamPOV;
     private CinemachineBrain cmBrain;
 
+    /// <summary>
+    /// Bool to keep track of updating position and if the camera is panning 
+    /// </summary>
+    /// 
     private bool isUpdatingPosition;
     private bool isPanning;
-
+   
     /// <summary>
     /// Loads and checks for player, PovCam, povCamPOV and Stores the position of the player
     /// </summary>
@@ -188,14 +192,5 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
         povCamPOV.m_HorizontalAxis.Value = povCamHorizontalAxisValue;
 
         Debug.Log($"Restored Camera Settings - Vertical: {povCamVerticalAxisValue}, Horizontal: {povCamHorizontalAxisValue}");
-    }
-
-    /// <summary>
-    /// Logs the current timestamp using AnalyticsManager.
-    /// </summary>
-    private void LogTimestamp()
-    {
-        string timestamp = AnalyticsManager.Timestamp();
-        Debug.Log($"Timestamp: {timestamp}");
     }
 }
