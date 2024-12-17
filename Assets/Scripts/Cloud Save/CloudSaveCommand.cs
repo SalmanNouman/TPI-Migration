@@ -12,20 +12,22 @@ namespace VARLab.DLX
     /// <remarks>
     ///     The <c>cloud</c> command supports the following arguments:
     ///     <list type="bullet">
-    ///         <item>list - print save file contents to the command output</item>
+    ///         <item>info - print save file contents to the command output</item>
     ///         <item>log - print CloudSave log messages to the command output</item>
     ///         <item>save - CloudSave save action</item>
     ///         <item>load - CloudSave load action</item>
     ///         <item>delete - CloudSave delete action</item>
+    ///         <item>list - CloudSave list action</item>>
     ///     </list>
     /// </remarks>
     public class CloudSaveCommand : ICommand
     {
-        public const string ListKey = "list";
+        public const string InfoKey = "info";
         public const string LogKey = "log";
         public const string SaveKey = "save";
         public const string LoadKey = "load";
         public const string DeleteKey = "delete";
+        public const string ListKey = "list";
 
         protected ExperienceSaveHandler saveHandler;
 
@@ -33,11 +35,11 @@ namespace VARLab.DLX
 
         public string Name => "cloud";
 
-        public string Usage => $"{Name} [ {ListKey} | {LogKey} | {SaveKey} | {LoadKey} | {DeleteKey} ]";
+        public string Usage => $"{Name} [ {InfoKey} | {LogKey} | {SaveKey} | {LoadKey} | {DeleteKey} | {ListKey} ]";
 
         public string Description => $"Provides debug access to the Cloud Save system. " +
             $"Arguments perform the corresponding action. " +
-            $"\n\nNo arguments or `{ListKey}` serializes and prints the save data in memory " +
+            $"\n\nNo arguments or `{InfoKey}` serializes and prints the save data in memory " +
             $"(NOTE: this causes the save data to be serialized, so any `OnSerialize` actions will be performed). ";
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace VARLab.DLX
             {
                 switch (args.Args[1])
                 {
-                    case ListKey:
+                    case InfoKey:
                         // Fall out of 'switch' statement and list contents below
                         break;
                     case LogKey:
@@ -90,6 +92,10 @@ namespace VARLab.DLX
                     case DeleteKey:
                         saveHandler.Delete();
                         args.Response = GetAttemptMessage(DeleteKey);
+                        return true;
+                    case ListKey:
+                        saveHandler.List();
+                        args.Response = GetAttemptMessage(ListKey);
                         return true;
                     default:
                         args.Response = this.ErrorResponse();
