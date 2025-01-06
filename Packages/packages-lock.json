@@ -1,7 +1,21 @@
 {
   "dependencies": {
+    "com.kamgam.3dobjectui": {
+      "version": "0.1.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://upm.core.varlab.org:4873"
+    },
     "com.microsoft.playfab": {
       "version": "2.175.240809",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://upm.core.varlab.org:4873"
+    },
+    "com.pirateparrot.outline": {
+      "version": "3.4.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -216,6 +230,13 @@
       "dependencies": {},
       "url": "http://upm.core.varlab.org:4873"
     },
+    "com.varlab.interactions": {
+      "version": "0.3.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://upm.core.varlab.org:4873"
+    },
     "com.varlab.navigation.pointclick": {
       "version": "1.4.2",
       "depth": 0,
@@ -224,6 +245,18 @@
         "com.unity.cinemachine": "2.9.7",
         "com.unity.ai.navigation": "1.1.5",
         "com.varlab.corecinema": "0.1.4"
+      },
+      "url": "http://upm.core.varlab.org:4873"
+    },
+    "com.varlab.objectviewer": {
+      "version": "1.9.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.cinemachine": "2.9.5",
+        "com.varlab.corecinema": "0.1.4",
+        "com.varlab.interactions": "0.3.0",
+        "com.kamgam.3dobjectui": "0.1.4"
       },
       "url": "http://upm.core.varlab.org:4873"
     },
