@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-toast.uss?fileID=7433441132597879392&amp;guid=1b6dbd2da63781e418d6b81f9415f058&amp;type=3#velcro-toast" />
+    <ui:VisualElement name="Toast" class="toast-complex o-0 flex-row align-self-center absolute m-40 toast-animation">
+        <ui:VisualElement name="Bar" class="h-100 toast-bar mr-12 toast-complex-bar" />
+        <ui:VisualElement name="IconContainer" class="toast-complex-icon-container mt-20 mb-20 align-self-center">
+            <ui:VisualElement name="Icon" class="toast-complex-icon m-8" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LabelContainer" class="flex-row mt-20 mb-20 grow align-items-center">
+            <ui:VisualElement name="HeaderContainer" class="mr-28 ml-8">
+                <ui:Label tabindex="-1" text="[Header]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HeaderLabel" class="fw-700 p-0 fs-36 toast-header-label text-wrap m-0" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MessageContainer" class="toast-complex-message-container grow">
+                <ui:VisualElement name="PrimaryMessageContainer">
+                    <ui:Label tabindex="-1" text="[PrimaryMessage]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MessageLabel" class="p-0 m-0 fs-28 fw-700 text-wrap toast-message-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="SecondaryMessageContainer" class="grow">
+                    <ui:Label tabindex="-1" text="[SecondaryMessage]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondaryMessageLabel" class="p-0 m-0 fs-20 fw-400 text-wrap toast-message-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseBtn" class="bw-0 close-button m-16 align-self-center" />
+    </ui:VisualElement>
+</ui:UXML>

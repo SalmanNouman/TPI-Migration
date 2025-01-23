@@ -1,0 +1,311 @@
+/* Card version 1 classes */
+.card-v1-container {
+    height: 328px;
+}
+
+.card-v1-container-default { /* Create variant of card v1 without image when used in conjunction with base container class */
+    width: 328px;
+    --card-v1-icon-display: none;
+}
+
+.card-v1-container-image { /* Create variant of card v1 with image when used in conjunction with base container class */
+    width: 480px;
+    --card-v1-icon-display: flex;
+}
+
+.card-v1-top {
+    height: 108px;
+    border-color: var(--card-v1-imagebox-border-colour);
+    background-color: var(--card-v1-image-box-background-colour);
+}
+
+.card-v1-icon { /* Displays default image. Change image variable, size and tint for custom image. */
+    display: var(--card-v1-icon-display);
+    width: 74px;
+    height: 74px;
+    background-image: var(--card-default-image);
+    -unity-background-image-tint-color: var(--card-v1-image-tint-colour);
+}
+
+.card-v1-bottom {
+    background-color: var(--card-v1-background-colour);
+}
+
+.card-v1-text {
+    color: var(--card-v1-text-colour);
+}
+
+.card-v1-shadow-variables {
+    --card-v1-inner-shadow: var(--card-v2-inner-shadow-colour);
+    --card-v1-outer-shadow: var(--card-v2-outer-shadow-colour);
+}
+
+/* Card version 2 classes */
+.card-v2-container {
+    width: 250px;
+    height: 211px;
+}
+
+.card-v2-container-default { /* Create variant of card v2 in progress/not yet started when used in conjunction with base container class */
+    --card-v2-top-colour: var(--card-v2-top-default-colour);
+    --card-v2-bottom-colour: var(--card-v2-bottom-default-colour);
+    --card-v2-top-icon-visibility: hidden;
+    --card-v2-bottom-label-font: var(--font-regular);
+}
+
+.card-v2-container-complete { /* Create variant of card v2 showing completed state when used in conjunction with base container class */
+    --card-v2-top-colour: var(--card-v2-top-completed-colour);
+    --card-v2-bottom-colour: var(--card-v2-bottom-completed-colour);
+    --card-v2-top-icon-visibility: visible;
+    --card-v2-bottom-label-font: var(--font-bold-italic);
+}
+
+.card-v2-top {
+    border-color: var(--card-v2-top-colour);
+    background-color: var(--card-v2-background-colour);
+    height: 63px;
+}
+
+.card-v2-top-label {
+    color: var(--card-v2-top-colour);
+}
+
+.card-v2-top-icon {
+    width: 28px;
+    height: 26px;
+    visibility: var(--card-v2-top-icon-visibility);
+    background-image: var(--card-v2-checkmark-image-sprite);
+    -unity-background-image-tint-color: var(--card-v2-top-completed-colour);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.card-v2-middle {
+    background-color: var(--card-v2-background-colour);
+}
+
+.card-v2-body-label {
+    color: var(--card-v2-body-text-colour);
+}
+
+.card-v2-bottom {
+    background-color: var(--card-v2-background-colour);
+    height: 44px;
+}
+
+.card-v2-bottom-label {
+    color: var(--card-v2-bottom-colour);
+    -unity-font-definition: var(--card-v2-bottom-label-font);
+}
+
+.card-v2-bottom-icon { /* Displays default image. Change image variable, size and tint for custom image. */
+    margin-top: 2px;
+    width: 17px;
+    height: 20px;
+    background-image: var(--card-v2-timer-image-sprite);
+    -unity-background-image-tint-color: var(--card-v2-bottom-default-colour);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.card-v2-shadow-variables {
+    --card-v2-inner-shadow: var(--card-v2-inner-shadow-colour);
+    --card-v2-outer-shadow: var(--card-v2-outer-shadow-colour);
+}
+
+/* Card version 3 classes */
+.card-v3 {
+    background-color: var(--card-v3-background-colour);
+}
+
+.card-v3-container {
+    width: 300px;
+    height: 345px;
+}
+
+.card-v3-imagebox {
+    height: 150px;
+    background-color: var(--card-v3-image-box-background-colour);
+    border-color: var(--card-v3-border-colour);
+}
+
+.card-v3-icon { /* Displays default image. Change image variable, size and tint for custom image. */
+    width: 74px;
+    height: 74px;
+    background-image: var(--card-default-image);
+    -unity-background-image-tint-color: var(--card-v3-image-tint-colour);
+}
+
+.card-v3-primary-text {
+    color: var(--card-v3-main-label-colour);
+}
+
+.card-v3-secondary-text {
+    color: var(--card-v3-secondary-label-colour);
+}
+
+.card-v3-shadow-variables {
+    --card-v3-shadow-colour: var(--card-v3-drop-shadow-colour);
+    --card-v3-outer-shadow-colour: var(--card-v3-drop-shadow-outer-colour);
+}
+
+/* Card version 4 classes */
+.card-v4-container-small { /* Create small variant of card v4 when used in conjunction with base container class */
+    width: 328px;
+    height: 354px;
+    --card-v4-text-size: 28px;
+    --card-v4-text-colour: var(--card-v4-small-container-text-colour);
+}
+
+.card-v4-container-large { /* Create large variant of card v4 when used in conjunction with base container class */
+    width: 425px;
+    height: 425px;
+    --card-v4-text-size: 24px;
+    --card-v4-text-colour: var(--card-v4-large-container-text-colour);
+}
+
+.card-v4-top {
+    background-color: var(--card-v4-background-colour);
+    border-color: var(--card-v4-border-colour);
+}
+
+.card-v4-bottom {
+    background-color: var(--card-v4-background-colour);
+    border-color: var(--card-v4-border-colour);
+}
+
+.card-v4-text {
+    color: var(--card-v4-text-colour);
+    font-size: var(--card-v4-text-size);
+}
+
+.card-v4-shadow-variables {
+    --card-v4-container-inner-shadow: var(--card-v4-drop-shadow-colour);
+    --card-v4-container-outer-shadow: var(--card-v4-drop-shadow-outer-colour);
+}
+
+.card-v4-image { /* Displays default image. Change image variable, size and tint for custom image. */
+    background-image: var(--card-default-image);
+    -unity-background-image-tint-color: var(--card-v4-default-image-colour);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 145px;
+    height: 145px;
+}
+
+/* Card version 5 classes */
+.card-v5-container-base {
+    width: 770px;
+    height: 760px;
+    border-color: var(--card-v5-border-colour);
+}
+
+.card-v5-container-image-only { /* Create variant of card v5 without top bar and default bottom section when used in conjunction with base container class */
+    --card-v5-top-display: none;
+    --card-v5-camera-icon-display: none;
+    --card-v5-bottom-default-display: flex;
+    --card-v5-bottom-buttons-display: none;
+    --card-v5-close-icon: var(--card-v5-close-secondary-image);
+    --card-v5-body-border-radius: 15px;
+}
+
+.card-v5-container-with-top { /* Create variant of card v5 with top bar and buttons in bottom section when used in conjunction with base container class */
+    --card-v5-top-display: flex;
+    --card-v5-camera-icon-display: flex;
+    --card-v5-bottom-default-display: none;
+    --card-v5-bottom-buttons-display: flex;
+    --card-v5-close-icon: var(--card-v5-close-icon-image);
+    --card-v5-body-border-radius: 0;
+}
+
+.card-v5-closebutton {
+    width: 48px;
+    height: 48px;
+    background-image: var(--card-v5-close-icon);
+    background-color: var(--card-v5-icon-background-colour);
+    top: 25px;
+    right: 30px;
+}
+
+.card-v5-closebutton:hover:enabled {
+    background-color: var(--card-v5-icon-background-colour);
+}
+
+.card-v5-top-shadow {
+    display: var(--card-v5-top-display);
+}
+
+.card-v5-top {
+    height: 95px;
+    background-color: var(--card-v5-background-colour);
+    border-color: var(--card-v5-border-colour);
+}
+
+.card-v5-top-label {
+    color: var(--card-v5-primary-label-colour);
+}
+
+.card-v5-body {
+    background-color: var(--card-v5-image-background-colour);
+    border-color: var(--card-v5-border-colour);
+    border-top-left-radius: var(--card-v5-body-border-radius);
+    border-top-right-radius: var(--card-v5-body-border-radius);
+}
+
+.card-v5-body-image { /* Displays default image. Change image variable, size and tint for custom image. */
+    width: 310px;
+    height: 310px;
+    background-image: var(--card-default-image);
+    -unity-background-image-tint-color: var(--card-v5-image-tint-colour);
+} 
+
+.card-v5-body-camerabtn {
+    display: var(--card-v5-camera-icon-display);
+    width: 80px;
+    height: 80px;
+    background-image: var(--card-v5-camera-icon-image);
+    background-color: var(--card-v5-icon-background-colour);
+    border-radius: 50px; /* Needed since we do not have this as a uss class, maps the icon to the clickable area of the button */
+}
+
+.card-v5-body-camerabtn:hover:enabled {
+    background-color: var(--card-v5-icon-background-colour);
+}
+
+.card-v5-bottom {
+    height: 179px;
+    border-color: var(--card-v5-border-colour);
+    background-color: var(--card-v5-background-colour);
+}
+
+.card-v5-bottom-default {
+    display: var(--card-v5-bottom-default-display);
+}
+
+.card-v5-bottom-default-primarylabel {
+    color: var(--card-v5-primary-label-colour);
+}
+
+.card-v5-bottom-default-secondarylabel {
+    color: var(--card-v5-secondary-label-colour);
+}
+
+.card-v5-bottom-default-tag {
+    background-color: var(--card-v5-tag-background-colour);
+    width: 127px;
+    height: 35px;
+}
+
+.card-v5-bottom-default-tag-label {
+    color: var(--card-v5-tag-label-colour);
+}
+
+.card-v5-bottom-buttons {
+    display: var(--card-v5-bottom-buttons-display);
+}
+
+.card-v5-bottom-buttons-label {
+    color: var(--card-v5-primary-label-colour);
+}
+
+.card-v5-shadow-variables {
+    --card-v5-top-inner-shadow: var(--card-v5-top-shadow-inner-colour);
+    --card-v5-top-outer-shadow: var(--card-v5-top-shadow-outer-colour);
+}

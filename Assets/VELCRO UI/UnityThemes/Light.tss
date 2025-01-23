@@ -1,0 +1,543 @@
+@import url("UnityDefaultRuntimeTheme.tss");
+
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-structure.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-style.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-components.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-notifications.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-tooltip.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-loading.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-timer.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-progress.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-toolbar.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-navigation.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-toast.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-confirmation.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-informationdialog.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-list.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-splash.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-settingsmenu.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-card.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-status.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-table.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-info-popup.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-main-menu.uss");
+
+
+
+
+:root {
+	/*Font Variables*/
+	--font-regular: url("../Resources/Fonts & Materials/Lato-Regular SDF.asset");
+	--font-regular-italic: url("../Resources/Fonts & Materials/Lato-Italic SDF.asset");
+	--font-black: url("../Resources/Fonts & Materials/Lato-Black SDF.asset");
+	--font-black-italic: url("../Resources/Fonts & Materials/Lato-BlackItalic SDF.asset");
+	--font-bold: url("../Resources/Fonts & Materials/Lato-Bold SDF.asset");
+	--font-bold-italic: url("../Resources/Fonts & Materials/Lato-BoldItalic SDF.asset");
+	--font-light: url("../Resources/Fonts & Materials/Lato-Light SDF.asset");
+	--font-light-italic: url("../Resources/Fonts & Materials/Lato-LightItalic SDF.asset");
+	--font-thin: url("../Resources/Fonts & Materials/Lato-Thin SDF.asset");
+	--font-thin-italic: url("../Resources/Fonts & Materials/Lato-ThinItalic SDF.asset");
+
+	/*Shared Variables*/  
+	--canvas-dim-colour: rgba(0, 0, 0, 0.7);
+
+	/*Primary Button Colours*/
+	--colour-button-primary-default: #1E4877;
+	--colour-button-primary-hover: #132E4D;
+	--colour-button-primary-border-hover: #FFFFFF;
+	--colour-button-primary-disabled: #475A70;
+	--colour-text-primary-default: #FFFFFF;
+	--colour-text-primary-hover: #CCDBE6;
+	--colour-text-primary-disabled: #CAC4D0;
+
+	/*Secondary_1 Button Colours*/
+	--colour-button-secondary-1-default: rgba(0, 0, 0, 0);
+	--colour-button-secondary-1-border-default: #1E4877;
+	--colour-button-secondary-1-hover: #A1A7C4;
+	--colour-button-secondary-1-border-hover: #1E4877;
+	--colour-button-secondary-1-disabled: rgba(0, 0, 0, 0);
+	--colour-button-secondary-1-border-disabled: #A1A1A1;
+	--colour-text-secondary-1-default: #1E4877;
+	--colour-text-secondary-1-hover: #1E4877;
+	--colour-text-secondary-1-disabled: #A1A1A1;
+
+	/*Secondary_2 Button Colours*/
+	--colour-button-secondary-2-default: #FFFFFF;
+	--colour-button-secondary-2-border-default: #1E4877;
+	--colour-button-secondary-2-hover: #A1A7C4;
+	--colour-button-secondary-2-border-hover: #1E4877;
+	--colour-button-secondary-2-disabled: #FFFFFF;
+	--colour-button-secondary-2-border-disabled: #A1A1A1;
+	--colour-text-secondary-2-default: #1E4877;
+	--colour-text-secondary-2-hover: #1E4877;
+	--colour-text-secondary-2-disabled: #A1A1A1;
+
+	/*Negative 1 Button Colours*/
+	--colour-button-negative-default: #ED5E68;
+	--colour-button-negative-hover: #C74E57;
+	--colour-button-negative-border-hover: #FFFFFF;
+	--colour-button-negative-disabled: #A1A1A1;
+	--colour-text-negative-default: #000000;
+	--colour-text-negative-hover: #FFFFFF;
+	--colour-text-negative-disabled: #FFFFFF;
+
+	/*Negative_2 Button Colours*/
+	--colour-button-negative-2-default: rgba(0, 0, 0, 0);
+	--colour-button-negative-2-border-default: #F05F69;
+	--colour-button-negative-2-hover: #E7C5C9;
+	--colour-button-negative-2-border-hover: #F05F69;
+	--colour-button-negative-2-disabled: rgba(0, 0, 0, 0);
+	--colour-button-negative-2-border-disabled: #C98989;
+	--colour-text-negative-2-default: #F05F69;
+	--colour-text-negative-2-hover: #F05F69;
+	--colour-text-negative-2-disabled: #C98989;
+
+	/*Auxilliary Button Colours & Icons*/
+	--colour-auxilliary-button-positive-default: #4BC17E;
+	--colour-auxilliary-button-positive-hover: #097538;
+	--colour-auxilliary-button-negative-default: #B00036;
+	--colour-auxilliary-button-negative-hover: #A4001E;
+	--colour-auxilliary-text: #FFFFFF;
+	--colour-auxilliary-button-border-hover: #FFFFFF;
+	--icon-auxilliary-button-positive: url("../Resources/Images/Checkmark_V2_Sprite.png");
+	--icon-auxilliary-button-negative: url("../Resources/Images/AlertTriangle_Sprite.png");
+
+	/*Checkbox Colours*/
+	--colour-checkbox-border-unselected: #49454F;
+	--colour-checkbox-border-hover-unselected: #0671E0;
+	--colour-checkbox-border-disabled-unselected: #1D1B20; 
+	--colour-checkbox-border-hover-selected: #0671E0;
+	--colour-checkbox-disabled-selected: #1D1B20;
+	--colour-checkbox-hover: rgba(6, 113, 224, 0.08);
+	--colour-checkbox-selected: #0671E0;
+	--colour-checkbox-error: rgba(237, 94, 104, 0.23);
+	--colour-checkbox-border-error: #B00020;
+	--colour-checkbox-unfilled: rgba(0, 0, 0, 0);
+	--colour-checkmark: #FFFFFF;
+	--colour-checkmark-disabled: #FEF7FF;
+
+	/*Checkbox Arrow*/
+	--checkmark-image: url("../Resources/Images/Checkmark_Sprite.png");
+
+	/*Radio Button Colours*/
+	--colour-button-radio-default: rgba(0, 0, 0, 0);
+	--colour-button-radio-background-default: rgba(0, 0, 0, 0);
+	--colour-button-radio-border-default: #49454F;
+	--colour-button-radio-hover: rgba(0, 0, 0, 0);
+	--colour-button-radio-border-hover: #0671E0;
+	--colour-button-radio-background-hover: rgba(29, 27, 32, 0.08);
+	--colour-button-radio-background-hover-checked: rgba(6, 113, 224, 0.08);
+	--colour-button-radio-disabled: rgba(0, 0, 0, 0);
+	--colour-button-radio-border-disabled: #1D1B20;
+	--colour-button-radio-center-disabled: #1D1B20;
+	--colour-button-radio-checked: rgba(0, 0, 0, 0);
+	--colour-button-radio-border-checked: #0671E0;
+	--colour-button-radio-center-checked: #0671E0;
+
+	/* Slider Colours */
+	--slider-unfilled-area-colour: #8796A4;
+	--slider-dragger-colour: #FFFFFF;
+	--slider-dragger-active-colour: #0A6CC7; 
+	--slider-tracker-fill-colour: #0671E0;  
+	--slider-dragger-disabled-colour: #bbbbbb;
+	--slider-tracker-fill-disabled-colour: #5e7ab9;
+
+	/*Toggle Colours*/
+	--colour-toggle-default: #FFFFFF;
+	--colour-toggle-border-default: #79747E;
+	--colour-toggle-knob-holder-default: rgba(0, 0, 0, 0);
+	--colour-toggle-knob-default: #79747E;
+	--colour-toggle-hover: #FFFFFF;
+	--colour-toggle-border-hover: #0671E0;
+	--colour-toggle-knob-holder-hover: rgba(29, 27, 32, 0.08);
+	--colour-toggle-disabled: rgba(0, 0, 0, 0);
+	--colour-toggle-border-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-knob-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-checked-default: #0671E0;
+	--colour-toggle-border-checked-default: #0671E0;
+	--colour-toggle-knob-checked-default: #FFFFFF;
+	--colour-toggle-border-checked-hover: #FFFFFF;
+	--colour-toggle-knob-holder-checked-hover: rgba(6, 113, 224, 0.22);
+	--colour-toggle-checked-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-checked-border-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-checked-knob-disabled: #FEF7FF;
+
+	/*Tooltip Images*/
+	--tooltip-top: url("../Resources/Images/Tooltip/Tooltip_Top_Sprite.png");
+	--tooltip-bottom: url("../Resources/Images/Tooltip/Tooltip_Bottom_Sprite.png");
+	--tooltip-left: url("../Resources/Images/Tooltip/Tooltip_Left_Sprite.png");
+	--tooltip-right: url("../Resources/Images/Tooltip/Tooltip_Right_Sprite.png");
+	--tooltip-colour: #CCDBE6;
+	--tooltip-text-colour: #1E4877;
+
+	/*Dropdown Colors And Images*/
+	--dropdown-up-arrow-sprite: url("../Resources/Images/Dropdown/Up_Arrow_Sprite.png");
+	--dropdown-down-arrow-sprite: url("../Resources/Images/Dropdown/Down_Arrow_Sprite.png");
+	--dropdown-checkmark-sprite: url("../Resources/Images/Dropdown/Checkmark_Sprite.png");
+	--dropdown-default-background-colour: #AFBFCA;
+	--dropdown-default-text-colour: #1E4877;
+	--dropdown-default-border-colour: #1E5EFF;
+	--dropdown-item-border-color: #A1A7C4;
+	--dropdown-item-default-background-colour: #CBDBE7;
+	--dropdown-item-default-text-colour: #212232;
+	--dropdown-item-selected-background-colour: #A1A7C4;
+	--dropdown-item-selected-text-colour: #212232;
+	--dropdown-checkmark-selected-colour: #212232;
+	--dropdown-item-hover-background-colour: #1E4877;
+	--dropdown-item-hover-text-colour: #FFFFFF;
+	--dropdown-checkmark-hover-colour: #FFFFFF;
+	--dropdown-container-background-colour: rgba(0, 0, 0, 0);
+	--dropdown-transparent-colour: rgba(0, 0, 0, 0);
+	--dropdown-arrow-colour: #212232;
+	
+	/*Toolbar Version One*/
+	--toolbar-version-one-background-color: #CBDBE7;
+	--toolbar-version-one-selected-color: #1E4877;
+	--toolbar-version-one-item-color: #136FC1;
+	--toolbar-version-one-contract-button-color: #737382;
+	--toolbar-version-one-contract-and-expand-button-border-color: #D9D9D9;
+	--toolbar-version-one-expand-button-color: #1E4877;
+	--toolbar-version-one-seperator-line-color: #737382;
+	--toolbar-version-one-contract-sprite: url("../Resources/Images/Toolbar/Contract_Button_Sprite.png");
+	--toolbar-version-one-contract-expand-background-color: rgba(0, 0, 0, 0);
+	--toolbar-version-one-button-arrow: url("../Resources/Images/Toolbar/Arrow_Contract_Sprite.png");
+	--toolbar-version-one-item-group-background: rgba(0, 0, 0, 0);
+	--toolbar-version-one-expand-arrow: url("../Resources/Images/Arrow_Sprite.png");
+	--toolbar-version-one-expand-sprite: url("../Resources/Images/Toolbar/Contract_Button_Sprite.png");
+	--toolbar-version-one-first-icon: url("../Resources/Images/Toolbar/BlueprintIcon_Sprite.png");
+	--toolbar-version-one-second-icon: url("../Resources/Images/Toolbar/ListIcon_Sprite.png");
+	--toolbar-version-one-third-icon: url("../Resources/Images/Toolbar/HomeSearchIcon_Sprite.png");
+	--toolbar-version-one-fourth-icon: url("../Resources/Images/Toolbar/HelpIcon_Sprite.png");
+	--toolbar-version-one-fifth-icon: url("../Resources/Images/Toolbar/SettingIcon_Sprite.png");
+
+	/*Toolbar Version Two*/
+	--toolbar-version-two-background-color: #CBDBE7;
+	--toolbar-version-two-selected-color: #1E4877;
+	--toolbar-version-two-item-color: #136FC1;
+	--toolbar-version-two-item-group-background: rgba(0, 0, 0, 0);
+	--toolbar-version-two-first-icon: url("../Resources/Images/Toolbar/Generic_Icon_Sprite.png");
+	--toolbar-version-two-second-icon: url("../Resources/Images/Toolbar/Generic_Icon_2_Sprite.png");
+	--toolbar-version-two-third-icon: url("../Resources/Images/Toolbar/Generic_Icon_3_Sprite.png");
+	
+	/*Loading Indicator Colours*/
+	--loading-indicator-failed-icon: url("../Resources/Images/Exclamation_Sprite.png");
+	--loading-indicator-failed-icon-colour: #ED5E68;
+	--loading-indicator-canvas-colour: #CCDBE6;
+	--loading-indicator-track-colour: #D9D9D9;
+	--loading-indicator-failed-track-colour: #ED5E68;
+    --loading-indicator-progress-colour: #0671E0;
+    --loading-indicator-border-colour: #79747E;
+	--loading-indicator-label-colour: #1E4877;
+	--loading-text-label-colour: #1E4877;
+
+	/*Timer Images and Colours*/
+	--timer-arrow: url("../Resources/Images/Arrow_Sprite.png"); 
+	--timer-body-colour: #8BA0AE;
+	--timer-button-colour: rgba(0, 0, 0, 0.3);
+	--timer-button-hover-colour: rgba(0, 0, 0, 0.6);
+	--timer-arrow-colour: #000000;
+	--timer-title-label-colour: rgba(0, 0, 0, 0.49);
+	--timer-elapsed-time-label-colour: #1E4877;
+	--timer-gradient-top: rgba(255, 255, 255, 0);
+	--timer-gradient-bottom: rgba(204, 219, 230, 0.7);
+
+	/*Countdown Timer Colours*/
+	--timer-countdown-background-colour: #CCDBE6;
+	--timer-countdown-border-outer-colour: #0671E0;
+	--timer-countdown-border-outer-colour-2: #1E4877;
+	--timer-countdown-progress-colour: #0671E0;
+	--timer-countdown-tracker-colour: #A1A1A1;
+	--timer-countdown-text-colour: #0671E0;
+
+	/*Toast Colors*/
+	--toast-close-button-image: url("../Resources/Images/CloseX_Sprite.png");
+	--toast-close-button-image-colour: #212232;
+	--toast-close-button-image-hover-colour: #B3B3B3;
+	--toast-close-button-background-colour: rgba(0, 0, 0, 0);
+	--toast-close-button-background-hover-colour: #212232;
+	--toast-background-colour: #BAC7D0;
+	--toast-header-label-colour: #1E4877;
+	--toast-message-label-colour: #212232;
+	--toast-bar-colour: #1E4877;
+	--toast-complex-icon-container-background-colour: rgba(255, 255, 255, 0.4);
+	
+	/*Filter Tag Colors*/
+	--filter-tag-default-background-color: #CBDBE7;
+	--filter-tag-default-border-color: #1E4877;
+	--filter-tag-default-text-color: #1E4877;
+	--filter-tag-hover-background-color: #AFBFCA;
+	--filter-tag-selected-background-color: #1E4877;
+	--filter-tag-selected-border-color: #FFFFFF;
+	--filter-tag-selected-text-color: #FFFFFF;
+
+	/*Navigation Bar Colors*/
+	--navigation-default-background-color: #CCDBE6;
+	--navigation-button-background-color: rgba(0, 0, 0, 0);
+	--navigation-default-item-color: #136FC1;
+	--navigation-selected-item-color: #1E4877;
+	--navigation-hover-item-background-color: rgba(175, 191, 202, 0.8);
+	--navigation-bottom-bar-default-color: #1E4877;
+	
+	/*Progress Indicator V1*/
+	--progress-v1-header-title-holder: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
+	--progress-v1-header-title-colour: #212232;
+	--progress-v1-header-front-colour: #AFBFCA;
+	--progress-v1-header-back-colour: #CBDBE7;
+
+	--progress-v1-category-background-colour: #CBDBE7;
+	--progress-v1-category-label-name-colour: #212232;
+	--progress-v1-category-label-progress-colour: rgba(33, 34, 50, 0.8);
+	--progress-v1-category-progress-background-colour: #FFFFFF;
+	--progress-v1-category-progress-background-border-colour: #979797;
+	--progress-v1-category-progress-fill-colour: #4BC17E;
+	--progress-v1-category-progress-fill-border-colour: #979797;
+	--progress-v1-category-bottom-colour: #B3B3B3;
+	--progress-v1-category-arrow: url("../Resources/Images/Progress Indicator/Arrow_Down_Sprite.png");
+	--progress-v1-category-arrow-colour: #212232;
+	--progress-v1-category-arrow-holder-colour: rgba(0, 0, 0, 0);
+
+	--progress-v1-task-background-colour: #D3E1EB;
+	--progress-v1-task-label-name-colour: #212232;
+	--progress-v1-task-completed-label-name-colour: #4BC17E;
+	--progress-v1-task-label-progress-colour: #212232;
+	--progress-v1-task-label-progress-highlight-colour: #917421;
+	--progress-v1-task-checkmark-colour: #4BC17E;
+	--progress-v1-task-checkmark-border-colour: #212232;
+	--progress-v1-task-checkmark-icon: url("../Resources/Images/Checkmark_V3_Sprite.png");
+	--progress-v1-task-checkmark-icon-colour: #212232;
+	
+	/*Progress Indicator V2*/
+	--progress-v2-background-colour: #CBDBE7;
+	--progress-v2-title-label-colour: #212232;
+	--progress-v2-progress-label-colour: #000000;
+	--progress-v2-progress-bar-tracker-colour: #FFFFFF;
+	--progress-v2-progress-bar-tracker-border-colour: #979797;
+	--progress-v2-progress-bar-fill-colour: #4BC17E;
+	--progress-v2-progress-bar-fill-border-colour: #979797;
+	
+	/*Progress Indicator V3*/
+	--progress-v3-background-colour: #CBDBE7;
+	--progress-v3-text-colour-1: #212232;
+	--progress-v3-text-colour-2: #212232;
+	--progress-v3-divider-colour: #212232;
+	--progress-v3-glow-colour-inner: rgba(6, 113, 224, 0.75);
+	--progress-v3-glow-colour-outer: rgba(6, 113, 224, 0);
+
+	/*Settings Menu*/
+	--settings-menu-volume-off-sprite: url("../Resources/Images/Settings Menu/VolumeOff_Sprite.png");
+	--settings-menu-volume-full-sprite: url("../Resources/Images/Settings Menu/VolumeFull_Sprite.png");
+	--settings-menu-rabbit-sprite: url("../Resources/Images/Settings Menu/RabbitIcon_Sprite.png");
+	--settings-menu-tortoise-sprite: url("../Resources/Images/Settings Menu/TortoiseIcon_Sprite.png");
+	--settings-menu-close-button-sprite: url("../Resources/Images/CloseButtonLight_Sprite.png");
+	--settings-menu-top-left-rectangle-sprite: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
+	--settings-menu-top-bar-colour: #AFBFCA;
+	--settings-menu-background-colour: #CBDBE7;
+	--settings-menu-primary-text-colour: #1E4877;
+	--settings-menu-secondary-text-colour: #212232;
+	--settings-menu-secondary-icon-colour: #212232;
+	--settings-menu-button-background-colour: rgba(0, 0, 0, 0);
+	--settings-menu-mouse-sensitivity-dot-colour: #8796A4;
+
+	/*Information Dialog*/
+	--information-dialog-background-colour: #CBDBE7;
+	--information-dialog-title-label-colour: #212232;
+	--information-dialog-description-label-colour: #212232;
+
+	/*Confirmation Dialog*/
+	--confirmation-dialog-close-button-icon: url("../Resources/Images/CloseX_Sprite.png");
+	--confirmation-dialog-background-colour: #AFBFCA;
+	--confirmation-dialog-body-colour: #CCDBE6;
+	--confirmation-dialog-name-label-colour: #212232;
+	--confirmation-dialog-description-label-colour: #212232;
+	--confirmation-dialog-close-button-hover-colour: #A1A7C4;
+	--confirmation-dialog-close-button-colour: rgba(0, 0, 0, 0);
+	--confirmation-dialog-close-button-border-colour: #212232;
+	--confirmation-dialog-close-button-icon-colour: #212232;
+
+	/*Task List*/
+	--task-list-header-background-colour: #AFBFCA;
+	--task-list-title-label-colour: #212232;
+	--task-list-progress-label-colour: #1E4877;
+	--task-list-progress-description-colour: #212232;
+	--task-list-progress-bar-tracker-colour: #FFFFFF;
+	--task-list-progress-bar-tracker-border-colour: #979797;
+	--task-list-progress-bar-fill-colour: #4BC17E;
+	--task-list-progress-bar-fill-border-colour: #979797;
+	--task-list-progress-bar-bottom-border-colour: #0A6CC7;
+	
+	--task-list-element-background-colour: #212231;
+	--task-list-element-icon-border-colour: #FFFFFF;
+	--task-list-element-icon-completed: url("../Resources/Images/Checkmark_V3_Sprite.png");
+	--task-list-element-title-label-colour: #FFFFFF;
+	--task-list-element-title-label-completed-colour: #4BC17E;
+	--task-list-element-hint-colour: rgba(0, 0, 0, 0);
+	--task-list-element-hint-hover-colour: #136FC1;
+	--task-list-element-hint-icon: url("../Resources/Images/Bulb-Idea-Icon_Sprite.png");
+	--task-list-element-hint-icon-colour: #FFFFFF;
+	--task-list-element-hint-icon-hover-colour: #FFFFFF;
+	--task-list-element-hint-icon-completed-colour: #8CA1AD;
+
+	/* Splash Screen */
+	--splash-background-image: url("../Resources/Images/Splash_Screen_Wide.png");
+	--splash-label-colour: #D0D3D0;
+
+	/* Header Template */
+	--header-start-background-image: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
+	--header-tint-colour: #AFBFCA;
+	--header-label-colour: #1E4877;
+
+	/* Window Templates */
+	--window-single-background-colour: #CCDBE6;
+	--window-double-background-colour: #AFBFCA;
+	--window-double-foreground-colour: #CCDBE6;
+
+	/* Tables */
+	--table-header-colour: #AFBFCA;
+	--table-header-label-colour: #1E4877;
+	--table-header-bottom-colour: #5B92FF;
+	--table-background-colour: #CCDBE6;
+	--table-footer-colour: #AFBFCA;
+	--table-category-background-colour: #CCDBE6;
+	--table-category-label-colour: #1E4877;
+	--table-category-label-background-colour: #FFFFFF;
+	--table-category-arrow-colour: #1E4877;
+	--table-category-arrow-hover-colour: #CCDBE6;
+	--table-category-arrow-background-hover-colour: #1E4877;
+	--table-category-arrow-icon: url("../Resources/Images/Table/Expand_Arrow_Sprite.png");
+	--table-entry-background-colour-1: #CCDBE6;
+	--table-entry-background-colour-2: #FFFFFF;
+	--table-entry-delete-button-colour: #1E4877;
+	--table-entry-delete-button-hover-colour: #FFFFFF;
+	--table-entry-delete-button-background-hover-colour: #1E4877;
+	--table-entry-delete-button-icon: url("../Resources/Images/Table/Trash_Can_Sprite.png");
+	--table-element-label-colour: #1E4877;
+	--table-scrollbar-colour: #FFFFFF;
+	--table-scrollbar-background-colour: rgba(135, 150, 164, 0.5);
+
+	/* Cards */
+	--card-default-image: url("../Resources/Images/Cards/DefaultImage_Sprite.png");
+
+	--card-v1-background-colour: #E5EAEE;
+	--card-v1-image-box-background-colour: #E5EAEE;
+	--card-v1-image-tint-colour: rgba(102, 102, 102, 0.16);
+	--card-v1-text-colour: #212232;
+	--card-v1-inner-shadow-colour: rgba(120, 120, 120, 1);
+	--card-v1-outer-shadow-colour: rgba(120, 120, 120, 0);
+	--card-v1-imagebox-border-colour: #0671E0;
+
+	--card-v2-background-colour: #E5EAEE;
+	--card-v2-top-default-colour: #1E4877;
+	--card-v2-top-completed-colour: #097538;
+	--card-v2-body-text-colour: #212232;
+	--card-v2-bottom-default-colour: #1E4877;
+	--card-v2-bottom-completed-colour: #000000;
+	--card-v2-inner-shadow-colour: rgba(0, 0, 0, 0.25);
+	--card-v2-outer-shadow-colour: rgba(0, 0, 0, 0);
+	--card-v2-checkmark-image-sprite: url("../Resources/Images/Checkmark_V2_Sprite.png");
+	--card-v2-timer-image-sprite: url("../Resources/Images/Cards/Timer_Icon_Sprite.png");
+
+	--card-v3-background-colour: #E5EAEE;
+	--card-v3-main-label-colour: #212232;
+	--card-v3-secondary-label-colour: #212232;
+	--card-v3-drop-shadow-colour: rgba(120, 120, 120, 1);
+	--card-v3-drop-shadow-outer-colour: rgba(120, 120, 120, 0);
+	--card-v3-image-box-background-colour: #E1E1E1;
+	--card-v3-image-tint-colour: rgba(102, 102, 102, 0.16);
+	--card-v3-border-colour: #787878;
+
+	--card-v4-background-colour: #E5EAEE;
+	--card-v4-border-colour: #E5EAEE;
+	--card-v4-drop-shadow-colour: rgba(120, 120, 120, 1);
+	--card-v4-drop-shadow-outer-colour: rgba(120, 120, 120, 0);
+	--card-v4-default-image-colour: rgba(102, 102, 102, 0.16);
+	--card-v4-small-container-text-colour: #212232;
+	--card-v4-large-container-text-colour: #212232;
+
+	--card-v5-background-colour: #CBDBE7;
+	--card-v5-image-background-colour: #E5EAEE;
+	--card-v5-primary-label-colour: #212232;
+	--card-v5-secondary-label-colour: #1E4877;
+	--card-v5-tertiary-label-colour: #212232;
+	--card-v5-border-colour: #0671E0;
+	--card-v5-tag-background-colour: #1E4877;
+	--card-v5-tag-label-colour: #FFFFFF;
+	--card-v5-close-icon-image: url("../Resources/Images/CloseButtonLight_Sprite.png");
+	--card-v5-close-secondary-image: url("../Resources/Images/CloseButtonLight_Sprite.png"); /* Duplicate here to map with having this variable in Dark theme, which points to a different icon */
+	--card-v5-camera-icon-image: url("../Resources/Images/Cards/CameraIcon_Sprite.png");
+	--card-v5-top-shadow-inner-colour: rgba(0, 0, 0, 0.25);
+	--card-v5-top-shadow-outer-colour: rgba(0, 0, 0, 0);
+	--card-v5-image-tint-colour: rgba(102, 102, 102, 0.08);
+	--card-v5-icon-background-colour: rgba(0, 0, 0, 0);
+	
+	/* Progress Status Templates */
+	--progress-status-not-started-background-color: #A1A1A1;
+	--progress-status-in-progress-background-color: #FFCD29;
+	--progress-status-completed-background-color: #4BC17E;
+	--progress-status-label-text-color: #000000;
+
+	/* Scrollbar */
+	--scrollbar-background-colour: rgba(135, 150, 164, 0.5);
+	--scrollbar-content-container-background-colour: #CCDBE6;
+	--scrollbar-dragger-colour: #FFFFFF;
+	--scrollbar-dragger-hover-colour: #E0E0E0;
+
+	/* Icon Templates */
+	--default-icon-image: url("../Resources/Images/BackArrow_Sprite.png");
+	--icon-transparent-colour: rgba(0, 0, 0, 0);
+
+	--icon-default-image-colour: #FFFFFF;
+	--icon-square-hover-focus-image-colour: #1E4877;
+	--icon-rounded-hover-focus-image-colour: #1E4877;
+	--icon-clicked-image-colour: #FFFFFF;
+	--icon-clicked-v2-image-colour: #136FC1;
+	--icon-disabled-image-colour: #CAC4D0;
+	--icon-noborders-default-image-colour: #1E4877;
+	--icon-noborders-click-image-colour: #136FC1;
+	--icon-noborders-disabled-image-colour: #7A7A7A;
+
+	--icon-default-background-colour: #1E4877;
+	--icon-square-hover-focus-background-colour: #FFFFFF;
+	--icon-rounded-hover-focus-background-colour: #FFFFFF;
+	--icon-clicked-background-colour: #136FC1;
+	--icon-disabled-background-colour: #475A70;
+	--icon-noborders-hover-focus-background-colour: #A1A7C4;
+
+	--icon-square-default-border-colour: #1E4877;
+	--icon-rounded-default-border-colour: #49454F;
+	--icon-hover-border-colour: #1E4877;
+	--icon-square-focus-border-colour: #0671E0;
+	--icon-rounded-focus-border-colour: #136FC1;
+	--icon-clicked-border-colour: #FFFFFF;
+	--icon-clicked-v2-border-colour: #136FC1;
+	--icon-disabled-border-colour: #475A70;
+
+	/* Main Menu Variables */
+	--main-menu-background-color: #CCDBE6;
+	--main-menu-tag-text-color: #212232;
+	--main-menu-demo-icon-image: url("../Resources/Images/Main Menu/DemoIcon_Sprite.png");
+	
+	/* Listen Button */
+	--listen-button-background-colour: rgba(0, 0, 0, 0);
+	--listen-button-background-hover-colour: #A1A7C4;
+	--listen-button-background-disabled-colour: rgba(0, 0, 0, 0);
+	--listen-button-border-colour: #1E4877;
+	--listen-button-border-hover-colour: #1E4877;
+	--listen-button-border-disabled-colour: #A1A1A1;
+	--listen-button-icon: url("../Resources/Images/Table/Expand_Arrow_Sprite.png");
+	--listen-button-icon-colour: #1E4877;
+	--listen-button-label-colour: #1E4877;
+	--listen-button-label-disabled-colour: #A1A1A1;
+
+	/* Info Popup */
+	--info-popup-background-colour: #CCDBE6;
+	--info-popup-close-button-icon: url("../Resources/Images/CloseX_Sprite.png");
+	--info-popup-close-button-icon-hover-colour: #1E4877;
+	--info-popup-title-label-colour: #212232;
+	--info-popup-body-label-colour: #212232;
+	--info-popup-default-image: url("../Resources/Images/Cards/DefaultImage_Sprite.png");
+	--info-popup-image-colour: #1E4877;
+	--info-popup-rotate-icon: url("../Resources/Images/Info Popup/Rotation_Arrows_Sprite.png");
+	--info-popup-zoom-icon: url("../Resources/Images/Info Popup/Magnifying_Glass_Sprite.png");
+	--info-popup-controls-label-colour: #212232;
+	--info-popup-controls-icon-colour: #212232;
+}

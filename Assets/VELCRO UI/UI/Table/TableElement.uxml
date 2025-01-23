@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-table.uss?fileID=7433441132597879392&amp;guid=34a54c9db1d6a484a82bc2337a5455a2&amp;type=3#velcro-table" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <ui:VisualElement name="Container" class="table-element-container flex-row align-items-center justify-center w-100">
+        <ui:VisualElement name="Icon" class="table-element-icon display-hidden mr-16" />
+        <ui:Label tabindex="-1" text="Element" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" class="table-element-label m-0 p-0 fw-400 text-align-middle-center text-wrap flex-row" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,87 @@
+/* Shared Classes */
+.toast-animation {
+    transition-duration: 0.75s;
+    transition-property: opacity, translate;
+    transition-timing-function: ease-in-out-back;
+}
+
+.toast-bar {
+    background-color: var(--toast-bar-colour);
+    min-width: 5px;
+    max-width: 5px;
+    margin-left: 5px;
+}
+
+.toast-header-label {
+    color: var(--toast-header-label-colour);
+    max-width: 280px;
+}
+
+.toast-message-label {
+    color: var(--toast-message-label-colour);
+}
+
+.close-button {
+    background-color: var(--toast-close-button-background-colour);
+    -unity-background-image-tint-color: var(--toast-close-button-image-colour);
+    background-image: var(--toast-close-button-image);
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 0px;
+}
+
+.close-button:hover:enabled {
+    background-color: var(--toast-close-button-background-hover-colour);
+    -unity-background-image-tint-color: var(--toast-close-button-image-hover-colour);
+}
+
+/* Simple Toast Classes */
+.toast-simple {
+    background-color: var(--toast-background-colour);
+    min-width: 900px;
+    max-width: 900px;
+    min-height: 80px;
+}
+
+.toast-simple-bar {
+    min-height: 80px;
+}
+
+.toast-simple-icon {
+    -unity-background-image-tint-color: var(--toast-header-label-colour);
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+}
+
+/* Complex Toast Classes */
+.toast-complex {
+    background-color: var(--toast-background-colour);
+    min-width: 900px;
+    max-width: 900px;
+    min-height: 100px;
+}
+
+.toast-complex-bar {
+    min-height: 100px;
+}
+
+.toast-complex-icon-container {
+    background-color: var(--toast-complex-icon-container-background-colour);
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50px;
+}
+
+.toast-complex-icon {
+    -unity-background-image-tint-color: var(--toast-header-label-colour);
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    margin: 6px;
+}

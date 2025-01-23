@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-toast.uss?fileID=7433441132597879392&amp;guid=1b6dbd2da63781e418d6b81f9415f058&amp;type=3#velcro-toast" />
+    <ui:VisualElement name="Toast" class="toast-simple o-0 flex-row align-self-center absolute m-40 toast-animation">
+        <ui:VisualElement name="Bar" class="h-100 toast-bar mr-12 toast-simple-bar" />
+        <ui:VisualElement name="IconContainer" class="justify-center">
+            <ui:VisualElement name="Icon" class="mt-20 mb-20 toast-simple-icon" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LabelContainer" class="grow flex-row mt-20 mb-20 ml-8">
+            <ui:VisualElement name="HeaderContainer" class="justify-center mr-28">
+                <ui:Label tabindex="-1" text="[Header]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HeaderLabel" class="fs-24 fw-700 m-0 p-0 text-wrap toast-header-label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MessageContainer" class="grow justify-center">
+                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MessageLabel" text="[Message]" class="p-0 m-0 fs-28 fw-400 text-wrap toast-message-label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseBtn" class="bw-0 m-16 close-button align-self-center" />
+    </ui:VisualElement>
+</ui:UXML>

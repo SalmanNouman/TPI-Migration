@@ -1,0 +1,41 @@
+.main-menu {
+    min-height: 300px; 
+    background-color: var(--main-menu-background-color);
+    overflow: hidden;
+    min-width: 750px; /* Width of menu which contains two cards, below this scaling with icon & tag becomes problematic */
+}
+
+.main-menu-primary-label {
+    color: var(--main-menu-primary-text-color);
+    overflow: hidden;
+}
+
+.main-menu-tag-label {
+    color: var(--main-menu-tag-text-color);
+    overflow: hidden;
+    flex-shrink: 1; /* Prevents this label from causing tag icon to squeeze, forces it to wrap when container width is used up */
+}
+
+.main-menu-tag {
+    top: 52px;
+    right: 50px;
+    max-width: 330px; 
+    height: 65px;
+}
+
+.main-menu-body {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 115px;
+}
+
+.main-menu-tag-icon { /* Change this to point to whichever icon you like, and customize size to match */
+    width: 52px;
+    height: 61px;
+    background-image: var(--main-menu-demo-icon-image); 
+}
+
+.main-menu-card-seperation { /* Currently how cards maintain even spacing, added to each card in menu template. This can be changed/removed entierly if desired */
+    margin-left: 25px;
+    margin-right: 25px;
+}

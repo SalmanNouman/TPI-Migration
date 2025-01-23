@@ -1,0 +1,156 @@
+.table {
+}
+
+.table-header {
+    height: 49px;
+    background-color: var(--table-header-colour);
+    min-height: 49px;
+    padding-right: 22px;
+}
+
+.table-header-bottom {
+    height: 1px;
+    background-color: var(--table-header-bottom-colour);
+}
+
+.table-header-label {
+    color: var(--table-header-label-colour);
+}
+
+.table-footer {
+    height: 44px;
+    background-color: var(--table-footer-colour);
+    max-height: 49px;
+    min-height: 49px;
+}
+
+.table-blank-space {
+    width: 19px;
+    height: 23px;
+}
+
+.table-category {
+    height: 64px;
+    background-color: var(--table-category-background-colour);
+}
+
+.table-category-expand-button {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0);
+    transition-property: rotate;
+    transition-duration: 0.1s;
+}
+
+.table-category-expand-button:hover:enabled {
+    background-color: var(--table-category-arrow-background-hover-colour);
+}
+
+.table-category-exapnd-button-clicked {
+    rotate: -90deg;
+    transition-property: rotate;
+    transition-duration: 0.1s;
+}
+
+.table-category-expand-button-icon {
+    width: 14px;
+    height: 10px;
+    background-image: var(--table-category-arrow-icon);
+    -unity-background-image-tint-color: var(--table-category-arrow-colour);
+}
+
+.table-category-expand-button:hover:enabled > .table-category-expand-button-icon {
+    -unity-background-image-tint-color: var(--table-category-arrow-hover-colour);
+}
+
+.table-category-label {
+    color: var(--table-category-label-colour);
+}
+
+.table-category-name-holder {
+    background-color: var(--table-category-label-background-colour);
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.table-element-container {
+    height: 64px;
+}
+
+.table-element-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.table-element-label {
+    font-size: 18px;
+    color: var(--table-element-label-colour);
+}
+
+.table-entry {
+    height: 64px;
+    background-color: var(--table-entry-background-colour-1);
+    --entry-background-colour-1: var(--table-entry-background-colour-1);
+    --entry-background-colour-2: var(--table-entry-background-colour-2);
+}
+
+.table-entry-delete-button {
+    background-color: rgba(0, 0, 0, 0);
+    width: 32px;
+    height: 32px;
+}
+
+.table-entry-delete-button:hover:enabled {
+    background-color: var(--table-entry-delete-button-background-hover-colour);
+}
+
+.table-entry-delete-button-icon {
+    width: 19px;
+    height: 23px;
+    background-image: var(--table-entry-delete-button-icon);
+    -unity-background-image-tint-color: var(--table-entry-delete-button-colour);
+}
+
+.table-entry-delete-button:hover:enabled > .table-entry-delete-button-icon {
+    -unity-background-image-tint-color: var(--table-entry-delete-button-hover-colour);
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container {
+    background-color: var(--table-background-colour);
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroll-view__content-viewport--vertical {
+    margin-right: 12px;
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical {
+    width: 10px;
+    min-width: 10px;
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical > .unity-scroller__low-button {
+    display: none;
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical > .unity-scroller__high-button {
+    display: none;
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical > .unity-scroller__slider {
+    margin: 0;
+    width: 10px;
+    min-width: 10px;
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical > .unity-scroller__slider > .unity-slider__input > .unity-base-slider__drag-container > .unity-base-slider__tracker {
+    border-width: 0;
+    border-radius: 6px;
+    background-color: var(--table-scrollbar-background-colour);
+}
+
+.table-category-holder > .unity-scroll-view__content-and-vertical-scroll-container > .unity-scroller--vertical > .unity-scroller__slider > .unity-slider__input > .unity-base-slider__drag-container > .unity-base-slider__dragger {
+    width: 10px;
+    left: 0;
+    border-radius: 6px;
+    background-color: var(--table-scrollbar-colour);
+}
