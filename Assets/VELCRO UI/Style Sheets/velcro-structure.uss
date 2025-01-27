@@ -1194,8 +1194,6 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-#if UNITY_6_OR_NEWER
-
 .align-content-auto {
     align-content: auto;
 }
@@ -1256,4 +1254,18 @@
     background-size: 100% 100%;
 }
 
-#endif
+.background-x-left {
+    background-position-x: left 0px;
+}
+
+.background-x-right {
+    background-position-x: right 0px;
+}
+
+.background-y-left {
+    background-position-y: top 0px;
+}
+
+.background-y-right {
+    background-position-y: bottom 0px;
+}

@@ -4,33 +4,26 @@
     border-bottom-right-radius: 15px;
 }
 
-.progress-v1-header-background {
-    height: 38px;
+.progress-header {
     background-color: var(--progress-v1-header-back-colour);
 }
 
-.progress-v1-header-bar {
-    height: 38px;
-    background-color: var(--progress-v1-header-front-colour);
+.progress-header-start {
+    min-width: 188px;
+    min-height: 38px;
+    padding-right: 70px;
+    background-image: var(--header-start-background-image);
+    -unity-background-image-tint-color: var(--header-tint-colour);
 }
 
-.progress-v1-header-background-2 {
-    height: 21px;
-    background-color: var(--progress-v1-header-back-colour);
-    top: 17px;
-}
-
-.progress-v1-header-title-holder {
-    width: 187px;
-    height: 38px;
-    background-image: var(--progress-v1-header-title-holder);
-    -unity-background-image-tint-color: var(--progress-v1-header-front-colour);
-    border-bottom-right-radius: 51px;
-}
-
-.progress-v1-header-title-label {
+.progress-header-label {
     font-size: 18px;
-    color: var(--progress-v1-header-title-colour);
+    color: var(--header-label-colour);
+}
+
+.progress-header-end {
+    height: 17px;
+    background-color: var(--header-tint-colour);
 }
 
 .progress-v1-category {
@@ -62,10 +55,11 @@
 .progress-v1-category-arrow {
     background-image: var(--progress-v1-category-arrow);
     width: 24px;
-    height: 13.63px;
+    height: 24px;
     transition-property: rotate;
     transition-duration: 0.1s;
     -unity-background-image-tint-color: var(--progress-v1-category-arrow-colour);
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .progress-v1-category-arrow-closed {
@@ -113,7 +107,7 @@
 }
 
 .progress-v1-task {
-    height: 48px;
+    min-height: 48px;
     background-color: var(--progress-v1-task-background-colour);
 }
 
@@ -134,8 +128,8 @@
 }
 
 .progress-v1-task-checkmark {
-    height: 18px; /* Original: 32px for both */
-    width: 18px;
+    min-height: 18px; /* Original: 32px for both */
+    min-width: 18px;
     border-color: var(--progress-v1-task-checkmark-border-colour);
     border-width: 2px;
     border-radius: 16px;
@@ -147,6 +141,7 @@
 
 .progress-v1-task-checkmark-checked-icon {
     background-image: var(--progress-v1-task-checkmark-icon);
+    -unity-background-image-tint-color: var(--progress-v1-task-checkmark-colour);
     visibility: hidden;
 }
 

@@ -4,11 +4,15 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <ui:VisualElement name="Task" class="w-100 flex-row align-items-center progress-v1-task p-16">
         <ui:VisualElement name="Checkmark" class="progress-v1-task-checkmark progress-v1-task-checkmark-checked">
-            <ui:VisualElement name="Icon" class="grow progress-v1-task-checkmark-checked-icon w-100 h-100" />
+            <ui:VisualElement name="Icon" class="progress-v1-task-checkmark-checked-icon w-100 h-100" />
         </ui:VisualElement>
         <ui:VisualElement name="TaskInfo" class="grow h-100 flex-row align-items-center justify-space-between mr-4 ml-12">
-            <ui:Label tabindex="-1" text="Task 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TaskLabel" class="fw-400 progress-v1-task-label grow m-0 p-0 mr-48 fs-20 text-align-middle-left progress-v1-task-completed-label" />
-            <ui:Label tabindex="-1" text="(0/0 found)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgressLabel" class="fw-400 progress-v1-task-progress-label progress-v1-task-progress-label-highlight m-0 p-0 text-align-middle-right fs-20 progress-v1-task-completed-label" />
+            <ui:VisualElement name="TaskLabelContainer" class="grow mr-28">
+                <ui:Label tabindex="-1" text="[Task]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TaskLabel" class="fw-400 progress-v1-task-label grow m-0 p-0 fs-20 text-align-middle-left progress-v1-task-completed-label text-wrap" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ProgressLabelContainer">
+                <ui:Label tabindex="-1" text="(0/0 found)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgressLabel" class="fw-400 progress-v1-task-progress-label progress-v1-task-progress-label-highlight m-0 p-0 text-align-middle-right fs-20 progress-v1-task-completed-label" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

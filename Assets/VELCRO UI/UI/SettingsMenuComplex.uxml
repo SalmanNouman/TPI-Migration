@@ -7,7 +7,7 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
     <ui:VisualElement name="Canvas" class="grow justify-center align-items-center w-100">
         <ui:VisualElement name="SettingsMenu" class="br-20 settings-menu-complex">
-            <ui:VisualElement name="Header">
+            <ui:VisualElement name="Header" class="align-items-start">
                 <ui:VisualElement name="HeaderEnd" class="absolute w-100 br-tl-20 br-tr-20 header-end" />
                 <ui:VisualElement name="HeaderStart" class="header-start pr-32">
                     <ui:Label text="Settings" name="Name" class="p-0 m-0 fs-36 fw-700 pl-32 grow w-100 text-align-middle-left header-label" />

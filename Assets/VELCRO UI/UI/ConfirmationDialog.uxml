@@ -9,7 +9,7 @@
                     <ui:VisualElement name="Header" class="flex-row justify-space-between">
                         <ui:Label tabindex="-1" text="[Name]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NameLabel" class="fs-36 fw-400 m-0 p-0 confirmation-dialog-name-label" />
                         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseBtn" class="m-0 br-20 bw-2 p-0 confirmation-dialog-button-close">
-                            <ui:VisualElement name="Icon" class="grow w-100 h-100 confirmation-dialog-button-close-icon" />
+                            <ui:VisualElement name="Icon" class="grow confirmation-dialog-button-close-icon align-self-center" />
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement name="Content" class="confirmation-dialog-body br-20 mt-12 pb-24 pr-24 pl-36 pt-36 grow">

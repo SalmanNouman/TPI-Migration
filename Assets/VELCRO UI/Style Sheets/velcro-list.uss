@@ -54,10 +54,11 @@
 }
 
 .list-element-task-icon-completed {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     border-width: 0;
     background-image: var(--task-list-element-icon-completed);
+    -unity-background-image-tint-color: var(--task-list-element-checkmark-colour);
 }
 
 .list-element-task-label {

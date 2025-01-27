@@ -37,6 +37,9 @@
 }
 
 .confirmation-dialog-button-close-icon {
+    width: 27px;
+    height: 27px;
     background-image: var(--confirmation-dialog-close-button-icon);
+    -unity-background-scale-mode: scale-to-fit;
     -unity-background-image-tint-color: var(--confirmation-dialog-close-button-icon-colour);
 }

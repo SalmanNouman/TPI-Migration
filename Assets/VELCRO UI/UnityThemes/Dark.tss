@@ -27,16 +27,16 @@
 
 :root {
 	/*Font Variables*/  
-	--font-regular: url("../Resources/Fonts & Materials/Lato-Regular SDF.asset");
-	--font-regular-italic: url("../Resources/Fonts & Materials/Lato-Italic SDF.asset");
-	--font-black: url("../Resources/Fonts & Materials/Lato-Black SDF.asset");
-	--font-black-italic: url("../Resources/Fonts & Materials/Lato-BlackItalic SDF.asset");
-	--font-bold: url("../Resources/Fonts & Materials/Lato-Bold SDF.asset");
-	--font-bold-italic: url("../Resources/Fonts & Materials/Lato-BoldItalic SDF.asset");
-	--font-light: url("../Resources/Fonts & Materials/Lato-Light SDF.asset");
-	--font-light-italic: url("../Resources/Fonts & Materials/Lato-LightItalic SDF.asset");
-	--font-thin: url("../Resources/Fonts & Materials/Lato-Thin SDF.asset");
-	--font-thin-italic: url("../Resources/Fonts & Materials/Lato-ThinItalic SDF.asset");
+	--font-regular: url("../Fonts & Materials/Lato-Regular SDF.asset");
+	--font-regular-italic: url("../Fonts & Materials/Lato-Italic SDF.asset");
+	--font-black: url("../Fonts & Materials/Lato-Black SDF.asset");
+	--font-black-italic: url("../Fonts & Materials/Lato-BlackItalic SDF.asset");
+	--font-bold: url("../Fonts & Materials/Lato-Bold SDF.asset");
+	--font-bold-italic: url("../Fonts & Materials/Lato-BoldItalic SDF.asset");
+	--font-light: url("../Fonts & Materials/Lato-Light SDF.asset");
+	--font-light-italic: url("../Fonts & Materials/Lato-LightItalic SDF.asset");
+	--font-thin: url("../Fonts & Materials/Lato-Thin SDF.asset");
+	--font-thin-italic: url("../Fonts & Materials/Lato-ThinItalic SDF.asset");
 
 	/*Shared Variables*/  
 	--canvas-dim-colour: rgba(0, 0, 0, 0.7);
@@ -99,8 +99,8 @@
 	--colour-auxilliary-button-negative-hover: #A4001E;
 	--colour-auxilliary-text: #FFFFFF;
 	--colour-auxilliary-button-border-hover: #FFFFFF;
-	--icon-auxilliary-button-positive: url("../Resources/Images/Checkmark_V2_Sprite.png");
-	--icon-auxilliary-button-negative: url("../Resources/Images/AlertTriangle_Sprite.png");
+	--icon-auxilliary-button-positive: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
+	--icon-auxilliary-button-negative: url("../Sprites/Icons/Warning_Sprite.png");
 
 	/*Checkbox Colours*/
 	--colour-checkbox-border-unselected: #CAC4D0;
@@ -117,7 +117,7 @@
 	--colour-checkmark-disabled: rgba(0, 0, 0, 0);
 
 	/*Checkbox Arrow*/
-	--checkmark-image: url("../Resources/Images/Checkmark_Sprite.png");
+	--checkmark-image: url("../Sprites/Checkmarks/Checkmark_Sprite.png");
    
 	/*Radio Button Colours*/
 	--colour-button-radio-default: rgba(0, 0, 0, 0);
@@ -162,17 +162,17 @@
 	--colour-toggle-checked-knob-disabled: #FFFFFF;
 
 	/*Tooltip Images*/
-	--tooltip-top: url("../Resources/Images/Tooltip/Tooltip_Top_Sprite.png");
-	--tooltip-bottom: url("../Resources/Images/Tooltip/Tooltip_Bottom_Sprite.png");
-	--tooltip-left: url("../Resources/Images/Tooltip/Tooltip_Left_Sprite.png");
-	--tooltip-right: url("../Resources/Images/Tooltip/Tooltip_Right_Sprite.png");
+	--tooltip-top: url("../Sprites/Tooltip/TooltipTop_Sprite.png");
+	--tooltip-bottom: url("../Sprites/Tooltip/TooltipBottom_Sprite.png");
+	--tooltip-left: url("../Sprites/Tooltip/TooltipLeft_Sprite.png");
+	--tooltip-right: url("../Sprites/Tooltip/TooltipRight_Sprite.png");
 	--tooltip-colour: #1E4877;
 	--tooltip-text-colour: #FFFFFF;
 
 	/*Dropdown Colors And Images*/
-	--dropdown-up-arrow-sprite: url("../Resources/Images/Dropdown/Up_Arrow_Sprite.png");
-	--dropdown-down-arrow-sprite: url("../Resources/Images/Dropdown/Down_Arrow_Sprite.png");
-	--dropdown-checkmark-sprite: url("../Resources/Images/Dropdown/Checkmark_Sprite.png");
+	--dropdown-up-arrow-sprite: url("../Sprites/Arrows/ArrowUp_Sprite.png");
+	--dropdown-down-arrow-sprite: url("../Sprites/Arrows/ArrowDown_Sprite.png");
+	--dropdown-checkmark-sprite: url("../Sprites/Checkmarks/Checkmark_Sprite.png");
 	--dropdown-default-background-colour: #2D2D2D;
 	--dropdown-default-text-colour: #FFFFFF;
 	--dropdown-default-border-colour: #1E5EFF;
@@ -197,29 +197,21 @@
 	--toolbar-version-one-contract-and-expand-button-border-color: #D9D9D9;
 	--toolbar-version-one-expand-button-color: #000000;
 	--toolbar-version-one-seperator-line-color: #757575;
-	--toolbar-version-one-contract-sprite: url("../Resources/Images/Toolbar/Contract_Button_Sprite.png");
+	--toolbar-version-one-contract-sprite: url("../Sprites/UI/Contract_Button_Sprite.png");
 	--toolbar-version-one-contract-expand-background-color: rgba(0, 0, 0, 0);
-	--toolbar-version-one-button-arrow: url("../Resources/Images/Toolbar/Arrow_Contract_Sprite.png");
+	--toolbar-version-one-button-arrow: url("../Sprites/Arrows/ArrowLeft_Sprite.png");
 	--toolbar-version-one-item-group-background: rgba(0, 0, 0, 0);
-	--toolbar-version-one-expand-arrow: url("../Resources/Images/Arrow_Sprite.png");
-	--toolbar-version-one-expand-sprite: url("../Resources/Images/Toolbar/Contract_Button_Sprite.png");
-	--toolbar-version-one-first-icon: url("../Resources/Images/Toolbar/BlueprintIcon_Sprite.png");
-	--toolbar-version-one-second-icon: url("../Resources/Images/Toolbar/ListIcon_Sprite.png");
-	--toolbar-version-one-third-icon: url("../Resources/Images/Toolbar/HomeSearchIcon_Sprite.png");
-	--toolbar-version-one-fourth-icon: url("../Resources/Images/Toolbar/HelpIcon_Sprite.png");
-	--toolbar-version-one-fifth-icon: url("../Resources/Images/Toolbar/SettingIcon_Sprite.png");
+	--toolbar-version-one-expand-arrow: url("../Sprites/Arrows/ArrowRight_Sprite.png");
+	--toolbar-version-one-expand-sprite: url("../Sprites/UI/Expand_Button_Sprite.png");
 
 	/*Toolbar Version Two*/
 	--toolbar-version-two-background-color: #000000;
 	--toolbar-version-two-selected-color: #FFC009;
 	--toolbar-version-two-item-color: #FFFFFF;
 	--toolbar-version-two-item-group-background: rgba(0, 0, 0, 0);
-	--toolbar-version-two-first-icon: url("../Resources/Images/Toolbar/Generic_Icon_Sprite.png");
-	--toolbar-version-two-second-icon: url("../Resources/Images/Toolbar/Generic_Icon_2_Sprite.png");
-	--toolbar-version-two-third-icon: url("../Resources/Images/Toolbar/Generic_Icon_3_Sprite.png");
 	
 	/*Loading Indicator Colours*/
-	--loading-indicator-failed-icon: url("../Resources/Images/Exclamation_Sprite.png");
+	--loading-indicator-failed-icon: url("../Sprites/Icons/Exclamation_Sprite.png");
 	--loading-indicator-failed-icon-colour: #ED5E68;
 	--loading-indicator-canvas-colour: #000000;
 	--loading-indicator-track-colour: #D9D9D9;
@@ -230,7 +222,7 @@
 	--loading-text-label-colour: #DCDCDC;
 
 	/*Timer Images and Colours*/
-	--timer-arrow: url("../Resources/Images/Arrow_Sprite.png"); 
+	--timer-arrow: url("../Sprites/Arrows/ArrowRight_Sprite.png"); 
 	--timer-body-colour: #000000;
 	--timer-button-colour: rgba(255, 255, 255, 0.3);
 	--timer-button-hover-colour: rgba(255, 255, 255, 0.6);
@@ -249,7 +241,7 @@
 	--timer-countdown-text-colour: #FFCC33;
 
 	/*Toast Colors*/
-	--toast-close-button-image: url("../Resources/Images/CloseX_Sprite.png");
+	--toast-close-button-image: url("../Sprites/Buttons/CloseButton_Sprite.png");
 	--toast-close-button-image-colour: #B3B3B3;
 	--toast-close-button-image-hover-colour: #212232;
 	--toast-close-button-background-colour: rgba(0, 0, 0, 0);
@@ -271,16 +263,13 @@
 
 	/*Navigation Bar Colors*/
 	--navigation-default-background-color: #000000;
-	--navigation-button-background-color: rgba(0, 0, 0, 0);
+	--navigation-button-background-color: #000000;
 	--navigation-default-item-color: #B3B3B3;
 	--navigation-selected-item-color: #FFC009;
 	--navigation-hover-item-background-color: rgba(117, 117, 117, 0.5);
 	--navigation-bottom-bar-default-color: #B3B3B3;
 	
 	/*Progress Indicator V1*/
-	--progress-v1-header-title-holder: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
-	--progress-v1-header-title-colour: #FFFFFF;
-	--progress-v1-header-front-colour: #616D6C;
 	--progress-v1-header-back-colour: #000000;
 
 	--progress-v1-category-background-colour: #000000;
@@ -291,7 +280,7 @@
 	--progress-v1-category-progress-fill-colour: #4BC17E;
 	--progress-v1-category-progress-fill-border-colour: #4BC17E;
 	--progress-v1-category-bottom-colour: #B3B3B3;
-	--progress-v1-category-arrow: url("../Resources/Images/Progress Indicator/Arrow_Down_Sprite.png");
+	--progress-v1-category-arrow: url("../Sprites/Arrows/ArrowDown_Sprite.png");
 	--progress-v1-category-arrow-colour: #FFFFFF;
 	--progress-v1-category-arrow-holder-colour: rgba(0, 0, 0, 0);
 
@@ -302,7 +291,7 @@
 	--progress-v1-task-label-progress-highlight-colour: #CFAE53;
 	--progress-v1-task-checkmark-colour: #4BC17E;
 	--progress-v1-task-checkmark-border-colour: #FFFFFF;
-	--progress-v1-task-checkmark-icon: url("../Resources/Images/Checkmark_V3_Sprite.png");
+	--progress-v1-task-checkmark-icon: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
 	--progress-v1-task-checkmark-icon-colour: #FFFFFF;
 
 	/*Progress Indicator V2*/
@@ -323,15 +312,12 @@
 	--progress-v3-glow-colour-outer: rgba(255, 205, 41, 0);
 
 	/*Settings Menu*/
-	--settings-menu-volume-off-sprite: url("../Resources/Images/Settings Menu/VolumeOff_Sprite.png");
-	--settings-menu-volume-full-sprite: url("../Resources/Images/Settings Menu/VolumeFull_Sprite.png");
-	--settings-menu-rabbit-sprite: url("../Resources/Images/Settings Menu/RabbitIcon_Sprite.png");
-	--settings-menu-tortoise-sprite: url("../Resources/Images/Settings Menu/TortoiseIcon_Sprite.png");
-	--settings-menu-close-button-sprite: url("../Resources/Images/CloseButtonDark_Sprite.png");
-	--settings-menu-top-left-rectangle-sprite: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
-	--settings-menu-top-bar-colour: #616D6C;
+	--settings-menu-volume-off-sprite: url("../Sprites/Icons/VolumeOff_Sprite.png");
+	--settings-menu-volume-full-sprite: url("../Sprites/Icons/VolumeFull_Sprite.png");
+	--settings-menu-rabbit-sprite: url("../Sprites/Icons/Rabbit_Sprite.png");
+	--settings-menu-tortoise-sprite: url("../Sprites/Icons/Tortoise_Sprite.png");
+	--settings-menu-close-button-sprite: url("../Sprites/Buttons/CloseButtonDark_Sprite.png");
 	--settings-menu-background-colour: #000000;
-	--settings-menu-primary-text-colour: #FFFFFF;
 	--settings-menu-secondary-text-colour: #E1E1E1;
 	--settings-menu-secondary-icon-colour: #D9D9D9;
 	--settings-menu-button-background-colour: rgba(0, 0, 0, 0);
@@ -343,7 +329,7 @@
 	--information-dialog-description-label-colour: #FFFFFF;
 
 	/*Confirmation Dialog*/
-	--confirmation-dialog-close-button-icon: url("../Resources/Images/CloseX_Sprite.png");
+	--confirmation-dialog-close-button-icon: url("../Sprites/Buttons/CloseButton_Sprite.png");
 	--confirmation-dialog-background-colour: #000000;
 	--confirmation-dialog-body-colour: #2D2D2D;
 	--confirmation-dialog-name-label-colour: #FFFFFF;
@@ -366,22 +352,23 @@
 	
 	--task-list-element-background-colour: rgba(33, 34, 50, 0.85);
 	--task-list-element-icon-border-colour: #FFFFFF;
-	--task-list-element-icon-completed: url("../Resources/Images/Checkmark_V3_Sprite.png");
+	--task-list-element-icon-completed: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
+	--task-list-element-checkmark-colour: #4BC17E;
 	--task-list-element-title-label-colour: #FFFFFF;
 	--task-list-element-title-label-completed-colour: #4BC17E;
 	--task-list-element-hint-colour: rgba(0, 0, 0, 0);
 	--task-list-element-hint-hover-colour: #FFC009;
-	--task-list-element-hint-icon: url("../Resources/Images/Bulb-Idea-Icon_Sprite.png");
+	--task-list-element-hint-icon: url("../Sprites/Icons/Bulb_Sprite.png");
 	--task-list-element-hint-icon-colour: #FFFFFF;
 	--task-list-element-hint-icon-hover-colour: #000000;
 	--task-list-element-hint-icon-completed-colour: #8CA1AD;
 
 	/* Splash Screen */
-	--splash-background-image: url("../Resources/Images/Splash_Screen_Wide.png");
+	--splash-background-image: url("../Sprites/UI/Splash_Screen_Wide.png");
 	--splash-label-colour: #D0D3D0;
 
 	/* Header Template */
-	--header-start-background-image: url("../Resources/Images/Dialogs/HeaderTopLeft_Sprite.png");
+	--header-start-background-image: url("../Sprites/UI/HeaderTopLeft_Sprite.png");
 	--header-tint-colour: #636F6E;
 	--header-label-colour: #FFFFFF;
 
@@ -402,19 +389,19 @@
 	--table-category-arrow-colour: #FFFFFF;
 	--table-category-arrow-hover-colour: #000000;
 	--table-category-arrow-background-hover-colour: #FFFFFF;
-	--table-category-arrow-icon: url("../Resources/Images/Table/Expand_Arrow_Sprite.png");
+	--table-category-arrow-icon: url("../Sprites/Arrows/ArrowExpand_Sprite.png");
 	--table-entry-background-colour-1: #000000;
 	--table-entry-background-colour-2: #2D2D2D;
 	--table-entry-delete-button-colour: #BEC0C5;
 	--table-entry-delete-button-hover-colour: #000000;
 	--table-entry-delete-button-background-hover-colour: #BEC0C5;
-	--table-entry-delete-button-icon: url("../Resources/Images/Table/Trash_Can_Sprite.png");
+	--table-entry-delete-button-icon: url("../Sprites/Icons/Trash_Sprite.png");
 	--table-element-label-colour: #FFFFFF;
 	--table-scrollbar-colour: #FFFFFF;
 	--table-scrollbar-background-colour: rgba(128, 128, 128, 0.5);
 
 	/* Cards */
-	--card-default-image: url("../Resources/Images/Cards/DefaultImage_Sprite.png");
+	--card-default-image: url("../Sprites/Icons/Default_Sprite.png");
 
 	--card-v1-background-colour: #2D2D2D;
 	--card-v1-image-box-background-colour: #505050;
@@ -432,8 +419,8 @@
 	--card-v2-bottom-completed-colour: #FFFFFF;
 	--card-v2-inner-shadow-colour: rgba(255, 255, 255, 0.25);
 	--card-v2-outer-shadow-colour: rgba(255, 255, 255, 0);
-	--card-v2-checkmark-image-sprite: url("../Resources/Images/Checkmark_V2_Sprite.png");
-	--card-v2-timer-image-sprite: url("../Resources/Images/Cards/Timer_Icon_Sprite.png");
+	--card-v2-checkmark-image-sprite: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
+	--card-v2-timer-image-sprite: url("../Sprites/Icons/Default_Sprite.png");
 
 	--card-v3-background-colour: #2D2D2D;
 	--card-v3-main-label-colour: #FFFFFF;
@@ -460,13 +447,14 @@
 	--card-v5-border-colour: #FFFFFF;
 	--card-v5-tag-background-colour: #F5F5F5;
 	--card-v5-tag-label-colour: #202024;
-	--card-v5-close-icon-image: url("../Resources/Images/CloseButtonDark_Sprite.png");
-	--card-v5-close-secondary-image: url("../Resources/Images/Cards/CloseIcon_Dark_2_Sprite.png");
-	--card-v5-camera-icon-image: url("../Resources/Images/Cards/CameraIcon_Sprite.png");
+	--card-v5-close-icon-image: url("../Sprites/Buttons/CloseButtonDark_Sprite.png");
+	--card-v5-camera-icon-image: url("../Sprites/Icons/Camera_Sprite.png");
 	--card-v5-top-shadow-inner-colour: rgba(0, 0, 0, 0);
 	--card-v5-top-shadow-outer-colour: rgba(0, 0, 0, 0);
 	--card-v5-image-tint-colour: rgba(102, 102, 102, 0.08);
 	--card-v5-icon-background-colour: rgba(0, 0, 0, 0);
+	--card-v5-close-icon-background-colour: #000000;
+	--card-v5-close-icon-colour: #FFFFFF;
 	
 	/* Progress Status Templates */
 	--progress-status-not-started-background-color: #D9D9D9;
@@ -481,7 +469,7 @@
 	--scrollbar-dragger-hover-colour: #E0E0E0;
 
 	/* Icon Templates */
-	--default-icon-image: url("../Resources/Images/BackArrow_Sprite.png");
+	--default-icon-image: url("../Sprites/Arrows/ArrowBack_Sprite.png");
 	--icon-transparent-colour: rgba(0, 0, 0, 0);
 
 	--icon-default-image-colour: #FFFFFF;
@@ -513,7 +501,7 @@
 	/* Main Menu Variables */
 	--main-menu-background-color: #000000;
 	--main-menu-tag-text-color: #B3B3B3;
-	--main-menu-demo-icon-image: url("../Resources/Images/Main Menu/DemoIcon_Sprite.png");
+	--main-menu-demo-icon-image: url("../Sprites/Icons/Default_Sprite.png");
 	
 	/* Listen Button */
 	--listen-button-background-colour: rgba(0, 0, 0, 0);
@@ -522,21 +510,27 @@
 	--listen-button-border-colour: #FFCC33;
 	--listen-button-border-hover-colour: #FFCC33;
 	--listen-button-border-disabled-colour: #A1A1A1;
-	--listen-button-icon: url("../Resources/Images/Table/Expand_Arrow_Sprite.png");
+	--listen-button-icon: url("../Sprites/Arrows/ArrowExpand_Sprite.png");
 	--listen-button-icon-colour: #FFCC33;
 	--listen-button-label-colour: #FFCC33;
 	--listen-button-label-disabled-colour: #A1A1A1;
 
 	/* Info Popup */
 	--info-popup-background-colour: #000000;
-	--info-popup-close-button-icon: url("../Resources/Images/CloseX_Sprite.png");
+	--info-popup-close-button-icon: url("../Sprites/Buttons/CloseButton_Sprite.png");
 	--info-popup-close-button-icon-hover-colour: #FFFFFF;
 	--info-popup-title-label-colour: #FFFFFF;
 	--info-popup-body-label-colour: #FFFFFF;
-	--info-popup-default-image: url("../Resources/Images/Cards/DefaultImage_Sprite.png");
+	--info-popup-default-image: url("../Sprites/Icons/Default_Sprite.png");
 	--info-popup-image-colour: #666666;
-	--info-popup-rotate-icon: url("../Resources/Images/Info Popup/Rotation_Arrows_Sprite.png");
-	--info-popup-zoom-icon: url("../Resources/Images/Info Popup/Magnifying_Glass_Sprite.png");
+	--info-popup-rotate-icon: url("../Sprites/Icons/Default_Sprite.png");
+	--info-popup-zoom-icon: url("../Sprites/Icons/Default_Sprite.png");
 	--info-popup-controls-label-colour: #FFFFFF;
 	--info-popup-controls-icon-colour: #FFFFFF;
+
+	/* Notifications */
+	--notification-background-colour-icon: rgba(255, 255, 255, 0.2);
+	--notification-background-colour-success: #097538;
+	--notification-background-colour-info: #0671E0;
+	--notification-background-colour-error: #B00020;
 }

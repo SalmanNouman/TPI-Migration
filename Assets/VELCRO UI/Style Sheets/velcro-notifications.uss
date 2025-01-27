@@ -17,21 +17,24 @@
     width: 60px;
     height: 60px;
     margin: 10px;
+    border-radius: 50px;
+    background-color: var(--notification-background-colour-icon);
 }
 
 .notification-icon {
     width: 44px;
     height: 44px;
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .notification-success {
-    background-color: var(--green-1);
+    background-color: var(--notification-background-colour-success);
 }
 
 .notification-info {
-    background-color: var(--blue-9);
+    background-color: var(--notification-background-colour-info);
 }
 
 .notification-error {
-    background-color: var(--red-3);
+    background-color: var(--notification-background-colour-error);
 }

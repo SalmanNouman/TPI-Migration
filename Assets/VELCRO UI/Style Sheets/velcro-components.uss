@@ -185,15 +185,17 @@
 }
 
 .button-auxilliary-icon-positive {
-    width: 29px;
-    height: 27.5px;
+    width: 42px;
+    height: 42px;
     background-image: var(--icon-auxilliary-button-positive);
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .button-auxilliary-icon-negative {
-    width: 43px;
-    height: 41px;
+    width: 42;
+    height: 42px;
     background-image: var(--icon-auxilliary-button-negative);
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .checkbox {
@@ -237,6 +239,7 @@
     background-color: var(--colour-checkbox-selected);
     border-color: var(--colour-checkbox-selected);
     background-image: var(--checkmark-image);
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .checkbox:hover:enabled {
@@ -600,9 +603,10 @@
 
 .dropdown > .unity-base-field__input > .unity-base-popup-field__arrow {
     width: 12px;
-    height: 7.4px;
+    height: 12px;
     background-image: var(--dropdown-down-arrow-sprite);
     -unity-background-image-tint-color: var(--dropdown-arrow-colour);
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .dropdown:active > .unity-base-field__input > .unity-base-popup-field__arrow {
@@ -634,10 +638,11 @@
 
 .unity-base-dropdown__checkmark {
     width: 18px;
-    height: 12px;
+    height: 18px;
     left: 97.5%;
     background-image: var(--dropdown-checkmark-sprite);
     -unity-background-image-tint-color: var(--dropdown-checkmark-selected-colour);
+    -unity-background-scale-mode: scale-to-fit;
     min-width: 0;
     min-height: 0;
 }
@@ -813,23 +818,23 @@
 }
 
 .icon-image-large {
-    width: 37.5px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
 }
 
 .icon-image-medium {
     width: 26px;
-    height: 20px;
+    height: 26px;
 }
 
 .icon-image-small {
     width: 19px;
-    height: 15px;
+    height: 19px;
 }
 
 .icon-image-xsmall {
     width: 15px;
-    height: 11px;
+    height: 15px;
 }
 
 .icon-image-square {

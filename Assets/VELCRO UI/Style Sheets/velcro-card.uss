@@ -202,7 +202,7 @@
     --card-v5-camera-icon-display: none;
     --card-v5-bottom-default-display: flex;
     --card-v5-bottom-buttons-display: none;
-    --card-v5-close-icon: var(--card-v5-close-secondary-image);
+    --card-v5-close-icon: var(--card-v5-close-icon-image);
     --card-v5-body-border-radius: 15px;
 }
 
@@ -219,7 +219,8 @@
     width: 48px;
     height: 48px;
     background-image: var(--card-v5-close-icon);
-    background-color: var(--card-v5-icon-background-colour);
+    background-color: var(--card-v5-close-icon-background-colour);
+    -unity-background-image-tint-color: var(--card-v5-close-icon-colour);
     top: 25px;
     right: 30px;
 }
