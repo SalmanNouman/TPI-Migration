@@ -1,0 +1,40 @@
+.notification {
+    min-width: 200px;
+    min-height: 80px;
+    border-radius: 40px;
+    color: var(--general-13);
+    opacity: 0;
+    transition-duration: 0.75s;
+    transition-property: opacity, translate;
+    transition-timing-function: ease-in-out-back;
+}
+
+.notification-label-container {
+    margin-right: 60px;
+}
+
+.notification-icon-container {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50px;
+    background-color: var(--notification-background-colour-icon);
+}
+
+.notification-icon {
+    width: 44px;
+    height: 44px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.notification-success {
+    background-color: var(--notification-background-colour-success);
+}
+
+.notification-info {
+    background-color: var(--notification-background-colour-info);
+}
+
+.notification-error {
+    background-color: var(--notification-background-colour-error);
+}

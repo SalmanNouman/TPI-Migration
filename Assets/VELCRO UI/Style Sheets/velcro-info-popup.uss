@@ -1,0 +1,76 @@
+.info-popup {
+    background-color: var(--info-popup-background-colour);
+}
+
+.info-popup-small {
+    width: 550px;
+    min-width: 550px;
+    min-height: 550px;
+}
+
+.info-popup-large {
+    width: 1400px;
+    height: 900px;
+}
+
+.info-popup-image {
+    background-image: var(--info-popup-default-image);
+    -unity-background-image-tint-color: var(--info-popup-image-colour);
+}
+
+.info-popup-small-image {
+    width: 350px;
+    height: 350px;
+}
+
+.info-popup-large-image {
+    width: 600px;
+    height: 600px;
+}
+
+.info-popup-close-button-icon {
+    background-image: var(--info-popup-close-button-icon);
+}
+
+.info-popup-close-button:hover:enabled > .info-popup-close-button-icon {
+    -unity-background-image-tint-color: var(--info-popup-close-button-icon-hover-colour);
+}
+
+.info-popup-close-button:focus:enabled > .info-popup-close-button-icon {
+    -unity-background-image-tint-color: var(--info-popup-close-button-icon-hover-colour);
+}
+
+.info-popup-title-label {
+    color: var(--info-popup-title-label-colour);
+}
+
+.info-popup-body-label {
+    color: var(--info-popup-body-label-colour);
+}
+
+.info-popup-small-button-container {
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+.info-popup-small-title-label-holder {
+    padding-left: 15px;
+}
+
+.info-popup-large-controls-label {
+    color: var(--info-popup-controls-label-colour);
+}
+
+.info-popup-large-controls-icon {
+    width: 48px;
+    height: 48px;
+    -unity-background-image-tint-color: var(--info-popup-controls-icon-colour);
+}
+
+.info-popup-large-rotate-icon {
+    background-image: var(--info-popup-rotate-icon);
+}
+
+.info-popup-large-zoom-icon {
+    background-image: var(--info-popup-zoom-icon);
+}

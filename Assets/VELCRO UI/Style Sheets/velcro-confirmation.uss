@@ -1,0 +1,45 @@
+.confirmation-dialog {
+    max-width: 730px;    
+    min-width: 730px;
+    min-height: 350px;
+}
+
+.confirmation-dialog-canvas {
+	background-color: var(--canvas-dim-colour);
+}
+
+.confirmation-dialog-background {
+    background-color: var(--confirmation-dialog-background-colour);
+}
+
+.confirmation-dialog-body {
+    background-color: var(--confirmation-dialog-body-colour);
+}
+
+.confirmation-dialog-name-label {
+    color: var(--confirmation-dialog-name-label-colour);
+}
+
+.confirmation-dialog-description-label {
+    color: var(--confirmation-dialog-description-label-colour);
+}
+
+.confirmation-dialog-button-close {
+    width: 40px;
+    height: 40px;
+    background-color: var(--confirmation-dialog-close-button-colour);
+    border-color: var(--confirmation-dialog-close-button-border-colour);
+}
+
+.confirmation-dialog-button-close:hover:enabled {
+    background-color: var(--confirmation-dialog-close-button-hover-colour);
+    border-color: var(--confirmation-dialog-close-button-border-colour);
+}
+
+.confirmation-dialog-button-close-icon {
+    width: 27px;
+    height: 27px;
+    background-image: var(--confirmation-dialog-close-button-icon);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--confirmation-dialog-close-button-icon-colour);
+}

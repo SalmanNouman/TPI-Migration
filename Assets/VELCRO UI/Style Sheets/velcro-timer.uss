@@ -1,0 +1,90 @@
+/* Countup Timer */
+.timer {
+    width: 275px;
+    height: 90px;
+    transition-duration: 0.2s;
+    transition-property: translate;
+}
+
+.timer-body {
+    background-color: var(--timer-body-colour);
+}
+
+.timer-button {
+    width: 28px;
+    height: 90px;
+    margin-right: 22px;
+    background-color: var(--timer-button-colour);
+    border-width: 0px;
+}
+
+.timer-button:hover:enabled {
+    background-color: var(--timer-button-hover-colour);
+}
+
+.timer-button-arrow {
+    background-image: var(--timer-arrow);
+    width: 9px;
+    height: 15px;
+    -unity-background-image-tint-color: var(--timer-arrow-colour);
+}
+
+.timer-label-holder {
+    padding-top: 18px;
+}
+
+.timer-title-label {
+    font-size: 18px;
+    color: var(--timer-title-label-colour);
+}
+
+.timer-elapsed-time-label {
+    color: var(--timer-elapsed-time-label-colour);
+}
+
+.timer-closed {
+    translate: 247px 0;
+    transition-property: translate;
+    transition-duration: 0.2s;
+}
+
+.timer-arrow-closed {
+    scale: -1 1;
+}
+
+.timer-gradient-container {
+    width: 275px;
+    height: 56px;
+    left: 0px;
+    top: 34px;
+    overflow: hidden;
+}
+
+.timer-gradient {
+    --top-left-colour: var(--timer-gradient-top);
+    --top-right-colour: var(--timer-gradient-top);
+    --bottom-left-colour: var(--timer-gradient-bottom);
+    --bottom-right-colour: var(--timer-gradient-bottom);
+}
+
+/* Countdown Timer */
+.timer-countdown-canvas {
+	background-color: var(--canvas-dim-colour);
+}
+
+.timer-countdown {
+    --border-outer-colour: var(--timer-countdown-border-outer-colour);
+    --border-outer-colour-2: var(--timer-countdown-border-outer-colour-2);
+    --progress-colour: var(--timer-countdown-progress-colour);
+    --tracker-colour: var(--timer-countdown-tracker-colour);
+    width: 400px;
+    height: 400px;
+    background-color: var(--timer-countdown-background-colour);
+    border-radius: 200px;
+}
+
+.timer-countdown-label {
+    -unity-font-definition: var(--lato-black);
+    color: var(--timer-countdown-text-colour);
+    font-size: 128px;
+}
