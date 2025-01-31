@@ -34,7 +34,7 @@ public class SerializedNavProperties : MonoBehaviour, ICloudSerialized, ICloudDe
     /// 
     private bool isUpdatingPosition;
     private bool isPanning;
-   
+
     /// <summary>
     /// Loads and checks for player, PovCam, povCamPOV and Stores the position of the player
     /// </summary>

@@ -43,7 +43,7 @@ namespace VARLab.DLX
         public bool Initialized { get; protected set; } = false;
         public bool ScormLoginReceived { get; protected set; } = false;
 
-        
+
 
         /// <summary>
         ///     If there was anything heavier in this method, like loading large resources, 
@@ -67,7 +67,7 @@ namespace VARLab.DLX
                 Instance.StartCoroutine(Instance.GetUsernameCoroutine());
             }
 
-              Instance.StartCoroutine(CheckDeploymentCoroutine());
+            Instance.StartCoroutine(CheckDeploymentCoroutine());
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace VARLab.DLX
         protected static LearnerSessionHandler GetInstance()
         {
             LearnerSessionHandler existing = FindFirstObjectByType<LearnerSessionHandler>();
-            if (existing) 
+            if (existing)
             {
                 DontDestroyOnLoad(existing.gameObject);
                 return existing;

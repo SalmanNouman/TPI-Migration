@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace VARLAB.DLX 
+namespace VARLAB.DLX
 {
     public class WindowBuilder : MenuController
     {
@@ -15,11 +15,11 @@ namespace VARLAB.DLX
             // Checking to see if the UI Document has a template container with the name inputted to close the UI
             TemplateContainer templateContainer = Root.Q<TemplateContainer>(CloseButtonId);
 
-            if (templateContainer != null) 
+            if (templateContainer != null)
             {
                 closeButton = templateContainer.Q<Button>(DefaultButtonId);
             }
-            else 
+            else
             {
                 closeButton = Root.Q<Button>(CloseButtonId);
             }
