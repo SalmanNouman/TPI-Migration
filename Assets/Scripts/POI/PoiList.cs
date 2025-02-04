@@ -16,7 +16,7 @@ namespace VARLab.DLX
         public enum PoiName
         {
             None = 0,
-            Reception= 1,
+            Reception = 1,
             Bathroom = 2,
             PiercingArea = 3,
             TattooArea = 4,

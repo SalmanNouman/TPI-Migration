@@ -50,7 +50,7 @@ namespace Tests.PlayMode
 
             // Calculate safe distance for efficient POI trigger event testing by ensuring proper enter/exit actions
             safeDistance = poiCollider.bounds.extents.x * 2.1f;
-            
+
             // Setup Player object
             playerObject = new GameObject("TestPlayer");
             playerObject.AddComponent<BoxCollider>();
@@ -115,7 +115,7 @@ namespace Tests.PlayMode
             // Act
             playerObject.transform.position = poiObject.transform.position; // Move the player into the POI trigger zone
             yield return new WaitForFixedUpdate(); // Wait for physics update
-            
+
             // Assert
             Assert.IsTrue(eventInvoked, "OnPoiEnter event was not invoked.");
         }
@@ -136,11 +136,11 @@ namespace Tests.PlayMode
             // Act
             playerObject.transform.position = poiObject.transform.position + Vector3.right * safeDistance; // Move the player out of the POI trigger zone
             yield return new WaitForFixedUpdate(); // Wait for physics update
-            
+
             // Assert
             Assert.IsTrue(eventInvoked, "OnPoiExit event was not invoked.");
         }
 
         #endregion
     }
-} 
+}
