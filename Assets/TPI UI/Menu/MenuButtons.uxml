@@ -1,0 +1,17 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-menu-buttons.uss?fileID=7433441132597879392&amp;guid=a2439eaf3503cce4883d5b68215ca7f5&amp;type=3#tpi-menu-buttons" />
+    <ui:VisualElement xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" template="Button-Icon-Round-Large" name="VisualElement" class="m-40">
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Pause" class="icon-large icon-rounded p-0 m-0 justify-center align-items-center bw-2">
+            <ui:VisualElement name="Image" class="icon-image-rounded icon-image-large menu-button-pause" />
+        </ui:Button>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="InspectionReview" class="icon-large icon-rounded p-0 m-0 justify-center align-items-center bw-2 mt-20 mb-20">
+            <ui:VisualElement name="Image" class="icon-image-rounded icon-image icon-image-large menu-button-inspection" />
+        </ui:Button>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Settings" class="icon-large icon-rounded p-0 m-0 justify-center align-items-center bw-2">
+            <ui:VisualElement name="Image" class="icon-image-rounded icon-image-large menu-button-setting" />
+        </ui:Button>
+    </ui:VisualElement>
+</engine:UXML>

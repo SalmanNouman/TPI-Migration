@@ -1,3 +1,10 @@
 @import url("/Assets/VELCRO UI/UnityThemes/Dark.tss");
 
-VisualElement {}
+@import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
+
+:root {
+    /* Menu Buttons*/
+    --menu-icon-settings-image: url("../../VELCRO UI/Sprites/Icons/Settings_Sprite.png");
+    --menu-icon-pause-image: url("../../Art/Sprite/Icons/Pause_Sprite.png");
+    --menu-icon-inspection-image: url("../../Art/Sprite/Icons/InspectionReview_Sprite.png");
+}
