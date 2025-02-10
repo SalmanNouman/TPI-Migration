@@ -15,7 +15,6 @@ namespace VARLab.DLX
 
     public abstract class InspectableObject : MonoBehaviour
     {
-        [HideInInspector]
         public string Name;
         [SerializeField, Tooltip("Inspectable Object POI")]
         private PoiList.PoiName location;
@@ -52,6 +51,17 @@ namespace VARLab.DLX
                 cam.enabled = false;
             }
         }
+
+        /// <summary>
+        /// Called when the object is instantiated.
+        /// Initializes UnityEvents if they are null.
+        /// </summary>
+        private void Awake()
+        {
+            OnObjectClicked ??= new();
+            OnObjectInspected ??= new();
+        }
+
         /// <summary>
         /// Generates a unique object id for each inspectable
         /// </summary>
@@ -70,6 +80,7 @@ namespace VARLab.DLX
             return objectId;
 
         }
+
         /// <summary>
         /// Returns a list of the current states of the object, based on the states list
         /// </summary>
@@ -83,6 +94,7 @@ namespace VARLab.DLX
             }
             return objectStates;
         }
+
         /// <summary>
         /// Marks the object as having a photo taken
         /// </summary>
@@ -93,26 +105,13 @@ namespace VARLab.DLX
                 HasPhoto = true;
             }
         }
+
         /// <summary>
         /// Marks the object as NOT having a photo
         /// </summary>
         public void PhotoDelete()
         {
             HasPhoto = false;
-        }
-        /// <summary>
-        /// Invoked when the inspection starts.
-        /// </summary>
-        public virtual void InspectionStarted()
-        {
-            OnObjectClicked?.Invoke(this);
-        }
-        /// <summary>
-        /// Invoked when the inspection completes.
-        /// </summary>
-        public virtual void InspectionCompleted()
-        {
-            OnObjectInspected?.Invoke(this);
         }
     }
 }

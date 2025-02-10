@@ -12,6 +12,7 @@ namespace Tests
     {
         bool listenerTest = false;
         private GameObject inspectableGameObject;
+        private GameObject handlerGameObject;
         private GameObject toggleable;
         ToggleableInspectable inspectable;
 
@@ -36,6 +37,9 @@ namespace Tests
             inspectable.States = new();
             inspectable.States.Add(new State(inspectableGameObject, Compliancy.Compliant));
             inspectable.States.Add(new State(inspectableGameObject, Compliancy.NonCompliant));
+
+            handlerGameObject = new GameObject("HandlerObject");
+            handlerGameObject.AddComponent<InspectionHandler>();
         }
 
         // Test Object Name and Location are set in the Inspectable
@@ -102,48 +106,6 @@ namespace Tests
 
             //assert
             Assert.AreEqual(expectedResult, obj.HasPhoto);
-        }
-
-        // Test Object Clicked Event is getting trigger
-        [UnityTest]
-        [Category("BuildServer")]
-        public IEnumerator CheckObjectClickedEventTriggered()
-        {
-            //arrange
-            bool expectedResult = true;
-            listenerTest = false;
-            InspectableObject obj;
-
-            //act
-            obj = inspectableGameObject.GetComponent<InspectableObject>();
-            obj.OnObjectClicked.AddListener(Ping);
-            obj.InspectionStarted();
-            yield return new WaitForFixedUpdate();
-
-            //assert
-            Assert.AreEqual(expectedResult, listenerTest);
-            obj.OnObjectClicked.RemoveAllListeners();
-        }
-
-        // Test Obejct Inspection Completed Event is getting trigger
-        [UnityTest]
-        [Category("BuildServer")]
-        public IEnumerator CheckInspectionCompeletedEventTriggered()
-        {
-            //arrange
-            bool expectedResult = true;
-            listenerTest = false;
-            InspectableObject obj;
-
-            //act
-            obj = inspectableGameObject.GetComponent<InspectableObject>();
-            obj.OnObjectInspected.AddListener(Ping);
-            obj.InspectionCompleted();
-            yield return new WaitForFixedUpdate();
-
-            //assert
-            Assert.AreEqual(expectedResult, listenerTest);
-            obj.OnObjectInspected.RemoveAllListeners();
         }
 
         // Test Generate Id return null if object name is null
