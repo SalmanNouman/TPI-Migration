@@ -7,12 +7,14 @@ using VARLab.DLX;
 namespace Tests.PlayMode
 {
     /// <summary>
-    ///     Play mode tests for the POI (Point of Interest) system.
+    ///     Play mode tests for the <see cref="Poi"/> class.
     /// </summary>
     /// <remarks>
     ///     Tests the following functionalities:
-    ///     - POI name formatting and initialization
-    ///     - Trigger events for player entering/exiting POI zones
+    ///     - POI initialization and configuration
+    ///     - POI name formatting
+    ///     - Player trigger interaction detection
+    ///     - Enter/exit event handling
     /// </remarks>
     public class PoiTests
     {
@@ -31,9 +33,9 @@ namespace Tests.PlayMode
         ///     Sets up the test environment.
         /// </summary>
         /// <remarks>
-        ///     Creates POI and Player objects with necessary components:
-        ///     - POI: BoxCollider(trigger), Poi(script) component
-        ///     - Player: BoxCollider, Rigidbody (kinematic)
+        ///     Creates and configures necessary test components:
+        ///     - POI object for area detection
+        ///     - Player object for trigger interaction testing
         /// </remarks>
         [SetUp]
         [Category("BuildServer")]
@@ -87,9 +89,10 @@ namespace Tests.PlayMode
             // Arrange
             poi.SelectedPoiName = PoiList.PoiName.TattooArea;
             string expectedName = "Tattoo Area";
+            yield return null;  // Wait for Start() to be called
 
             // Act
-            yield return null;  // Wait for Start() to be called by Unity
+            // Start() method is called
 
             // Assert
             Assert.AreEqual(expectedName, poi.PoiName);
