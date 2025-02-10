@@ -1,12 +1,11 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
 
-namespace Tests
+namespace Tests.PlayMode
 {
     public class InspectableObjectIntegrationTest
     {

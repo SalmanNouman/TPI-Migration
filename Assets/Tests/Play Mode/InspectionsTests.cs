@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
 
-namespace Tests
+namespace Tests.PlayMode
 {
     /// <summary>
     ///     Tests for the Inspections System ensuring that inspections can be added, checked, updated and deleted correctly.

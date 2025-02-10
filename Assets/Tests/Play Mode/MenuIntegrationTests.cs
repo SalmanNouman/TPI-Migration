@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using VARLab.DLX;
 
-namespace Tests
+namespace Tests.PlayMode
 {
     public class MenuIntegrationTests
     {

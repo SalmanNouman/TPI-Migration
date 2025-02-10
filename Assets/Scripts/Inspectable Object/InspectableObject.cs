@@ -23,7 +23,7 @@ namespace VARLab.DLX
         private Compliancy currentObjectState;
         [Tooltip("List of Inspectable Object State")]
         public List<State> States;
-        private string objectId;
+        public string ObjectId;
         public bool HasPhoto;
         public bool Interacted;
 
@@ -76,8 +76,8 @@ namespace VARLab.DLX
             }
 
             //Using the location and the name of the object to create a unique ID
-            objectId = Location.ToString() + "_" + Name;
-            return objectId;
+            ObjectId = Location.ToString() + "_" + Name;
+            return ObjectId;
 
         }
 

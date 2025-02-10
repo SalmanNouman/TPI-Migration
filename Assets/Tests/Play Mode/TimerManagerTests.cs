@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
 
-namespace Tests
+namespace Tests.PlayMode
 {
     public class TimerManagerTests
     {
