@@ -27,7 +27,7 @@ namespace Tests
             TimerManager.Instance.RestartTimers();
         }
 
-        
+
         /// <summary>
         ///     This test checks if the timer starts at 00:00:00 when restarted.
         /// </summary>

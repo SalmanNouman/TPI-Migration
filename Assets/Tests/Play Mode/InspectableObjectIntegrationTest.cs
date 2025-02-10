@@ -8,7 +8,7 @@ using VARLab.DLX;
 
 namespace Tests
 {
-    public class InspectableObjectIntergrationTest
+    public class InspectableObjectIntegrationTest
     {
         bool listenerTest = false;
         private GameObject inspectableGameObject;
@@ -28,11 +28,8 @@ namespace Tests
             inspectable.Toggleables.Add(toggleable);
 
             inspectable.Name = "Test";
-
-            SerializedObject so = new SerializedObject(inspectable);
-            so.FindProperty("location").enumValueIndex = 1;
-            so.FindProperty("cam").boxedValue = inspectableGameObject.GetComponent<Camera>();
-            so.ApplyModifiedProperties();
+            inspectable.Location = PoiList.PoiName.Reception;
+            inspectable.Cam = inspectableGameObject.GetComponent<Camera>();
 
             inspectable.States = new();
             inspectable.States.Add(new State(inspectableGameObject, Compliancy.Compliant));

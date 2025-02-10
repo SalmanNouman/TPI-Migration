@@ -16,10 +16,10 @@ namespace VARLab.DLX
     public abstract class InspectableObject : MonoBehaviour
     {
         public string Name;
-        [SerializeField, Tooltip("Inspectable Object POI")]
-        private PoiList.PoiName location;
-        [SerializeField, Tooltip("Reference to Inspectable Object Camera")]
-        private Camera cam;
+        [Tooltip("Inspectable Object POI")]
+        public PoiList.PoiName Location;
+        [Tooltip("Reference to Inspectable Object Camera")]
+        public Camera Cam;
         private Compliancy currentObjectState;
         [Tooltip("List of Inspectable Object State")]
         public List<State> States;
@@ -38,7 +38,7 @@ namespace VARLab.DLX
         /// </summary>
         void Start()
         {
-            if (cam == null)
+            if (Cam == null)
             {
 #if UNITY_EDITOR
                 Debug.Log("No Camera set for an inspectable ");
@@ -46,9 +46,9 @@ namespace VARLab.DLX
                 return;
             }
             //and a guard to prevent forgetting to turn off the cameras in the editor
-            else if (cam.enabled == true)
+            else if (Cam.enabled == true)
             {
-                cam.enabled = false;
+                Cam.enabled = false;
             }
         }
 
@@ -69,14 +69,14 @@ namespace VARLab.DLX
         public string GeneratedId()
         {
             //if the location empty, do not generate ID and send debug to the user. 
-            if ((location == PoiList.PoiName.None) || (string.IsNullOrEmpty(this.Name)))
+            if ((Location == PoiList.PoiName.None) || (string.IsNullOrEmpty(this.Name)))
             {
                 Debug.Log("Invalid inspectable on " + this.Name + ", please set the location of the inspectable object");
                 return null;
             }
 
             //Using the location and the name of the object to create a unique ID
-            objectId = location.ToString() + "_" + Name;
+            objectId = Location.ToString() + "_" + Name;
             return objectId;
 
         }
