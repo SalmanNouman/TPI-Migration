@@ -1,15 +1,48 @@
 .splash-canvas {
-	background-image: var(--splash-background-image);
-	transition-duration: 1.5s;
+    background-image: var(--splash-image-background);
+    transition-duration: 1.5s;
     transition-property: opacity;
     transition-timing-function: ease-in-out-back;
 }
 
 .splash-canvas-fade {
-	opacity: 0;
+    opacity: 0;
 }
 
-.splash-message {
-	color: var(--splash-label-colour);
-    bottom: 15%;
+.splash-logo-conestoga {
+    background-image: var(--splash-logo-conestoga);
+    -unity-background-scale-mode: scale-to-fit;
+    min-height: 400px;
+    min-width: 1170px;
+}
+
+.splash-logo-cvri {
+    background-image: var(--splash-logo-cvri);
+    -unity-background-scale-mode: scale-to-fit;
+    min-width: 220px;
+    min-height: 220px;
+    bottom: 0;
+    right: 0;
+    margin: 60px;
+}
+
+.splash-bar {
+    background-color: var(--splash-bar-colour);
+    min-width: 4px;
+    max-width: 4px;
+    margin-right: 60px;
+}
+
+.splash-container-organization {
+    min-width: 650px;
+    max-width: 650px;
+    margin-right: 100px;
+}
+
+.splash-label-colour {
+    color: var(--splash-label-colour);
+}
+
+.splash-label-intro {
+    color: var(--splash-label-made-by-colour);
 }

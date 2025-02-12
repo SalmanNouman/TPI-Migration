@@ -14,7 +14,6 @@ namespace Tests.PlayMode
         private UIDocument menuDocument;
         private MenuBuilder menuBuilder;
 
-        private int sceneCounter = 0;
         private const string SceneName = "MenuButtonsTestScene";
 
         /// <summary>

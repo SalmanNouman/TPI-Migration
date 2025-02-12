@@ -24,7 +24,6 @@
 
 
 
-
 :root {
 	/*Font Variables*/  
 	--font-regular: url("../Fonts & Materials/Lato-Regular SDF.asset");
@@ -133,6 +132,7 @@
 	--colour-button-radio-checked: rgba(0, 0, 0, 0);
 	--colour-button-radio-border-checked: #0671E0;
 	--colour-button-radio-center-checked: #0671E0;
+	--colour-button-radio-label: #FFFFFF;
 
 	/* Slider Colours */
 	--slider-unfilled-area-colour: #B3B3B3;
@@ -159,6 +159,7 @@
 	--colour-toggle-border-checked-hover: #FFFFFF;
 	--colour-toggle-knob-holder-checked-hover: rgba(6, 113, 224, 0.22);
 	--colour-toggle-checked-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-checked-border-disabled: rgba(29, 27, 32, 0.23);
 	--colour-toggle-checked-knob-disabled: #FFFFFF;
 
 	/*Tooltip Images*/
@@ -189,26 +190,26 @@
 	--dropdown-transparent-colour: rgba(0, 0, 0, 0);
 	--dropdown-arrow-colour: #FFFFFF;
 	
-	/*Toolbar Version One*/
-	--toolbar-version-one-background-color: #000000;
-	--toolbar-version-one-selected-color: #FFC009;
-	--toolbar-version-one-item-color: #FFFFFF;
-	--toolbar-version-one-contract-button-color: #737382;
-	--toolbar-version-one-contract-and-expand-button-border-color: #D9D9D9;
-	--toolbar-version-one-expand-button-color: #000000;
-	--toolbar-version-one-seperator-line-color: #757575;
-	--toolbar-version-one-contract-sprite: url("../Sprites/UI/Contract_Button_Sprite.png");
-	--toolbar-version-one-contract-expand-background-color: rgba(0, 0, 0, 0);
-	--toolbar-version-one-button-arrow: url("../Sprites/Arrows/ArrowLeft_Sprite.png");
-	--toolbar-version-one-item-group-background: rgba(0, 0, 0, 0);
-	--toolbar-version-one-expand-arrow: url("../Sprites/Arrows/ArrowRight_Sprite.png");
-	--toolbar-version-one-expand-sprite: url("../Sprites/UI/Expand_Button_Sprite.png");
+	/*Toolbar Collapse*/
+	--toolbar-collapse-background-color: #000000;
+	--toolbar-collapse-selected-color: #FFC009;
+	--toolbar-collapse-item-color: #FFFFFF;
+	--toolbar-collapse-contract-button-color: #737382;
+	--toolbar-collapse-contract-and-expand-button-border-color: #D9D9D9;
+	--toolbar-collapse-expand-button-color: #000000;
+	--toolbar-collapse-seperator-line-color: #757575;
+	--toolbar-collapse-contract-sprite: url("../Sprites/UI/Contract_Button_Sprite.png");
+	--toolbar-collapse-contract-expand-background-color: rgba(0, 0, 0, 0);
+	--toolbar-collapse-button-arrow: url("../Sprites/Arrows/ArrowLeft_Sprite.png");
+	--toolbar-collapse-item-group-background: rgba(0, 0, 0, 0);
+	--toolbar-collapse-expand-arrow: url("../Sprites/Arrows/ArrowRight_Sprite.png");
+	--toolbar-collapse-expand-sprite: url("../Sprites/UI/Expand_Button_Sprite.png");
 
-	/*Toolbar Version Two*/
-	--toolbar-version-two-background-color: #000000;
-	--toolbar-version-two-selected-color: #FFC009;
-	--toolbar-version-two-item-color: #FFFFFF;
-	--toolbar-version-two-item-group-background: rgba(0, 0, 0, 0);
+	/*Toolbar Static*/
+	--toolbar-static-background-color: #000000;
+	--toolbar-static-selected-color: #FFC009;
+	--toolbar-static-item-color: #FFFFFF;
+	--toolbar-static-item-group-background: rgba(0, 0, 0, 0);
 	
 	/*Loading Indicator Colours*/
 	--loading-indicator-failed-icon: url("../Sprites/Icons/Exclamation_Sprite.png");
@@ -316,11 +317,9 @@
 	--settings-menu-volume-full-sprite: url("../Sprites/Icons/VolumeFull_Sprite.png");
 	--settings-menu-rabbit-sprite: url("../Sprites/Icons/Rabbit_Sprite.png");
 	--settings-menu-tortoise-sprite: url("../Sprites/Icons/Tortoise_Sprite.png");
-	--settings-menu-close-button-sprite: url("../Sprites/Buttons/CloseButtonDark_Sprite.png");
 	--settings-menu-background-colour: #000000;
 	--settings-menu-secondary-text-colour: #E1E1E1;
 	--settings-menu-secondary-icon-colour: #D9D9D9;
-	--settings-menu-button-background-colour: rgba(0, 0, 0, 0);
 	--settings-menu-mouse-sensitivity-dot-colour: #B3B3B3;
 	
 	/*Information Dialog*/
@@ -334,10 +333,6 @@
 	--confirmation-dialog-body-colour: #2D2D2D;
 	--confirmation-dialog-name-label-colour: #FFFFFF;
 	--confirmation-dialog-description-label-colour: #E1E1E1;
-	--confirmation-dialog-close-button-hover-colour: #D1D1D1;
-	--confirmation-dialog-close-button-colour: rgba(0, 0, 0, 0);
-	--confirmation-dialog-close-button-border-colour: #FFFFFF;
-	--confirmation-dialog-close-button-icon-colour: #FFFFFF;
 
 	/*Task List*/
 	--task-list-header-background-colour: #000000;
@@ -364,8 +359,12 @@
 	--task-list-element-hint-icon-completed-colour: #8CA1AD;
 
 	/* Splash Screen */
-	--splash-background-image: url("../Sprites/UI/Splash_Screen_Wide.png");
-	--splash-label-colour: #D0D3D0;
+	--splash-image-background: url("../Sprites/UI/Splash_Screen_Sprite.png");
+	--splash-logo-conestoga: url("../Sprites/Logos/Conestoga_Sprite.png");
+	--splash-logo-cvri: url("../Sprites/Logos/Condor_Sprite.png");
+	--splash-bar-colour: #FFFFFF;
+	--splash-label-colour: #FFFFFF;
+	--splash-label-made-by-colour: #BF9C66;
 
 	/* Header Template */
 	--header-start-background-image: url("../Sprites/UI/HeaderTopLeft_Sprite.png");
@@ -401,15 +400,21 @@
 	--table-scrollbar-background-colour: rgba(128, 128, 128, 0.5);
 
 	/* Cards */
+	--card-button-element-background-color: rgba(0, 0, 0, 0);
+	--card-clicked-border-color: #FFFFFF;
+	--card-disabled-text-icon-color: #757575;
+	--card-disabled-background-color: #A1A1A1;
 	--card-default-image: url("../Sprites/Icons/Default_Sprite.png");
 
 	--card-v1-background-colour: #2D2D2D;
 	--card-v1-image-box-background-colour: #505050;
-	--card-v1-image-tint-colour: #C4C4C4;
 	--card-v1-text-colour: #FFFFFF;
 	--card-v1-inner-shadow-colour: rgba(120, 120, 120, 1);
 	--card-v1-outer-shadow-colour: rgba(120, 120, 120, 0);
 	--card-v1-imagebox-border-colour: #FFC009;
+	--card-v1-top-hover-clicked-color: #B3B3B3;
+	--card-v1-bottom-hover-clicked-color: #525A5E;
+	--card-v1-top-disabled-color: #C4C4C4;
 
 	--card-v2-background-colour: #2D2D2D;
 	--card-v2-top-default-colour: #B3B3B3;
@@ -419,6 +424,7 @@
 	--card-v2-bottom-completed-colour: #FFFFFF;
 	--card-v2-inner-shadow-colour: rgba(255, 255, 255, 0.25);
 	--card-v2-outer-shadow-colour: rgba(255, 255, 255, 0);
+	--card-v2-hover-clicked-background-color: #525A5E;
 	--card-v2-checkmark-image-sprite: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
 	--card-v2-timer-image-sprite: url("../Sprites/Icons/Default_Sprite.png");
 
@@ -428,16 +434,18 @@
 	--card-v3-drop-shadow-colour: rgba(120, 120, 120, 1);
 	--card-v3-drop-shadow-outer-colour: rgba(120, 120, 120, 0);
 	--card-v3-image-box-background-colour: #757575;
-	--card-v3-image-tint-colour: #666666;
 	--card-v3-border-colour: #787878;
+	--card-v3-top-hover-color: #B3B3B3;
+	--card-v3-bottom-hover-color: #525A5E;
+	--card-v3-disabled-top-color: #C4C4C4;
 
 	--card-v4-background-colour: #2D2D2D;
 	--card-v4-border-colour: #000000;
 	--card-v4-drop-shadow-colour: rgba(120, 120, 120, 1);
 	--card-v4-drop-shadow-outer-colour: rgba(120, 120, 120, 0);
-	--card-v4-default-image-colour: rgba(102, 102, 102, 1);
 	--card-v4-small-container-text-colour: #D9D9D9;
 	--card-v4-large-container-text-colour: #FFFFFF;
+	--card-v4-hover-color: #525A5E;
 
 	--card-v5-background-colour: #000000;
 	--card-v5-image-background-colour: #E2E2E2;
@@ -447,15 +455,11 @@
 	--card-v5-border-colour: #FFFFFF;
 	--card-v5-tag-background-colour: #F5F5F5;
 	--card-v5-tag-label-colour: #202024;
-	--card-v5-close-icon-image: url("../Sprites/Buttons/CloseButtonDark_Sprite.png");
 	--card-v5-camera-icon-image: url("../Sprites/Icons/Camera_Sprite.png");
 	--card-v5-top-shadow-inner-colour: rgba(0, 0, 0, 0);
 	--card-v5-top-shadow-outer-colour: rgba(0, 0, 0, 0);
-	--card-v5-image-tint-colour: rgba(102, 102, 102, 0.08);
 	--card-v5-icon-background-colour: rgba(0, 0, 0, 0);
-	--card-v5-close-icon-background-colour: #000000;
-	--card-v5-close-icon-colour: #FFFFFF;
-	
+
 	/* Progress Status Templates */
 	--progress-status-not-started-background-color: #D9D9D9;
 	--progress-status-in-progress-background-color: #FFCD29;
@@ -515,10 +519,16 @@
 	--listen-button-label-colour: #FFCC33;
 	--listen-button-label-disabled-colour: #A1A1A1;
 
+	/* Close Button */
+	--button-close-sprite: url("../Sprites/Buttons/CloseButton_Sprite.png");
+	--button-close-tint-sprite: #FFFFFF;
+	--button-close-border-colour-focus: #FFCC33;
+	--button-close-background-colour: rgba(0, 0, 0, 0);
+	--button-close-background-colour-hover: #757575;
+	--button-close-tint-sprite-disabled: #757575;
+
 	/* Info Popup */
 	--info-popup-background-colour: #000000;
-	--info-popup-close-button-icon: url("../Sprites/Buttons/CloseButton_Sprite.png");
-	--info-popup-close-button-icon-hover-colour: #FFFFFF;
 	--info-popup-title-label-colour: #FFFFFF;
 	--info-popup-body-label-colour: #FFFFFF;
 	--info-popup-default-image: url("../Sprites/Icons/Default_Sprite.png");

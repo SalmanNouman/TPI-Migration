@@ -13,7 +13,7 @@ namespace VARLab.DLX
     [RequireComponent(typeof(Outlinable))]
     [RequireComponent(typeof(Collider))]
 
-    public abstract class InspectableObject : MonoBehaviour
+    public class InspectableObject : MonoBehaviour
     {
         public string Name;
         [Tooltip("Inspectable Object POI")]
@@ -60,6 +60,8 @@ namespace VARLab.DLX
         {
             OnObjectClicked ??= new();
             OnObjectInspected ??= new();
+
+            GeneratedId();
         }
 
         /// <summary>

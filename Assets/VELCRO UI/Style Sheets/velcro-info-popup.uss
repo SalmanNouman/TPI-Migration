@@ -28,29 +28,12 @@
     height: 600px;
 }
 
-.info-popup-close-button-icon {
-    background-image: var(--info-popup-close-button-icon);
-}
-
-.info-popup-close-button:hover:enabled > .info-popup-close-button-icon {
-    -unity-background-image-tint-color: var(--info-popup-close-button-icon-hover-colour);
-}
-
-.info-popup-close-button:focus:enabled > .info-popup-close-button-icon {
-    -unity-background-image-tint-color: var(--info-popup-close-button-icon-hover-colour);
-}
-
 .info-popup-title-label {
     color: var(--info-popup-title-label-colour);
 }
 
 .info-popup-body-label {
     color: var(--info-popup-body-label-colour);
-}
-
-.info-popup-small-button-container {
-    padding-top: 5px;
-    padding-left: 15px;
 }
 
 .info-popup-small-title-label-holder {

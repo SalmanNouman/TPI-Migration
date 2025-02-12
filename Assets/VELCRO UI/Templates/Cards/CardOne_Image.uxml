@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CardContainer" class="m-0 p-0 card-v1-container card-v1-container-image show-overflow bw-0 card-v1-container-clicked">
+        <VARLab.Velcro.BoxShadowManager name="CardShadow" inner-shadow-variable="--card-v1-inner-shadow" blur-width="4" outer-shadow-variable="--card-v1-outer-shadow" offset-y="4" class="grow card-v1-shadow-variables br-20">
+            <ui:VisualElement name="Card" class="grow">
+                <ui:VisualElement name="Top" class="card-v1-top br-tl-20 br-tr-20 justify-center align-items-center bw-l-4 bw-t-4 bw-r-4">
+                    <ui:VisualElement name="Image" class="card-v1-icon" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Seperator" class="card-v1-seperator bw-l-4 bw-r-4" />
+                <ui:VisualElement name="Body" class="grow card-v1-bottom br-bl-20 br-br-20 align-items-start bw-l-4 bw-b-4 bw-r-4">
+                    <ui:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrimaryText" class="card-v1-text m-0 p-0 fs-36 fw-700 m-24" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </VARLab.Velcro.BoxShadowManager>
+    </ui:Button>
+</ui:UXML>

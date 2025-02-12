@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using VARLab.Interactions;
 
 
 namespace VARLab.DLX
@@ -12,7 +13,17 @@ namespace VARLab.DLX
     public class InspectionHandler : MonoBehaviour
     {
         private List<InspectableObject> inspectables;
+
+        /// <summary>
+        /// Unity Event that is triggered when an inspectable object is clicked.
+        /// <see cref="ImageHandler.TakeTempPhoto(InspectableObject)"/>
+        /// <see cref="InspectionWindowBuilder.HandleInspectionWindowDisplay(InspectableObject)"/>
+        /// </summary>
         public UnityEvent<InspectableObject> OnObjectClicked;
+
+        /// <summary>
+        /// Unity Event that is triggered when the inspection is completed.
+        /// </summary>
         public UnityEvent<InspectableObject> OnInspectionCompleted;
 
         /// <summary>
@@ -58,5 +69,20 @@ namespace VARLab.DLX
         /// </summary>
         /// <param name="obj">The inspectable object whose inspection is completed.</param>
         public void HandleInspectionCompleted(InspectableObject obj) => OnInspectionCompleted?.Invoke(obj);
+        
+        /// <summary>
+        /// This is used to check if what was clicked is and inspectable object and
+        /// invokes the OnObjectClickedEvent
+        /// Invoked by <see cref="InteractionHandler.HandleMouseClick(GameObject)"/>
+        /// </summary>
+        /// <param name="obj">Game object that was clicked.</param>
+        public void StartInspection(GameObject obj)
+        {
+            InspectableObject inspectable = obj.GetComponent<InspectableObject>();
+
+            if (inspectable == null) { return; }
+
+            OnObjectClicked?.Invoke(inspectable);
+        }
     }
 }

@@ -21,7 +21,10 @@ namespace VARLab.DLX
         private const int ResHeight = 580;
         private const int ResDepth = 16;
 
-        // Unity Events
+        /// <summary>
+        /// Unity Event that is triggered when a temporary photo is taken for the inspection window.
+        /// <see cref="InspectionWindowBuilder.GetPhoto(InspectablePhoto)"/>
+        /// </summary>
         public UnityEvent<InspectablePhoto> OnTempPhotoTaken;
         public UnityEvent OnPhotoSaved;
         public UnityEvent OnPhotoDeleted;

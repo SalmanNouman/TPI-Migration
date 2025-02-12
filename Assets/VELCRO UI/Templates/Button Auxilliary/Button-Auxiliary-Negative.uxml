@@ -2,7 +2,10 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
-    <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NegativeButton" class="m-0 br-10 button-auxilliary fw-700 fs-28 pl-24 pr-24 justify-center button-auxilliary-negative bw-4">
-        <ui:VisualElement name="Icon" class="button-auxilliary-icon-negative" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NegativeButton" class="m-0 br-10 button-auxilliary pl-24 pr-24 justify-center button-auxilliary-negative bw-4 align-items-center flex-row">
+        <ui:VisualElement name="Icon" class="button-auxilliary-icon-negative button-auxilliary-icon mr-12" />
+        <ui:VisualElement name="LabelContainer" class="hide-overflow grow">
+            <ui:Label tabindex="-1" text="[ButtonLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonLabel" class="m-0 p-0 fw-700 fs-28 text-align-middle-left" />
+        </ui:VisualElement>
     </ui:Button>
 </ui:UXML>

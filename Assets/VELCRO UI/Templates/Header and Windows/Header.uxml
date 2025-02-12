@@ -5,7 +5,7 @@
     <ui:VisualElement name="Header" class="flex-row w-100">
         <ui:VisualElement name="HeaderEnd" class="absolute w-100 header-end br-tl-20 br-tr-20" style="flex-grow: 1;" />
         <ui:VisualElement name="HeaderStart" class="header-start pl-32" style="width: auto; height: auto;">
-            <ui:Label tabindex="-1" text="[Name]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" class="fw-700 fs-36 m-0 p-0 grow text-align-middle-left header-label" />
+            <ui:Label tabindex="-1" text="[Name]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NameLabel" class="fw-700 fs-36 m-0 p-0 grow text-align-middle-left header-label" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -1,17 +1,18 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="Button-Listen-Small" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Listen/Button-Listen-Small.uxml?fileID=9197481963319205126&amp;guid=896b8e6710c6cf7499898030c6e541d8&amp;type=3#Button-Listen-Small" />
+    <ui:Template name="Button-Close" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Close/Button-Close.uxml?fileID=9197481963319205126&amp;guid=342fc01b0760e2e4bbf6fd7de859fd99&amp;type=3#Button-Close" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-info-popup.uss?fileID=7433441132597879392&amp;guid=3b4040d9cea6b7840994050c96bd78be&amp;type=3#velcro-info-popup" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
-    <ui:VisualElement name="Popup" class="br-20 info-popup info-popup-small p-20">
+    <ui:VisualElement name="Popup" class="br-20 info-popup info-popup-small p-20 m-40">
         <ui:VisualElement name="Content" class="flex-row justify-space-between align-items-start">
             <ui:VisualElement name="ButtonContainer" class="info-popup-small-button-container">
                 <ui:Instance template="Button-Listen-Small" name="Button-Listen" />
             </ui:VisualElement>
-            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseButton" class="icon-medium icon-rounded p-0 m-0 info-popup-close-button">
-                <ui:VisualElement name="Icon" class="grow info-popup-close-button-icon" />
-            </ui:Button>
+            <ui:VisualElement name="BtnContainer">
+                <ui:Instance template="Button-Close" name="Button-Close" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Body" class="grow justify-space-around pt-16 align-items-center">
             <ui:VisualElement name="TitleLabelHolder" class="info-popup-small-title-label-holder w-100">

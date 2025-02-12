@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CardContainer" class="m-0 p-0 show-overflow card-v2-container card-v2-container-default bw-0 card-v2-container-clicked">
+        <VARLab.Velcro.BoxShadowManager name="CardShadow" inner-shadow-variable="--card-v2-inner-shadow" outer-shadow-variable="--card-v2-outer-shadow" offset-y="4" blur-width="4" class="card-v2-shadow-variables br-10 grow">
+            <ui:VisualElement name="Card" class="grow">
+                <ui:VisualElement name="Top" class="card-v2-top br-tl-10 br-tr-10 flex-row pr-16 justify-space-between pb-8 pt-20 pl-20 bw-l-4 bw-t-4 bw-r-4">
+                    <ui:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TopText" class="m-0 p-0 card-v2-top-label fs-20 fw-700 mt-4" />
+                    <ui:VisualElement name="TopIcon" class="card-v2-top-icon" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Seperator" class="card-v2-seperator bw-l-4 bw-r-4" />
+                <ui:VisualElement name="Middle" class="card-v2-middle grow pl-16 pr-16 pt-20 pb-16 align-items-start bw-l-4 bw-r-4">
+                    <ui:Label tabindex="-1" text="Lorem Ipsum&#10;Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BodyText" class="m-0 p-0 card-v2-body-label fs-24 fw-700" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Bottom" class="card-v2-bottom br-bl-10 br-br-10 flex-row pr-16 pl-16 pb-12 pt-4 bw-l-4 bw-b-4 bw-r-4">
+                    <ui:VisualElement name="BottomIcon" class="card-v2-bottom-icon mr-8" />
+                    <ui:Label tabindex="-1" text="5 mins" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BottomText" class="m-0 p-0 card-v2-bottom-label fs-20" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </VARLab.Velcro.BoxShadowManager>
+    </ui:Button>
+</ui:UXML>

@@ -1,6 +1,55 @@
 /* Card version 1 classes */
 .card-v1-container {
     height: 328px;
+    background-color: var(--card-button-element-background-color);
+}
+
+/* Pseudo state modifiers (hover, disabled) */
+.card-v1-container:hover:enabled { /* Pseudo class for hovering over card */
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v1-container:hover:enabled > #CardShadow > #Card > #Top {
+    background-color: var(--card-v1-top-hover-clicked-color);
+}
+
+.card-v1-container:hover:enabled > #CardShadow > #Card > #Body {
+    background-color: var(--card-v1-bottom-hover-clicked-color);
+}
+
+.card-v1-container:disabled { /* Card is Disabled/Inactive */
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v1-container:disabled > #CardShadow > #Card > #Top {
+    background-color: var(--card-v1-top-disabled-color);
+}
+
+.card-v1-container:disabled > #CardShadow > #Card > #Body {
+    background-color: var(--card-disabled-background-color);
+}
+
+.card-v1-container:disabled > #CardShadow > #Card > #Body > #PrimaryText {
+    color: var(--card-disabled-text-icon-color);
+}
+
+/* Clicked class for container with child element modifiers */
+.card-v1-container-clicked:active:enabled > #CardShadow > #Card > * {
+    border-color: var(--card-clicked-border-color);
+}
+
+.card-v1-container-clicked:active:enabled > #CardShadow > #Card > #Top { /* Class specific to when card is clicked/selected, should be applied to card container in conjunction with card-v1-container class */
+    background-color: var(--card-v1-top-hover-clicked-color);
+    
+}
+
+.card-v1-container-clicked:active:enabled > #CardShadow > #Card > #Seperator {
+    border-color: var(--card-clicked-border-color);
+}
+
+.card-v1-container-clicked:active:enabled > #CardShadow > #Card > #Body {
+    background-color: var(--card-v1-bottom-hover-clicked-color);
+    border-color: var(--card-clicked-border-color);
 }
 
 .card-v1-container-default { /* Create variant of card v1 without image when used in conjunction with base container class */
@@ -13,9 +62,15 @@
     --card-v1-icon-display: flex;
 }
 
-.card-v1-top {
-    height: 108px;
+/* Child element modifiers for parts of card */
+.card-v1-seperator {
+    height: 2px;
+    background-color: var(--card-v1-imagebox-border-colour);
     border-color: var(--card-v1-imagebox-border-colour);
+}
+
+.card-v1-top {
+    height: 106px;
     background-color: var(--card-v1-image-box-background-colour);
 }
 
@@ -24,7 +79,6 @@
     width: 74px;
     height: 74px;
     background-image: var(--card-default-image);
-    -unity-background-image-tint-color: var(--card-v1-image-tint-colour);
 }
 
 .card-v1-bottom {
@@ -44,6 +98,51 @@
 .card-v2-container {
     width: 250px;
     height: 211px;
+    background-color: var(--card-button-element-background-color); /* Removes button background that gets automatically applied */
+}
+
+/* Pseudo state modifiers (hover, disabled) */
+.card-v2-container:hover:enabled { 
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v2-container:hover:enabled > #CardShadow > #Card > * {
+    background-color: var(--card-v2-hover-clicked-background-color);
+}
+
+.card-v2-container:hover:enabled > #CardShadow > #Card > #Seperator {
+    background-color: var(--card-v2-top-colour);
+}
+
+.card-v2-container:disabled {
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v2-container:disabled > #CardShadow > #Card > * {
+    background-color: var(--card-disabled-background-color);
+}
+
+.card-v2-container:disabled > #CardShadow > #Card > #Seperator {
+    background-color: var(--card-v2-top-colour);
+}
+
+.card-v2-container:disabled > #CardShadow > #Card > #Middle > * {
+    color: var(--card-disabled-text-icon-color);
+}
+
+.card-v2-container:disabled > #CardShadow > #Card > #Bottom > * {
+    color: var(--card-disabled-text-icon-color);
+    -unity-background-image-tint-color: var(--card-disabled-text-icon-color); /* To match unity icon change for disabled state. Can be changed/removed later, or left in to affect custom icon */
+}
+
+/* Clicked class for container with child element modifiers */
+.card-v2-container-clicked:active:enabled > #CardShadow > #Card > * {
+    background-color: var(--card-v2-hover-clicked-background-color);
+    border-color: var(--card-clicked-border-color);
+}
+
+.card-v2-container-clicked:active:enabled > #CardShadow > #Card > #Seperator {
+    background-color: var(--card-v2-top-colour);
 }
 
 .card-v2-container-default { /* Create variant of card v2 in progress/not yet started when used in conjunction with base container class */
@@ -60,10 +159,10 @@
     --card-v2-bottom-label-font: var(--font-bold-italic);
 }
 
+/* Child element modifiers for parts of card */
 .card-v2-top {
-    border-color: var(--card-v2-top-colour);
     background-color: var(--card-v2-background-colour);
-    height: 63px;
+    height: 61px;
 }
 
 .card-v2-top-label {
@@ -77,6 +176,11 @@
     background-image: var(--card-v2-checkmark-image-sprite);
     -unity-background-image-tint-color: var(--card-v2-top-completed-colour);
     -unity-background-scale-mode: scale-to-fit;
+}
+
+.card-v2-seperator {
+    height: 2px;
+    background-color: var(--card-v2-top-colour);
 }
 
 .card-v2-middle {
@@ -112,26 +216,73 @@
 }
 
 /* Card version 3 classes */
-.card-v3 {
-    background-color: var(--card-v3-background-colour);
-}
-
 .card-v3-container {
     width: 300px;
     height: 345px;
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v3-container > #Shadow > #Card {
+    border-color: var(--card-button-element-background-color);
+}
+
+/* Pseudo state modifiers (hover, disabled) */
+.card-v3-container:hover:enabled {
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v3-container:hover:enabled > #Shadow > #Card > #ImageContainer {
+    background-color: var(--card-v3-top-hover-color);
+}
+
+.card-v3-container:hover:enabled > #Shadow > #Card > #Body {
+    background-color: var(--card-v3-bottom-hover-color);
+}
+
+.card-v3-container:disabled > #Shadow > #Card > #ImageContainer {
+    background-color: var(--card-v3-disabled-top-color);
+}
+
+.card-v3-container:disabled > #Shadow > #Card > #Body {
+    background-color: var(--card-disabled-background-color);
+}
+
+.card-v3-container:disabled > #Shadow > #Card > #Body > * {
+    color: var(--card-disabled-text-icon-color);
+}
+
+/* Clicked class with child element modifiers */
+.card-v3-container-clicked:active:enabled > #Shadow > #Card > * {
+    border-color: var(--card-clicked-border-color);
+}
+
+.card-v3-container-clicked:active:enabled > #Shadow > #Card > #ImageContainer {
+    background-color: var(--card-v3-top-hover-color);
+}
+
+.card-v3-container-clicked:active:enabled > #Shadow > #Card > #Body {
+    background-color: var(--card-v3-bottom-hover-color);
+}
+
+/* Child element modifiers for parts of card */
+.card-v3-seperator {
+    height: 1px;
+    background-color: var(--card-v3-border-color);
 }
 
 .card-v3-imagebox {
-    height: 150px;
+    height: 149px; /* Height lowered by 1 to accommodate for seperator acting as bottom border */
     background-color: var(--card-v3-image-box-background-colour);
-    border-color: var(--card-v3-border-colour);
 }
 
 .card-v3-icon { /* Displays default image. Change image variable, size and tint for custom image. */
     width: 74px;
     height: 74px;
     background-image: var(--card-default-image);
-    -unity-background-image-tint-color: var(--card-v3-image-tint-colour);
+}
+
+.card-v3-body {
+    background-color: var(--card-v3-background-colour);
 }
 
 .card-v3-primary-text {
@@ -148,6 +299,44 @@
 }
 
 /* Card version 4 classes */
+.card-v4-container {
+    background-color: var(--card-button-element-background-color);
+}
+
+/* Pseudo state modifiers (hover, disabled) */
+.card-v4-container:hover:enabled {
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v4-container:hover:enabled > #CardShadow > #Card > #Border > * {
+    background-color: var(--card-v4-hover-color);
+}
+
+.card-v4-container:disabled {
+    background-color: var(--card-button-element-background-color);
+}
+
+.card-v4-container:disabled > #CardShadow > #Card > #Border > * {
+    background-color: var(--card-disabled-background-color);
+    color: var(--card-disabled-text-icon-color);
+}
+
+/* Clicked class with child element modifiers */
+.card-v4-container-clicked:active:enabled > #CardShadow > #Card > #Border {
+    border-width: 4px; /* Overrides default border (1px) to support the Clicked state which this class enables when a user interacts with the card */
+    border-color: var(--card-clicked-border-color);
+}
+
+.card-v4-container-clicked:active:enabled > #CardShadow > #Card > #Border > #Top {
+    border-width: 0;
+    background-color: var(--card-v4-hover-color);
+}
+
+.card-v4-container-clicked:active:enabled > #CardShadow > #Card > #Border > #Bottom {
+    border-width: 0;
+    background-color: var(--card-v4-hover-color);
+}
+
 .card-v4-container-small { /* Create small variant of card v4 when used in conjunction with base container class */
     width: 328px;
     height: 354px;
@@ -162,14 +351,19 @@
     --card-v4-text-colour: var(--card-v4-large-container-text-colour);
 }
 
-.card-v4-top {
-    background-color: var(--card-v4-background-colour);
+/* Child element modifiers for parts of card */
+.card-v4-border {
     border-color: var(--card-v4-border-colour);
 }
 
-.card-v4-bottom {
+.card-v4-top {
+    border-color: var(--card-button-element-background-color);
     background-color: var(--card-v4-background-colour);
-    border-color: var(--card-v4-border-colour);
+}
+
+.card-v4-bottom {
+    border-color: var(--card-button-element-background-color);
+    background-color: var(--card-v4-background-colour);
 }
 
 .card-v4-text {
@@ -184,7 +378,6 @@
 
 .card-v4-image { /* Displays default image. Change image variable, size and tint for custom image. */
     background-image: var(--card-default-image);
-    -unity-background-image-tint-color: var(--card-v4-default-image-colour);
     -unity-background-scale-mode: scale-to-fit;
     width: 145px;
     height: 145px;
@@ -202,7 +395,6 @@
     --card-v5-camera-icon-display: none;
     --card-v5-bottom-default-display: flex;
     --card-v5-bottom-buttons-display: none;
-    --card-v5-close-icon: var(--card-v5-close-icon-image);
     --card-v5-body-border-radius: 15px;
 }
 
@@ -211,22 +403,12 @@
     --card-v5-camera-icon-display: flex;
     --card-v5-bottom-default-display: none;
     --card-v5-bottom-buttons-display: flex;
-    --card-v5-close-icon: var(--card-v5-close-icon-image);
     --card-v5-body-border-radius: 0;
 }
 
-.card-v5-closebutton {
-    width: 48px;
-    height: 48px;
-    background-image: var(--card-v5-close-icon);
-    background-color: var(--card-v5-close-icon-background-colour);
-    -unity-background-image-tint-color: var(--card-v5-close-icon-colour);
+.card-v5-button-close {
     top: 25px;
-    right: 30px;
-}
-
-.card-v5-closebutton:hover:enabled {
-    background-color: var(--card-v5-icon-background-colour);
+    right: 25px;
 }
 
 .card-v5-top-shadow {
@@ -243,6 +425,10 @@
     color: var(--card-v5-primary-label-colour);
 }
 
+.card-v5-top-label-2 {
+    color: var(--card-v5-secondary-label-colour);
+}
+
 .card-v5-body {
     background-color: var(--card-v5-image-background-colour);
     border-color: var(--card-v5-border-colour);
@@ -250,24 +436,18 @@
     border-top-right-radius: var(--card-v5-body-border-radius);
 }
 
-.card-v5-body-image { /* Displays default image. Change image variable, size and tint for custom image. */
-    width: 310px;
-    height: 310px;
-    background-image: var(--card-default-image);
-    -unity-background-image-tint-color: var(--card-v5-image-tint-colour);
+.card-v5-body-image {
+    -unity-background-image-scale-mode: scale-to-fit;
 } 
 
-.card-v5-body-camerabtn {
+.card-v5-button-camera {
     display: var(--card-v5-camera-icon-display);
-    width: 80px;
-    height: 80px;
     background-image: var(--card-v5-camera-icon-image);
     background-color: var(--card-v5-icon-background-colour);
-    border-radius: 50px; /* Needed since we do not have this as a uss class, maps the icon to the clickable area of the button */
-}
-
-.card-v5-body-camerabtn:hover:enabled {
-    background-color: var(--card-v5-icon-background-colour);
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
+    right: 0px;
 }
 
 .card-v5-bottom {

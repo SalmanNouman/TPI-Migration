@@ -2,7 +2,24 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-splash.uss?fileID=7433441132597879392&amp;guid=4e157af3b11c51e4d9310b2a03bfe1ae&amp;type=3#velcro-splash" />
-    <ui:VisualElement name="Canvas" class="splash-canvas grow">
-        <ui:Label tabindex="-1" text="[Message]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Message" class="absolute w-100 p-0 m-0 fs-32 text-align-middle-center text-wrap splash-message fw-700" />
+    <ui:VisualElement name="Canvas" class="splash-canvas grow justify-center">
+        <ui:VisualElement name="Content">
+            <ui:VisualElement name="IntroContainer" class="m-40">
+                <ui:Label tabindex="-1" text="[Intro]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="IntroLabel" class="fw-400 m-0 p-0 text-align-upper-center fs-56 splash-label-intro" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Container" class="flex-row justify-center align-items-center mr-40 ml-40">
+                <ui:VisualElement name="ConestogaLogo" class="splash-logo-conestoga" />
+                <ui:VisualElement name="BarContainer" class="h-100 align-items-center justify-center mr-40">
+                    <ui:VisualElement name="Bar" class="splash-bar h-70" />
+                </ui:VisualElement>
+                <ui:VisualElement name="OrganizationLabelContainer" class="splash-container-organization">
+                    <ui:Label tabindex="-1" text="[Organization]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OrganizationLabel" class="m-0 p-0 splash-label-colour fw-400 text-wrap text-align-middle-left fs-56" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="MessageContainer" class="m-40">
+                <ui:Label tabindex="-1" text="[Message]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MessageLabel" class="w-100 p-0 m-0 fs-32 text-align-middle-center text-wrap fw-700 splash-label-colour" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="CVRILogo" class="absolute splash-logo-cvri" />
     </ui:VisualElement>
 </ui:UXML>

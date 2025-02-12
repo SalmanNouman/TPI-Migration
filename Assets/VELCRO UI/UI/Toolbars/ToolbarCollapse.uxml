@@ -1,0 +1,69 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-toolbar.uss?fileID=7433441132597879392&amp;guid=ca165599ff3aa4a4895631dfa8a56b80&amp;type=3#velcro-toolbar" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <ui:VisualElement name="Container" class="align-self-start align-items-center flex-row h-100">
+        <ui:VisualElement name="Toolbar" class="toolbar-collapse flex-row">
+            <ui:VisualElement name="ItemBar" class="toolbar-collapse-item-bar justify-space-around">
+                <ui:VisualElement name="ComplexButtons" class="toolbar-collapse-complex-container pr-20">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GroupOne" class="toolbar-collapse-item-group align-items-center justify-center flex-row p-0 m-0 bw-0">
+                        <ui:VisualElement name="SelectedBar" class="toolbar-collapse-selected-bar h-100" />
+                        <ui:VisualElement name="ContentContainer" class="toolbar-collapse-content-group grow align-items-center">
+                            <ui:VisualElement name="Icon" class="toolbar-collapse-item-icon bw-2 p-8">
+                                <ui:VisualElement name="Image" class="toolbar-collapse-icon-image w-100 h-100 grow" />
+                            </ui:VisualElement>
+                            <ui:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="toolbar-collapse-item-label fw-700 fs-20 m-0 p-0" style="text-overflow: clip;" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GroupTwo" class="toolbar-collapse-item-group align-items-center justify-center flex-row p-0 m-0 bw-0">
+                        <ui:VisualElement name="SelectedBar" class="toolbar-collapse-selected-bar h-100" />
+                        <ui:VisualElement name="ContentContainer" class="toolbar-collapse-content-group grow align-items-center">
+                            <ui:VisualElement name="Icon" class="toolbar-collapse-item-icon bw-2 p-8">
+                                <ui:VisualElement name="Image" class="toolbar-collapse-icon-image w-100 h-100 grow" />
+                            </ui:VisualElement>
+                            <ui:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="toolbar-collapse-item-label fw-700 fs-20 m-0 p-0" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GroupThree" class="toolbar-collapse-item-group align-items-center justify-center flex-row p-0 m-0 bw-0">
+                        <ui:VisualElement name="SelectedBar" class="toolbar-collapse-selected-bar h-100" />
+                        <ui:VisualElement name="ContentContainer" class="toolbar-collapse-content-group grow align-items-center">
+                            <ui:VisualElement name="Icon" class="toolbar-collapse-item-icon bw-2 p-8">
+                                <ui:VisualElement name="Image" class="toolbar-collapse-icon-image w-100 h-100 grow" />
+                            </ui:VisualElement>
+                            <ui:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="toolbar-collapse-item-label fw-700 fs-20 m-0 p-0" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="Seperator" class="toolbar-collapse-seperator bw-1 absolute h-0 grow" />
+                <ui:VisualElement name="SimpleButtons" class="toolbar-collapse-simple-container pr-20">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GroupFour" class="toolbar-collapse-item-group-simple align-items-center justify-center flex-row p-0 m-0 bw-0">
+                        <ui:VisualElement name="SelectedBar" class="toolbar-collapse-selected-bar h-100" />
+                        <ui:VisualElement name="ContentContainer" class="toolbar-collapse-toolbar-collapse-content-group-simple grow align-items-center">
+                            <ui:VisualElement name="Icon" class="toolbar-collapse-item-icon bw-2 p-8">
+                                <ui:VisualElement name="Image" class="toolbar-collapse-icon-image w-100 h-100 grow" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:Button>
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GroupFive" class="toolbar-collapse-item-group-simple align-items-center justify-center flex-row p-0 m-0 bw-0">
+                        <ui:VisualElement name="SelectedBar" class="toolbar-collapse-selected-bar h-100" />
+                        <ui:VisualElement name="ContentContainer" class="toolbar-collapse-toolbar-collapse-content-group-simple grow align-items-center">
+                            <ui:VisualElement name="Icon" class="toolbar-collapse-item-icon bw-2 p-8">
+                                <ui:VisualElement name="Image" class="toolbar-collapse-icon-image w-100 h-100 grow" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ContractContainer" class="toolbar-collapse-contract-container align-self-center">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContractButton" class="toolbar-collapse-contract-button bw-0 grow m-0">
+                    <ui:VisualElement name="ArrowImage" class="toolbar-collapse-arrow-button" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:VisualElement name="ExpandContainer" class="grow toolbar-collapse-expand-container display-hidden">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExpandButton" class="m-0 toolbar-collapse-expand-container-button">
+                    <ui:VisualElement name="ArrowImage" class="toolbar-collapse-arrow-button absolute" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
