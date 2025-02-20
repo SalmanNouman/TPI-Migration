@@ -69,7 +69,7 @@ namespace VARLab.DLX
         /// </summary>
         /// <param name="obj">The inspectable object whose inspection is completed.</param>
         public void HandleInspectionCompleted(InspectableObject obj) => OnInspectionCompleted?.Invoke(obj);
-        
+
         /// <summary>
         /// This is used to check if what was clicked is and inspectable object and
         /// invokes the OnObjectClickedEvent

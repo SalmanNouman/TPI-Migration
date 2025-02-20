@@ -17,7 +17,7 @@ namespace VARLab.DLX
 
         // Determines if logging is enabled. Logging is disabled (false) by default and can be enabled externally when needed.
         public bool CanLog = false;
-        
+
         // Centralized list of all recorded activity logs.
         public List<Log> ActivityLogList;
 
@@ -55,7 +55,7 @@ namespace VARLab.DLX
             {
                 return;
             }
-            
+
             Log newLog = new Log(isPrimary, message);
             ActivityLogList.Add(newLog);
             OnLogAdded.Invoke(ActivityLogList);
@@ -137,7 +137,7 @@ namespace VARLab.DLX
             string message = $"{elapsedTime} Exited {poi.PoiName}";
             AddSecondaryLog(message);
         }
-        
+
         /// <summary>
         ///     Records photo deletion events. Implementation pending.
         /// </summary>

@@ -83,10 +83,10 @@ namespace Tests.PlayMode
                 var timerManagerObject = new GameObject("TimerManager");
                 timerManagerObject.AddComponent<TimerManager>();
             }
-            
+
             // Initialize and start the timer for activity logging
             TimerManager.Instance.StartTimers();
-            
+
             // Setup ActivityLog object
             activityLogObject = new GameObject("TestActivityLog");
             activityLog = activityLogObject.AddComponent<ActivityLog>();

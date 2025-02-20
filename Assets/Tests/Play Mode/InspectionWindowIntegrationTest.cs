@@ -1,15 +1,20 @@
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using VARLab.DLX;
+using VARLab.Velcro;
 
 namespace Tests.PlayMode
 {
     public class InspectionWindowIntegrationTest
     {
+        //notification
+        public UnityEvent<NotificationSO> DisplayNotification;
+
         // Inspection Window
         private UIDocument inspectionWindowDoc;
         private InspectionWindowBuilder inspectionWindowBuilder;
@@ -138,5 +143,130 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue(wasClicked);
         }
+
+        /// <summary>
+        /// Tests if a success notification appears when the Compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(5)]
+        [Category("BuildServer")]
+        public IEnumerator CompliantButtonDisplaysNotification()
+        {
+            // Arrange
+            NotificationSO displayedNotification = null;
+            Button compliantButton = root.Q<Button>("PositiveButton");
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => displayedNotification = notification);
+
+            // Act
+            var clickEvent = new NavigationSubmitEvent { target = compliantButton };
+            compliantButton.SendEvent(clickEvent);
+
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(displayedNotification, "No notification was displayed when the Compliant button was clicked.");
+            Assert.AreEqual(NotificationType.Info, displayedNotification.NotificationType, "Notification type is incorrect.");
+            Assert.IsTrue(displayedNotification.Message.Contains("compliant"), "Notification message is incorrect.");
+        }
+
+        /// <summary>
+        /// Tests if an error notification appears when the Non-Compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator NonCompliantButtonDisplaysNotification()
+        {
+            // Arrange
+            NotificationSO displayedNotification = null;
+            Button nonCompliantButton = root.Q<Button>("NegativeButton");
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => displayedNotification = notification);
+
+            // Act
+            var clickEvent = new NavigationSubmitEvent { target = nonCompliantButton };
+            nonCompliantButton.SendEvent(clickEvent);
+
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(displayedNotification, "No notification was displayed when the Non-Compliant button was clicked.");
+            Assert.AreEqual(NotificationType.Info, displayedNotification.NotificationType, "Notification type is incorrect.");
+            Assert.IsTrue(displayedNotification.Message.Contains("non-compliant"), "Notification message is incorrect.");
+        }
+
+        /// <summary>
+        /// Tests if a success notification including photo information appears when the camera button is pressed 
+        /// before the compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(7)]
+        [Category("BuildServer")]
+        public IEnumerator CompliantButtonDisplaysNotification_WithPhoto()
+        {
+            // Arrange
+            NotificationSO displayedNotification = null;
+            Button cameraButton = root.Q<Button>("CameraButton");
+            Button compliantButton = root.Q<Button>("PositiveButton");
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+
+            // Simulate pressing the camera button to mark that a photo was taken
+            var cameraClickEvent = new NavigationSubmitEvent { target = cameraButton };
+            cameraButton.SendEvent(cameraClickEvent);
+
+            // Subscribe to the DisplayNotification event
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) =>
+            {
+                displayedNotification = notification;
+            });
+
+            // Act
+            var compliantClickEvent = new NavigationSubmitEvent { target = compliantButton };
+            compliantButton.SendEvent(compliantClickEvent);
+
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(displayedNotification, "No notification was displayed when the Compliant button was clicked with photo.");
+            Assert.AreEqual(NotificationType.Info, displayedNotification.NotificationType, "Notification type is incorrect.");
+            StringAssert.Contains("with photo", displayedNotification.Message, "Notification message should indicate that a photo was taken.");
+        }
+
+        /// <summary>
+        /// Tests if an error notification including photo information appears when the camera button is pressed 
+        /// before the non-compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(8)]
+        [Category("BuildServer")]
+        public IEnumerator NonCompliantButtonDisplaysNotification_WithPhoto()
+        {
+            // Arrange
+            NotificationSO displayedNotification = null;
+            Button cameraButton = root.Q<Button>("CameraButton");
+            Button nonCompliantButton = root.Q<Button>("NegativeButton");
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+
+            // Simulate pressing the camera button to mark that a photo was taken
+            var cameraClickEvent = new NavigationSubmitEvent { target = cameraButton };
+            cameraButton.SendEvent(cameraClickEvent);
+
+            // Subscribe to the DisplayNotification event
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) =>
+            {
+                displayedNotification = notification;
+            });
+
+            // Act
+            var nonCompliantClickEvent = new NavigationSubmitEvent { target = nonCompliantButton };
+            nonCompliantButton.SendEvent(nonCompliantClickEvent);
+
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(displayedNotification, "No notification was displayed when the Non-Compliant button was clicked with photo.");
+            Assert.AreEqual(NotificationType.Info, displayedNotification.NotificationType, "Notification type is incorrect.");
+            StringAssert.Contains("with photo", displayedNotification.Message, "Notification message should indicate that a photo was taken.");
+        }
     }
 }
+
