@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Reflection.Emit;
 using NUnit.Framework;
-using UnityEditor;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -15,7 +13,7 @@ namespace Tests.PlayMode
         // Inspection Window
         private UIDocument inspectionWindowDoc;
         private InspectionWindowBuilder inspectionWindowBuilder;
-        VisualElement root;
+        private VisualElement root;
 
         // Inspectable Object
         private InspectableObject inspectable;

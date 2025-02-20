@@ -1,0 +1,85 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Button-Close" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Close/Button-Close.uxml?fileID=9197481963319205126&amp;guid=342fc01b0760e2e4bbf6fd7de859fd99&amp;type=3#Button-Close" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-review.uss?fileID=7433441132597879392&amp;guid=9788939653f0dd442872fa417ad37e8c&amp;type=3#tpi-inspection-review" />
+    <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
+        <engine:VisualElement name="Window" class="br-20 inspection-review">
+            <engine:VisualElement name="Header" class="flex-row w-100">
+                <engine:VisualElement name="HeaderEnd" class="absolute w-100 header-end br-tl-20 br-tr-20" style="flex-grow: 1;" />
+                <engine:VisualElement name="HeaderStart" class="pl-32 inspection-review-header-start" style="width: auto; height: auto;">
+                    <engine:Label tabindex="-1" text="[Name]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NameLabel" class="fw-700 fs-36 m-0 p-0 grow text-align-middle-left header-label" />
+                </engine:VisualElement>
+                <engine:Instance template="Button-Close" name="CloseBtnContainer" class="inspection-review-close-button" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Content" class="inspection-review-body flex-row" style="flex-grow: 1;">
+                <engine:VisualElement name="ProgressIndicator" class="progress-v3 br-20">
+                    <Kamgam.UIToolkitGlow.Glow name="Glow" width-left="-1" width="1" outer-color="#FFCD2900" inner-color="#FFCD29BF" split-width="true" width-right="3.5" width-bottom="6.5" width-top="-1" overlap-width="0" class="grow br-20">
+                        <engine:VisualElement name="ProgressContainer" class="pt-48 grow progress-v3-container">
+                            <engine:Label tabindex="-1" text="My Progress" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="fs-40 fw-700 text-align-middle-left progress-v3-title-label p-0 mt-0 mb-0 mr-0" />
+                            <engine:VisualElement name="Info" class="grow progress-v3-info">
+                                <engine:VisualElement name="Top" class="pb-16">
+                                    <engine:Label tabindex="-1" text="Task 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TaskTitle" class="fw-400 fs-20 progress-v3-task-title m-0 p-0 mb-16" />
+                                    <engine:Label tabindex="-1" text="0/ 00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgressLabel" class="fw-900 fs-36 progress-v3-task-progress-label m-0 p-0" />
+                                </engine:VisualElement>
+                                <engine:VisualElement name="Divider" class="w-100 progress-v3-info-divider" />
+                                <engine:VisualElement name="Middle" class="pt-20 pb-16">
+                                    <engine:Label tabindex="-1" text="First Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FirstLabel" class="fw-400 fs-20 progress-v3-info-label-first m-0 p-0 mb-8" />
+                                    <engine:Label tabindex="-1" text="Second Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondLabel" class="fw-400 fs-20 progress-v3-info-label-second m-0 p-0 mb-12" />
+                                    <engine:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NumberLabel" class="fs-40 fw-900 progress-v3-info-number-label m-0 p-0" />
+                                </engine:VisualElement>
+                                <engine:VisualElement name="Divider" class="w-100 progress-v3-info-divider" />
+                                <engine:VisualElement name="Bottom" class="grow pt-20">
+                                    <engine:Label tabindex="-1" text="Time Running" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimeRunningLabel" class="fs-20 fw-400 progress-v3-time-title-label m-0 p-0 mb-24" />
+                                    <engine:Label tabindex="-1" text="0 hr 00 mins" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ElapsedTimeLabel" class="fs-40 fw-900 progress-v3-time-elapsed-label m-0 p-0" />
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                    </Kamgam.UIToolkitGlow.Glow>
+                </engine:VisualElement>
+                <engine:VisualElement name="TabLayout" class="inspection-review-body-tab-layout flex-column" style="flex-grow: 1;">
+                    <engine:VisualElement name="NavigationBar" class="flex-row justify-center align-items-center inspection-review-body-navigation-bar">
+                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabOne" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
+                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
+                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
+                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
+                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
+                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
+                            </engine:VisualElement>
+                        </engine:Button>
+                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabTwo" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
+                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
+                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
+                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
+                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
+                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
+                            </engine:VisualElement>
+                        </engine:Button>
+                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabThree" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
+                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
+                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
+                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
+                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
+                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
+                            </engine:VisualElement>
+                        </engine:Button>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="TabContent" class="w-100 h-100" style="flex-grow: 1;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" class="inspection-reveiw-footer" style="flex-grow: 1;">
+                <engine:VisualElement name="FooterBar" class="inspection-review-footer-bar" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

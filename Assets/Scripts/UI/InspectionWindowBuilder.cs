@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using VARLab.Interactions;
 using VARLab.Navigation.PointClick;
-using VARLab.ObjectViewer;
 using VARLab.Velcro;
 
 namespace VARLab.DLX
@@ -122,7 +120,7 @@ namespace VARLab.DLX
             };
 
             cameraButton.clicked += TakePhoto;
-            
+
             compliantButton.clicked += CompliantSelected;
             nonCompliantButton.clicked += NonCompliantSelected;
         }

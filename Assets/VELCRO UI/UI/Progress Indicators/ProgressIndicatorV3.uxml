@@ -5,22 +5,22 @@
     <ui:VisualElement name="ProgressIndicator" class="progress-v3 br-20">
         <Kamgam.UIToolkitGlow.Glow name="Glow" width-left="-1" width="1" outer-color="#FFCD2900" inner-color="#FFCD29BF" split-width="true" width-right="3.5" width-bottom="6.5" width-top="-1" overlap-width="0" class="grow br-20">
             <ui:VisualElement name="ProgressContainer" class="pt-48 grow progress-v3-container">
-                <ui:Label tabindex="-1" text="My Progress" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="fs-40 fw-700 text-align-middle-left progress-v3-title-label p-0 mt-0 mb-0 mr-0" />
+                <ui:Label tabindex="-1" text="My Progress" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="fs-40 fw-700 text-align-middle-left progress-v3-title-label p-0 mt-0 mb-0 mr-0 text-ellipsis hide-overflow" />
                 <ui:VisualElement name="Info" class="grow progress-v3-info">
-                    <ui:VisualElement name="Top" class="pb-16">
-                        <ui:Label tabindex="-1" text="Task 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TaskTitle" class="fw-400 fs-20 progress-v3-task-title m-0 p-0 mb-16" />
-                        <ui:Label tabindex="-1" text="0/ 00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgressLabel" class="fw-900 fs-36 progress-v3-task-progress-label m-0 p-0" />
+                    <ui:VisualElement name="Top" class="pb-16 text-ellipsis">
+                        <ui:Label tabindex="-1" text="Task 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TaskTitleLabel" class="fw-400 fs-20 progress-v3-task-title m-0 p-0 mb-16 text-ellipsis hide-overflow" />
+                        <ui:Label tabindex="-1" text="0 / 00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProgressLabel" class="fw-900 fs-36 progress-v3-task-progress-label m-0 p-0 hide-overflow text-ellipsis" />
                     </ui:VisualElement>
                     <ui:VisualElement name="Divider" class="w-100 progress-v3-info-divider" />
                     <ui:VisualElement name="Middle" class="pt-20 pb-16">
-                        <ui:Label tabindex="-1" text="First Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FirstLabel" class="fw-400 fs-20 progress-v3-info-label-first m-0 p-0 mb-8" />
-                        <ui:Label tabindex="-1" text="Second Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondLabel" class="fw-400 fs-20 progress-v3-info-label-second m-0 p-0 mb-12" />
-                        <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NumberLabel" class="fs-40 fw-900 progress-v3-info-number-label m-0 p-0" />
+                        <ui:Label tabindex="-1" text="First Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FirstLabel" class="fw-400 fs-20 progress-v3-info-label-first m-0 p-0 mb-8 text-ellipsis hide-overflow" />
+                        <ui:Label tabindex="-1" text="Second Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondLabel" class="fw-400 fs-20 progress-v3-info-label-second m-0 p-0 mb-12 text-ellipsis hide-overflow" />
+                        <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NumberLabel" class="fs-40 fw-900 progress-v3-info-number-label m-0 p-0 hide-overflow text-ellipsis" />
                     </ui:VisualElement>
                     <ui:VisualElement name="Divider" class="w-100 progress-v3-info-divider" />
                     <ui:VisualElement name="Bottom" class="grow pt-20">
-                        <ui:Label tabindex="-1" text="Time Running" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimeRunningLabel" class="fs-20 fw-400 progress-v3-time-title-label m-0 p-0 mb-24" />
-                        <ui:Label tabindex="-1" text="0 hr 00 mins" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ElapsedTimeLabel" class="fs-40 fw-900 progress-v3-time-elapsed-label m-0 p-0" />
+                        <ui:Label tabindex="-1" text="Time Running" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimeRunningLabel" class="fs-20 fw-400 progress-v3-time-title-label m-0 p-0 mb-24 text-ellipsis hide-overflow" />
+                        <ui:Label tabindex="-1" text="0 hr 00 mins" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ElapsedTimeLabel" class="fs-40 fw-900 progress-v3-time-elapsed-label m-0 p-0 hide-overflow text-ellipsis" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

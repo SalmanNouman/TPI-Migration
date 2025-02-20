@@ -26,7 +26,17 @@ namespace VARLab.DLX
         /// Button Events
         /// </summary>
         public UnityEvent OnPauseClicked;
+
+        /// <summary>
+        /// This event is invoked when the inspection review button is clicked.
+        /// <see cref="InspectionReviewBuilder.Show"/>
+        /// </summary>
         public UnityEvent OnInspectionReviewClicked;
+
+        /// <summary>
+        /// This event is invoked when the settings menu button is clicked.
+        /// <see cref="SettingsMenuComplex.Show"/>
+        /// </summary>
         public UnityEvent OnSettingsClicked;
 
         /// <summary>

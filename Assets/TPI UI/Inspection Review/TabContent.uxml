@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-tab-content.uss?fileID=7433441132597879392&amp;guid=ef7902918bf7c934ca9e7edd792f3af4&amp;type=3#tpi-tab-content" />
+    <engine:VisualElement name="EmplyContainer" class="w-100 h-100 empty-container align-items-center justify-center" style="flex-grow: 1;">
+        <engine:VisualElement name="Icon" class="empty-container-icon" />
+        <engine:Label text="[Empty container label.]" name="Label" class="m-0 p-0 empty-container-label" />
+    </engine:VisualElement>
+    <engine:VisualElement name="InspectionLog" class="display-hidden" style="flex-grow: 1;" />
+</engine:UXML>

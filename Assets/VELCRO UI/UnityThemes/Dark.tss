@@ -38,35 +38,44 @@
 	--font-thin-italic: url("../Fonts & Materials/Lato-ThinItalic SDF.asset");
 
 	/*Shared Variables*/  
-	--canvas-dim-colour: rgba(0, 0, 0, 0.7);
+	--canvas-dim-colour: rgba(117, 117, 117, 0.57);
+	--image-default: url("../Sprites/Icons/Default_Sprite.png");
 
 	/*Primary Button Colours*/
 	--colour-button-primary-default: #FFCC33;
 	--colour-button-primary-hover: #FFC003;
-	--colour-button-primary-border-hover: #FFFFFF;
 	--colour-button-primary-disabled: #FFCC33;
+	--colour-button-primary-border-default: rgba(0,0,0,0);
+	--colour-button-primary-border-hover: #FFFFFF;
+	--colour-button-primary-border-disabled: #FFCC33;
+	--colour-icon-primary-default: #000000;
+	--colour-icon-primary-disabled: #A1A1A1;
 	--colour-text-primary-default: #000000;
 	--colour-text-primary-hover: #000000;
 	--colour-text-primary-disabled: #A1A1A1;
 
 	/*Secondary_1 Button Colours*/
 	--colour-button-secondary-1-default: #E1E1E1;
-	--colour-button-secondary-1-border-default: rgba(0, 0, 0, 0);
 	--colour-button-secondary-1-hover: #A1A1A1;
-	--colour-button-secondary-1-border-hover: #FFFFFF;
 	--colour-button-secondary-1-disabled: #E1E1E1;
-	--colour-button-secondary-1-border-disabled: rgba(0, 0, 0, 0);
+	--colour-button-secondary-1-border-default: rgba(0, 0, 0, 0);
+	--colour-button-secondary-1-border-hover: #FFFFFF;
+	--colour-button-secondary-1-border-disabled: #A1A1A1;
+	--colour-icon-secondary-1-default: #000000;
+	--colour-icon-secondary-1-disabled: #A1A1A1;
 	--colour-text-secondary-1-default: #000000;
 	--colour-text-secondary-1-hover: #000000;
 	--colour-text-secondary-1-disabled: #A1A1A1;
 
 	/*Secondary_2 Button Colours*/
 	--colour-button-secondary-2-default: rgba(0, 0, 0, 0);
-	--colour-button-secondary-2-border-default: #FFC009;
 	--colour-button-secondary-2-hover: #685312;
-	--colour-button-secondary-2-border-hover: #FFCC33;
 	--colour-button-secondary-2-disabled: rgba(0, 0, 0, 0);
+	--colour-button-secondary-2-border-default: #FFC009;
+	--colour-button-secondary-2-border-hover: #FFCC33;
 	--colour-button-secondary-2-border-disabled: #A1A1A1;
+	--colour-icon-secondary-2-default: #FFC009;
+	--colour-icon-secondary-2-disabled: #A1A1A1;
 	--colour-text-secondary-2-default: #FFC009;
 	--colour-text-secondary-2-hover: #FFCC33;
 	--colour-text-secondary-2-disabled: #A1A1A1;
@@ -74,19 +83,26 @@
 	/*Negative 1 Button Colours*/
 	--colour-button-negative-default: #ED5E68;
 	--colour-button-negative-hover: #C74E57;
-	--colour-button-negative-border-hover: #FFFFFF;
 	--colour-button-negative-disabled: #E1E1E1;
+	--colour-button-negative-border-default: rgba(0,0,0,0);
+	--colour-button-negative-border-hover: #FFFFFF;
+	--colour-button-negative-border-disabled: #E1E1E1;
+	--colour-icon-negative-default: #000000;	
+	--colour-icon-negative-hover: #FFFFFF;
+	--colour-icon-negative-disabled: #A1A1A1;
 	--colour-text-negative-default: #000000;
 	--colour-text-negative-hover: #FFFFFF;
 	--colour-text-negative-disabled: #A1A1A1;
 
 	/*Negative_2 Button Colours*/
 	--colour-button-negative-2-default: rgba(0, 0, 0, 0);
-	--colour-button-negative-2-border-default: #ED5E68;
 	--colour-button-negative-2-hover: #6D383D;
-	--colour-button-negative-2-border-hover: #ED5E68;
 	--colour-button-negative-2-disabled: rgba(0, 0, 0, 0);
+	--colour-button-negative-2-border-default: #ED5E68;
+	--colour-button-negative-2-border-hover: #ED5E68;
 	--colour-button-negative-2-border-disabled: #A1A1A1;
+	--colour-icon-negative-2-default: #ED5E68;
+	--colour-icon-negative-2-disabled: #A1A1A1;
 	--colour-text-negative-2-default: #ED5E68;
 	--colour-text-negative-2-hover: #ED5E68;
 	--colour-text-negative-2-disabled: #A1A1A1;
@@ -263,12 +279,12 @@
 	--filter-tag-selected-text-color: #000000;
 
 	/*Navigation Bar Colors*/
-	--navigation-default-background-color: #000000;
-	--navigation-button-background-color: #000000;
-	--navigation-default-item-color: #B3B3B3;
-	--navigation-selected-item-color: #FFC009;
-	--navigation-hover-item-background-color: rgba(117, 117, 117, 0.5);
-	--navigation-bottom-bar-default-color: #B3B3B3;
+	--navigation-default-background-colour: #000000;
+	--navigation-button-background-colour: rgba(0, 0, 0, 0);
+	--navigation-default-item-colour: #B3B3B3;
+	--navigation-selected-item-colour: #FFC009;
+	--navigation-hover-item-background-colour: rgba(117, 117, 117, 0.5);
+	--navigation-bottom-bar-default-colour: #B3B3B3;
 	
 	/*Progress Indicator V1*/
 	--progress-v1-header-back-colour: #000000;
