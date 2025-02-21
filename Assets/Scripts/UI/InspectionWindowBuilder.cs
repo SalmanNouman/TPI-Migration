@@ -26,6 +26,9 @@ namespace VARLab.DLX
         private Button compliantButton;
         private Button nonCompliantButton;
 
+        private InspectionData inspectionData = new InspectionData();
+
+
         [Header("Unity Events")]
         /// <summary>
         /// Unity Event that is invoked when the inspection window is displayed.
@@ -59,6 +62,11 @@ namespace VARLab.DLX
         /// Unity Event that is triggered when the non-compliant button is clicked.
         /// </summary>
         public UnityEvent<InspectableObject> OnNonCompliantSelected;
+
+        /// <summary>
+        /// Unity Event that is triggered when an inspection log is recorded.
+        /// </summary>
+        public UnityEvent<InspectionData> OnInspectionLog;
 
         [Header("Notification Event"), Space(10f)]
         [Tooltip("Invoked to display a notification. The event takes a NotificationSO as its parameter.")]
@@ -188,6 +196,8 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
+            RecordInspection(true);
+            OnInspectionLog?.Invoke(inspectionData);
             OnCompliantSelected?.Invoke(CurrentInspectable);
 
             SetUpNotification(true);
@@ -207,14 +217,27 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
+            RecordInspection(false);
+            OnInspectionLog?.Invoke(inspectionData);
             OnNonCompliantSelected?.Invoke(CurrentInspectable);
 
             SetUpNotification(false);
             DisplayNotification?.Invoke(notification);
             Hide();
-
-            // Reset the flag after the selection
             photoTaken = false;
+
+        }
+        /// <summary>
+        /// This method triggers the logging of the inspection data.
+        /// Records the inspection result for the current inspectable object.
+        /// Updates the inspection data with compliance status, photo status.
+        /// </summary>
+        /// <param name="isCompliant"></param>
+        private void RecordInspection(bool isCompliant)
+        {
+            inspectionData.Obj = CurrentInspectable;
+            inspectionData.IsCompliant = isCompliant;
+            inspectionData.HasPhoto = photoTaken;
         }
 
         /// <summary>
@@ -231,7 +254,6 @@ namespace VARLab.DLX
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
 
             Show();
-
         }
 
         /// <summary>

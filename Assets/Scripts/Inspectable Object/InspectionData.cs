@@ -7,7 +7,7 @@ namespace VARLab.DLX
     public class InspectionData
     {
         //Properties
-        public InspectableObject Obj { get; private set; }
+        public InspectableObject Obj { get; set; }
         public bool IsCompliant { get; set; }
         public bool HasPhoto { get; set; }
 

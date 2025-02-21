@@ -119,8 +119,8 @@ namespace Tests.PlayMode
             inspectionWindowBuilder.OnCompliantSelected.AddListener((inspectable) => wasClicked = true);
             var e = new NavigationSubmitEvent() { target = button };
             button.SendEvent(e);
-
             yield return null;
+
             // Assert
             Assert.IsTrue(wasClicked);
         }
@@ -144,10 +144,61 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
+        [UnityTest, Order(5)]
+        [Category("BuildServer")]
+        public IEnumerator OnInspectionLogInvokedWhenCompliantSelected()
+        {
+            // Arrange
+            bool eventTriggered = false;
+            InspectionData data = new InspectionData();
+            Button button = root.Q<Button>("PositiveButton");
+            inspectionWindowBuilder.OnInspectionLog.AddListener((inspectionData) =>
+            {
+                eventTriggered = true;
+                data = inspectionData;
+
+            });
+
+            // Act
+            var e = new NavigationSubmitEvent() { target = button };
+            button.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventTriggered);
+        }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator OnInspectionLogInvokedWhenNonCompliantSelected()
+        {
+            // Arrange
+            bool eventTriggered = false;
+            InspectionData data = new InspectionData();
+            Button button = root.Q<Button>("NegativeButton");
+            inspectionWindowBuilder.OnInspectionLog.AddListener((inspectionData) =>
+            {
+                eventTriggered = true;
+                data = inspectionData;
+
+            });
+
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+
+            // Act
+            var e = new NavigationSubmitEvent() { target = button };
+            button.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventTriggered);
+
+        }
+
         /// <summary>
         /// Tests if a success notification appears when the Compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(5)]
+        [UnityTest, Order(7)]
         [Category("BuildServer")]
         public IEnumerator CompliantButtonDisplaysNotification()
         {
@@ -173,7 +224,7 @@ namespace Tests.PlayMode
         /// <summary>
         /// Tests if an error notification appears when the Non-Compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(6)]
+        [UnityTest, Order(8)]
         [Category("BuildServer")]
         public IEnumerator NonCompliantButtonDisplaysNotification()
         {
@@ -200,7 +251,7 @@ namespace Tests.PlayMode
         /// Tests if a success notification including photo information appears when the camera button is pressed 
         /// before the compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(7)]
+        [UnityTest, Order(9)]
         [Category("BuildServer")]
         public IEnumerator CompliantButtonDisplaysNotification_WithPhoto()
         {
@@ -236,7 +287,7 @@ namespace Tests.PlayMode
         /// Tests if an error notification including photo information appears when the camera button is pressed 
         /// before the non-compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(8)]
+        [UnityTest, Order(10)]
         [Category("BuildServer")]
         public IEnumerator NonCompliantButtonDisplaysNotification_WithPhoto()
         {

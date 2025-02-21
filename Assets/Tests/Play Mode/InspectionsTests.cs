@@ -170,5 +170,24 @@ namespace Tests.PlayMode
             Assert.IsFalse(inspectionExistAfter); //checks that inspectionExistAfter is false meaning the inspection was actually deleted.
             Assert.AreEqual(expectedCountAfterDelete, inspectionsManager.InspectionsList.Count); // ensures that the number of inspections decreased by exactly 1.
         }
+
+        [UnityTest, Order(4)]
+        public IEnumerator PhotoDoesNotGetDeleteInReinspection()
+        {
+            //Arrange
+            inspectionsManager.DeleteInspection(inspectableOne);
+            InspectionData firstInspection = new InspectionData(inspectableOne, true, true);
+            InspectionData secondInspection = new InspectionData(inspectableOne, false, false);
+
+            //Act
+            inspectionsManager.AddInspection(firstInspection);
+            inspectionsManager.AddInspection(secondInspection);
+            InspectionData recordedInspection = inspectionsManager.CheckInspection(inspectableOne);
+            yield return null;
+
+            //Assert
+            Assert.IsTrue(recordedInspection.HasPhoto);
+            Assert.IsFalse(recordedInspection.IsCompliant);
+        }
     }
 }

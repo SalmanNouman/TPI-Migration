@@ -33,6 +33,9 @@ namespace VARLab.DLX
                 if (existingInspection.IsCompliant != newInspection.IsCompliant)
                 {
                     existingInspection.IsCompliant = newInspection.IsCompliant;
+                }
+                if (!existingInspection.HasPhoto)
+                {
                     existingInspection.HasPhoto = newInspection.HasPhoto;
                 }
             }
