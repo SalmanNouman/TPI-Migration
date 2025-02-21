@@ -14,11 +14,14 @@ namespace Tests.PlayMode
         private GameObject inspectableObjectGO;
         private GameObject toggleableGO;
         private GameObject timerGO;
+        private GameObject objectViewerInspectableGO;
 
         private ImageHandler imageHandler;
         private ToggleableInspectable inspectableObject;
+        private ObjectViewerInspectables objectViewerObject;
 
         private Camera inspectableObjectCamera;
+        private Camera mainCamera;
 
         [OneTimeSetUp]
         [Category("BuildServer")]
@@ -27,15 +30,21 @@ namespace Tests.PlayMode
             // Creating a new instance for each of the game objects
             imageHandlerGO = new();
             inspectableObjectGO = new();
+            objectViewerInspectableGO = new();
             toggleableGO = new();
             timerGO = new();
 
             // Setting up the game objects by adding the components
             // The Inspectables (ToggleableInspectable, ObjectViewerInspectable, etc) require a collider to be added first
             inspectableObjectGO.AddComponent<BoxCollider>();
+            objectViewerInspectableGO.AddComponent<BoxCollider>();
+            objectViewerInspectableGO.AddComponent<MeshRenderer>();
             imageHandler = imageHandlerGO.AddComponent<ImageHandler>();
             inspectableObject = inspectableObjectGO.AddComponent<ToggleableInspectable>();
+            objectViewerObject = objectViewerInspectableGO.AddComponent<ObjectViewerInspectables>();
             inspectableObjectCamera = inspectableObjectGO.AddComponent<Camera>();
+            mainCamera = objectViewerInspectableGO.AddComponent<Camera>();
+            mainCamera.enabled = true;
             timerGO.AddComponent<TimerManager>();
 
             // Set up the inspectable object
@@ -44,6 +53,12 @@ namespace Tests.PlayMode
             inspectableObject.Cam = inspectableObjectCamera;
             inspectableObject.Toggleables.Add(toggleableGO);
             inspectableObject.ObjectId = inspectableObject.GeneratedId();
+
+            objectViewerObject.Name = "ObjectViewer";
+            objectViewerObject.Location = PoiList.PoiName.Bathroom;
+            objectViewerObject.Cam = mainCamera;
+            objectViewerObject.FieldOfView = 10f;
+            objectViewerObject.ObjectId = objectViewerObject.GeneratedId();
 
             // Start the timer
             TimerManager.Instance.StartTimers();
@@ -159,6 +174,28 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsFalse(photoDeleted);
             Assert.IsFalse(wasDeleted);
+        }
+
+        /// <summary>
+        /// Checks if the remove function returns false if the object id is not found when removing a photo from the list 
+        /// and that the photo deleted event does not get invoked.
+        /// </summary>
+        [UnityTest, Order(5)]
+        [Category("BuildServer")]
+        public IEnumerator OnTempPhotoTakenDoesNotGetInvokedWithObjectViewerInspectables()
+        {
+            // Arrange
+            bool wasTaken = false;
+
+            imageHandler.OnTempPhotoTaken.AddListener((tempPhoto) => wasTaken = true);
+
+            // Act
+            imageHandler.TakeTempPhoto(objectViewerObject);
+
+            yield return null;
+
+            // Assert
+            Assert.IsFalse(wasTaken);
         }
     }
 

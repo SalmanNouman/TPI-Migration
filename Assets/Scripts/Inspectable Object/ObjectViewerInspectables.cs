@@ -10,8 +10,7 @@ namespace VARLab.DLX
     /// </summary>
     public class ObjectViewerInspectables : InspectableObject
     {
-        //No additional properties at this time
-        //Once we add the option of taking pictures we might save the images here.
-
+        [Tooltip("Field of view value")]
+        public float FieldOfView;
     }
 }

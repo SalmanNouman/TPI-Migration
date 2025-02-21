@@ -1,8 +1,10 @@
+using Kamgam.UIToolkitWorldImage;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using VARLab.Interactions;
 using VARLab.Navigation.PointClick;
+using VARLab.ObjectViewer;
 using VARLab.Velcro;
 
 namespace VARLab.DLX
@@ -11,8 +13,7 @@ namespace VARLab.DLX
     {
         // Visual Elements
         private VisualElement root;
-
-        //private VisualElement objectViewer;
+        private VisualElement imageViewer3d;
         private VisualElement imageViewer;
 
         // Labels
@@ -25,6 +26,8 @@ namespace VARLab.DLX
         private Button cameraButton;
         private Button compliantButton;
         private Button nonCompliantButton;
+
+        private WorldObjectRenderer worldObjectRenderer;
 
         private InspectionData inspectionData = new InspectionData();
 
@@ -64,6 +67,13 @@ namespace VARLab.DLX
         public UnityEvent<InspectableObject> OnNonCompliantSelected;
 
         /// <summary>
+        /// This only gets invoke if the inspectable object that is displayed in the inspection
+        /// window uses object viewer to reset the object position.
+        /// <see cref="ObjectViewerController.MoveBack"/>
+        /// </summary>
+        public UnityEvent<GameObject> OnObjectViewerClosed;
+
+        /// <summary>
         /// Unity Event that is triggered when an inspection log is recorded.
         /// </summary>
         public UnityEvent<InspectionData> OnInspectionLog;
@@ -101,6 +111,8 @@ namespace VARLab.DLX
             GetAllReferences();
             AddButtonListeners();
 
+            worldObjectRenderer = GetComponent<WorldObjectRenderer>();
+
             // Create a new instance of NotificationSO to be reused
             notification = ScriptableObject.CreateInstance<NotificationSO>();
 
@@ -116,7 +128,7 @@ namespace VARLab.DLX
         private void GetAllReferences()
         {
             // Visual Elements
-            //objectViewer = root.Q<VisualElement>("ObjectViewer");
+            imageViewer3d = root.Q<VisualElement>("3DViewer");
             imageViewer = root.Q<VisualElement>("Image");
 
             // Labels
@@ -203,9 +215,6 @@ namespace VARLab.DLX
             SetUpNotification(true);
             DisplayNotification?.Invoke(notification);
             Hide();
-
-            // Reset the flag after the selection
-            photoTaken = false;
         }
 
         /// <summary>
@@ -224,8 +233,6 @@ namespace VARLab.DLX
             SetUpNotification(false);
             DisplayNotification?.Invoke(notification);
             Hide();
-            photoTaken = false;
-
         }
         /// <summary>
         /// This method triggers the logging of the inspection data.
@@ -249,6 +256,18 @@ namespace VARLab.DLX
         {
             CurrentInspectable = obj;
 
+            if (obj.GetComponent<WorldObject>())
+            {
+                imageViewer.style.display = DisplayStyle.None;
+                imageViewer3d.style.display = DisplayStyle.Flex;
+                worldObjectRenderer.CameraFieldOfView = obj.GetComponent<ObjectViewerInspectables>().FieldOfView;
+            }
+            else
+            {
+                imageViewer.style.display = DisplayStyle.Flex;
+                imageViewer3d.style.display = DisplayStyle.None;
+            }
+
             // Set labels
             UIHelper.SetElementText(locationLabel, CurrentInspectable.Location.ToString());
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
@@ -263,6 +282,14 @@ namespace VARLab.DLX
         {
             UIHelper.Hide(root);
             OnWindowClosed?.Invoke(CurrentInspectable);
+
+            if (CurrentInspectable != null && CurrentInspectable.GetComponent<WorldObject>())
+            {
+                OnObjectViewerClosed?.Invoke(CurrentInspectable.gameObject);
+            }
+
+            // Reset the flag after the selection
+            photoTaken = false;
         }
 
         /// <summary>

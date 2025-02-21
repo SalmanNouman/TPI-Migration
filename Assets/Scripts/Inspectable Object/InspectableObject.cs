@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using VARLab.Interactions;
+using VARLab.ObjectViewer;
 
 namespace VARLab.DLX
 {
@@ -46,7 +47,7 @@ namespace VARLab.DLX
                 return;
             }
             //and a guard to prevent forgetting to turn off the cameras in the editor
-            else if (Cam.enabled == true)
+            else if (!this.GetComponent<WorldObject>() && Cam.enabled == true)
             {
                 Cam.enabled = false;
             }

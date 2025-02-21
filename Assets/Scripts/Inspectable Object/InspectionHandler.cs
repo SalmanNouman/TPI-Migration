@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using VARLab.Interactions;
+using VARLab.ObjectViewer;
 
 
 namespace VARLab.DLX
@@ -22,6 +23,12 @@ namespace VARLab.DLX
         public UnityEvent<InspectableObject> OnObjectClicked;
 
         /// <summary>
+        /// This gets invoked if the object clicked has object viewer.
+        /// <see cref="ObjectViewerController.View"/>
+        /// </summary>
+        public UnityEvent<GameObject> OnObjectViewerObjectClicked;
+
+        /// <summary>
         /// Unity Event that is triggered when the inspection is completed.
         /// </summary>
         public UnityEvent<InspectableObject> OnInspectionCompleted;
@@ -32,6 +39,7 @@ namespace VARLab.DLX
         private void Awake()
         {
             OnObjectClicked ??= new();
+            OnObjectViewerObjectClicked ??= new();
             OnInspectionCompleted ??= new();
         }
 
@@ -81,6 +89,11 @@ namespace VARLab.DLX
             InspectableObject inspectable = obj.GetComponent<InspectableObject>();
 
             if (inspectable == null) { return; }
+
+            if (inspectable.GetComponent<WorldObject>())
+            {
+                OnObjectViewerObjectClicked?.Invoke(obj);
+            }
 
             OnObjectClicked?.Invoke(inspectable);
         }

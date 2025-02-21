@@ -116,7 +116,7 @@ namespace Tests.PlayMode
             bool hideEventInvoked = false;
             bool restartEventInvoked = false;
             Button restartButton = root.Q<Button>("Restart");
-            
+
             pauseWindow.Show();
             yield return null;  // Wait for UI update
 
@@ -144,7 +144,7 @@ namespace Tests.PlayMode
             // Arrange
             bool hideEventInvoked = false;
             Button continueButton = root.Q<Button>("Continue");
-            
+
             pauseWindow.Show();
             yield return null;  // Wait for UI update
 

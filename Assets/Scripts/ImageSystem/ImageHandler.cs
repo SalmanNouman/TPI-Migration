@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using VARLab.ObjectViewer;
 
 namespace VARLab.DLX
 {
@@ -51,13 +52,16 @@ namespace VARLab.DLX
         /// <param name="obj">Inspectable object that is being inspected</param>
         public void TakeTempPhoto(InspectableObject obj)
         {
+            if (obj.GetComponent<WorldObject>())
+            {
+                return;
+            }
+
             if (obj.Cam == null)
             {
                 Debug.Log($"Inspectable object: {obj.Name} in the {obj.Location} is missing a camera");
                 return;
             }
-
-            // TODO: Check if the object uses ObjectViewer
 
             Camera cam = obj.Cam;
 
