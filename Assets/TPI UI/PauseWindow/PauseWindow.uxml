@@ -1,0 +1,23 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
+        <engine:VisualElement name="PauseWindow" class="window-single br-40" style="width: 820px; height: 448px; min-width: auto; min-height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <engine:Instance template="Header" name="Header" style="flex-direction: column;">
+                <AttributeOverrides element-name="NameLabel" text="Pause" />
+            </engine:Instance>
+            <engine:VisualElement name="Content" enabled="true" style="flex-grow: 0; flex-direction: row; height: 235px; padding-top: 80px; justify-content: space-between;">
+                <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Continue" text="Continue" class="button-primary button button-large" style="width: 250px; height: 150px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 70px; -unity-font-definition: url(&quot;project://database/Assets/VELCRO%20UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=756cfea33e984564788c022a5bdc0556&amp;type=3#NotInter-Regular&quot;); -unity-font-style: bold;" />
+                <engine:Button text="Start from &#10;Beginning" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Restart" class="button-secondary-2 button button-large" style="flex-wrap: nowrap; width: 250px; height: 150px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-right: 70px; -unity-font-definition: url(&quot;project://database/Assets/VELCRO%20UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=756cfea33e984564788c022a5bdc0556&amp;type=3#NotInter-Regular&quot;); -unity-font-style: bold;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" style="flex-grow: 1; flex-direction: row; height: auto;">
+                <engine:VisualElement name="FooterLeft" style="flex-grow: 1; width: 50%;" />
+                <engine:VisualElement name="FooterRight" style="flex-grow: 1; width: 50%; padding-left: 75px; flex-direction: row; align-self: flex-start; align-items: auto; justify-content: flex-start; align-content: flex-start; padding-right: 0;">
+                    <engine:VisualElement name="WarningIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/VELCRO%20UI/Sprites/Icons/Warning_Sprite.png?fileID=2800000&amp;guid=63d3164d40e5d7144bbcbc2a69f87d4d&amp;type=3#Warning_Sprite&quot;); -unity-background-image-tint-color: rgb(33, 216, 245); width: 30px; height: 30px; margin-bottom: 8px; -unity-background-scale-mode: scale-to-fit; max-width: 30px; max-height: 30px;" />
+                    <engine:Label text="If you start over from the beginning, &#10;your progress will be lost" name="WarningText" style="color: rgb(33, 216, 245); margin-right: 0; margin-left: 10px; font-size: 15px; white-space: normal; width: 268px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

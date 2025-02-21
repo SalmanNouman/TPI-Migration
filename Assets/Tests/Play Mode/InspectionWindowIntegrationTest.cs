@@ -12,9 +12,6 @@ namespace Tests.PlayMode
 {
     public class InspectionWindowIntegrationTest
     {
-        //notification
-        public UnityEvent<NotificationSO> DisplayNotification;
-
         // Inspection Window
         private UIDocument inspectionWindowDoc;
         private InspectionWindowBuilder inspectionWindowBuilder;
@@ -24,6 +21,9 @@ namespace Tests.PlayMode
         private InspectableObject inspectable;
 
         private const string SceneName = "InspectionWindowTestScene";
+
+        //notification
+        public UnityEvent<NotificationSO> DisplayNotification;
 
         /// <summary>
         /// Loads the menu buttons test scene

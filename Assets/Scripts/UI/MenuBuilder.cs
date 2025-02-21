@@ -44,7 +44,6 @@ namespace VARLab.DLX
         /// </summary>
         private void Start()
         {
-            root = gameObject.GetComponent<UIDocument>().rootVisualElement;
             pauseButton = root.Q<Button>("Pause");
             inspectionReviewButton = root.Q<Button>("InspectionReview");
             settingsButton = root.Q<Button>("Settings");
@@ -54,6 +53,7 @@ namespace VARLab.DLX
 
         private void Awake()
         {
+            root = gameObject.GetComponent<UIDocument>().rootVisualElement;
             OnPauseClicked ??= new();
             OnInspectionReviewClicked ??= new();
             OnSettingsClicked ??= new();
