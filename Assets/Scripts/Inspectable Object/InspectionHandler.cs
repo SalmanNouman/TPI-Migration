@@ -19,6 +19,7 @@ namespace VARLab.DLX
         /// Unity Event that is triggered when an inspectable object is clicked.
         /// <see cref="ImageHandler.TakeTempPhoto(InspectableObject)"/>
         /// <see cref="InspectionWindowBuilder.HandleInspectionWindowDisplay(InspectableObject)"/>
+        /// <see cref="PoiHandler.CheckPoiInteracted(InspectableObject)"/>
         /// </summary>
         public UnityEvent<InspectableObject> OnObjectClicked;
 

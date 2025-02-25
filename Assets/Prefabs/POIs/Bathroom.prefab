@@ -3533,11 +3533,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoiName: 
+  Interacted: 0
+  SelectedPoiName: 2
   LookAtTarget: {fileID: 5483218671674977016}
   DefaultWaypoint: {fileID: 4049727193056280537}
-  Interacted: 0
-  HasInspectables: 0
-  SelectedPoiName: 2
+  HasInspectables: 1
+  OnPoiEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPoiExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &8250417138738693111
 BoxCollider:
   m_ObjectHideFlags: 0

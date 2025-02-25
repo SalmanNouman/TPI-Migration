@@ -1,10 +1,21 @@
 @import url("/Assets/VELCRO UI/UnityThemes/Light.tss");
 
 @import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-log.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-review.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-window.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
 
 :root {
     /* Menu Buttons*/
     --menu-icon-settings-image: url("../../VELCRO UI/Sprites/Icons/Settings_Sprite.png");
     --menu-icon-pause-image: url("../../Art/Sprite/Icons/Pause_Sprite.png");
     --menu-icon-inspection-image: url("../../Art/Sprite/Icons/InspectionReview_Sprite.png");
+
+    /* Inspection Review */
+    --empty-container-icon-colour: #FFFFFF;
+    --empty-container-label-colour: #136FC1;
+
+    /* Inspection Window */
+    --inspection-window-body-background: #CCDBE7;
 }

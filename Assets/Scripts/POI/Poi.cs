@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using VARLab.Navigation.PointClick;
 
 namespace VARLab.DLX
@@ -15,11 +15,17 @@ namespace VARLab.DLX
         #region Fields
 
         [HideInInspector] public string PoiName;
+
+        [HideInInspector] public bool Interacted; // Use to determine if the POI has been interacted with vs walked through.
+
+        [Tooltip("Select the POI name from the list")]
+        public PoiList.PoiName SelectedPoiName;
+
         [Tooltip("Look At target on POI Load")] public GameObject LookAtTarget;
         public Waypoint DefaultWaypoint;
-        public bool Interacted; // Use to determine if the POI has been interacted with vs walked through.
-        [Tooltip("Inspectable in POI")] public bool HasInspectables;
-        [Tooltip("Select the POI name from the list")] public PoiList.PoiName SelectedPoiName;
+
+        [Tooltip("Is there anything to inspect it this POI?")]
+        public bool HasInspectables;
 
         #endregion
 
@@ -28,12 +34,12 @@ namespace VARLab.DLX
         /// <summary>
         ///     Event invoked when OnTriggerEnter detects a object that has a collider component entering this POI's trigger zone.
         /// </summary>
-        public event Action OnPoiEnter;
+        public UnityEvent<Poi> OnPoiEnter;
 
         /// <summary>
         ///     Event invoked when OnTriggerExit detects a object that has a collider component exiting this POI's trigger zone.
         /// </summary>
-        public event Action OnPoiExit;
+        public UnityEvent<Poi> OnPoiExit;
 
         #endregion
 
@@ -48,6 +54,12 @@ namespace VARLab.DLX
             Interacted = false;
         }
 
+        private void Awake()
+        {
+            OnPoiEnter ??= new();
+            OnPoiExit ??= new();
+        }
+
         /// <summary>
         ///     Unity callback triggered when an object that has a collider component enters this POI's collider area.
         /// </summary>
@@ -56,7 +68,7 @@ namespace VARLab.DLX
         {
             Debug.Log($"Player entered {PoiName}");
             // Invoke the OnPoiEnter event
-            OnPoiEnter?.Invoke();
+            OnPoiEnter?.Invoke(this);
         }
 
         /// <summary>
@@ -67,7 +79,7 @@ namespace VARLab.DLX
         {
             Debug.Log($"Player exited {PoiName}");
             // Invoke the OnPoiExit event
-            OnPoiExit?.Invoke();
+            OnPoiExit?.Invoke(this);
         }
 
         #endregion

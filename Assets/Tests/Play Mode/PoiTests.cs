@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using VARLab.DLX;
+using VARLab.Velcro;
 
 namespace Tests.PlayMode
 {
@@ -20,57 +22,47 @@ namespace Tests.PlayMode
     {
         #region Fields
 
-        private GameObject poiObject;
+        private const string SceneName = "POITestScene";
+
         private Poi poi;
         private GameObject playerObject;
         private float safeDistance;  // Distance required for the POI trigger testing
+        private PoiHandler poiHandler;
+        private InspectableObject obj;
 
         #endregion
 
         #region Test Setup
 
         /// <summary>
-        ///     Sets up the test environment.
+        /// Loads the inspection review test scene
         /// </summary>
-        /// <remarks>
-        ///     Creates and configures necessary test components:
-        ///     - POI object for area detection
-        ///     - Player object for trigger interaction testing
-        /// </remarks>
-        [SetUp]
+        [OneTimeSetUp]
         [Category("BuildServer")]
-        public void Setup()
+        public void RunOnce()
         {
-            // Setup POI object
-            poiObject = new GameObject("TestPOI");
-            poi = poiObject.AddComponent<Poi>();
-            var poiCollider = poiObject.AddComponent<BoxCollider>();
-            poiCollider.isTrigger = true;
-
-            // Initialize POI settings
-            poi.SelectedPoiName = PoiList.PoiName.TattooArea;
-
-            // Calculate safe distance for efficient POI trigger event testing by ensuring proper enter/exit actions
-            safeDistance = poiCollider.bounds.extents.x * 2.1f;
-
-            // Setup Player object
-            playerObject = new GameObject("TestPlayer");
-            playerObject.AddComponent<BoxCollider>();
-            var rb = playerObject.AddComponent<Rigidbody>(); // Add and configure Rigidbody
-            rb.isKinematic = true; // Set to kinematic to detect triggers without physics simulation
+            SceneManager.LoadScene(SceneName);
         }
 
         /// <summary>
-        ///     Cleans up test objects.
+        /// Checks if the test scene is loaded
         /// </summary>
-        [TearDown]
+        [UnityTest, Order(0)]
         [Category("BuildServer")]
-        public void Teardown()
+        public IEnumerator SceneLoaded()
         {
-            Object.DestroyImmediate(poiObject);
-            Object.DestroyImmediate(playerObject);
-        }
+            yield return new WaitUntil(() => SceneManager.GetSceneByName(SceneName).isLoaded);
 
+            poi = GameObject.FindAnyObjectByType<Poi>();
+            poiHandler = GameObject.FindAnyObjectByType<PoiHandler>();
+            obj = GameObject.FindAnyObjectByType<InspectableObject>();
+            playerObject = GameObject.FindGameObjectWithTag("Player");
+
+            // Calculate safe distance for efficient POI trigger event testing by ensuring proper enter/exit actions
+            safeDistance = poi.GetComponent<BoxCollider>().bounds.extents.x * 2.1f;
+
+            Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
+        }
         #endregion
 
         #region POI Name Formatting Tests
@@ -111,16 +103,42 @@ namespace Tests.PlayMode
         {
             // Arrange
             bool eventInvoked = false;  // Initialize the event status to false
-            poi.OnPoiEnter += () => eventInvoked = true;  // Set status to true when the event is triggered
-            playerObject.transform.position = poiObject.transform.position + Vector3.right * safeDistance; // Position the player outside the trigger zone
+            bool handlerTriggerInvoked = false;
+            poi.OnPoiEnter.AddListener(poiHandler.HandlePoiEnter);
+            poi.OnPoiEnter.AddListener((poi) => eventInvoked = true);  // Set status to true when the event is triggered
+            poiHandler.OnPoiEnter.AddListener((poi) => handlerTriggerInvoked = true);
+            playerObject.transform.position = poi.gameObject.transform.position + Vector3.right * safeDistance; // Position the player outside the trigger zone
             yield return new WaitForFixedUpdate(); // Wait for physics update
 
             // Act
-            playerObject.transform.position = poiObject.transform.position; // Move the player into the POI trigger zone
+            playerObject.transform.position = poi.gameObject.transform.position; // Move the player into the POI trigger zone
             yield return new WaitForFixedUpdate(); // Wait for physics update
 
             // Assert
             Assert.IsTrue(eventInvoked, "OnPoiEnter event was not invoked.");
+            Assert.IsTrue(handlerTriggerInvoked);
+        }
+
+        /// <summary>
+        ///     Tests if OnPoiEnter event in the POI Handler is properly invoked when a player enters the POI trigger zone.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator Poi_OnTriggerEnter_InvokesHandlerOnEnterEvent()
+        {
+            // Arrange
+            bool handlerTriggerInvoked = false;
+            poi.OnPoiEnter.AddListener(poiHandler.HandlePoiEnter);
+            poiHandler.OnPoiEnter.AddListener((poi) => handlerTriggerInvoked = true);
+            playerObject.transform.position = poi.gameObject.transform.position + Vector3.right * safeDistance; // Position the player outside the trigger zone
+            yield return new WaitForFixedUpdate(); // Wait for physics update
+
+            // Act
+            playerObject.transform.position = poi.gameObject.transform.position; // Move the player into the POI trigger zone
+            yield return new WaitForFixedUpdate(); // Wait for physics update
+
+            // Assert
+            Assert.IsTrue(handlerTriggerInvoked);
         }
 
         /// <summary>
@@ -132,16 +150,85 @@ namespace Tests.PlayMode
         {
             // Arrange
             bool eventInvoked = false;  // Initialize the event status to false
-            poi.OnPoiExit += () => eventInvoked = true;  // Set status to true when the event is triggered
-            playerObject.transform.position = poiObject.transform.position; // First, position the player inside the trigger zone (required to test exit)
+            poi.OnPoiExit.AddListener((poi) => eventInvoked = true);  // Set status to true when the event is triggered
+            playerObject.transform.position = poi.gameObject.transform.position; // First, position the player inside the trigger zone (required to test exit)
             yield return new WaitForFixedUpdate(); // Wait for physics update
 
             // Act
-            playerObject.transform.position = poiObject.transform.position + Vector3.right * safeDistance; // Move the player out of the POI trigger zone
+            playerObject.transform.position = poi.gameObject.transform.position + Vector3.right * safeDistance; // Move the player out of the POI trigger zone
             yield return new WaitForFixedUpdate(); // Wait for physics update
 
             // Assert
             Assert.IsTrue(eventInvoked, "OnPoiExit event was not invoked.");
+        }
+
+        /// <summary>
+        ///     Tests if OnPoiExit event is properly invoked when a player exits the POI trigger zone.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator Poi_OnTriggerExit_InvokesHandlerOnExitEvent()
+        {
+            // Arrange
+            bool handlerTriggerInvoked = false;  // Initialize the event status to false
+            poiHandler.OnPoiExit.AddListener((poi) => handlerTriggerInvoked = true);  // Set status to true when the event is triggered
+            poi.OnPoiExit.AddListener(poiHandler.HandlePoiExit);
+            playerObject.transform.position = poi.gameObject.transform.position; // First, position the player inside the trigger zone (required to test exit)
+            yield return new WaitForFixedUpdate(); // Wait for physics update
+
+            // Act
+            playerObject.transform.position = poi.gameObject.transform.position + Vector3.right * safeDistance; // Move the player out of the POI trigger zone
+            yield return new WaitForFixedUpdate(); // Wait for physics update
+
+            // Assert
+            Assert.IsTrue(handlerTriggerInvoked);
+        }
+
+        #endregion
+
+        #region POI Handler
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator CheckPoiInteracted_TriggersPoiInteracted_IfPoiNotInteracted()
+        {
+            // Arrange
+            bool wasTriggered = false;
+            poiHandler.PoiInteracted.AddListener((int count) => wasTriggered = true);
+            GameObject inspectableGO = new("Inspectable");
+            inspectableGO.AddComponent<BoxCollider>();
+            InspectableObject inspectable = inspectableGO.AddComponent<InspectableObject>();
+            inspectable.Name = "Test";
+            inspectable.Location = PoiList.PoiName.TattooArea;
+            inspectable.Interacted = false;
+            poi.HasInspectables = true;
+            poi.Interacted = false;
+
+            // Act
+            poiHandler.CheckPoiInteracted(inspectable);
+
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(wasTriggered);
+        }
+
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator CheckPoiInteracted_DoesNotTriggersPoiInteracted_IfPoiInteracted()
+        {
+            // Arrange
+            bool wasTriggered = false;
+            poiHandler.PoiInteracted.AddListener((int count) => wasTriggered = true);
+            obj.Interacted = true;
+            poi.Interacted = true;
+
+            // Act
+            poiHandler.CheckPoiInteracted(obj);
+
+            yield return null;
+
+            // Assert
+            Assert.IsFalse(wasTriggered);
         }
 
         #endregion

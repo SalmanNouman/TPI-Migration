@@ -155,8 +155,6 @@ namespace Tests.PlayMode
                 yield return null;//unity process a frame.
             }
             int countBeforeDelete = inspectionsManager.InspectionsList.Count; //inspections before delete
-            int countDecrease = 1; // represents the count after deletion
-            int expectedCountAfterDelete = countBeforeDelete - countDecrease;
 
             //Act
             inspectionsManager.DeleteInspection(inspectableTwo); //calls delete inspection which removes the inspection record.
@@ -168,7 +166,7 @@ namespace Tests.PlayMode
             bool inspectionExistAfter = result != null; //if result is null the deletion was successful
 
             Assert.IsFalse(inspectionExistAfter); //checks that inspectionExistAfter is false meaning the inspection was actually deleted.
-            Assert.AreEqual(expectedCountAfterDelete, inspectionsManager.InspectionsList.Count); // ensures that the number of inspections decreased by exactly 1.
+            Assert.AreEqual(countBeforeDelete - 1, inspectionsManager.InspectionsList.Count); // ensures that the number of inspections decreased by exactly 1.
         }
 
         [UnityTest, Order(4)]

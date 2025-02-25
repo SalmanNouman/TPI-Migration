@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace VARLab.DLX
 {
@@ -11,13 +12,19 @@ namespace VARLab.DLX
         //Properties
         public List<InspectionData> InspectionsList { get; set; } //list of objects each representing an inspection
 
-        //Methods
         /// <summary>
-        ///     Unity's Start method, initializes the inspection list.
+        /// Invoked when a inspection is made.
+        /// Returns the inspections list count.
+        /// <see cref="ProgressBuilder.GetInspectionsCount(int)"/>
         /// </summary>
-        public void Start()
+        public UnityEvent<int> OnInspectionCompleted;
+
+        //Methods
+
+        private void Awake()
         {
-            InspectionsList = new List<InspectionData>();
+            OnInspectionCompleted ??= new();
+            InspectionsList ??= new();
         }
 
         /// <summary>
@@ -26,7 +33,8 @@ namespace VARLab.DLX
         /// <param name="newInspection">The inspection data to add or update</param>
         public void AddInspection(InspectionData newInspection)
         {
-            var existingInspection = InspectionsList.Find(i => i.Obj == newInspection.Obj);//find existing inspection for the same obj
+            var existingInspection = InspectionsList.Find(i => i.Obj.ObjectId == newInspection.Obj.ObjectId);//find existing inspection for the same obj
+
             if (existingInspection != null) //if inspection exists / already has an inspection recorded
             {
                 //if compliance status changed, update the record
@@ -43,6 +51,8 @@ namespace VARLab.DLX
             {
                 InspectionsList.Add(newInspection);
             }
+
+            OnInspectionCompleted?.Invoke(InspectionsList.Count);
         }
 
         /// <summary>
@@ -61,7 +71,7 @@ namespace VARLab.DLX
         /// <param name="obj">The inspectable object whose inspection should be removed.</param>
         public void DeleteInspection(InspectableObject obj)
         {
-            var inspectionToRemove = InspectionsList.Find(i => i.Obj == obj); //find inspection in the list
+            var inspectionToRemove = InspectionsList.Find(i => i.Obj.ObjectId == obj.ObjectId); //find inspection in the list
             if (inspectionToRemove != null) // if it exists remove it
             {
                 InspectionsList.Remove(inspectionToRemove);

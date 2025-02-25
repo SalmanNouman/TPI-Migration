@@ -5,6 +5,7 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-window.uss?fileID=7433441132597879392&amp;guid=82e7ec48dd9d9524cb5f4de05519291c&amp;type=3#tpi-inspection-window" />
     <ui:VisualElement xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" template="CardFive_DoubleLabel" name="Canvas" class="grow justify-center align-self-center">
         <ui:VisualElement name="CardFive_WithButtons">
             <ui:VisualElement name="CardContainer" class="card-v5-container-base card-v5-container-with-top">
@@ -16,10 +17,10 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </VARLab.Velcro.BoxShadowManager>
-                <ui:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center">
+                <ui:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center card-body-background">
                     <ui:VisualElement name="Image" class="card-v5-body-image align-self-center w-100 h-100" />
-                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CameraButton" class="mr-20 align-self-center ml-0 mt-0 mb-0 p-0 bw-0 card-v5-button-camera absolute" />
                     <Kamgam.UIToolkitWorldImage.WorldImage name="3DViewer" renderer-id="main" class="w-100 h-100" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CameraButton" class="mr-20 align-self-center ml-0 mt-0 mb-0 p-0 bw-0 card-v5-button-camera absolute" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Bottom" class="card-v5-bottom br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2">
                     <ui:VisualElement name="Default" class="card-v5-bottom-default grow pl-32 pr-32 justify-space-between pt-20 pb-24">

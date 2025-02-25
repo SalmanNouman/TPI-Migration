@@ -29,9 +29,6 @@ namespace VARLab.DLX
 
         private WorldObjectRenderer worldObjectRenderer;
 
-        private InspectionData inspectionData = new InspectionData();
-
-
         [Header("Unity Events")]
         /// <summary>
         /// Unity Event that is invoked when the inspection window is displayed.
@@ -75,6 +72,7 @@ namespace VARLab.DLX
 
         /// <summary>
         /// Unity Event that is triggered when an inspection log is recorded.
+        /// <see cref="Inspections.AddInspection(InspectionData)"/>
         /// </summary>
         public UnityEvent<InspectionData> OnInspectionLog;
 
@@ -208,8 +206,7 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
-            RecordInspection(true);
-            OnInspectionLog?.Invoke(inspectionData);
+            OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, true, photoTaken));
             OnCompliantSelected?.Invoke(CurrentInspectable);
 
             SetUpNotification(true);
@@ -226,25 +223,12 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
-            RecordInspection(false);
-            OnInspectionLog?.Invoke(inspectionData);
+            OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, false, photoTaken));
             OnNonCompliantSelected?.Invoke(CurrentInspectable);
 
             SetUpNotification(false);
             DisplayNotification?.Invoke(notification);
             Hide();
-        }
-        /// <summary>
-        /// This method triggers the logging of the inspection data.
-        /// Records the inspection result for the current inspectable object.
-        /// Updates the inspection data with compliance status, photo status.
-        /// </summary>
-        /// <param name="isCompliant"></param>
-        private void RecordInspection(bool isCompliant)
-        {
-            inspectionData.Obj = CurrentInspectable;
-            inspectionData.IsCompliant = isCompliant;
-            inspectionData.HasPhoto = photoTaken;
         }
 
         /// <summary>

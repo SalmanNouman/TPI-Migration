@@ -1,6 +1,10 @@
 @import url("/Assets/VELCRO UI/UnityThemes/Dark.tss");
 
 @import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-log.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-review.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-inspection-window.uss");
+@import url("Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
 
 :root {
     /* Menu Buttons*/
@@ -11,4 +15,7 @@
     /* Inspection Review */
     --empty-container-icon-colour: #B3B3B3;
     --empty-container-label-colour: #DCDCDC;
+
+    /* Inspection Window */
+    --inspection-window-body-background: #000000;
 }

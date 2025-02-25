@@ -62,9 +62,10 @@ namespace VARLab.DLX
         /// <summary>
         /// Invoked when Show is called.
         /// <see cref="MenuBuilder.Hide"/>
-        /// <see cref="Volume.enable(true)"/>
-        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(false)"/>
-        /// <see cref="PointClickNavigation.EnableNavigation(false)"/>
+        /// <see cref="Volume.enable"/>true
+        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(bool)"/>false
+        /// <see cref="PointClickNavigation.EnableNavigation(bool)"/>false
+        /// <see cref="ProgressBuilder.ProgressOpen(bool)"/>true
         /// </summary>
         [Header("Events"), Space(10f)]
         [Tooltip("Invoked when Show is called.")]
@@ -73,9 +74,10 @@ namespace VARLab.DLX
         /// <summary>
         /// Invoked when Hide is called.
         /// <see cref="MenuBuilder.Show"/>
-        /// <see cref="Volume.enable(false)"/>
-        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
-        /// <see cref="PointClickNavigation.EnableNavigation(true)"/>
+        /// <see cref="Volume.enable(bool)"/>false
+        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(bool)"/>true
+        /// <see cref="PointClickNavigation.EnableNavigation(bool)"/>true
+        /// <see cref="ProgressBuilder.ProgressOpen(bool)"/>false
         /// </summary>
         [Tooltip("Invoked when Hide is called.")]
         public UnityEvent OnHide;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4489627992422057268}
   - component: {fileID: 5849049297039265951}
   - component: {fileID: 6566826721599680105}
+  - component: {fileID: 6756688476131743376}
   m_Layer: 0
   m_Name: Inspection Review
   m_TagString: Untagged
@@ -80,7 +81,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.DLX.MenuBuilder, VARLab.DLX
-        m_MethodName: Hide
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -92,7 +93,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -105,7 +106,7 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
           VARLab.Navigation.PointClick
-        m_MethodName: EnableCameraPanAndZoom
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -118,7 +119,7 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
           VARLab.Navigation.PointClick
-        m_MethodName: EnableNavigation
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -127,13 +128,25 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6756688476131743376}
+        m_TargetAssemblyTypeName: VARLab.DLX.ProgressBuilder, VARLab.DLX
+        m_MethodName: ProgressOpen
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   OnHide:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.DLX.MenuBuilder, VARLab.DLX
-        m_MethodName: Show
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -145,7 +158,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -158,7 +171,7 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
           VARLab.Navigation.PointClick
-        m_MethodName: EnableCameraPanAndZoom
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -171,7 +184,7 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
           VARLab.Navigation.PointClick
-        m_MethodName: EnableNavigation
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -180,6 +193,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6756688476131743376}
+        m_TargetAssemblyTypeName: VARLab.DLX.ProgressBuilder, VARLab.DLX
+        m_MethodName: ProgressOpen
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   OnTabOneSelected:
     m_PersistentCalls:
@@ -274,3 +299,21 @@ MonoBehaviour:
     type: 3}
   icon: {fileID: 21300000, guid: 17c778e34c8fc2f47be12d1e6726c037, type: 3}
   label: No photos taken at the moment.
+--- !u!114 &6756688476131743376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243856640784438676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcfff68cee35654996afef86203ccb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: My Progress
+  itemOne: Locations inspected
+  itemTwoLineOne: Inspections
+  itemTwoLineTwo: reported
+  itemThree: Total time taken
+  IsOpen: 0
