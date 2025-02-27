@@ -9,22 +9,66 @@ namespace VARLab.DLX
     /// </summary>
     public class Inspections : MonoBehaviour
     {
-        //Properties
-        public List<InspectionData> InspectionsList { get; set; } //list of objects each representing an inspection
+        #region Events
 
         /// <summary>
-        /// Invoked when a inspection is made.
-        /// Returns the inspections list count.
+        ///     Invoked when an inspection is made.
+        ///     Returns the inspections list count.
         /// <see cref="ProgressBuilder.GetInspectionsCount(int)"/>
         /// </summary>
         public UnityEvent<int> OnInspectionCompleted;
 
-        //Methods
+        /// <summary>
+        ///     Invoked when inspection record is requested.
+        /// <see cref="InspectionWindowBuilder.UpdateInspectionLabel(InspectionData)"/>
+        /// </summary>
+        public UnityEvent<InspectionData> OnPreviousInspectionRetrieved;
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        ///     List of objects each representing an inspection.
+        /// </summary>
+        public List<InspectionData> InspectionsList { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        ///     Initialize events and collection if they are null.
+        /// </summary>
         private void Awake()
         {
             OnInspectionCompleted ??= new();
+            OnPreviousInspectionRetrieved ??= new();
             InspectionsList ??= new();
+        }
+
+        /// <summary>
+        ///     Checks if an inspection exists for the given obj and returns it.
+        /// </summary>
+        /// <param name="obj">The inspectable object to look for</param>
+        /// <returns>Returns the InspectionData if found, otherwise null.</returns>
+        public InspectionData CheckInspection(InspectableObject obj)
+        {
+            // Searches the list for InspectionData where obj.ObjectId matches the given obj.ObjectId
+            var inspection = InspectionsList.Find(i => i.Obj.ObjectId == obj.ObjectId);
+            Debug.Log($"[CheckInspection] Checking {obj.Name} (ID: {obj.ObjectId}), Found: {inspection != null}");
+            return inspection;
+        }
+
+        /// <summary>
+        ///     Retrieves the previous inspection record for the given object and delivers it through an event.
+        ///     Invoked by <see cref="InspectionHandler.OnObjectClicked(InspectableObject)"/>
+        /// </summary>
+        /// <param name="obj">The inspectable object to retrieve previous inspection datafor.</param>
+        public void RetrievePreviousInspection(InspectableObject obj)
+        {
+            var inspection = CheckInspection(obj);
+            OnPreviousInspectionRetrieved?.Invoke(inspection);
         }
 
         /// <summary>
@@ -33,54 +77,61 @@ namespace VARLab.DLX
         /// <param name="newInspection">The inspection data to add or update</param>
         public void AddInspection(InspectionData newInspection)
         {
-            var existingInspection = InspectionsList.Find(i => i.Obj.ObjectId == newInspection.Obj.ObjectId);//find existing inspection for the same obj
+            // Find existing inspection for the same obj
+            var existingInspection = InspectionsList.Find(i => i.Obj.ObjectId == newInspection.Obj.ObjectId);
 
-            if (existingInspection != null) //if inspection exists / already has an inspection recorded
+            if (existingInspection != null) // If inspection exists / already has an inspection recorded
             {
-                //if compliance status changed, update the record
+                Debug.Log($"[AddInspection] Found existing inspection for {existingInspection.Obj.Name}.");
+
+                // If compliance status changed, update the record
                 if (existingInspection.IsCompliant != newInspection.IsCompliant)
                 {
-                    existingInspection.IsCompliant = newInspection.IsCompliant;
+                    Debug.Log($"[AddInspection] Updated compliance state from {existingInspection.IsCompliant} to {newInspection.IsCompliant}.");
+                    existingInspection.IsCompliant = newInspection.IsCompliant;                    
                 }
-                if (!existingInspection.HasPhoto)
+
+                // If photo status changed, update the record
+                if (!existingInspection.HasPhoto && newInspection.HasPhoto)
                 {
-                    existingInspection.HasPhoto = newInspection.HasPhoto;
+                    Debug.Log($"[AddInspection] Updated photo state from {existingInspection.HasPhoto} to {newInspection.HasPhoto}.");
+                    existingInspection.HasPhoto = newInspection.HasPhoto; 
                 }
             }
-            else //if no inspection exists it adds a new one
+            else // If no inspection exists, it adds a new one
             {
+                Debug.Log($"[AddInspection] No existing inspection found. Adding new inspection for {newInspection.Obj.Name}.");
                 InspectionsList.Add(newInspection);
             }
 
             OnInspectionCompleted?.Invoke(InspectionsList.Count);
+            Debug.Log($"[Inspection details] Compliant: {newInspection.IsCompliant}, HasPhoto: {newInspection.HasPhoto}");
+            Debug.Log($"[AddInspection] Total inspections in record: {InspectionsList.Count}");
         }
 
         /// <summary>
-        ///     check if an inspection exists for the given obj and returns it.
-        /// </summary>
-        /// <param name="obj">The inspectable object to look for</param>
-        /// <returns>Returns the InspectionData if found, otherwise null.</returns>
-        public InspectionData CheckInspection(InspectableObject obj)
-        {
-            return InspectionsList.Find(i => i.Obj == obj); //searches the list for InspectionData where obj matches the given obj, if find an inspection return it. if not return null.
-        }
-
-        /// <summary>
-        ///     Delete an inspection if it exists
+        ///     Removes an inspection record for the given object if it exists.
         /// </summary>
         /// <param name="obj">The inspectable object whose inspection should be removed.</param>
         public void DeleteInspection(InspectableObject obj)
         {
-            var inspectionToRemove = InspectionsList.Find(i => i.Obj.ObjectId == obj.ObjectId); //find inspection in the list
-            if (inspectionToRemove != null) // if it exists remove it
+            var inspectionToRemove = CheckInspection(obj);
+            
+            if (inspectionToRemove != null)
             {
                 InspectionsList.Remove(inspectionToRemove);
             }
         }
 
+        /// <summary>
+        ///     Returns the complete list of inspection records.
+        /// </summary>
+        /// <returns>List of all inspection records.</returns>
         public List<InspectionData> GetInspectionsList()
         {
             return InspectionsList;
         }
+
+        #endregion
     }
 }

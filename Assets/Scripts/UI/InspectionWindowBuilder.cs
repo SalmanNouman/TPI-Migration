@@ -9,8 +9,19 @@ using VARLab.Velcro;
 
 namespace VARLab.DLX
 {
+    /// <summary>
+    ///     Manages the inspection window UI and its interactions.
+    ///     This includes displaying InspectableObject's Information, handling photo captures,
+    ///     and managing inspection data updates.
+    /// </summary>
+    /// <remarks>
+    ///     Provides photo capture functionality and integrates with object viewer system.
+    ///     Uses event-based communication for inspection data updates.
+    /// </remarks>
     public class InspectionWindowBuilder : MonoBehaviour, IUserInterface
     {
+        #region Fields
+
         // Visual Elements
         private VisualElement root;
         private VisualElement imageViewer3d;
@@ -29,50 +40,72 @@ namespace VARLab.DLX
 
         private WorldObjectRenderer worldObjectRenderer;
 
+        // Inspectable object that is currently displayed in the inspection window.
+        [HideInInspector]
+        public InspectableObject CurrentInspectable;
+
+        // Stores the previous inspection data for the current inspectable object.
+        private InspectionData previousInspectionData;
+
+        // Image 
+        private Texture2D texture;
+        private const int ImageHeight = 580;
+        private const int ImageWidth = 770;
+
+        // Flag to track if the camera button was pressed.
+        private bool photoTaken = false;
+
+        // Notification instance to be updated and reused.
+        private NotificationSO notification;
+
+        #endregion
+
+        #region Events
+
         [Header("Unity Events")]
         /// <summary>
-        /// Unity Event that is invoked when the inspection window is displayed.
-        /// <see cref="InteractionHandler.enabled(false)"/>
-        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(false)"/>
-        /// <see cref="PointClickNavigation.EnableNavigation(false)"/>
-        /// <see cref="MenuBuilder.Hide"/>
+        ///     Unity Event that is invoked when the inspection window is displayed.
+        ///     <see cref="InteractionHandler.enabled(false)"/>
+        ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(false)"/>
+        ///     <see cref="PointClickNavigation.EnableNavigation(false)"/>
+        ///     <see cref="MenuBuilder.Hide"/>
         /// </summary>
         public UnityEvent<InspectableObject> OnWindowOpened;
 
         /// <summary>
-        /// Unity Event that is triggered when the inspection window is closed
-        /// <see cref="InteractionHandler.enabled(true)"/>
-        /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
-        /// <see cref="PointClickNavigation.EnableNavigation(true)"/>
-        /// <see cref="MenuBuilder.Show"/>
+        ///     Unity Event that is triggered when the inspection window is closed.
+        ///     <see cref="InteractionHandler.enabled(true)"/>
+        ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
+        ///     <see cref="PointClickNavigation.EnableNavigation(true)"/>
+        ///     <see cref="MenuBuilder.Show"/>
         /// </summary>
         public UnityEvent<InspectableObject> OnWindowClosed;
 
         /// <summary>
-        /// Unity Event that is triggered when the camera button is clicked.
+        ///     Unity Event that is triggered when the camera button is clicked.
         /// </summary>
         public UnityEvent<InspectableObject> OnPhotoTaken;
 
         /// <summary>
-        /// Unity Event that is triggered when the compliant button is clicked.
+        ///     Unity Event that is triggered when the compliant button is clicked.
         /// </summary>
         public UnityEvent<InspectableObject> OnCompliantSelected;
 
         /// <summary>
-        /// Unity Event that is triggered when the non-compliant button is clicked.
+        ///     Unity Event that is triggered when the non-compliant button is clicked.
         /// </summary>
         public UnityEvent<InspectableObject> OnNonCompliantSelected;
 
         /// <summary>
-        /// This only gets invoke if the inspectable object that is displayed in the inspection
-        /// window uses object viewer to reset the object position.
-        /// <see cref="ObjectViewerController.MoveBack"/>
+        ///     This only gets invoke if the inspectable object that is displayed in the inspection
+        ///     window uses object viewer to reset the object position.
+        ///     <see cref="ObjectViewerController.MoveBack"/>
         /// </summary>
         public UnityEvent<GameObject> OnObjectViewerClosed;
 
         /// <summary>
-        /// Unity Event that is triggered when an inspection log is recorded.
-        /// <see cref="Inspections.AddInspection(InspectionData)"/>
+        ///     Unity Event that is triggered when an inspection log is recorded.
+        ///     <see cref="Inspections.AddInspection(InspectionData)"/>
         /// </summary>
         public UnityEvent<InspectionData> OnInspectionLog;
 
@@ -80,22 +113,13 @@ namespace VARLab.DLX
         [Tooltip("Invoked to display a notification. The event takes a NotificationSO as its parameter.")]
         public UnityEvent<NotificationSO> DisplayNotification;
 
-        // Inspectable object that is currently displayed in the inspection window.
-        [HideInInspector]
-        public InspectableObject CurrentInspectable;
+        #endregion
 
-        // Image 
-        private Texture2D texture;
-        private const int ImageHeight = 580;
-        private const int ImageWidth = 770;
+        #region Methods
 
-        //Flag to track if the camera button was pressed
-        private bool photoTaken = false;
-        //Notification instance to be updated and reused
-        private NotificationSO notification;
-
-        private void Start()
+        private void Awake()
         {
+            root = GetComponent<UIDocument>().rootVisualElement;
             OnWindowOpened ??= new();
             OnWindowClosed ??= new();
             OnPhotoTaken ??= new();
@@ -103,25 +127,21 @@ namespace VARLab.DLX
             OnNonCompliantSelected ??= new();
             DisplayNotification ??= new UnityEvent<NotificationSO>();
 
-            root = GetComponent<UIDocument>().rootVisualElement;
-            Hide();
-
-            GetAllReferences();
-            AddButtonListeners();
-
             worldObjectRenderer = GetComponent<WorldObjectRenderer>();
 
             // Create a new instance of NotificationSO to be reused
             notification = ScriptableObject.CreateInstance<NotificationSO>();
+        }
 
-
-            // TODO: Remove this hardcoded text when reinspection is implemented
-            UIHelper.SetElementText(inspectionLabel, "Is this visual inspection compliant or non-compliant?");
-
+        private void Start()
+        {
+            GetAllReferences();
+            AddButtonListeners();
+            Hide();
         }
 
         /// <summary>
-        /// Get the reference of all visual elements that are required to build the inspection window.
+        ///     Get the reference of all visual elements that are required to build the inspection window.
         /// </summary>
         private void GetAllReferences()
         {
@@ -142,7 +162,7 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Add the listeners to all the button in the inspection window.
+        ///     Add the listeners to all the button in the inspection window.
         /// </summary>
         private void AddButtonListeners()
         {
@@ -160,8 +180,8 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Method that is called when the camera button is clicked.
-        /// This invokes the OnPhotoTaken event.
+        ///     Method that is called when the camera button is clicked.
+        ///     This invokes the OnPhotoTaken event.
         /// </summary>
         private void TakePhoto()
         {
@@ -171,7 +191,7 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Sets up the notification based on whether the inspection is compliant or non-compliant.
+        ///     Sets up the notification based on whether the inspection is compliant or non-compliant.
         /// </summary>
         /// <param name="compliant">If true, the inspection is compliant; otherwise, it is non-compliant.</param>
         private void SetUpNotification(bool compliant)
@@ -198,8 +218,8 @@ namespace VARLab.DLX
 
 
         /// <summary>
-        /// This method is called when the compliant button is clicked.
-        /// Invokes the OnCompliantSelected event.
+        ///     This method is called when the compliant button is clicked.
+        ///     Invokes the OnCompliantSelected event.
         /// </summary>
         private void CompliantSelected()
         {
@@ -215,8 +235,8 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// This method is called when the non-compliant button is clicked.
-        /// Invokes the OnNonCompliantSelected event.
+        ///     This method is called when the non-compliant button is clicked.
+        ///     Invokes the OnNonCompliantSelected event.
         /// </summary>
         private void NonCompliantSelected()
         {
@@ -232,8 +252,8 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// This is used to set up the inspection window and display it.
-        /// Invoked by <see cref="InspectionHandler.OnObjectClicked"/>
+        ///     This is used to set up the inspection window and display it.
+        ///     Invoked by <see cref="InspectionHandler.OnObjectClicked"/>
         /// </summary>
         /// <param name="obj">Inspectable Object that was clicked.</param>
         public void HandleInspectionWindowDisplay(InspectableObject obj)
@@ -255,12 +275,12 @@ namespace VARLab.DLX
             // Set labels
             UIHelper.SetElementText(locationLabel, CurrentInspectable.Location.ToString());
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
-
+            
             Show();
         }
 
         /// <summary>
-        /// Hides the UI and invokes OnWindowClosed event.
+        ///     Hides the UI and invokes OnWindowClosed event.
         /// </summary>
         public void Hide()
         {
@@ -277,7 +297,7 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Shows the UI and invokes OnWindowOpened event.
+        ///     Shows the UI and invokes OnWindowOpened event.
         /// </summary>
         public void Show()
         {
@@ -286,8 +306,8 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Gets the photo that will be displayed in the inspection window.
-        /// Invoked by <see cref="ImageHandler.OnTempPhotoTaken"/>
+        ///     Gets the photo that will be displayed in the inspection window.
+        ///     Invoked by <see cref="ImageHandler.OnTempPhotoTaken"/>
         /// </summary>
         /// <param name="photo">Inspectable photo of the current object</param>
         public void GetPhoto(InspectablePhoto photo)
@@ -297,5 +317,31 @@ namespace VARLab.DLX
 
             imageViewer.style.backgroundImage = texture;
         }
+
+        /// <summary>
+        ///     Updates the inspection label based on the previous inspection data.
+        /// Invoked by <see cref="Inspections.OnPreviousInspectionRetrieved"/>
+        /// </summary>
+        /// <param name="inspection">The previous inspection data to display, or null if no previous inspection exists.</param>
+        public void UpdateInspectionLabel(InspectionData inspection)
+        {
+            previousInspectionData = inspection;
+
+            if (inspection == null)
+            {
+                UIHelper.SetElementText(inspectionLabel, "Is this visual inspection compliant or non-compliant?");
+            }
+            else 
+            {
+                string compliancy = inspection.IsCompliant ? "compliant" : "non-compliant";
+                string message = inspection.HasPhoto 
+                    ? $"Visual inspection with photo reported as {compliancy}."
+                    : $"Visual inspection reported as {compliancy}.";
+                
+                UIHelper.SetElementText(inspectionLabel, message);
+            }
+        }
+
+        #endregion
     }
 }

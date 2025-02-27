@@ -10,8 +10,23 @@ using VARLab.Velcro;
 
 namespace Tests.PlayMode
 {
+    /// <summary>
+    ///     Play mode tests for the <see cref="InspectionWindowBuilder"/> class.
+    /// </summary>
+    /// <remarks>
+    ///     Tests the following functionalities:
+    ///     - Scene loading and component reference validation
+    ///     - Photo capture functionality
+    ///     - Window show/hide behavior
+    ///     - Compliant/Non-compliant selection handling
+    ///     - Inspection logging
+    ///     - Notification display
+    ///     - Inspection label updates
+    /// </remarks>
     public class InspectionWindowIntegrationTest
     {
+        #region Fields
+
         // Inspection Window
         private UIDocument inspectionWindowDoc;
         private InspectionWindowBuilder inspectionWindowBuilder;
@@ -25,8 +40,13 @@ namespace Tests.PlayMode
         //notification
         public UnityEvent<NotificationSO> DisplayNotification;
 
+        #endregion
+
+        #region Test Setup
+
+
         /// <summary>
-        /// Loads the menu buttons test scene
+        ///     Loads the <see cref="InspectionWindowTestScene"/>.
         /// </summary>
         [OneTimeSetUp]
         [Category("BuildServer")]
@@ -36,7 +56,7 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        /// Checks if the test scene is loaded
+        ///     Checks if test scene is loaded and gets component references from the loaded scene.
         /// </summary>
         [UnityTest, Order(0)]
         [Category("BuildServer")]
@@ -54,6 +74,13 @@ namespace Tests.PlayMode
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
 
+        #endregion
+
+        #region Tests
+
+        /// <summary>
+        ///     Tests if the <see cref="InspectionWindowBuilder.OnPhotoTaken"/> event is invoked when the camera button is clicked.
+        /// </summary>
         [UnityTest, Order(1)]
         [Category("BuildServer")]
         public IEnumerator OnPhotoTakenIsInvokedWhenCameraButtonIsClicked()
@@ -73,7 +100,10 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
-        [UnityTest, Order(1)]
+        /// <summary>
+        ///     Tests if the <see cref="InspectionWindowBuilder.OnWindowOpened"/> event is invoked when the window is displayed.
+        /// </summary>
+        [UnityTest, Order(2)]
         [Category("BuildServer")]
         public IEnumerator OnWindowOpenedIsInvokedWhenWindowIsDisplayed()
         {
@@ -90,7 +120,10 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
-        [UnityTest, Order(2)]
+        /// <summary>
+        ///     Tests if the <see cref="InspectionWindowBuilder.OnWindowClosed"/> event is invoked when the window is hidden.
+        /// </summary>
+        [UnityTest, Order(3)]
         [Category("BuildServer")]
         public IEnumerator OnWindowClosedIsInvokedWhenWindowIsHidden()
         {
@@ -106,7 +139,10 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
-        [UnityTest, Order(3)]
+        /// <summary>
+        ///     Tests if the <see cref="InspectionWindowBuilder.OnCompliantSelected"/> event is invoked when the compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(4)]
         [Category("BuildServer")]
         public IEnumerator OnCompliantSelectIsInvokedWhenCompliantButtonIsClicked()
         {
@@ -125,7 +161,10 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
-        [UnityTest, Order(4)]
+        /// <summary>
+        ///     Tests if the <see cref="InspectionWindowBuilder.OnNonCompliantSelected"/> event is invoked when the non-compliant button is clicked.
+        /// </summary>
+        [UnityTest, Order(5)]
         [Category("BuildServer")]
         public IEnumerator OnNonCompliantSelectIsInvokedWhenNonCompliantButtonIsClicked()
         {
@@ -144,7 +183,11 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasClicked);
         }
 
-        [UnityTest, Order(5)]
+        /// <summary>
+        ///     Tests if a log is created and the <see cref="InspectionWindowBuilder.OnInspectionLog"/> event is invoked 
+        ///     when compliant is selected.
+        /// </summary>
+        [UnityTest, Order(6)]
         [Category("BuildServer")]
         public IEnumerator OnInspectionLogInvokedWhenCompliantSelected()
         {
@@ -168,7 +211,11 @@ namespace Tests.PlayMode
             Assert.IsTrue(eventTriggered);
         }
 
-        [UnityTest, Order(6)]
+        /// <summary>
+        ///     Tests if a log is created and the <see cref="InspectionWindowBuilder.OnInspectionLog"/> event is invoked 
+        ///     when non-compliant is selected.
+        /// </summary>
+        [UnityTest, Order(7)]
         [Category("BuildServer")]
         public IEnumerator OnInspectionLogInvokedWhenNonCompliantSelected()
         {
@@ -196,9 +243,9 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        /// Tests if a success notification appears when the Compliant button is clicked.
+        ///     Tests if a success notification appears when the Compliant button is clicked (without photo).
         /// </summary>
-        [UnityTest, Order(7)]
+        [UnityTest, Order(8)]
         [Category("BuildServer")]
         public IEnumerator CompliantButtonDisplaysNotification()
         {
@@ -222,9 +269,9 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        /// Tests if an error notification appears when the Non-Compliant button is clicked.
+        ///     Tests if an error notification appears when the Non-Compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(8)]
+        [UnityTest, Order(9)]
         [Category("BuildServer")]
         public IEnumerator NonCompliantButtonDisplaysNotification()
         {
@@ -248,10 +295,10 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        /// Tests if a success notification including photo information appears when the camera button is pressed 
-        /// before the compliant button is clicked.
+        ///     Tests if a success notification including photo information appears when the camera button is pressed 
+        ///     before the compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(9)]
+        [UnityTest, Order(10)]
         [Category("BuildServer")]
         public IEnumerator CompliantButtonDisplaysNotification_WithPhoto()
         {
@@ -284,10 +331,10 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        /// Tests if an error notification including photo information appears when the camera button is pressed 
-        /// before the non-compliant button is clicked.
+        ///     Tests if an error notification including photo information appears when the camera button is pressed 
+        ///     before the non-compliant button is clicked.
         /// </summary>
-        [UnityTest, Order(10)]
+        [UnityTest, Order(11)]
         [Category("BuildServer")]
         public IEnumerator NonCompliantButtonDisplaysNotification_WithPhoto()
         {
@@ -318,6 +365,68 @@ namespace Tests.PlayMode
             Assert.AreEqual(NotificationType.Info, displayedNotification.NotificationType, "Notification type is incorrect.");
             StringAssert.Contains("with photo", displayedNotification.Message, "Notification message should indicate that a photo was taken.");
         }
+
+        /// <summary>
+        ///     Tests if inspection label shows default message when no previous inspection exists.
+        /// </summary>
+        [UnityTest, Order(12)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_UpdateInspectionLabel_ShowsDefaultMessageWhenNoData()
+        {
+            // Arrange
+            InspectionData inspectionData = null;
+            
+            // Act
+            inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
+            yield return null;
+            
+            // Assert
+            var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
+            Assert.That(label.text, Is.EqualTo("Is this visual inspection compliant or non-compliant?"),
+                "Inspection window should display default prompt message when no previous inspection data exists.");
+        }
+
+        /// <summary>
+        ///     Tests if inspection label shows an appropriate message when the inspection is compliant without photo.
+        /// </summary>
+        [UnityTest, Order(13)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_UpdateInspectionLabel_ShowsCompliantWithoutPhotoMessage()
+        {
+            // Arrange
+            InspectionData inspectionData = new InspectionData(inspectable, true, false);
+            
+            // Act
+            inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
+            yield return null;
+            
+            // Assert
+            var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
+            Assert.That(label.text, Is.EqualTo("Visual inspection reported as compliant."),
+                "Inspection window should display an appropriate message when the previous inspection reported as compliant without photo.");
+        }
+
+        /// <summary>
+        ///     Tests if inspection label shows an appropriate message when the inspection is non-compliant with photo.
+        /// </summary>
+        [UnityTest, Order(14)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_UpdateInspectionLabel_ShowsNonCompliantWithPhotoMessage()
+        {
+            // Arrange
+            InspectionData inspectionData = new InspectionData(inspectable, false, true);
+            
+            // Act
+            inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
+            yield return null;
+            
+            // Assert
+            var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
+            Assert.That(label.text, Is.EqualTo("Visual inspection with photo reported as non-compliant."),
+                "Inspection window should display an appropriate message when the previous inspection reported as non-compliant with photo.");
+        }
+
+        #endregion
     }
 }
 

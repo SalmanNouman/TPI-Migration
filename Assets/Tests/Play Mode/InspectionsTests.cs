@@ -187,5 +187,35 @@ namespace Tests.PlayMode
             Assert.IsTrue(recordedInspection.HasPhoto);
             Assert.IsFalse(recordedInspection.IsCompliant);
         }
+
+        /// <summary>
+        ///     Tests if RetrievePreviousInspection correctly retrieves inspection data and invokes OnPreviousInspectionRetrieved event.
+        /// </summary>
+        [UnityTest, Order(5)]
+        public IEnumerator RetrievePreviousInspection_InvokesEventWithCorrectData()
+        {
+            // Arrange
+            InspectionData expectedInspection = null;
+            InspectionData retrievedInspection = null;
+            inspectionsManager.OnPreviousInspectionRetrieved.AddListener((inspection) => retrievedInspection = inspection);
+            // Add test inspection data
+            expectedInspection = new InspectionData(inspectableOne, true, true);
+            inspectionsManager.AddInspection(expectedInspection);
+            yield return null;  // Wait for inspection to be added
+
+            // Act
+            inspectionsManager.RetrievePreviousInspection(inspectableOne);
+            yield return null;  // Wait for event processing
+
+            // Assert
+            Assert.IsNotNull(retrievedInspection, 
+                "RetrievePreviousInspection did not invoke the event with inspection data");
+            Assert.AreEqual(expectedInspection.Obj.ObjectId, retrievedInspection.Obj.ObjectId, 
+                "Retrieved inspection object ID does not match expected inspection");
+            Assert.AreEqual(expectedInspection.IsCompliant, retrievedInspection.IsCompliant, 
+                "Retrieved inspection compliance status does not match expected inspection");
+            Assert.AreEqual(expectedInspection.HasPhoto, retrievedInspection.HasPhoto, 
+                "Retrieved inspection photo status does not match expected inspection");
+        }
     }
 }

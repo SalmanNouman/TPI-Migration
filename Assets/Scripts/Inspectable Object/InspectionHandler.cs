@@ -9,33 +9,34 @@ using VARLab.ObjectViewer;
 namespace VARLab.DLX
 {
     /// <summary>
-    /// In this class we will find and manage all the inspectable objects in the scene.
+    ///     In this class we will find and manage all the inspectable objects in the scene.
     /// </summary>
     public class InspectionHandler : MonoBehaviour
     {
         private List<InspectableObject> inspectables;
 
         /// <summary>
-        /// Unity Event that is triggered when an inspectable object is clicked.
+        ///     Unity Event that is triggered when an inspectable object is clicked.
         /// <see cref="ImageHandler.TakeTempPhoto(InspectableObject)"/>
         /// <see cref="InspectionWindowBuilder.HandleInspectionWindowDisplay(InspectableObject)"/>
         /// <see cref="PoiHandler.CheckPoiInteracted(InspectableObject)"/>
+        /// <see cref="Inspections.OnInspectionRequested(InspectableObject)"/>
         /// </summary>
         public UnityEvent<InspectableObject> OnObjectClicked;
 
         /// <summary>
-        /// This gets invoked if the object clicked has object viewer.
+        ///     This gets invoked if the object clicked has object viewer.
         /// <see cref="ObjectViewerController.View"/>
         /// </summary>
         public UnityEvent<GameObject> OnObjectViewerObjectClicked;
 
         /// <summary>
-        /// Unity Event that is triggered when the inspection is completed.
+        ///     Unity Event that is triggered when the inspection is completed.
         /// </summary>
         public UnityEvent<InspectableObject> OnInspectionCompleted;
 
         /// <summary>
-        /// Initialize events if they are null
+        ///     Initialize events if they are null
         /// </summary>
         private void Awake()
         {
@@ -45,7 +46,7 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Finds all inspectable objects in the scene and links their events.
+        ///     Finds all inspectable objects in the scene and links their events.
         /// </summary>
         private void OnEnable()
         {
@@ -80,9 +81,9 @@ namespace VARLab.DLX
         public void HandleInspectionCompleted(InspectableObject obj) => OnInspectionCompleted?.Invoke(obj);
 
         /// <summary>
-        /// This is used to check if what was clicked is and inspectable object and
-        /// invokes the OnObjectClickedEvent
-        /// Invoked by <see cref="InteractionHandler.HandleMouseClick(GameObject)"/>
+        ///     This is used to check if what was clicked is and inspectable object and
+        ///     invokes the OnObjectClickedEvent
+        ///     Invoked by <see cref="InteractionHandler.HandleMouseClick(GameObject)"/>
         /// </summary>
         /// <param name="obj">Game object that was clicked.</param>
         public void StartInspection(GameObject obj)
