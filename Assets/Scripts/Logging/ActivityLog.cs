@@ -27,6 +27,7 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Event triggered when a new log entry is added, providing the updated log list.
+        ///     <see cref="ActivityLogBuilder.GetActivityLog(List{Log})"/>
         /// </summary>
         public UnityEvent<List<Log>> OnLogAdded;
 
@@ -37,7 +38,7 @@ namespace VARLab.DLX
         /// <summary>
         ///     Initializes the log list and ensures that the OnLogAdded event is assigned to prevent null reference errors.
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             ActivityLogList = new List<Log>();
             OnLogAdded ??= new UnityEvent<List<Log>>();

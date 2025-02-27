@@ -1,10 +1,12 @@
 @import url("/Assets/VELCRO UI/UnityThemes/Light.tss");
 
+@import url("/Assets/TPI UI/StyleSheets/tpi-activity-log.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-inspection-log.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-inspection-review.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-inspection-window.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
-@import url("Assets/TPI UI/StyleSheets/tpi-inspection-log.uss");
-@import url("Assets/TPI UI/StyleSheets/tpi-inspection-review.uss");
-@import url("Assets/TPI UI/StyleSheets/tpi-inspection-window.uss");
-@import url("Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
+
 
 :root {
     /* Menu Buttons*/
@@ -15,6 +17,12 @@
     /* Inspection Review */
     --empty-container-icon-colour: #FFFFFF;
     --empty-container-label-colour: #136FC1;
+
+    /* Inspection Review Activity Log */
+    --activity-log-foldout-text-colour: #FFFFFF;
+    --activity-log-foldout-text-colour-selected: #FFC009;
+    --activity-log-foldout-image: url("../../Art/Sprite/Icons/plus-square.png");
+    --activity-log-foldout-image-selected: url("../../Art/Sprite/Icons/dash-square.png");
 
     /* Inspection Window */
     --inspection-window-body-background: #CCDBE7;

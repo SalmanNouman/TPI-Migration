@@ -18,20 +18,22 @@ namespace VARLab.DLX
         private VisualElement root;
         private VisualElement inspectionWindowTabContent;
 
-        private TemplateContainer logContainer;
+        public TemplateContainer LogContainer;
 
+        public VisualElement ContentContainer;
         private VisualElement emptyContainer;
         private VisualElement emptyContainerIcon;
         private Label emptyContainerLabel;
 
-        private void Start()
+        private void Awake()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
-            logContainer = tabContent.Instantiate();
+            LogContainer = tabContent.Instantiate();
 
-            emptyContainer = logContainer.Q<VisualElement>("EmptyContainer");
-            emptyContainerIcon = logContainer.Q<TemplateContainer>().Q<VisualElement>("Icon");
-            emptyContainerLabel = logContainer.Q<TemplateContainer>().Q<Label>("Label");
+            ContentContainer = LogContainer.Q<ScrollView>("ScrollView");
+            emptyContainer = LogContainer.Q<VisualElement>("EmptyContainer");
+            emptyContainerIcon = LogContainer.Q<TemplateContainer>().Q<VisualElement>("Icon");
+            emptyContainerLabel = LogContainer.Q<TemplateContainer>().Q<Label>("Label");
 
             inspectionWindowTabContent = root.Q<VisualElement>("TabContent");
 
@@ -41,23 +43,25 @@ namespace VARLab.DLX
         private void SetContent()
         {
             UIHelper.SetElementText(emptyContainerLabel, label);
-            emptyContainerIcon.style.backgroundImage = new StyleBackground(icon);
+            UIHelper.SetElementSprite(emptyContainerIcon, icon);
         }
 
         public void TabSelected()
         {
             inspectionWindowTabContent.Clear();
-            inspectionWindowTabContent.Add(logContainer);
+            inspectionWindowTabContent.Add(LogContainer);
         }
 
-        private void DisplayEmptyLogMessage()
+        public void DisplayEmptyLogMessage()
         {
-            emptyContainer.style.display = DisplayStyle.Flex;
+            UIHelper.Show(emptyContainer);
+            UIHelper.Hide(ContentContainer);
         }
 
-        private void HideEmptyLogMessage()
+        public void HideEmptyLogMessage()
         {
-            emptyContainer.style.display = DisplayStyle.None;
+            UIHelper.Show(ContentContainer);
+            UIHelper.Hide(emptyContainer);
         }
     }
 }

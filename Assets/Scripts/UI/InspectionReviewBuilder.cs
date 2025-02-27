@@ -66,6 +66,7 @@ namespace VARLab.DLX
         /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(bool)"/>false
         /// <see cref="PointClickNavigation.EnableNavigation(bool)"/>false
         /// <see cref="ProgressBuilder.ProgressOpen(bool)"/>true
+        /// <see cref="ActivityLogBuilder.HandleDisplayActivityLog(bool)"/>true
         /// </summary>
         [Header("Events"), Space(10f)]
         [Tooltip("Invoked when Show is called.")]
@@ -78,6 +79,7 @@ namespace VARLab.DLX
         /// <see cref="PointClickNavigation.EnableCameraPanAndZoom(bool)"/>true
         /// <see cref="PointClickNavigation.EnableNavigation(bool)"/>true
         /// <see cref="ProgressBuilder.ProgressOpen(bool)"/>false
+        /// <see cref="ActivityLogBuilder.HandleDisplayActivityLog(bool)"/>false
         /// </summary>
         [Tooltip("Invoked when Hide is called.")]
         public UnityEvent OnHide;

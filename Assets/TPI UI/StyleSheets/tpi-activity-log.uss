@@ -1,0 +1,80 @@
+.unity-foldout__toggle > .unity-foldout__input > .unity-foldout__text {
+	font-size: 24px;
+	-unity-font-definition: var(--font-regular);
+	color: var(--activity-log-foldout-text-colour);
+	margin-left: 0px;
+}
+
+.unity-foldout__toggle:focus:enabled > .unity-foldout__input > .unity-foldout__text {
+	font-size: 24px;
+	-unity-font-definition: var(--font-regular);
+	color: var(--activity-log-foldout-text-colour);
+	margin-left: 0px;
+}
+
+.unity-foldout__toggle:enabled:checked > .unity-foldout__input > .unity-foldout__text {
+	-unity-font-definition: var(--font-bold);
+	color: var(--activity-log-foldout-text-colour-selected);
+}
+
+.unity-foldout__content {
+	font-size: 24;
+	-unity-font-definition: var(--font-regular); 
+	color: var(--activity-log-foldout-text-colour);
+	margin-left: 80px;
+}
+
+.unity-foldout__toggle:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.unity-foldout__toggle:hover:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.unity-foldout__toggle:focus:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.unity-foldout__toggle:checked:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image-selected);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.unity-foldout__toggle:checked:hover:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image-selected);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.unity-foldout__toggle:checked:focus:enabled > .unity-foldout__input > .unity-foldout__checkmark {
+	width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image : var(--activity-log-foldout-image-selected);
+	-unity-background-scale-mode : scale-to-fit;
+}
+
+.activity-log-exit-label {
+	font-size: 24;
+	color: var(--activity-log-foldout-text-colour-selected);
+	-unity-font-definition: var(--font-bold);
+	margin-left: -17px;
+}

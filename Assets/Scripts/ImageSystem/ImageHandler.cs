@@ -27,7 +27,16 @@ namespace VARLab.DLX
         /// <see cref="InspectionWindowBuilder.GetPhoto(InspectablePhoto)"/>
         /// </summary>
         public UnityEvent<InspectablePhoto> OnTempPhotoTaken;
-        public UnityEvent OnPhotoSaved;
+
+        /// <summary>
+        /// Event invoked when a photo is saved.
+        /// <see cref="ActivityLog.LogPhotoTaken(InspectableObject)"/>
+        /// </summary>
+        public UnityEvent<InspectableObject> OnPhotoSaved;
+
+        /// <summary>
+        /// Invoked when a photo is deleted
+        /// </summary>
         public UnityEvent OnPhotoDeleted;
 
         private void Awake()
@@ -95,7 +104,7 @@ namespace VARLab.DLX
             tempPhoto.Timestamp = TimerManager.Instance.GetElapsedTime();
             Photos.Add(tempPhoto);
 
-            OnPhotoSaved?.Invoke();
+            OnPhotoSaved?.Invoke(obj);
         }
 
         /// <summary>

@@ -117,7 +117,7 @@ namespace Tests.PlayMode
             int expectedResult = 1;
             bool wasTaken = false;
 
-            imageHandler.OnPhotoSaved.AddListener(() => wasTaken = true);
+            imageHandler.OnPhotoSaved.AddListener((InspectableObject obj) => wasTaken = true);
 
             // Act
             imageHandler.TakePhoto(inspectableObject);
@@ -196,6 +196,24 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsFalse(wasTaken);
+        }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator PhotoSavedEventIsTriggeredWhenAPhotoIsSaved()
+        {
+            // Arrange
+            bool isSaved = false;
+            imageHandler.OnPhotoSaved.AddListener((InspectableObject) => isSaved = true);
+            imageHandler.TakePhoto(inspectableObject);
+
+            // Act
+            imageHandler.TakePhoto(inspectableObject);
+
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(isSaved);
         }
     }
 
