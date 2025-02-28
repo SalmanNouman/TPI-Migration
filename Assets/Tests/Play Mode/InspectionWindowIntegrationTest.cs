@@ -375,11 +375,11 @@ namespace Tests.PlayMode
         {
             // Arrange
             InspectionData inspectionData = null;
-            
+
             // Act
             inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
             yield return null;
-            
+
             // Assert
             var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
             Assert.That(label.text, Is.EqualTo("Is this visual inspection compliant or non-compliant?"),
@@ -395,11 +395,11 @@ namespace Tests.PlayMode
         {
             // Arrange
             InspectionData inspectionData = new InspectionData(inspectable, true, false);
-            
+
             // Act
             inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
             yield return null;
-            
+
             // Assert
             var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
             Assert.That(label.text, Is.EqualTo("Visual inspection reported as compliant."),
@@ -415,11 +415,11 @@ namespace Tests.PlayMode
         {
             // Arrange
             InspectionData inspectionData = new InspectionData(inspectable, false, true);
-            
+
             // Act
             inspectionWindowBuilder.UpdateInspectionLabel(inspectionData);
             yield return null;
-            
+
             // Assert
             var label = inspectionWindowDoc.rootVisualElement.Q<Label>("BottomLabel");
             Assert.That(label.text, Is.EqualTo("Visual inspection with photo reported as non-compliant."),
@@ -427,6 +427,45 @@ namespace Tests.PlayMode
         }
 
         #endregion
+
+        /// <summary>
+        ///Test the Flash Effect
+        /// </summary>
+        [UnityTest, Order(15)]
+        [Category("BuildServer")]
+        public IEnumerator HasFlashCoroutine()
+        {
+            // Arrange
+            var flashContainer = root.Q<VisualElement>("FlashContainer");
+
+            // Act
+            inspectionWindowBuilder.TakePhoto();
+            yield return null;
+
+            // Assert if the flash effect was triggered by adding the class
+            bool flashAdded = flashContainer.ClassListContains("card-body-flash");
+            Assert.IsTrue(flashAdded, "Flash effect was not triggered on the flash container.");
+        }
+
+        /// <summary>
+        ///Test the photo frame
+        /// </summary>
+        [UnityTest, Order(16)]
+        [Category("BuildServer")]
+        public IEnumerator HasPhotoFrame()
+        {
+            // Arrange
+            var flashContainer = root.Q<VisualElement>("FlashContainer");
+
+            // Act
+            inspectionWindowBuilder.TakePhoto(); // Call the method that triggers the photo frame
+            yield return null;
+
+            // Assert
+            bool photoFrameAdded = flashContainer.ClassListContains("card-body-photo-frame");
+            Assert.IsTrue(photoFrameAdded, "Photo frame was not added to the flash container.");
+
+        }
     }
 }
 

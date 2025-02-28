@@ -88,14 +88,14 @@ namespace VARLab.DLX
                 if (existingInspection.IsCompliant != newInspection.IsCompliant)
                 {
                     Debug.Log($"[AddInspection] Updated compliance state from {existingInspection.IsCompliant} to {newInspection.IsCompliant}.");
-                    existingInspection.IsCompliant = newInspection.IsCompliant;                    
+                    existingInspection.IsCompliant = newInspection.IsCompliant;
                 }
 
                 // If photo status changed, update the record
                 if (!existingInspection.HasPhoto && newInspection.HasPhoto)
                 {
                     Debug.Log($"[AddInspection] Updated photo state from {existingInspection.HasPhoto} to {newInspection.HasPhoto}.");
-                    existingInspection.HasPhoto = newInspection.HasPhoto; 
+                    existingInspection.HasPhoto = newInspection.HasPhoto;
                 }
             }
             else // If no inspection exists, it adds a new one
@@ -116,7 +116,7 @@ namespace VARLab.DLX
         public void DeleteInspection(InspectableObject obj)
         {
             var inspectionToRemove = CheckInspection(obj);
-            
+
             if (inspectionToRemove != null)
             {
                 InspectionsList.Remove(inspectionToRemove);

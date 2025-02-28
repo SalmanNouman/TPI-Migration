@@ -208,13 +208,13 @@ namespace Tests.PlayMode
             yield return null;  // Wait for event processing
 
             // Assert
-            Assert.IsNotNull(retrievedInspection, 
+            Assert.IsNotNull(retrievedInspection,
                 "RetrievePreviousInspection did not invoke the event with inspection data");
-            Assert.AreEqual(expectedInspection.Obj.ObjectId, retrievedInspection.Obj.ObjectId, 
+            Assert.AreEqual(expectedInspection.Obj.ObjectId, retrievedInspection.Obj.ObjectId,
                 "Retrieved inspection object ID does not match expected inspection");
-            Assert.AreEqual(expectedInspection.IsCompliant, retrievedInspection.IsCompliant, 
+            Assert.AreEqual(expectedInspection.IsCompliant, retrievedInspection.IsCompliant,
                 "Retrieved inspection compliance status does not match expected inspection");
-            Assert.AreEqual(expectedInspection.HasPhoto, retrievedInspection.HasPhoto, 
+            Assert.AreEqual(expectedInspection.HasPhoto, retrievedInspection.HasPhoto,
                 "Retrieved inspection photo status does not match expected inspection");
         }
     }

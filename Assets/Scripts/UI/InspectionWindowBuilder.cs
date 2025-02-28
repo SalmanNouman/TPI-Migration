@@ -1,4 +1,5 @@
 using Kamgam.UIToolkitWorldImage;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -26,6 +27,7 @@ namespace VARLab.DLX
         private VisualElement root;
         private VisualElement imageViewer3d;
         private VisualElement imageViewer;
+        private VisualElement flashContainer;
 
         // Labels
         private Label locationLabel;
@@ -109,6 +111,13 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<InspectionData> OnInspectionLog;
 
+        /// <summary>
+        /// Invoked when a photo is taken and compliant or non-compliant is selected.
+        /// Returns: The inspectable object that was inspected.
+        /// <see cref="ImageHandler.TakePhoto"/>
+        /// </summary>
+        public UnityEvent<InspectableObject> PhotoConfirmed;
+
         [Header("Notification Event"), Space(10f)]
         [Tooltip("Invoked to display a notification. The event takes a NotificationSO as its parameter.")]
         public UnityEvent<NotificationSO> DisplayNotification;
@@ -148,6 +157,7 @@ namespace VARLab.DLX
             // Visual Elements
             imageViewer3d = root.Q<VisualElement>("3DViewer");
             imageViewer = root.Q<VisualElement>("Image");
+            flashContainer = root.Q<VisualElement>("FlashContainer");
 
             // Labels
             locationLabel = root.Q<Label>("Secondary");
@@ -183,11 +193,24 @@ namespace VARLab.DLX
         ///     Method that is called when the camera button is clicked.
         ///     This invokes the OnPhotoTaken event.
         /// </summary>
-        private void TakePhoto()
+        public void TakePhoto()
         {
             // TODO: display flash and camera outline
+            flashContainer.AddToClassList("card-body-photo-frame");
             photoTaken = true;
+            StartCoroutine(FlashCoroutine());
+
             OnPhotoTaken?.Invoke(CurrentInspectable);
+        }
+
+        /// <summary>
+        /// This method handles the flash effect
+        /// </summary>
+        private IEnumerator FlashCoroutine()
+        {
+            flashContainer.AddToClassList("card-body-flash");
+            yield return new WaitForSeconds(0.2f);
+            flashContainer.RemoveFromClassList("card-body-flash");
         }
 
         /// <summary>
@@ -226,6 +249,12 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
+
+            if (!CurrentInspectable.HasPhoto)
+            {
+                ConfirmPhoto();
+            };
+
             OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, true, photoTaken));
             OnCompliantSelected?.Invoke(CurrentInspectable);
 
@@ -243,6 +272,12 @@ namespace VARLab.DLX
             // TODO: Check if this object already has an inspection.
             // If true and value changed display modal.
             // If false and value is the same display toast.
+
+            if (!CurrentInspectable.HasPhoto)
+            {
+                ConfirmPhoto();
+            }
+
             OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, false, photoTaken));
             OnNonCompliantSelected?.Invoke(CurrentInspectable);
 
@@ -252,8 +287,21 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        ///     This is used to set up the inspection window and display it.
-        ///     Invoked by <see cref="InspectionHandler.OnObjectClicked"/>
+        /// upon user compliance selection if camera is selected add photo to list
+        /// </summary>
+        private void ConfirmPhoto()
+        {
+            if (photoTaken && !CurrentInspectable.HasPhoto)
+            {
+                CurrentInspectable.HasPhoto = true;
+                PhotoConfirmed?.Invoke(CurrentInspectable);
+                Debug.Log("Photo is added to list");
+            }
+        }
+
+        /// <summary>
+        /// This is used to set up the inspection window and display it.
+        /// Invoked by <see cref="InspectionHandler.OnObjectClicked"/>
         /// </summary>
         /// <param name="obj">Inspectable Object that was clicked.</param>
         public void HandleInspectionWindowDisplay(InspectableObject obj)
@@ -275,7 +323,7 @@ namespace VARLab.DLX
             // Set labels
             UIHelper.SetElementText(locationLabel, CurrentInspectable.Location.ToString());
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
-            
+
             Show();
         }
 
@@ -294,6 +342,7 @@ namespace VARLab.DLX
 
             // Reset the flag after the selection
             photoTaken = false;
+            flashContainer.RemoveFromClassList("card-body-photo-frame");
         }
 
         /// <summary>
@@ -331,17 +380,16 @@ namespace VARLab.DLX
             {
                 UIHelper.SetElementText(inspectionLabel, "Is this visual inspection compliant or non-compliant?");
             }
-            else 
+            else
             {
                 string compliancy = inspection.IsCompliant ? "compliant" : "non-compliant";
-                string message = inspection.HasPhoto 
+                string message = inspection.HasPhoto
                     ? $"Visual inspection with photo reported as {compliancy}."
                     : $"Visual inspection reported as {compliancy}.";
-                
+
                 UIHelper.SetElementText(inspectionLabel, message);
             }
         }
-
         #endregion
     }
 }

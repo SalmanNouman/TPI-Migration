@@ -1,6 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -69,7 +69,7 @@ namespace Tests.PlayMode
             // Act
             activityLogBuilder.HandleDisplayActivityLog(true);
 
-            yield return new WaitForSeconds(0.2f); 
+            yield return new WaitForSeconds(0.2f);
 
             // Assert
             Assert.AreEqual(displayStyle, emptyContainer.style.display.ToString().Trim());

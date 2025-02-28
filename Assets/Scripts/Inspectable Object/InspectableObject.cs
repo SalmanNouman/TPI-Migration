@@ -17,20 +17,37 @@ namespace VARLab.DLX
     public class InspectableObject : MonoBehaviour
     {
         public string Name;
+
         [Tooltip("Inspectable Object POI")]
         public PoiList.PoiName Location;
+
         [Tooltip("Reference to Inspectable Object Camera")]
         public Camera Cam;
-        private Compliancy currentObjectState;
+
         [Tooltip("List of Inspectable Object State")]
         public List<State> States;
+
         public string ObjectId;
+
+        [HideInInspector]
         public bool HasPhoto;
+
+        [HideInInspector]
         public bool Interacted;
 
-        [Header("Inspectable Object event"), Space(5f)]
+        private Compliancy currentObjectState;
 
+        /// <summary>
+        /// Invoked when an inspectable object is clicked.
+        /// Returns: The inspectable object clicked.
+        /// </summary>
+        [Header("Inspectable Object event"), Space(5f)]
         public UnityEvent<InspectableObject> OnObjectClicked;
+
+        /// <summary>
+        /// Invoked when the object is inspected.
+        /// Returns: The object that was inspected.
+        /// </summary>
         public UnityEvent<InspectableObject> OnObjectInspected;
 
         /// <summary>

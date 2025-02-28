@@ -72,6 +72,17 @@ namespace VARLab.DLX
                 return;
             }
 
+            CaptureImage(obj);
+
+            OnTempPhotoTaken?.Invoke(tempPhoto);
+        }
+
+        /// <summary>
+        /// This is used to capture the render texture and save it to temp photo.
+        /// </summary>
+        /// <param name="obj"></param>
+        private void CaptureImage(InspectableObject obj)
+        {
             Camera cam = obj.Cam;
 
             // Code to take a screen capture of a given camera
@@ -90,8 +101,6 @@ namespace VARLab.DLX
             // Destroy the rendered texture because it does not get destroyed automatically causing a memory leak
             // TODO: This might have to be done in a different place if the image is not showing in the inspection window.
             Destroy(renderedTexture);
-
-            OnTempPhotoTaken?.Invoke(tempPhoto);
         }
 
         /// <summary>
@@ -100,11 +109,17 @@ namespace VARLab.DLX
         /// <param name="obj">Inspectable object that is currently being inspected</param>
         public void TakePhoto(InspectableObject obj)
         {
-            // TODO: If the object uses object viewer the picture will be taken here for set images or for the obj current position
+            if(tempPhoto == null)
+            {
+                return;
+            }
+
             tempPhoto.Timestamp = TimerManager.Instance.GetElapsedTime();
             Photos.Add(tempPhoto);
 
             OnPhotoSaved?.Invoke(obj);
+
+            tempPhoto = null;
         }
 
         /// <summary>

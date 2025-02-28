@@ -1,11 +1,5 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
-using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.WSA;
-using VARLab.Velcro;
 
 namespace VARLab.DLX
 {
@@ -67,7 +61,7 @@ namespace VARLab.DLX
             Foldout currentFoldout = null;
 
             foreach (var log in activityLog)
-            { 
+            {
                 if (log.IsPrimary)
                 {
                     Foldout foldout = new() { text = log.Message };
@@ -99,7 +93,7 @@ namespace VARLab.DLX
             {
                 if (selectedFoldout != null && selectedFoldout != foldout)
                 {
-                    selectedFoldout.value = false;  
+                    selectedFoldout.value = false;
                 }
                 // Highlight the exit message, if it was logged
                 if (foldout.childCount > 0)

@@ -20,6 +20,7 @@
                 <ui:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center card-body-background">
                     <ui:VisualElement name="Image" class="card-v5-body-image align-self-center w-100 h-100" />
                     <Kamgam.UIToolkitWorldImage.WorldImage name="3DViewer" renderer-id="main" class="w-100 h-100" />
+                    <ui:VisualElement name="FlashContainer" class="w-100 h-100 absolute" style="flex-grow: 1;" />
                     <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CameraButton" class="mr-20 align-self-center ml-0 mt-0 mb-0 p-0 bw-0 card-v5-button-camera absolute" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Bottom" class="card-v5-bottom br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2">
