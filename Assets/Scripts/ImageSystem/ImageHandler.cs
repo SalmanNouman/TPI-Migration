@@ -109,7 +109,7 @@ namespace VARLab.DLX
         /// <param name="obj">Inspectable object that is currently being inspected</param>
         public void TakePhoto(InspectableObject obj)
         {
-            if(tempPhoto == null)
+            if (tempPhoto == null)
             {
                 return;
             }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using VARLab.Velcro;
@@ -125,9 +126,9 @@ namespace VARLab.DLX
         /// Gets the inspection list count.
         /// </summary>
         /// <param name="count">Number of inspections recorded</param>
-        public void GetInspectionsCount(int count)
+        public void GetInspectionsCount(List<InspectionData> list)
         {
-            totalInspections = count;
+            totalInspections = list.Count;
         }
     }
 }

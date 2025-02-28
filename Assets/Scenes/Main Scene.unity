@@ -3260,6 +3260,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc346395ea0fb34b8026e6225dc43b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1749263017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+    type: 3}
+  m_PrefabInstance: {fileID: 609544561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cc15411cc56204ab9ee06d96a9ce9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1905197084
 Mesh:
   m_ObjectHideFlags: 0
@@ -5397,7 +5409,7 @@ PrefabInstance:
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
@@ -5418,7 +5430,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1749263014}
+      objectReference: {fileID: 1749263017}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -5437,7 +5449,7 @@ PrefabInstance:
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: GetInspectionsCount
+      value: GetInspectionList
       objectReference: {fileID: 0}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
@@ -5477,7 +5489,7 @@ PrefabInstance:
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VARLab.DLX.ProgressBuilder, VARLab.DLX
+      value: VARLab.DLX.InspectionLogBuilder, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}

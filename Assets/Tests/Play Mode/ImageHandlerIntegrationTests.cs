@@ -204,8 +204,8 @@ namespace Tests.PlayMode
         {
             // Arrange
             bool isSaved = false;
-            imageHandler.OnPhotoSaved.AddListener((InspectableObject) => isSaved = true);
-            imageHandler.TakePhoto(inspectableObject);
+            imageHandler.OnPhotoSaved.AddListener((inspectableObject) => isSaved = true);
+            imageHandler.TakeTempPhoto(inspectableObject);
 
             // Act
             imageHandler.TakePhoto(inspectableObject);

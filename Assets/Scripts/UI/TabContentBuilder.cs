@@ -30,6 +30,7 @@ namespace VARLab.DLX
             root = GetComponent<UIDocument>().rootVisualElement;
             LogContainer = tabContent.Instantiate();
 
+            LogContainer.style.flexGrow = 1;
             ContentContainer = LogContainer.Q<ScrollView>("ScrollView");
             emptyContainer = LogContainer.Q<VisualElement>("EmptyContainer");
             emptyContainerIcon = LogContainer.Q<TemplateContainer>().Q<VisualElement>("Icon");

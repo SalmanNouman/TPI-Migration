@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using VARLab.DLX;
+using VARLab.Velcro;
 
 namespace Tests.PlayMode
 {
-    public class ActivityLogBuilderIntegrationTest
+    public class InspectionLogTests
     {
         // Inspection review window
         private UIDocument inspectionReviewDoc;
         private InspectionReviewBuilder inspectionReviewBuilder;
-        private ActivityLogBuilder activityLogBuilder;
+        private InspectionLogBuilder inspectionLogBuilder;
         private VisualElement root;
-        private List<Log> activityLog;
-
+        private Table table;
         private const string SceneName = "InspectionReviewTestScene";
+        private List<InspectionData> inspectionList;
+        private InspectableObject inspectable;
+        private GameObject inspectableGameObject;
 
         /// <summary>
         /// Loads the inspection review test scene
@@ -29,7 +32,6 @@ namespace Tests.PlayMode
         {
             SceneManager.LoadScene(SceneName);
         }
-
         /// <summary>
         /// Checks if the test scene is loaded
         /// </summary>
@@ -38,36 +40,37 @@ namespace Tests.PlayMode
         public IEnumerator SceneLoaded()
         {
             yield return new WaitUntil(() => SceneManager.GetSceneByName(SceneName).isLoaded);
-
             inspectionReviewBuilder = GameObject.FindAnyObjectByType<InspectionReviewBuilder>();
             inspectionReviewDoc = inspectionReviewBuilder.GetComponent<UIDocument>();
-            activityLogBuilder = GameObject.FindAnyObjectByType<ActivityLogBuilder>();
-
+            inspectionLogBuilder = GameObject.FindAnyObjectByType<InspectionLogBuilder>();
             root = inspectionReviewDoc.rootVisualElement;
 
-            activityLog = new();
-            activityLog.Add(new Log(true, "Primary log one"));
-            activityLog.Add(new Log(false, "Secondary log one"));
-            activityLog.Add(new Log(false, "Secondary log one"));
-            activityLog.Add(new Log(false, "Secondary log one"));
-            activityLog.Add(new Log(true, "Primary log Two"));
-            activityLog.Add(new Log(false, "Secondary log two"));
-            activityLog.Add(new Log(false, "Secondary log two"));
+            inspectableGameObject = new();
+            inspectableGameObject.AddComponent<BoxCollider>();
+            inspectable = inspectableGameObject.AddComponent<InspectableObject>();
+            inspectableGameObject.AddComponent<Camera>();
 
+            inspectable.Name = "Test";
+            inspectable.Location = PoiList.PoiName.Reception;
+            inspectable.Cam = inspectableGameObject.GetComponent<Camera>();
+            inspectionList = new();
+            inspectionList.Add(new InspectionData(inspectable, true, true));
+
+            Debug.Log(inspectionList.ToString());
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
 
         [UnityTest, Order(1)]
         [Category("BuildServer")]
-        public IEnumerator ContentContainerVisibleWhenActivityLogListEmpty()
+        public IEnumerator ContentContainerVisibleWhenInspectionLogListEmpty()
         {
             // Arrange
             var displayStyle = DisplayStyle.Flex.ToString().Trim();
-            VisualElement emptyContainer = activityLogBuilder.LogContainer.Q<VisualElement>("EmptyContainer");
+            VisualElement emptyContainer = inspectionLogBuilder.LogContainer.Q<VisualElement>("EmptyContainer");
 
             // Act
-            activityLogBuilder.HandleDisplayActivityLog(true);
+            inspectionLogBuilder.HandleDisplayInspectionLog();
 
             yield return new WaitForSeconds(0.2f);
 
@@ -77,20 +80,26 @@ namespace Tests.PlayMode
 
         [UnityTest, Order(2)]
         [Category("BuildServer")]
-        public IEnumerator ContentContainerVisibleWhenActivityLogListHasEntries()
+        public IEnumerator ContentContainerVisibleWhenInspectionLogListFull()
         {
             // Arrange
             var displayStyle = DisplayStyle.Flex.ToString().Trim();
 
             // Act
-            activityLogBuilder.HandleDisplayActivityLog(false);
-            activityLogBuilder.GetActivityLog(activityLog);
-            activityLogBuilder.HandleDisplayActivityLog(true);
+            //InspectionLogBuilder call list
+            inspectionLogBuilder.GetInspectionList(inspectionList);
+            yield return new WaitForSeconds(0.2f);
+            inspectionLogBuilder.HideEmptyLogMessage();
+            inspectionLogBuilder.HandleDisplayInspectionLog();
+
+            //list check if container empty of full by seeing if flex or non-flex.
+
+            Debug.Log(inspectionList.ToString());
 
             yield return new WaitForSeconds(0.2f);
 
             // Assert
-            Assert.AreEqual(displayStyle, activityLogBuilder.ContentContainer.style.display.ToString().Trim());
+            Assert.AreEqual(displayStyle, inspectionLogBuilder.ContentContainer.style.display.ToString().Trim());
         }
     }
 }

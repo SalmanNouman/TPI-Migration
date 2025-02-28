@@ -14,9 +14,11 @@ namespace VARLab.DLX
         /// <summary>
         ///     Invoked when an inspection is made.
         ///     Returns the inspections list count.
-        /// <see cref="ProgressBuilder.GetInspectionsCount(int)"/>
+        /// <see cref="ProgressBuilder.GetInspectionsCount(List{InspectionData})"/>
+        /// <see cref="InspectionLogBuilder.GetInspectionList(List{InspectionData})"/>
         /// </summary>
-        public UnityEvent<int> OnInspectionCompleted;
+        public UnityEvent<List<InspectionData>> OnInspectionCompleted;
+
 
         /// <summary>
         ///     Invoked when inspection record is requested.
@@ -64,7 +66,7 @@ namespace VARLab.DLX
         ///     Retrieves the previous inspection record for the given object and delivers it through an event.
         ///     Invoked by <see cref="InspectionHandler.OnObjectClicked(InspectableObject)"/>
         /// </summary>
-        /// <param name="obj">The inspectable object to retrieve previous inspection datafor.</param>
+        /// <param name="obj">The inspectable object to retrieve previous inspection data for.</param>
         public void RetrievePreviousInspection(InspectableObject obj)
         {
             var inspection = CheckInspection(obj);
@@ -104,7 +106,7 @@ namespace VARLab.DLX
                 InspectionsList.Add(newInspection);
             }
 
-            OnInspectionCompleted?.Invoke(InspectionsList.Count);
+            OnInspectionCompleted?.Invoke(InspectionsList);
             Debug.Log($"[Inspection details] Compliant: {newInspection.IsCompliant}, HasPhoto: {newInspection.HasPhoto}");
             Debug.Log($"[AddInspection] Total inspections in record: {InspectionsList.Count}");
         }
