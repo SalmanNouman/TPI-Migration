@@ -67,6 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a4be1c1d8bc8e4fabf07b196c9709e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentInspectable: {fileID: 0}
+  CompliantConfirmationDialog: {fileID: 11400000, guid: 2f11acbca02abb54e98ca8c29ae08e84,
+    type: 2}
+  NonCompliantConfirmationDialog: {fileID: 11400000, guid: 5144123642e2bd244bb576b1a85f8ae3,
+    type: 2}
   OnWindowOpened:
     m_PersistentCalls:
       m_Calls:
@@ -236,6 +241,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PhotoConfirmed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowConfirmationDialog:
+    m_PersistentCalls:
+      m_Calls: []
   DisplayNotification:
     m_PersistentCalls:
       m_Calls:
@@ -251,7 +262,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  CurrentInspectable: {fileID: 0}
 --- !u!114 &7880084912652223141
 MonoBehaviour:
   m_ObjectHideFlags: 0

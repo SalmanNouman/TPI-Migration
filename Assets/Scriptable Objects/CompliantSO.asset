@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d331b79a49dd10b46a2f5b651a327aae, type: 3}
+  m_Name: CompliantSO
+  m_EditorClassIdentifier: 
+  Name: "Replace Inspection\t"
+  Description: 'You have already reported this as non-compliant.
+
+    Are you sure
+    you want to replace your inspection?'
+  PrimaryBtnType: 0
+  PrimaryBtnText: Replace
+  SecondaryBtnType: 1
+  SecondaryBtnText: Cancel
+  IsCloseBtnVisible: 0
+  IsBackgroundDimmed: 1

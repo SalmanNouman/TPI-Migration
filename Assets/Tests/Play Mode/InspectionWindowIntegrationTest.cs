@@ -425,9 +425,7 @@ namespace Tests.PlayMode
             Assert.That(label.text, Is.EqualTo("Visual inspection with photo reported as non-compliant."),
                 "Inspection window should display an appropriate message when the previous inspection reported as non-compliant with photo.");
         }
-
-        #endregion
-
+        
         /// <summary>
         ///Test the Flash Effect
         /// </summary>
@@ -466,6 +464,158 @@ namespace Tests.PlayMode
             Assert.IsTrue(photoFrameAdded, "Photo frame was not added to the flash container.");
 
         }
+
+        /// <summary>
+        ///     Tests if correct confirmation dialog is shown when changing from compliant to non-compliant.
+        /// </summary>
+        [UnityTest, Order(17)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_CompliantToNonCompliant_ShowsConfirmationDialog()
+        {
+            // Arrange
+            ConfirmationDialogSO shownDialog = null;
+            inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
+            
+            yield return SetupPreviousInspection(isCompliant: true);
+
+            // Act
+            var nonCompliantButton = root.Q<Button>("NegativeButton");
+            var e = new NavigationSubmitEvent() { target = nonCompliantButton };
+            nonCompliantButton.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(shownDialog, "Confirmation dialog was not shown when changing from compliant to non-compliant");
+            Assert.AreEqual(inspectionWindowBuilder.NonCompliantConfirmationDialog, shownDialog, 
+                "Incorrect confirmation dialog was shown when changing from compliant to non-compliant");
+        }
+
+        /// <summary>
+        ///     Tests if correct confirmation dialog is shown when changing from non-compliant to compliant.
+        /// </summary>
+        [UnityTest, Order(18)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_NonCompliantToCompliant_ShowsConfirmationDialog()
+        {
+            // Arrange
+            ConfirmationDialogSO shownDialog = null;
+            inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
+            
+            yield return SetupPreviousInspection(isCompliant: false);
+
+            // Act
+            var compliantButton = root.Q<Button>("PositiveButton");
+            var e = new NavigationSubmitEvent() { target = compliantButton };
+            compliantButton.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(shownDialog, "Confirmation dialog was not shown when changing from non-compliant to compliant");
+            Assert.AreEqual(inspectionWindowBuilder.CompliantConfirmationDialog, shownDialog,
+                "Incorrect confirmation dialog was shown when changing from non-compliant to compliant");
+        }
+
+        /// <summary>
+        ///     Tests if notification is shown with correct message when attempting to mark as compliant when already compliant.
+        /// </summary>
+        [UnityTest, Order(19)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_AlreadyCompliant_ShowsNotification()
+        {
+            // Arrange
+            NotificationSO shownNotification = null;
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
+            
+            yield return SetupPreviousInspection(isCompliant: true, hasPhoto: true);
+
+            // Act
+            var compliantButton = root.Q<Button>("PositiveButton");
+            var e = new NavigationSubmitEvent() { target = compliantButton };
+            compliantButton.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(shownNotification, "Notification was not shown");
+            Assert.AreEqual("You have already reported this as compliant.", shownNotification.Message,
+                "Incorrect notification message was shown");
+            Assert.AreEqual(NotificationType.Info, shownNotification.NotificationType,
+                "Incorrect notification type was used");
+        }
+
+        /// <summary>
+        ///     Tests if notification is shown with correct message when attempting to mark as non-compliant when already non-compliant.
+        /// </summary>
+        [UnityTest, Order(20)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_AlreadyNonCompliant_ShowsNotification()
+        {
+            // Arrange
+            NotificationSO shownNotification = null;
+            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
+            
+            yield return SetupPreviousInspection(isCompliant: false, hasPhoto: true);
+
+            // Act
+            var nonCompliantButton = root.Q<Button>("NegativeButton");
+            var e = new NavigationSubmitEvent() { target = nonCompliantButton };
+            nonCompliantButton.SendEvent(e);
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(shownNotification, "Notification was not shown");
+            Assert.AreEqual("You have already reported this as non-compliant.", shownNotification.Message,
+                "Incorrect notification message was shown");
+            Assert.AreEqual(NotificationType.Info, shownNotification.NotificationType,
+                "Incorrect notification type was used");
+        }
+
+        /// <summary>
+        ///     Tests if confirmation dialog primary button click saves inspection and closes window.
+        /// </summary>
+        [UnityTest, Order(21)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionWindow_ConfirmationDialogPrimaryButton_SavesAndClosesWindow()
+        {
+            // Arrange
+            bool isInspectionSaved = false;
+            bool isWindowClosed = false;
+            inspectionWindowBuilder.OnInspectionLog.AddListener((data) => isInspectionSaved = true);
+            inspectionWindowBuilder.OnWindowClosed.AddListener((obj) => isWindowClosed = true);
+
+            yield return SetupPreviousInspection(isCompliant: true);
+
+            // Trigger confirmation dialog
+            var nonCompliantButton = root.Q<Button>("NegativeButton");
+            var e = new NavigationSubmitEvent() { target = nonCompliantButton };
+            nonCompliantButton.SendEvent(e);
+            yield return null;
+
+            // Act
+            inspectionWindowBuilder.OnConfirmationDialogPrimaryClicked();
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(isInspectionSaved, "Inspection was not saved after confirmation dialog primary button click");
+            Assert.IsTrue(isWindowClosed, "Window was not closed after confirmation dialog primary button click");
+        }
+
+        #endregion
+  
+        #region Helper Methods
+
+        /// <summary>
+        ///     Sets up a previous inspection with the specified compliance status.
+        /// </summary>
+        /// <param name="isCompliant">Whether the previous inspection should be marked as compliant.</param>
+        /// <param name="hasPhoto">Whether the previous inspection includes a photo.</param>
+        /// <returns>IEnumerator for test coroutine.</returns>
+        private IEnumerator SetupPreviousInspection(bool isCompliant, bool hasPhoto = false)
+        {
+            var inspection = new InspectionData(inspectable, isCompliant, hasPhoto);
+            inspectionWindowBuilder.UpdateInspectionLabel(inspection);
+            yield return null;
+        }
+
+        #endregion
     }
 }
-

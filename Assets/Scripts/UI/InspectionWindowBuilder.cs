@@ -60,6 +60,16 @@ namespace VARLab.DLX
         // Notification instance to be updated and reused.
         private NotificationSO notification;
 
+        // Confirmation dialogs
+        [Header("Confirmation Dialogs"), Space(10f)]
+        
+        [Tooltip("Confirmation dialog shown when changing from non-compliant to compliant")]
+        public ConfirmationDialogSO CompliantConfirmationDialog;
+        
+        [Tooltip("Confirmation dialog shown when changing from compliant to non-compliant")]
+        public ConfirmationDialogSO NonCompliantConfirmationDialog;
+        private ConfirmationDialogSO currentDialog;
+
         #endregion
 
         #region Events
@@ -118,6 +128,13 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<InspectableObject> PhotoConfirmed;
 
+        /// <summary>
+        ///     Unity Event that is triggered to show a confirmation dialog.
+        ///     This event is used when changing inspection status requires confirmation.
+        ///     <see cref="ConfirmationDialog.HandleDisplayUI"/>
+        /// </summary>
+        public UnityEvent<ConfirmationDialogSO> OnShowConfirmationDialog;
+
         [Header("Notification Event"), Space(10f)]
         [Tooltip("Invoked to display a notification. The event takes a NotificationSO as its parameter.")]
         public UnityEvent<NotificationSO> DisplayNotification;
@@ -135,6 +152,7 @@ namespace VARLab.DLX
             OnCompliantSelected ??= new();
             OnNonCompliantSelected ??= new();
             DisplayNotification ??= new UnityEvent<NotificationSO>();
+            OnShowConfirmationDialog ??= new();
 
             worldObjectRenderer = GetComponent<WorldObjectRenderer>();
 
@@ -239,6 +257,19 @@ namespace VARLab.DLX
             notification.Message = message;
         }
 
+        /// <summary>
+        ///     Displays a notification when an inspection with the same compliance status has already been reported.
+        /// </summary>
+        /// <param name="isCompliant">True if the inspection is marked as compliant, false if non-compliant.</param>
+        private void ShowOverlappedInspectionNotification(bool isCompliant)
+        {
+            string compliancy = isCompliant ? "compliant" : "non-compliant";
+            notification.NotificationType = NotificationType.Info;
+            notification.Message = $"You have already reported this as {compliancy}.";
+            notification.Alignment = Align.Center;
+            notification.FontSize = FontSize.Medium;
+            DisplayNotification?.Invoke(notification);
+        }
 
         /// <summary>
         ///     This method is called when the compliant button is clicked.
@@ -246,21 +277,35 @@ namespace VARLab.DLX
         /// </summary>
         private void CompliantSelected()
         {
-            // TODO: Check if this object already has an inspection.
-            // If true and value changed display modal.
-            // If false and value is the same display toast.
-
-            if (!CurrentInspectable.HasPhoto)
+            // If there is a previous inspection
+            if (previousInspectionData != null)
             {
-                ConfirmPhoto();
-            };
+                // If the previous inspection was compliant
+                if (previousInspectionData.IsCompliant)
+                {
+                    // If adding a photo to a compliant inspection without photo -> save directly
+                    if (!previousInspectionData.HasPhoto && photoTaken)
+                    {
+                        SaveInspectionAndNotify(true);
+                        return;
+                    }
+                    
+                    // If same state (no photo and no new photo taken, or already has photo)
+                    if (!photoTaken || previousInspectionData.HasPhoto)
+                    {
+                        ShowOverlappedInspectionNotification(true);
+                        return;
+                    }
+                }
 
-            OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, true, photoTaken));
-            OnCompliantSelected?.Invoke(CurrentInspectable);
+                // If changing from non-compliant -> show confirmation dialog
+                currentDialog = CompliantConfirmationDialog;
+                OnShowConfirmationDialog?.Invoke(currentDialog);
+                return;
+            }
 
-            SetUpNotification(true);
-            DisplayNotification?.Invoke(notification);
-            Hide();
+            // if there is no previous inspection, save the inspection and notify right away
+            SaveInspectionAndNotify(true);
         }
 
         /// <summary>
@@ -269,20 +314,61 @@ namespace VARLab.DLX
         /// </summary>
         private void NonCompliantSelected()
         {
-            // TODO: Check if this object already has an inspection.
-            // If true and value changed display modal.
-            // If false and value is the same display toast.
+            // if there is a previous inspection on this object,
+            if (previousInspectionData != null)
+            {
+                // If the previous inspection was non-compliant
+                if (!previousInspectionData.IsCompliant)
+                {
+                    // If adding a photo to a non-compliant inspection without photo -> save directly
+                    if (!previousInspectionData.HasPhoto && photoTaken)
+                    {
+                        SaveInspectionAndNotify(false);
+                        return;
+                    }
+                    
+                    // If same state (no photo and no new photo taken, or already has photo)
+                    if (!photoTaken || previousInspectionData.HasPhoto)
+                    {
+                        ShowOverlappedInspectionNotification(false);
+                        return;
+                    }
+                }
 
+                // If changing from compliant -> show confirmation dialog
+                currentDialog = NonCompliantConfirmationDialog;
+                OnShowConfirmationDialog?.Invoke(currentDialog);
+                return;
+            }
+
+            // if there is no previous inspection, save the inspection and notify right away
+            SaveInspectionAndNotify(false);
+        }
+
+        /// <summary>
+        ///     Saves the inspection data and displays a notification based on the compliance status.
+        ///     This method is called either directly from Compliant/NonCompliant selection
+        ///     or through the confirmation dialog's primary button click.
+        /// </summary>
+        /// <param name="isCompliant">Whether the inspection is marked as compliant or non-compliant.</param>
+        public void SaveInspectionAndNotify(bool isCompliant)
+        {
             if (!CurrentInspectable.HasPhoto)
             {
                 ConfirmPhoto();
             }
 
-            OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, false, photoTaken));
-            OnNonCompliantSelected?.Invoke(CurrentInspectable);
+            // set up the notification
+            SetUpNotification(isCompliant);
+            
+            // invoke the appropriate event
+            (isCompliant ? OnCompliantSelected : OnNonCompliantSelected)?.Invoke(CurrentInspectable);
 
-            SetUpNotification(false);
+            // save the inspection and display the notification
+            OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, isCompliant, photoTaken));
             DisplayNotification?.Invoke(notification);
+            
+            // hide the inspection window
             Hide();
         }
 
@@ -390,6 +476,19 @@ namespace VARLab.DLX
                 UIHelper.SetElementText(inspectionLabel, message);
             }
         }
+        
+        /// <summary>
+        ///     Saves the updated inspection status.
+        ///     Invoked by <see cref="ConfirmationDialog.OnPrimaryBtnClicked"/>
+        /// </summary>
+        public void OnConfirmationDialogPrimaryClicked()
+        {
+            if (currentDialog == null) return;
+
+            SaveInspectionAndNotify(currentDialog == CompliantConfirmationDialog);
+            currentDialog = null;
+        }
+
         #endregion
     }
 }
