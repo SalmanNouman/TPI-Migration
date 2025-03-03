@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8632924004192821381
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
+--- !u!114 &-4520525523146462165
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -28,7 +54,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Color_Map:
-        m_Texture: {fileID: 2800000, guid: 24dfe0a439f49b6488e77baece98b0ea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4e31439ed1e72454a9e2edccf86900e3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Map:
@@ -40,11 +66,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MRO_Map:
-        m_Texture: {fileID: 2800000, guid: 901dafc9d6c19be4d911fd712d003ede, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5cd00c10dcd8eb94aa6f3f67c923b4e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
-        m_Texture: {fileID: 2800000, guid: a6215ddeb15bc3d4291f2eead3529559, type: 3}
+        m_Texture: {fileID: 2800000, guid: 535ae4003ee9ec648bdd096fc56df06d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Three_Channel_Tint_Mask:
@@ -93,7 +119,7 @@ Material:
     - _Has_Blue_Channel_Tint: 0
     - _Has_Green_Channel_Tint: 0
     - _Has_Red_Channel_Tint: 0
-    - _Has_Rim_Lighting: 1
+    - _Has_Rim_Lighting: 0
     - _Invert_Blue_Channel_Mask: 0
     - _Invert_Green_Channel_Mask: 0
     - _Invert_Red_Channel_Mask: 0
@@ -138,29 +164,3 @@ Material:
     - _Roughness_Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5681269736737781238
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0
---- !u!114 &7364931188354734947
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
