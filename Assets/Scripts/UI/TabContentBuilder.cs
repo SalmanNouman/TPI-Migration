@@ -15,6 +15,15 @@ namespace VARLab.DLX
         [Tooltip("Empty container label")]
         [SerializeField] private string label;
 
+        [Tooltip("Sort Button One label")]
+        [SerializeField] private string sortButtonOneLabel;
+
+        [Tooltip("Sort Button Two label")]
+        [SerializeField] private string sortButtonTwoLabel;
+
+        [Tooltip("Sort Button Three label")]
+        [SerializeField] private string sortButtonThreeLabel;
+
         private VisualElement root;
         private VisualElement inspectionWindowTabContent;
 
@@ -25,6 +34,13 @@ namespace VARLab.DLX
         private VisualElement emptyContainerIcon;
         private Label emptyContainerLabel;
 
+        //Add references to the Sort Button Container and Buttons
+        public VisualElement SortBtnContainer;
+        private Button sortBtn1;
+        private Button sortBtn2;
+        private Button sortBtn3;
+        
+        
         private void Awake()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
@@ -38,6 +54,11 @@ namespace VARLab.DLX
 
             inspectionWindowTabContent = root.Q<VisualElement>("TabContent");
 
+            SortBtnContainer = LogContainer.Q<VisualElement>("SortButtonContainer");
+            sortBtn1 = LogContainer.Q<Button>("SortBtnOne");
+            sortBtn2 = LogContainer.Q<Button>("SortBtnTwo");
+            sortBtn3 = LogContainer.Q<Button>("SortBtnThree");
+
             SetContent();
         }
 
@@ -45,12 +66,16 @@ namespace VARLab.DLX
         {
             UIHelper.SetElementText(emptyContainerLabel, label);
             UIHelper.SetElementSprite(emptyContainerIcon, icon);
+            UIHelper.SetElementText(sortBtn1, sortButtonOneLabel);
+            UIHelper.SetElementText(sortBtn2, sortButtonTwoLabel);
+            UIHelper.SetElementText(sortBtn3, sortButtonThreeLabel);
         }
 
         public void TabSelected()
         {
             inspectionWindowTabContent.Clear();
             inspectionWindowTabContent.Add(LogContainer);
+            UIHelper.Hide(SortBtnContainer);
         }
 
         public void DisplayEmptyLogMessage()

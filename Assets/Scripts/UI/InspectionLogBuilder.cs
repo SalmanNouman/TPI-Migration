@@ -60,7 +60,6 @@ namespace VARLab.DLX
         /// </summary>
         private void PopulateInspectionTable()
         {
-
             ContentContainer.Add(table.Root);
             table.Root.style.flexGrow = 1;
             ContentContainer.Q<TemplateContainer>().style.flexGrow = 1;

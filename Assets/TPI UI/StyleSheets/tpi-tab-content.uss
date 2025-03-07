@@ -15,3 +15,30 @@
 	font-size: 24px;
 	margin-top: 45px;
 }
+
+.sort-button-container{
+	height: 90px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.active-button {
+    color: var(--active-button-colour);
+    background-color: var(--acitve-button-background-colour);
+    -unity-background-image-tint-color: var(--active-button-backgound-image-colour);
+}
+
+.inactive-button {
+    color: var(--inactive-button-colour);
+    background-color: var(--inacitve-button-background-colour);
+}
+
+.buttonSpacing {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.big-button-size {
+    height: 30px;
+    width: 160px;
+}
