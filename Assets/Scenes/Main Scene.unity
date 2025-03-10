@@ -25896,6 +25896,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &2112854328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6566826721599680105, guid: b6a03af152e3dd947b8f2311bec7b966,
+    type: 3}
+  m_PrefabInstance: {fileID: 609544561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c6cf92964149347a2c8adaf764422f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2123571563
 GameObject:
   m_ObjectHideFlags: 0
@@ -29791,6 +29803,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
       propertyPath: OnPhotoSaved.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -29816,12 +29833,37 @@ PrefabInstance:
       objectReference: {fileID: 510763945}
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2112854328}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetPhotoList
+      objectReference: {fileID: 0}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
       propertyPath: OnPhotoSaved.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.ActivityLog, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.GalleryBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
       propertyPath: OnPhotoSaved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
+        type: 3}
+      propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7189758273397344183, guid: 5a3b61378dca53544a3b4ae189c960ef,

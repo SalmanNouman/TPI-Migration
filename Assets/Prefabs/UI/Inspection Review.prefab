@@ -142,30 +142,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 5849049297039265951}
-        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLogBuilder, VARLab.DLX
-        m_MethodName: HandleDisplayActivityLog
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 4489627992422057268}
-        m_TargetAssemblyTypeName: VARLab.DLX.InspectionLogBuilder, VARLab.DLX
-        m_MethodName: HandleDisplayInspectionLog
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   OnHide:
     m_PersistentCalls:
       m_Calls:
@@ -229,12 +205,27 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 5849049297039265951}
-        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLogBuilder, VARLab.DLX
-        m_MethodName: HandleDisplayActivityLog
-        m_Mode: 6
+      - m_Target: {fileID: 6566826721599680105}
+        m_TargetAssemblyTypeName: VARLab.DLX.GalleryBuilder, VARLab.DLX
+        m_MethodName: DestroyTextures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnTabOneSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4489627992422057268}
+        m_TargetAssemblyTypeName: VARLab.DLX.TabContentBuilder, VARLab.DLX
+        m_MethodName: TabSelected
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -243,12 +234,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnTabOneSelected:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 4489627992422057268}
-        m_TargetAssemblyTypeName: VARLab.DLX.TabContentBuilder, VARLab.DLX
-        m_MethodName: TabSelected
+        m_TargetAssemblyTypeName: VARLab.DLX.InspectionLogBuilder, VARLab.DLX
+        m_MethodName: HandleDisplayInspectionLog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6566826721599680105}
+        m_TargetAssemblyTypeName: VARLab.DLX.GalleryBuilder, VARLab.DLX
+        m_MethodName: DestroyTextures
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -273,12 +273,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5849049297039265951}
+        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLogBuilder, VARLab.DLX
+        m_MethodName: HandleDisplayActivityLog
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6566826721599680105}
+        m_TargetAssemblyTypeName: VARLab.DLX.GalleryBuilder, VARLab.DLX
+        m_MethodName: DestroyTextures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTabThreeSelected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6566826721599680105}
         m_TargetAssemblyTypeName: VARLab.DLX.TabContentBuilder, VARLab.DLX
         m_MethodName: TabSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6566826721599680105}
+        m_TargetAssemblyTypeName: VARLab.DLX.GalleryBuilder, VARLab.DLX
+        m_MethodName: BuildGallery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -339,6 +375,19 @@ MonoBehaviour:
     type: 3}
   icon: {fileID: 21300000, guid: 17c778e34c8fc2f47be12d1e6726c037, type: 3}
   label: No photos taken at the moment.
+  galleryRow: {fileID: 9197481963319205126, guid: 100f0884f081b3542b7f8c8ac688b3c3,
+    type: 3}
+  galleryImage: {fileID: 9197481963319205126, guid: 818f00b4c95fe1f45a3f47bbbb0aff63,
+    type: 3}
+  DeletePhoto:
+    m_PersistentCalls:
+      m_Calls: []
+  SaveGallery:
+    m_PersistentCalls:
+      m_Calls: []
+  DeleteInspection:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6756688476131743376
 MonoBehaviour:
   m_ObjectHideFlags: 0

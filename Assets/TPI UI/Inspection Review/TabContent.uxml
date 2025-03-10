@@ -7,7 +7,7 @@
         <engine:VisualElement name="Icon" class="empty-container-icon" />
         <engine:Label text="[Empty container label.]" name="Label" class="m-0 p-0 empty-container-label" />
     </engine:VisualElement>
-    <engine:VisualElement name="Content" style="flex-grow: 1;">
+    <engine:VisualElement name="Content" class="p-12" style="flex-grow: 1;">
         <engine:VisualElement name="SortButtonContainer" class="sort-button-container display-hidden" style="flex-direction: row;">
             <engine:Button text="SortBtnOne" name="SortBtnOne" enabled="true" class="active-button buttonSpacing" style="width: 87px; height: 30px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: auto; left: auto; padding-top: 5px; padding-right: 34px; padding-bottom: 5px; padding-left: 34px; display: flex; margin-right: 10px; margin-left: 10px;" />
             <engine:Button name="SortBtnTwo" enabled="true" text="SortBtnTwo" class="buttonSpacing inactive-button big-button-size" style="width: 166px; height: 30px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; justify-content: center; align-self: stretch; margin-right: 10px; margin-left: 10px; white-space: pre-wrap; display: flex; right: auto; align-content: flex-start; align-items: stretch; top: auto; left: auto; flex-direction: row;" />

@@ -4,6 +4,7 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
     <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-review.uss?fileID=7433441132597879392&amp;guid=9788939653f0dd442872fa417ad37e8c&amp;type=3#tpi-inspection-review" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-navigation.uss?fileID=7433441132597879392&amp;guid=2d2ef40308c964a4a8d71ded2242774c&amp;type=3#velcro-navigation" />
     <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
         <engine:VisualElement name="Window" class="br-20 inspection-review">
             <engine:VisualElement name="Header" class="flex-row w-100">
@@ -39,40 +40,42 @@
                     </Kamgam.UIToolkitGlow.Glow>
                 </engine:VisualElement>
                 <engine:VisualElement name="TabLayout" class="inspection-review-body-tab-layout flex-column" style="flex-grow: 1;">
-                    <engine:VisualElement name="NavigationBar" class="flex-row justify-center align-items-center inspection-review-body-navigation-bar">
-                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabOne" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
-                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
-                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
-                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
-                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                    <engine:VisualElement name="TabHorizontal" class="navigation-horizontal">
+                        <engine:VisualElement name="TabButtonContainer" class="flex-row justify-center align-items-center" style="height: 105px; width: 100%;">
+                            <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabOne" class="align-items-center justify-center m-0 p-0 bw-0 navigation-horizontal-button" style="width: auto; min-width: 380px;">
+                                <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 navigation-horizontal-content-container" style="width: 380px;">
+                                    <engine:VisualElement name="Icon" class="navigation-horizontal-icon" style="background-image: none;" />
+                                    <engine:VisualElement name="LabelContainer">
+                                        <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="fw-400 fs-24 p-0 m-0 navigation-horizontal-label" />
+                                    </engine:VisualElement>
                                 </engine:VisualElement>
-                            </engine:VisualElement>
-                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
-                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
-                            </engine:VisualElement>
-                        </engine:Button>
-                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabTwo" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
-                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
-                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
-                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
-                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                                <engine:VisualElement name="BarContainer" class="w-100 navigation-horizontal-bar-container">
+                                    <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar navigation-horizontal-bar" />
                                 </engine:VisualElement>
-                            </engine:VisualElement>
-                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
-                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
-                            </engine:VisualElement>
-                        </engine:Button>
-                        <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabThree" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
-                            <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 content-container">
-                                <engine:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
-                                <engine:VisualElement name="LabelContainer" class="hide-overflow">
-                                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+                            </engine:Button>
+                            <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabTwo" class="align-items-center justify-center m-0 p-0 bw-0 navigation-horizontal-button" style="min-width: 380px;">
+                                <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 navigation-horizontal-content-container" style="width: 380px;">
+                                    <engine:VisualElement name="Icon" class="navigation-horizontal-icon" style="background-image: none;" />
+                                    <engine:VisualElement name="LabelContainer">
+                                        <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="fw-400 fs-24 p-0 m-0 navigation-horizontal-label" />
+                                    </engine:VisualElement>
                                 </engine:VisualElement>
-                            </engine:VisualElement>
-                            <engine:VisualElement name="BarContainer" class="navigation-bar-container w-100">
-                                <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
-                            </engine:VisualElement>
-                        </engine:Button>
+                                <engine:VisualElement name="BarContainer" class="w-100 navigation-horizontal-bar-container">
+                                    <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar navigation-horizontal-bar" />
+                                </engine:VisualElement>
+                            </engine:Button>
+                            <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabThree" class="align-items-center justify-center m-0 p-0 bw-0 navigation-horizontal-button" style="min-width: 380px;">
+                                <engine:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 navigation-horizontal-content-container" style="width: 380px;">
+                                    <engine:VisualElement name="Icon" class="navigation-horizontal-icon" style="background-image: none;" />
+                                    <engine:VisualElement name="LabelContainer">
+                                        <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="fw-400 fs-24 p-0 m-0 navigation-horizontal-label" />
+                                    </engine:VisualElement>
+                                </engine:VisualElement>
+                                <engine:VisualElement name="BarContainer" class="w-100 navigation-horizontal-bar-container">
+                                    <engine:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar navigation-horizontal-bar" />
+                                </engine:VisualElement>
+                            </engine:Button>
+                        </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement name="TabContent" class="w-100 h-100" style="flex-grow: 1;" />
                 </engine:VisualElement>

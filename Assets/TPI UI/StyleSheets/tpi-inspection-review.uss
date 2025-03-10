@@ -36,12 +36,11 @@
 .inspection-review-body-navigation-bar {
 	height:105px;
 	min-width: 100%;
-	background-color:  var(--navigation-default-background-color);
+	background-color:  var(--navigation-horizontal-background-colour);
 }
 
 .content-container{
-    background-color: var(--navigation-button-background-colour);
-    border-color: var(--navigation-button-background-colour);
+    background-color: var(--navigation-horizontal-button-colour-active);
     width: 380px;
     height: 80px;
 }
@@ -57,5 +56,19 @@
 	margin-left: 75px;
 	background-color:  var(--navigation-bottom-bar-default-color);
 	align-self: flex-end;
+}
+
+/* Image Gallery */
+
+.image-gallery-location-label {
+	padding-top: 0px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	padding-left: 1px;
+	margin-top: 0px;
+	margin-right: 4px;
+	margin-bottom: 22px;
+	margin-left: 2px;
+	color: var(--image-gallery-row-label-colour);
 }
 

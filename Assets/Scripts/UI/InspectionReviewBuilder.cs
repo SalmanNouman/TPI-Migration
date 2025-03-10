@@ -55,7 +55,7 @@ namespace VARLab.DLX
         private Button currentButton;
 
         // uss classes
-        private const string SelectedTab = "navigation-button-tab-selected";
+        private const string SelectedTab = "navigation-horizontal-button-selected";
         private const string FontRegular = "fw-400";
         private const string FontBold = "fw-700";
 

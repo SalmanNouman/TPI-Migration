@@ -123,7 +123,7 @@ namespace Tests.PlayMode
             tabOne = root.Q<Button>("TabOne");
             tabTwo = root.Q<Button>("TabTwo");
             tabThree = root.Q<Button>("TabThree");
-            string selectedTab = "navigation-button-tab-selected";
+            string selectedTab = "navigation-horizontal-button-selected";
 
             // Act
             inspectionReviewBuilder.Show();
@@ -151,7 +151,7 @@ namespace Tests.PlayMode
             tabOne = root.Q<Button>("TabOne");
             tabTwo = root.Q<Button>("TabTwo");
             tabThree = root.Q<Button>("TabThree");
-            string selectedTab = "navigation-button-tab-selected";
+            string selectedTab = "navigation-horizontal-button-selected";
 
             // Act
             inspectionReviewBuilder.Show();

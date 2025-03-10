@@ -1,0 +1,30 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-tab-content.uss?fileID=7433441132597879392&amp;guid=ef7902918bf7c934ca9e7edd792f3af4&amp;type=3#tpi-tab-content" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <engine:VisualElement name="CardContainer" class="tpi-card-v5-container-base tpi-card-v5-container-image-only">
+        <VARLab.Velcro.BoxShadowManager blur-width="4" offset-y="4" name="TopShadow" class="br-tl-20 br-tr-20 card-v5-top-shadow card-v5-shadow-variables">
+            <engine:VisualElement name="TopContainer">
+                <engine:VisualElement name="Top" class="card-v5-top br-tl-20 br-tr-20 bw-t-2 bw-l-2 bw-r-2 justify-center">
+                    <engine:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="p-0 card-v5-top-label fs-40 fw-700 mt-0 mr-0 mb-0 ml-20" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </VARLab.Velcro.BoxShadowManager>
+        <engine:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center" style="min-height: 130px; height: 130px;">
+            <engine:Button name="ImageButton" class="p-0 m-0" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); width: 100%; height: 130px;">
+                <engine:VisualElement name="Image" class="align-self-center w-100 h-100 tpi-card-v5-body-image" style="height: 130px;" />
+            </engine:Button>
+        </engine:VisualElement>
+        <engine:VisualElement name="Bottom" class="br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2 tpi-card-v5-bottom">
+            <engine:Label tabindex="-1" text="[PrimaryLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="fw-700 card-v5-bottom-default-primarylabel text-no-wrap fs-16 p-0 m-0" />
+            <engine:VisualElement name="Tag" class="br-10 align-items-center mt-4 tpi-card-v5-bottom-default-tag">
+                <engine:Label tabindex="-1" text="00:00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TagText" class="m-0 p-0 card-v5-bottom-default-tag-label fw-400 text-no-wrap fs-16" />
+            </engine:VisualElement>
+            <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" class="p-0 m-0 justify-center align-items-center icon-noborders bw-0 icon-xsmall" style="position: absolute; right: 18px; bottom: 18px; -unity-background-scale-mode: scale-to-fit;">
+                <engine:VisualElement name="Image" class="icon-image icon-image-noborders icon-image-xsmall" style="background-image: url(&quot;project://database/Assets/VELCRO%20UI/Sprites/Icons/Trash_Sprite.png?fileID=21300000&amp;guid=1f61a58e55dfc7441af73545c78d52fe&amp;type=3#Trash_Sprite&quot;); width: 24px; height: 24px;" />
+            </engine:Button>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

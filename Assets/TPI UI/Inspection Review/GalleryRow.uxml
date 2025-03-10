@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-review.uss?fileID=7433441132597879392&amp;guid=9788939653f0dd442872fa417ad37e8c&amp;type=3#tpi-inspection-review" />
+    <engine:VisualElement name="Row" class="mb-20">
+        <engine:Label text="[Loaction]" name="LocationLabel" class="image-gallery-location-label fs-24" />
+        <engine:VisualElement name="ImageScroll" class="grow flex-row" style="flex-wrap: wrap;" />
+    </engine:VisualElement>
+</engine:UXML>

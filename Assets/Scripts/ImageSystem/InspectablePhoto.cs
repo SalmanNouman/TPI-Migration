@@ -26,6 +26,19 @@ namespace VARLab.DLX
             Location = location;
             Timestamp = timestamp;
         }
+
+        public string ParseNameFromID(string id) 
+        {
+            string[] split = id.Split('_');
+            if (split.Length == 1)
+            {
+                return split[0];
+            }
+            else
+            {
+                return split[1];
+            }
+        }
     }
 }
 

@@ -19,7 +19,7 @@ namespace VARLab.DLX
 
         // Render texture settings
         private const int ResWidth = 770;
-        private const int ResHeight = 580;
+        private const int ResHeight = 486;
         private const int ResDepth = 16;
 
         /// <summary>
@@ -38,6 +38,8 @@ namespace VARLab.DLX
         /// Invoked when a photo is deleted
         /// </summary>
         public UnityEvent OnPhotoDeleted;
+
+        public UnityEvent<List<InspectablePhoto>> OnPhotoListChanged;
 
         private void Awake()
         {
@@ -119,6 +121,8 @@ namespace VARLab.DLX
 
             OnPhotoSaved?.Invoke(obj);
 
+            OnPhotoListChanged?.Invoke(Photos);
+
             tempPhoto = null;
         }
 
@@ -137,6 +141,8 @@ namespace VARLab.DLX
             Photos.RemoveAt(index);
 
             OnPhotoDeleted?.Invoke();
+
+            OnPhotoListChanged?.Invoke(Photos);
             return true;
         }
 

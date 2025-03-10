@@ -39,8 +39,8 @@ namespace VARLab.DLX
         private Button sortBtn1;
         private Button sortBtn2;
         private Button sortBtn3;
-        
-        
+
+
         private void Awake()
         {
             root = GetComponent<UIDocument>().rootVisualElement;

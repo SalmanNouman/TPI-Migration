@@ -42,3 +42,37 @@
     height: 30px;
     width: 160px;
 }
+
+/* Image Galley Image */
+
+.tpi-card-v5-container-base {
+    width: 210px;
+    height: 195px;
+    border-color: var(--card-v5-border-colour);
+}
+
+.tpi-card-v5-container-image-only { /* Create variant of card v5 without top bar and default bottom section when used in conjunction with base container class */
+    --card-v5-top-display: none;
+    --card-v5-camera-icon-display: none;
+    --card-v5-bottom-default-display: flex;
+    --card-v5-bottom-buttons-display: none;
+    --card-v5-body-border-radius: 15px;
+}
+
+.tpi-card-v5-body-image {
+    height: 135px;
+    -unity-background-scale-mode: scale-and-crop;
+} 
+
+.tpi-card-v5-bottom {
+    height: 70px;
+    padding: 10px;
+    border-color: var(--card-v5-border-colour);
+    background-color: var(--card-v5-background-colour);
+}
+
+.tpi-card-v5-bottom-default-tag {
+    background-color: var(--card-v5-tag-background-colour);
+    width: 73px;
+    height: 17px;
+}
