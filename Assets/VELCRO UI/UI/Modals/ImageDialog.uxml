@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <ui:Template name="Button-Primary-Large" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Primary/Button-Primary-Large.uxml?fileID=9197481963319205126&amp;guid=47282cdbd7717774691bb11a42a24414&amp;type=3#Button-Primary-Large" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-informationdialog.uss?fileID=7433441132597879392&amp;guid=e4a78a6c8096c304094a2d95cc82e461&amp;type=3#velcro-informationdialog" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <ui:VisualElement name="Canvas" class="grow align-items-center justify-center image-dialog-canvas">
+        <ui:VisualElement name="ImageDialog" class="br-20 image-dialog">
+            <ui:Instance template="Header" name="Header" />
+            <ui:VisualElement name="Content" class="flex-row pt-40 pl-40 pr-40 grow">
+                <ui:VisualElement name="ImageContainer" class="mt-24 mr-32 justify-center">
+                    <ui:VisualElement name="ImageBackground" class="justify-center align-items-center image-dialog-image-background">
+                        <ui:VisualElement name="Image" class="image-dialog-image" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="TextContainer" class="grow mt-24">
+                    <ui:VisualElement name="TitleContainer">
+                        <ui:Label text="[Title]" name="TitleLabel" class="m-0 p-0 fw-700 fs-36 text-wrap image-dialog-label-title" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DescriptionContainer" class="grow mt-16 mb-16">
+                        <ui:Label text="[Description]" name="DescriptionLabel" class="m-0 p-0 fw-400 fs-24 text-wrap image-dialog-label-description" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SubDescriptionContainer" class="mt-16 mb-16">
+                        <ui:Label text="[SubDescription]" name="SubDescriptionLabel" class="m-0 p-0 fw-400 fs-28 text-wrap image-dialog-label-sub-description" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="NoteContainer" class="flex-row">
+                        <ui:VisualElement name="NoteImage" class="mr-12 image-dialog-image-note" />
+                        <ui:Label text="[Note]" name="NoteLabel" class="m-0 p-0 fw-400 fs-24 text-wrap image-dialog-label-note" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Footer" class="align-items-center m-40">
+                <ui:Instance template="Button-Primary-Large" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

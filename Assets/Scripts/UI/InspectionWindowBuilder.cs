@@ -62,10 +62,10 @@ namespace VARLab.DLX
 
         // Confirmation dialogs
         [Header("Confirmation Dialogs"), Space(10f)]
-        
+
         [Tooltip("Confirmation dialog shown when changing from non-compliant to compliant")]
         public ConfirmationDialogSO CompliantConfirmationDialog;
-        
+
         [Tooltip("Confirmation dialog shown when changing from compliant to non-compliant")]
         public ConfirmationDialogSO NonCompliantConfirmationDialog;
         private ConfirmationDialogSO currentDialog;
@@ -289,7 +289,7 @@ namespace VARLab.DLX
                         SaveInspectionAndNotify(true);
                         return;
                     }
-                    
+
                     // If same state (no photo and no new photo taken, or already has photo)
                     if (!photoTaken || previousInspectionData.HasPhoto)
                     {
@@ -326,7 +326,7 @@ namespace VARLab.DLX
                         SaveInspectionAndNotify(false);
                         return;
                     }
-                    
+
                     // If same state (no photo and no new photo taken, or already has photo)
                     if (!photoTaken || previousInspectionData.HasPhoto)
                     {
@@ -360,14 +360,14 @@ namespace VARLab.DLX
 
             // set up the notification
             SetUpNotification(isCompliant);
-            
+
             // invoke the appropriate event
             (isCompliant ? OnCompliantSelected : OnNonCompliantSelected)?.Invoke(CurrentInspectable);
 
             // save the inspection and display the notification
             OnInspectionLog?.Invoke(new InspectionData(CurrentInspectable, isCompliant, photoTaken));
             DisplayNotification?.Invoke(notification);
-            
+
             // hide the inspection window
             Hide();
         }
@@ -476,7 +476,7 @@ namespace VARLab.DLX
                 UIHelper.SetElementText(inspectionLabel, message);
             }
         }
-        
+
         /// <summary>
         ///     Saves the updated inspection status.
         ///     Invoked by <see cref="ConfirmationDialog.OnPrimaryBtnClicked"/>

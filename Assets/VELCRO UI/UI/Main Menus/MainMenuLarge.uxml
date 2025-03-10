@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Button-Menu-Primary" src="project://database/Assets/VELCRO%20UI/UI/Main%20Menus/Button-Menu-Primary.uxml?fileID=9197481963319205126&amp;guid=2210fe1ed1c37dc42a053bd015162d3a&amp;type=3#Button-Menu-Primary" />
+    <ui:Template name="Button-Menu-Secondary" src="project://database/Assets/VELCRO%20UI/UI/Main%20Menus/Button-Menu-Secondary.uxml?fileID=9197481963319205126&amp;guid=43c494cd13d5b0f4eafa81541cb7e747&amp;type=3#Button-Menu-Secondary" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-main-menu.uss?fileID=7433441132597879392&amp;guid=69b3f4f2faceedf4f88550b7f1d1599b&amp;type=3#velcro-main-menu" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <ui:VisualElement name="Canvas" class="grow w-100 align-items-center justify-center menu-large-canvas">
+        <ui:VisualElement name="TitleContainer" class="menu-large-title-container">
+            <ui:VisualElement name="Title">
+                <ui:VisualElement name="Top" class="menu-large-title-top" />
+                <ui:VisualElement name="Bottom" class="menu-large-title-bottom absolute" />
+                <ui:Label tabindex="-1" text="[TitleLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="p-0 m-0 fw-700 absolute menu-large-label-title ml-8" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Bar" class="mt-8 menu-large-title-bar" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButonContainer" class="grow justify-center align-items-center">
+            <ui:Instance template="Button-Menu-Primary" name="Button-Menu-Primary" class="m-20" />
+            <ui:Instance template="Button-Menu-Secondary" name="Button-Menu-Secondary" class="m-20" />
+            <ui:Instance template="Button-Menu-Secondary" name="Button-Menu-Secondary" class="m-20" />
+            <ui:Instance template="Button-Menu-Secondary" name="Button-Menu-Secondary" class="m-20" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" class="w-100 menu-large-footer justify-center align-items-center flex-row">
+            <ui:VisualElement name="Logo" class="menu-large-footer-logo" />
+            <ui:VisualElement name="Bar" class="menu-large-footer-bar mt-16 mb-16 mr-20" />
+            <ui:Label tabindex="-1" text="CENTRE FOR VIRTUAL&#10;REALITY INNOVATION" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OrganizationLabel" class="p-0 m-0 menu-large-label-organization fw-400 fs-16" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

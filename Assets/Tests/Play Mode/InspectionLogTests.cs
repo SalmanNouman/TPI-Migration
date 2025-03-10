@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
@@ -100,6 +101,54 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.AreEqual(displayStyle, inspectionLogBuilder.ContentContainer.style.display.ToString().Trim());
+        }
+
+        [UnityTest, Order(3)]
+        [Category("BuildServer")]
+        public IEnumerator WhenRowRemovedInvokeDeleteInspection()
+        {
+            // Arrange
+            bool eventTriggered = false; //flag to indicate whether deleteInspection was fired
+            string capturedObjectId = ""; //holds objectId when event is triggered
+            inspectionLogBuilder.DeleteInspection = new UnityEvent<string>(); //subcribe to deleteInspection
+            //when event fires, it sets eventTriggered to true and assigns the passed id to captured object ID
+            inspectionLogBuilder.DeleteInspection.AddListener(id => { eventTriggered = true; capturedObjectId = id; });
+
+            //gets list to store in inspectionList
+            inspectionLogBuilder.GetInspectionList(inspectionList);
+            //does display
+            inspectionLogBuilder.HandleDisplayInspectionLog();
+            yield return new WaitForSeconds(0.2f);
+
+            // Create a TableEntry instance.
+            TableEntry tableEntry = new TableEntry();
+
+            // reflection is used to access a private field, used in this case to get elements inside table entry class
+            var elementsField = typeof(TableEntry).GetField("elements", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Assert.IsNotNull(elementsField, "Could not find the private field 'elements' in TableEntry.");//makes sure not null
+
+            // Create and assign a new list with test data.
+            var testElements = new List<TableElement>
+            {
+                new TableElement { Text = "Reception" },  // Column 0: Location
+                new TableElement { Text = "Test" }          // Column 1: Item Name
+            };
+            elementsField.SetValue(tableEntry, testElements);
+
+            // Act
+            // Invoke the private OnRowRemoved method using reflection.
+            var onRowRemovedMethod = typeof(InspectionLogBuilder)
+                .GetMethod("OnRowRemoved", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Assert.IsNotNull(onRowRemovedMethod, "Could not find the private method OnRowRemoved.");
+
+            onRowRemovedMethod.Invoke(inspectionLogBuilder, new object[] { tableEntry });
+
+            // Wait a frame for events to process.
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventTriggered, "DeleteInspection event was not triggered.");
+            Assert.AreEqual("Reception_Test", capturedObjectId, "The objectId passed to DeleteInspection is incorrect.");
         }
     }
 }

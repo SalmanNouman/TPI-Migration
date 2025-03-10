@@ -1,17 +1,8 @@
+/* ===============================================
+Settings menu shared classes
+=============================================== */  
 .settings-menu-canvas {
 	background-color: var(--canvas-dim-colour);
-}
-
-.settings-menu-simple {
-    width: 850px;
-    height: 500px;
-    background-color: var(--settings-menu-background-colour);
-}
-
-.settings-menu-complex {
-    width: 1080px;
-    height: 747px;
-    background-color: var(--settings-menu-background-colour);
 }
 
 .settings-menu-btn-close-container {
@@ -24,12 +15,6 @@
     margin-right: 80px;
 }
 
-.body-complex {
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-bottom: 80px;
-}
-
 .body-label {
     color: var(--settings-menu-secondary-text-colour);
 }
@@ -37,6 +22,34 @@
 .body-slidecontainer {
     width: 300px;
     height: 40px;
+}
+
+
+
+/* ===============================================
+Settings menu simple classes
+=============================================== */  
+.settings-menu-simple {
+    width: 850px;
+    height: 500px;
+    background-color: var(--settings-menu-background-colour);
+}
+
+
+
+/* ===============================================
+Settings menu complex classes
+=============================================== */  
+.settings-menu-complex {
+    width: 1080px;
+    height: 747px;
+    background-color: var(--settings-menu-background-colour);
+}
+
+.body-complex {
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 80px;
 }
 
 .body-volume-down {

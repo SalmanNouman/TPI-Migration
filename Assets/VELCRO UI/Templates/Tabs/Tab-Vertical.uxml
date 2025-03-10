@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-navigation.uss?fileID=7433441132597879392&amp;guid=2d2ef40308c964a4a8d71ded2242774c&amp;type=3#velcro-navigation" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <ui:VisualElement name="TabVertical" class="br-20 navigation-vertical h-100">
+        <Kamgam.UIToolkitGlow.Glow name="Glow" width-left="-1" width="1" outer-color="#FFCD2900" inner-color="#FFCD29BF" split-width="true" width-right="3.5" width-bottom="6.5" width-top="-1" overlap-width="0" class="grow br-20">
+            <ui:VisualElement name="TabButtonContainer" class="grow navigation-vertical-container" />
+        </Kamgam.UIToolkitGlow.Glow>
+    </ui:VisualElement>
+</ui:UXML>

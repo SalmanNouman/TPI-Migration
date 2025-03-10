@@ -1,4 +1,6 @@
-/* Shared Classes */
+/* ===============================================
+Toast shared classes
+=============================================== */  
 .toast-animation {
     transition-duration: 0.75s;
     transition-property: opacity, translate;
@@ -36,7 +38,11 @@
     -unity-background-image-tint-color: var(--toast-close-button-image-hover-colour);
 }
 
-/* Simple Toast Classes */
+
+
+/* ===============================================
+Toast simple classes
+=============================================== */  
 .toast-simple {
     background-color: var(--toast-background-colour);
     min-width: 900px;
@@ -56,7 +62,11 @@
     max-height: 36px;
 }
 
-/* Complex Toast Classes */
+
+
+/* ===============================================
+Toast complex classes
+=============================================== */  
 .toast-complex {
     background-color: var(--toast-background-colour);
     min-width: 900px;

@@ -1,3 +1,15 @@
+/* ===============================================
+Status tag shared classes
+=============================================== */
+.status-label {
+	color: var(--progress-status-label-text-color);
+}
+
+
+
+/* ===============================================
+Status tag style 1 classes
+=============================================== */
 .status-v1 {
 	width: 180px;
 	height: 45px;
@@ -15,10 +27,11 @@
 	background-color: var(--progress-status-completed-background-color);
 }
 
-.status-label {
-	color: var(--progress-status-label-text-color);
-}
 
+
+/* ===============================================
+Status tag style 2 classes
+=============================================== */
 .status-v2 {
 	width: 300px;
 	height: 30px;

@@ -2,15 +2,15 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-navigation.uss?fileID=7433441132597879392&amp;guid=2d2ef40308c964a4a8d71ded2242774c&amp;type=3#velcro-navigation" />
-    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonTabHorizontal" class="align-items-center justify-center m-0 p-0 bw-0 navigation-button-tab">
-        <ui:VisualElement name="ContentContainer" class="content-container flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4">
-            <ui:VisualElement name="Icon" class="content-icon" style="background-image: none;" />
-            <ui:VisualElement name="LabelContainer" class="hide-overflow">
-                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="content-label fw-400 fs-24 p-0 m-0" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonTabHorizontal" class="align-items-center justify-center m-0 p-0 bw-0 navigation-horizontal-button">
+        <ui:VisualElement name="ContentContainer" class="flex-row align-items-center justify-center bw-0 br-10 grow w-100 ml-8 mr-8 mb-4 navigation-horizontal-content-container">
+            <ui:VisualElement name="Icon" class="navigation-horizontal-icon" style="background-image: none;" />
+            <ui:VisualElement name="LabelContainer">
+                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" text="[TabLabel]" class="fw-400 fs-24 p-0 m-0 navigation-horizontal-label" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="BarContainer" class="navigation-bar-container w-100">
-            <ui:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar" />
+        <ui:VisualElement name="BarContainer" class="w-100 navigation-horizontal-bar-container">
+            <ui:VisualElement name="BottomBar" class="w-100 navigation-bottom-bar navigation-horizontal-bar" />
         </ui:VisualElement>
     </ui:Button>
 </ui:UXML>

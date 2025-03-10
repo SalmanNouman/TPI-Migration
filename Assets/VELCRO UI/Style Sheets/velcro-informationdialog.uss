@@ -1,3 +1,6 @@
+/* ===============================================
+Information modal classes with no image
+=============================================== */ 
 .information-dialog {
     background-color: var(--information-dialog-background-colour);
     max-width: 1000px;
@@ -20,4 +23,57 @@
 
 .information-dialog-description-label {
     color: var(--information-dialog-description-label-colour);
+}
+
+
+
+/* ===============================================
+Information modal classes with an image
+=============================================== */ 
+.image-dialog {
+    background-color: var(--image-dialog-background-colour);
+    max-width: 1025px;
+    min-width: 1025px;
+    min-height: 585px;
+}
+
+.image-dialog-canvas {
+	background-color: var(--canvas-dim-colour);
+}
+
+.image-dialog-image-background {
+    background-image: var(--image-dialog-image-background);
+    -unity-background-image-tint-color: var(--image-dialog-image-background-tint-colour);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 200px;
+    height: 300px;
+}
+
+.image-dialog-image {
+    -unity-background-scale-mode: scale-to-fit;
+    width: 190px;
+    height: 290px;
+}
+
+.image-dialog-image-note {
+    -unity-background-image-tint-color: var(--image-dialog-image-note-background-tint-colour);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 32px;
+    height: 32px;
+}
+
+.image-dialog-label-title {
+    color: var(--image-dialog-label-title-colour);
+}
+
+.image-dialog-label-description {
+    color: var(--image-dialog-label-description-colour);
+}
+
+.image-dialog-label-sub-description {
+    color: var(--image-dialog-label-sub-description-colour);
+}
+
+.image-dialog-label-note {
+    color: var(--image-dialog-label-note-colour);
 }

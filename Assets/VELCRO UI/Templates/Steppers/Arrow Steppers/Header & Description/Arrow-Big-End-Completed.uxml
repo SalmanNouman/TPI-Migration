@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-steppers.uss?fileID=7433441132597879392&amp;guid=9c7a4f35d845a2d4b8da8894b698f41b&amp;type=3#velcro-steppers" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <ui:VisualElement name="ArrowEnd" class="arrow arrow-big w-100">
+        <ui:VisualElement name="Background" class="arrrow-background-completed arrow arrrow-background-end arrow-big w-100">
+            <ui:VisualElement name="Border" class="absolute justify-center arrrow-border-completed pl-28 pr-28 arrow arrrow-border-end arrow-big w-100">
+                <ui:VisualElement name="HeaderContainer">
+                    <ui:Label tabindex="-1" text="[HeaderLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Headerlabel" class="m-0 p-0 fw-700 fs-28 text-align-middle-left arrow-label-header-completed" />
+                </ui:VisualElement>
+                <ui:VisualElement name="DescriptionContainer">
+                    <ui:Label tabindex="-1" text="[DescriptionLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DescriptionLabel" class="m-0 p-0 fw-400 fs-20 text-align-middle-left arrow-label-description-completed" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

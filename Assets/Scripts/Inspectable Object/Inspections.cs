@@ -54,11 +54,11 @@ namespace VARLab.DLX
         /// </summary>
         /// <param name="obj">The inspectable object to look for</param>
         /// <returns>Returns the InspectionData if found, otherwise null.</returns>
-        public InspectionData CheckInspection(InspectableObject obj)
+        public InspectionData CheckInspection(string obj)
         {
             // Searches the list for InspectionData where obj.ObjectId matches the given obj.ObjectId
-            var inspection = InspectionsList.Find(i => i.Obj.ObjectId == obj.ObjectId);
-            Debug.Log($"[CheckInspection] Checking {obj.Name} (ID: {obj.ObjectId}), Found: {inspection != null}");
+            var inspection = InspectionsList.Find(i => i.Obj.ObjectId == obj);
+            //Debug.Log($"[CheckInspection] Checking {inspection.Obj.Name} (ID: {inspection.Obj.ObjectId}), Found: {inspection != null}");
             return inspection;
         }
 
@@ -69,7 +69,7 @@ namespace VARLab.DLX
         /// <param name="obj">The inspectable object to retrieve previous inspection data for.</param>
         public void RetrievePreviousInspection(InspectableObject obj)
         {
-            var inspection = CheckInspection(obj);
+            var inspection = CheckInspection(obj.ObjectId);
             OnPreviousInspectionRetrieved?.Invoke(inspection);
         }
 
@@ -115,13 +115,14 @@ namespace VARLab.DLX
         ///     Removes an inspection record for the given object if it exists.
         /// </summary>
         /// <param name="obj">The inspectable object whose inspection should be removed.</param>
-        public void DeleteInspection(InspectableObject obj)
+        public void DeleteInspection(string obj)
         {
             var inspectionToRemove = CheckInspection(obj);
 
             if (inspectionToRemove != null)
             {
                 InspectionsList.Remove(inspectionToRemove);
+                OnInspectionCompleted?.Invoke(InspectionsList);
             }
         }
 

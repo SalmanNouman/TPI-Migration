@@ -1,41 +1,159 @@
-.main-menu {
+/* ===============================================
+Smaller in scene main menu with dimmed background
+=============================================== */  
+.menu-small-canvas {
+	background-color: var(--canvas-dim-colour);
+}
+
+.menu-small {
     min-height: 300px; 
-    background-color: var(--main-menu-background-color);
+    background-color: var(--main-menu-small-background-colour);
     overflow: hidden;
     min-width: 750px; /* Width of menu which contains two cards, below this scaling with icon & tag becomes problematic */
 }
 
-.main-menu-primary-label {
-    color: var(--main-menu-primary-text-color);
-    overflow: hidden;
+.menu-small-tag-container {
+    top: 52px;
+    right: 50px;
+    min-height: 65px;
 }
 
-.main-menu-tag-label {
-    color: var(--main-menu-tag-text-color);
+.menu-small-label-project {
+    color: var(--main-menu-small-label-project-colour);
     overflow: hidden;
     flex-shrink: 1; /* Prevents this label from causing tag icon to squeeze, forces it to wrap when container width is used up */
 }
 
-.main-menu-tag {
-    top: 52px;
-    right: 50px;
-    max-width: 330px; 
-    height: 65px;
+.menu-small-label-description {
+    color: var(--main-menu-small-label-description-colour);
+    overflow: hidden;
+    flex-shrink: 1; /* Prevents this label from causing tag icon to squeeze, forces it to wrap when container width is used up */
 }
 
-.main-menu-body {
+.menu-small-tag-icon { /* Change this to point to whichever icon you like, and customize size to match */
+    background-image: var(--main-menu-small-icon-sprite); 
+    -unity-background-scale-mode: scale-to-fit;
+    width: 52px;
+    height: 61px;
+}
+
+.menu-small-body {
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 115px;
 }
 
-.main-menu-tag-icon { /* Change this to point to whichever icon you like, and customize size to match */
-    width: 52px;
-    height: 61px;
-    background-image: var(--main-menu-demo-icon-image); 
-}
-
-.main-menu-card-seperation { /* Currently how cards maintain even spacing, added to each card in menu template. This can be changed/removed entierly if desired */
+.menu-small-card-seperation { /* Currently how cards maintain even spacing, added to each card in menu template. This can be changed/removed entierly if desired */
     margin-left: 25px;
     margin-right: 25px;
+}
+
+
+
+/* ===============================================
+Larger main menu with fullscreen image background
+=============================================== */
+.menu-large-canvas {
+    background-image: var(--main-menu-large-background-sprite);
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.menu-large-footer {
+    background-color: var(--main-menu-large-footer-background-colour);
+    min-height: 80px;
+    bottom: 0px;
+}
+
+.menu-large-footer-logo {
+    background-image: var(--image-conestoga-logo);
+    -unity-background-scale-mode: scale-to-fit;
+    min-height: 80px;
+    min-width: 234px;
+}
+
+.menu-large-button {
+    min-width: 970px;
+    min-height: 80px;
+    margin: 20px;
+}
+
+/* These buttons use the primary button colours */
+.menu-large-button-primary {
+    border-color: var(--colour-button-primary-border-default);
+    background-color: var(--colour-button-primary-default);
+    color: var(--colour-text-primary-default);
+}
+
+.menu-large-button-primary:hover:enabled {
+    border-color: var(--colour-button-primary-border-hover);
+    background-color: var(--colour-button-primary-hover);
+    color: var(--colour-text-primary-hover);
+}
+
+.menu-large-button-primary:disabled {
+    background-color: var(--colour-button-primary-disabled);
+    border-color: var(--colour-button-primary-disabled);
+    color: var(--colour-text-primary-disabled);
+    opacity: 1;
+}
+
+/* These buttons use the secondary 1 button colours for dark mode but the secondary 2 
+colours for light modee, so I had to define new variables in the theme files */
+.menu-large-button-secondary {
+    background-color: var(--main-menu-large-button-secondary-default);
+    border-color: var(--main-menu-large-button-secondary-border-default);
+    color: var(--main-menu-large-button-secondary-label-default);
+}
+
+.menu-large-button-secondary:hover:enabled {
+    background-color: var(--main-menu-large-button-secondary-hover);
+    border-color: var(--main-menu-large-button-secondary-border-hover);
+    color: var(--main-menu-large-button-secondary-label-hover);
+}
+
+.menu-large-button-secondary:disabled {
+    background-color: var(--main-menu-large-button-secondary-disabled);
+    border-color: var(--main-menu-large-button-secondary-border-disabled);
+    color: var(--main-menu-large-button-secondary-label-disabled);
+    opacity: 1;
+}
+
+.menu-large-label-title {
+    color: var(--main-menu-large-title-label-colour);
+    font-size: 96px;
+}
+
+.menu-large-title-bar {
+    background-color: var(--main-menu-large-title-bar-colour);
+    width: 1260px;
+    min-height: 15px;
+}
+
+.menu-large-title-top {
+    background-image: var(--main-menu-large-title-top-sprite);
+    -unity-background-image-tint-color: var(--main-menu-large-title-background-1-colour);
+    min-width: 1350px;
+    min-height: 120px;
+}
+
+.menu-large-title-bottom {
+    background-image: var(--main-menu-large-title-bottom-sprite);
+    -unity-background-image-tint-color: var(--main-menu-large-title-background-2-colour);
+    min-width: 1315px;
+    min-height: 60px;
+    bottom: 0px;
+}
+
+.menu-large-title-container {
+    margin-top: 110px;
+}
+
+.menu-large-label-organization {
+    color: var(--main-menu-large-footer-label-colour);
+}
+
+.menu-large-footer-bar {
+    background-color: var(--main-menu-large-footer-bar-colour);
+    min-width: 2px;
+    min-height: 48px;
 }

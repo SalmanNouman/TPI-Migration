@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-navigation.uss?fileID=7433441132597879392&amp;guid=2d2ef40308c964a4a8d71ded2242774c&amp;type=3#velcro-navigation" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonTabVertical" class="pl-40 pr-40 pt-12 pb-12 flex-row justify-center align-items-center bw-0 navigation-vertical-button m-0 mt-12 mb-12">
+        <ui:VisualElement name="ImageContainer" class="mr-12">
+            <ui:VisualElement name="Icon" class="navigation-vertical-sprite" style="background-image: url(&apos;project://database/Assets/VELCRO%20UI/Sprites/Icons/Default_Sprite.png?fileID=2800000&amp;guid=df9d3b26fba07f7439a7da691d26807d&amp;type=3#Default_Sprite&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LabelContainer" class="grow">
+            <ui:Label tabindex="-1" text="[TablLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TabLabel" class="m-0 p-0 fw-700 fs-24 navigation-vertical-label text-wrap text-align-middle-center" />
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

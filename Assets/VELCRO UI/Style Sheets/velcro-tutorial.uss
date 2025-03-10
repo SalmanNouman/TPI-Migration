@@ -1,0 +1,97 @@
+/* ===============================================
+Tutorial container classes
+=============================================== */ 
+.tutorial {
+    background-color: var(--tutorial-background-colour);
+    border-color: var(--tutorial-border-colour);
+    max-width: 1150px;
+    min-width: 1150px;
+    min-height: 955px;
+}
+
+.tutorial-canvas {
+	background-color: var(--canvas-dim-colour);
+}
+
+.tutorial-image {
+    min-height: 545px;
+}
+
+.tutorial-label-step-container {
+    right: 0px;
+}
+
+.tutorial-label-step {
+    color: var(--tutorial-label-step-colour);
+}
+
+.tutorial-label-header {
+    color: var(--tutorial-label-header-colour);
+}
+
+.tutorial-label-description {
+    color: var(--tutorial-label-description-colour);
+}
+
+
+
+/* ===============================================
+Tutorial carousel indicator button classes
+=============================================== */ 
+.tutorial-button-carousel {
+    background-color: var(--tutorial-carousel-indicator-colour-default);
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+}
+
+.tutorial-button-carousel-active {
+    background-color: var(--tutorial-carousel-indicator-colour-active);
+}
+
+.tutorial-button-carousel-active:hover:enabled {
+    background-color: var(--tutorial-carousel-indicator-colour-hover-active);
+}
+
+
+
+/* ===============================================
+Tutorial primary button classes
+=============================================== */ 
+.tutorial-button-primary-sprite {
+    background-image: var(--toturial-button-primary-sprite);
+}
+
+
+
+/* ===============================================
+Tutorial secondary button classes
+=============================================== */ 
+.tutorial-button-secondary-sprite {
+    background-image: var(--toturial-button-secondary-sprite);
+}
+
+
+
+/* ===============================================
+Tutorial skip button classes
+=============================================== */ 
+.tutorial-button-skip {
+    background-color: var(--tutorial-button-skip-background-colour-default);
+    border-color: var(--tutorial-button-skip-border-colour-default);
+    color: var(--tutorial-button-skip-label-colour-default);
+    width: 170px;
+    height: 48px;
+}
+
+.tutorial-button-skip:hover:enabled {
+    background-color: var(--tutorial-button-skip-background-colour-hover);
+    border-color: var(--tutorial-button-skip-border-colour-hover);
+    color: var(--tutorial-button-skip-label-colour-hover);
+}
+
+.tutorial-button-skip:disabled {
+    background-color: var(--tutorial-button-skip-background-colour-disabled);
+    border-color: var(--tutorial-button-skip-border-colour-disabled);
+    color: var(--tutorial-button-skip-label-colour-disabled);
+}

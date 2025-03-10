@@ -68,6 +68,10 @@ namespace Tests.PlayMode
             inspectableTwo.Name = "ObjectTwo";
             inspectableTwo.Location = PoiList.PoiName.Bathroom;
 
+            // Explicitly set the ObjectId based on location and name
+            inspectableOne.ObjectId = $"{inspectableOne.Location}_{inspectableOne.Name}";
+            inspectableTwo.ObjectId = $"{inspectableTwo.Location}_{inspectableTwo.Name}";
+
             //setting up inspections manager bby adding the component to its game object.
             inspectionsManager = inspectionsGO.AddComponent<Inspections>();
             //initialize the inspections list explicitly
@@ -77,6 +81,8 @@ namespace Tests.PlayMode
             InspectOneData = new InspectionData(inspectableOne, true, true);
             InspectTwoData = new InspectionData(inspectableTwo, true, false);
 
+            Debug.Log($"Inspectable One ObjectId: {inspectableOne.ObjectId}");
+            Debug.Log($"Inspectable Two ObjectId: {inspectableTwo.ObjectId}");
         }
 
         /// <summary>
@@ -133,7 +139,7 @@ namespace Tests.PlayMode
 
             //Assert
             //Retrieve the updated inspection record
-            InspectionData result = inspectionsManager.CheckInspection(inspectableOne); //looks up the inspection record for ObjectOne
+            InspectionData result = inspectionsManager.CheckInspection(inspectableOne.ObjectId); //looks up the inspection record for ObjectOne
             Assert.IsNotNull(result); // checks if there's an inspection for object one
             Assert.IsFalse(result.IsCompliant); // checks that the compliance status of the inspection record is now false
             Assert.AreEqual(initialCount, inspectionsManager.InspectionsList.Count); // confirms system did not add a new record and only updated.
@@ -147,7 +153,7 @@ namespace Tests.PlayMode
         {
             // create an inspection and try to delete
             //Arrange
-            bool inspectionExistsBefore = inspectionsManager.CheckInspection(inspectableTwo) != null;
+            bool inspectionExistsBefore = inspectionsManager.CheckInspection(inspectableTwo.ObjectId) != null;
             if (!inspectionExistsBefore)//check if inspection exists
             {
                 //if no inspection found then it adds an inspection using InspectTwoData
@@ -157,12 +163,12 @@ namespace Tests.PlayMode
             int countBeforeDelete = inspectionsManager.InspectionsList.Count; //inspections before delete
 
             //Act
-            inspectionsManager.DeleteInspection(inspectableTwo); //calls delete inspection which removes the inspection record.
+            inspectionsManager.DeleteInspection(inspectableTwo.ObjectId); //calls delete inspection which removes the inspection record.
             yield return null; //process a frame.
 
 
             //Assert
-            InspectionData result = inspectionsManager.CheckInspection(inspectableTwo); //check if inspection still exists
+            InspectionData result = inspectionsManager.CheckInspection(inspectableTwo.ObjectId); //check if inspection still exists
             bool inspectionExistAfter = result != null; //if result is null the deletion was successful
 
             Assert.IsFalse(inspectionExistAfter); //checks that inspectionExistAfter is false meaning the inspection was actually deleted.
@@ -173,14 +179,14 @@ namespace Tests.PlayMode
         public IEnumerator PhotoDoesNotGetDeleteInReinspection()
         {
             //Arrange
-            inspectionsManager.DeleteInspection(inspectableOne);
+            inspectionsManager.DeleteInspection(inspectableOne.ObjectId);
             InspectionData firstInspection = new InspectionData(inspectableOne, true, true);
             InspectionData secondInspection = new InspectionData(inspectableOne, false, false);
 
             //Act
             inspectionsManager.AddInspection(firstInspection);
             inspectionsManager.AddInspection(secondInspection);
-            InspectionData recordedInspection = inspectionsManager.CheckInspection(inspectableOne);
+            InspectionData recordedInspection = inspectionsManager.CheckInspection(inspectableOne.ObjectId);
             yield return null;
 
             //Assert

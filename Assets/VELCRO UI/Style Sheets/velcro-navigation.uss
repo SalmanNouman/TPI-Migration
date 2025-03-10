@@ -1,65 +1,140 @@
-.navigation {
-    background-color: var(--navigation-default-background-colour);
+/* ===============================================
+Horizontal navigation tab classes
+=============================================== */  
+.navigation-horizontal {
+    background-color: var(--navigation-horizontal-background-colour);
+}
+
+.navigation-horizontal-container {
     height: 220px;
 }
 
-.navigation-button-tab {
-    background-color: var(--navigation-button-background-colour);
+.navigation-horizontal-button {
+    background-color: var(--navigation-horizontal-button-colour-default);
     min-width: 365px;
 }
 
-.navigation-button-tab:hover:enabled {
-    background-color: var(--navigation-button-background-colour);
+.navigation-horizontal-button:hover:enabled {
+    background-color: var(--navigation-horizontal-button-colour-default);
 }
 
-.navigation-button-tab:disabled {
+.navigation-horizontal-button:disabled {
+    background-color: var(--navigation-horizontal-button-colour-default);
     opacity: 1;
-    background-color: var(--navigation-button-background-colour);
 }
 
-.navigation-button-tab:hover:enabled > .content-container {
-    background-color: var(--navigation-hover-item-background-colour);
+.navigation-horizontal-button:hover:enabled > .navigation-horizontal-content-container {
+    background-color: var(--navigation-horizontal-button-colour-hover);
     border-width: 1px;
 }
 
-.navigation-button-tab-selected > .content-container > #LabelContainer > .content-label {
-    color: var(--navigation-selected-item-colour);
+.navigation-horizontal-button-selected > .navigation-horizontal-content-container > #LabelContainer > .navigation-horizontal-label {
+    color: var(--navigation-horizontal-button-label-colour-active);
 }
 
-.navigation-button-tab-selected > .content-container > .content-icon {
-    -unity-background-image-tint-color: var(--navigation-selected-item-colour);
+.navigation-horizontal-button-selected > .navigation-horizontal-content-container > .navigation-horizontal-icon {
+    -unity-background-image-tint-color: var(--navigation-horizontal-button-sprite-colour-active);
 }
 
-.navigation-button-tab-selected > .navigation-bar-container > .navigation-bottom-bar {
+.navigation-horizontal-button-selected > .navigation-horizontal-bar-container > .navigation-horizontal-bar {
+    background-color: var(--navigation-horizontal-bar-colour-active);
     min-height: 9px;
     margin-top: 0;
-    background-color: var(--navigation-selected-item-colour);
 }
 
-.navigation-bar-container {
-    min-height: 9px;
-}
-
-.navigation-bottom-bar {
-    min-height: 1px;
-    margin-top: 8px;
-    background-color: var(--navigation-bottom-bar-default-colour);
-}
-
-.content-container {
-    background-color: var(--navigation-button-background-colour);
-    border-color: var(--navigation-button-background-colour);
+.navigation-horizontal-content-container {
+    background-color: var(--navigation-horizontal-button-colour-active);
     width: 340px;
     height: 80px;
 }
 
-.content-label {
-    color: var(--navigation-default-item-colour);
-}
-
-.content-icon {
-    -unity-background-image-tint-color: var(--navigation-default-item-colour);
+.navigation-horizontal-icon {
+    -unity-background-image-tint-color: var(--navigation-horizontal-button-sprite-colour-default);
     min-width: 32px;
     min-height: 32px;
     margin-right: 10px;
+}
+
+.navigation-horizontal-label {
+    color: var(--navigation-horizontal-button-label-colour-default);
+}
+
+.navigation-horizontal-bar-container {
+    min-height: 9px;
+}
+
+.navigation-horizontal-bar {
+    background-color: var(--navigation-horizontal-bar-colour-default);
+    min-height: 2px;
+    margin-top: 7px;
+}
+
+
+
+/* ===============================================
+Vertical navigation tab classes
+=============================================== */
+.navigation-vertical {
+    --glow-colour-inner: var(--navigation-vertical-glow-inner-colour);
+    --glow-colour-outer: var(--navigation-vertical-glow-outer-colour);
+    background-color: var(--navigation-vertical-background-colour);
+    min-width: 300px;
+}
+
+.navigation-vertical-container {
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+.navigation-vertical-button {
+    background-color: var(--navigation-vertical-button-colour-default);   
+}
+
+.navigation-vertical-button:hover:enabled {
+    background-color: var(--navigation-vertical-button-colour-hover);
+}
+
+.navigation-button-tab:disabled {
+    background-color: var(--navigation-vertical-button-colour-default);
+    opacity: 1;
+}
+
+.navigation-vertical-button-selected {
+    background-color: var(--navigation-vertical-button-colour-active);
+}
+
+.navigation-vertical-button-selected:disabled {
+    background-color: var(--navigation-vertical-button-colour-active);
+    opacity: 1;
+}
+
+.navigation-vertical-button-selected > #ImageContainer > .navigation-vertical-sprite {
+    -unity-background-image-tint-color: var(--navigation-vertical-button-sprite-colour-active);
+}
+
+.navigation-vertical-button-selected > #LabelContainer > .navigation-vertical-label {
+    color: var(--navigation-vertical-button-label-colour-active);
+}
+
+.navigation-vertical-button-selected:hover:enabled {
+    background-color: var(--navigation-vertical-button-colour-active);
+}
+
+.navigation-vertical-button-selected:hover:enabled > #ImageContainer > .navigation-vertical-sprite {
+    -unity-background-image-tint-color: var(--navigation-vertical-button-sprite-colour-active);
+}
+
+.navigation-vertical-button-selected:hover:enabled > #LabelContainer > .navigation-vertical-label {
+    color: var(--navigation-vertical-button-label-colour-active);
+}
+
+.navigation-vertical-sprite {
+    -unity-background-image-tint-color: var(--navigation-vertical-button-sprite-colour-default);
+    -unity-background-scale-mode: scale-to-fit;
+    min-width: 32px;
+    min-height:32px;
+}
+
+.navigation-vertical-label {
+    color: var(--navigation-vertical-button-label-colour-default);
 }

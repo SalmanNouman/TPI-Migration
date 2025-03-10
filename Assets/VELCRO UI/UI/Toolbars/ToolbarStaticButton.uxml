@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-toolbar.uss?fileID=7433441132597879392&amp;guid=ca165599ff3aa4a4895631dfa8a56b80&amp;type=3#velcro-toolbar" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="toolbar-static-item-group p-0 m-0 flex-row justify-center align-items-center bw-0 grow">
+        <ui:VisualElement name="SelectedBar" class="toolbar-static-selected-bar h-100" />
+        <ui:VisualElement name="ContentContainer" class="toolbar-static-content-group align-items-center grow">
+            <ui:VisualElement name="IconContainer" class="toolbar-static-icon-container bw-4 p-8 mb-8">
+                <ui:VisualElement name="Image" class="toolbar-static-icon-image grow w-100 h-100" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="fs-24 fw-700 p-0 m-0 toolbar-static-item-label mt-0 text-align-upper-center" />
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

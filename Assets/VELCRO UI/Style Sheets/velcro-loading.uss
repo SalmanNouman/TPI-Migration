@@ -1,3 +1,6 @@
+/* ===============================================
+Loading indicator classes
+=============================================== */  
 .loading-indicator-canvas-opaque {
     background-color: var(--loading-indicator-canvas-colour);
 }
@@ -33,6 +36,11 @@
     letter-spacing: -5px;
 }
 
+
+
+/* ===============================================
+Loading indicator failed state classes
+=============================================== */  
 .loading-indicator-failed {
     --track-colour: var(--loading-indicator-failed-track-colour);
 }

@@ -425,7 +425,7 @@ namespace Tests.PlayMode
             Assert.That(label.text, Is.EqualTo("Visual inspection with photo reported as non-compliant."),
                 "Inspection window should display an appropriate message when the previous inspection reported as non-compliant with photo.");
         }
-        
+
         /// <summary>
         ///Test the Flash Effect
         /// </summary>
@@ -475,7 +475,7 @@ namespace Tests.PlayMode
             // Arrange
             ConfirmationDialogSO shownDialog = null;
             inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
-            
+
             yield return SetupPreviousInspection(isCompliant: true);
 
             // Act
@@ -486,7 +486,7 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsNotNull(shownDialog, "Confirmation dialog was not shown when changing from compliant to non-compliant");
-            Assert.AreEqual(inspectionWindowBuilder.NonCompliantConfirmationDialog, shownDialog, 
+            Assert.AreEqual(inspectionWindowBuilder.NonCompliantConfirmationDialog, shownDialog,
                 "Incorrect confirmation dialog was shown when changing from compliant to non-compliant");
         }
 
@@ -500,7 +500,7 @@ namespace Tests.PlayMode
             // Arrange
             ConfirmationDialogSO shownDialog = null;
             inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
-            
+
             yield return SetupPreviousInspection(isCompliant: false);
 
             // Act
@@ -525,7 +525,7 @@ namespace Tests.PlayMode
             // Arrange
             NotificationSO shownNotification = null;
             inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
-            
+
             yield return SetupPreviousInspection(isCompliant: true, hasPhoto: true);
 
             // Act
@@ -552,7 +552,7 @@ namespace Tests.PlayMode
             // Arrange
             NotificationSO shownNotification = null;
             inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
-            
+
             yield return SetupPreviousInspection(isCompliant: false, hasPhoto: true);
 
             // Act
@@ -600,7 +600,7 @@ namespace Tests.PlayMode
         }
 
         #endregion
-  
+
         #region Helper Methods
 
         /// <summary>

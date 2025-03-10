@@ -1,16 +1,8 @@
+/* ===============================================
+Info popup base classes
+=============================================== */  
 .info-popup {
     background-color: var(--info-popup-background-colour);
-}
-
-.info-popup-small {
-    width: 550px;
-    min-width: 550px;
-    min-height: 550px;
-}
-
-.info-popup-large {
-    width: 1400px;
-    height: 900px;
 }
 
 .info-popup-image {
@@ -18,9 +10,38 @@
     -unity-background-image-tint-color: var(--info-popup-image-colour);
 }
 
+.info-popup-title-label {
+    color: var(--info-popup-title-label-colour);
+}
+
+
+
+/* ===============================================
+Info popup small classes
+=============================================== */  
+.info-popup-small {
+    width: 550px;
+    min-width: 550px;
+    min-height: 550px;
+}
+
 .info-popup-small-image {
     width: 350px;
     height: 350px;
+}
+
+.info-popup-small-title-label-holder {
+    padding-left: 15px;
+}
+
+
+
+/* ===============================================
+Info popup large classes
+=============================================== */  
+.info-popup-large {
+    width: 1400px;
+    height: 900px;
 }
 
 .info-popup-large-image {
@@ -28,16 +49,8 @@
     height: 600px;
 }
 
-.info-popup-title-label {
-    color: var(--info-popup-title-label-colour);
-}
-
 .info-popup-body-label {
     color: var(--info-popup-body-label-colour);
-}
-
-.info-popup-small-title-label-holder {
-    padding-left: 15px;
 }
 
 .info-popup-large-controls-label {

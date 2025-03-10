@@ -21,6 +21,10 @@
 @import url("/Assets/VELCRO UI/Style Sheets/velcro-table.uss");
 @import url("/Assets/VELCRO UI/Style Sheets/velcro-info-popup.uss");
 @import url("/Assets/VELCRO UI/Style Sheets/velcro-main-menu.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-steppers.uss");
+@import url("/Assets/VELCRO UI/Style Sheets/velcro-tutorial.uss");
+
+
 
 
 
@@ -40,6 +44,7 @@
 	/*Shared Variables*/  
 	--canvas-dim-colour: rgba(117, 117, 117, 0.57);
 	--image-default: url("../Sprites/Icons/Default_Sprite.png");
+	--image-conestoga-logo: url("../Sprites/Logos/Conestoga_Sprite.png");
 
 	/*Primary Button Colours*/
 	--colour-button-primary-default: #1E4877;
@@ -84,6 +89,7 @@
 	--colour-button-negative-default: #ED5E68;
 	--colour-button-negative-hover: #C74E57;
 	--colour-button-negative-disabled: #A1A1A1;
+	--colour-button-negative-border-default: rgba(0,0,0,0);
 	--colour-button-negative-border-hover: #FFFFFF;
 	--colour-button-negative-border-disabled: #A1A1A1;
 	--colour-icon-negative-default: #000000;	
@@ -107,14 +113,16 @@
 	--colour-text-negative-2-disabled: #C98989;
 
 	/*Auxilliary Button Colours & Icons*/
-	--colour-auxilliary-button-positive-default: #4BC17E;
-	--colour-auxilliary-button-positive-hover: #097538;
-	--colour-auxilliary-button-negative-default: #B00036;
-	--colour-auxilliary-button-negative-hover: #A4001E;
-	--colour-auxilliary-text: #FFFFFF;
-	--colour-auxilliary-button-border-hover: #FFFFFF;
 	--icon-auxilliary-button-positive: url("../Sprites/Checkmarks/CheckmarkInCircle_Sprite.png");
 	--icon-auxilliary-button-negative: url("../Sprites/Icons/Warning_Sprite.png");
+	--colour-auxilliary-button-positive-default: #4BC17E;
+	--colour-auxilliary-button-positive-hover: #097538;
+	--colour-auxilliary-button-positive-disabled: #A1A1A1;
+	--colour-auxilliary-button-negative-default: #B00036;
+	--colour-auxilliary-button-negative-hover: #A4001E;
+	--colour-auxilliary-button-negative-disabled: #A1A1A1;
+	--colour-auxilliary-text: #FFFFFF;
+	--colour-auxilliary-button-border-hover: #FFFFFF;
 
 	/*Checkbox Colours*/
 	--colour-checkbox-border-unselected: #49454F;
@@ -166,15 +174,15 @@
 	--colour-toggle-border-hover: #0671E0;
 	--colour-toggle-knob-holder-hover: rgba(29, 27, 32, 0.08);
 	--colour-toggle-disabled: rgba(0, 0, 0, 0);
-	--colour-toggle-border-disabled: rgba(29, 27, 32, 0.23);
-	--colour-toggle-knob-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-border-disabled: #A4AEB8;
+	--colour-toggle-knob-disabled: #A4AEB8;
 	--colour-toggle-checked-default: #0671E0;
 	--colour-toggle-border-checked-default: #0671E0;
 	--colour-toggle-knob-checked-default: #FFFFFF;
 	--colour-toggle-border-checked-hover: #FFFFFF;
 	--colour-toggle-knob-holder-checked-hover: rgba(6, 113, 224, 0.22);
-	--colour-toggle-checked-disabled: rgba(29, 27, 32, 0.23);
-	--colour-toggle-checked-border-disabled: rgba(29, 27, 32, 0.23);
+	--colour-toggle-checked-disabled: #A4AEB8;
+	--colour-toggle-checked-border-disabled: #A4AEB8;
 	--colour-toggle-checked-knob-disabled: #FEF7FF;
 
 	/*Tooltip Images*/
@@ -206,24 +214,24 @@
 	--dropdown-arrow-colour: #212232;
 	
 	/*Toolbar Collapse*/
-	--toolbar-collapse-background-color: #CBDBE7;
-	--toolbar-collapse-selected-color: #1E4877;
-	--toolbar-collapse-item-color: #136FC1;
-	--toolbar-collapse-contract-button-color: #737382;
-	--toolbar-collapse-contract-and-expand-button-border-color: #D9D9D9;
-	--toolbar-collapse-expand-button-color: #1E4877;
-	--toolbar-collapse-seperator-line-color: #737382;
+	--toolbar-collapse-background-colour: #CBDBE7;
+	--toolbar-collapse-selected-colour: #1E4877;
+	--toolbar-collapse-item-colour: #136FC1;
+	--toolbar-collapse-contract-button-colour: #737382;
+	--toolbar-collapse-contract-and-expand-button-border-colour: #D9D9D9;
+	--toolbar-collapse-expand-button-colour: #1E4877;
+	--toolbar-collapse-seperator-line-colour: #737382;
 	--toolbar-collapse-contract-sprite: url("../Sprites/UI/Contract_Button_Sprite.png");
-	--toolbar-collapse-contract-expand-background-color: rgba(0, 0, 0, 0);
+	--toolbar-collapse-contract-expand-background-colour: rgba(0, 0, 0, 0);
 	--toolbar-collapse-button-arrow: url("../Sprites/Arrows/ArrowLeft_Sprite.png");
 	--toolbar-collapse-item-group-background: rgba(0, 0, 0, 0);
 	--toolbar-collapse-expand-arrow: url("../Sprites/Arrows/ArrowRight_Sprite.png");
 	--toolbar-collapse-expand-sprite: url("../Sprites/UI/Contract_Button_Sprite.png");
 
 	/*Toolbar Static*/
-	--toolbar-static-background-color: #CBDBE7;
-	--toolbar-static-selected-color: #1E4877;
-	--toolbar-static-item-color: #136FC1;
+	--toolbar-static-background-colour: #CBDBE7;
+	--toolbar-static-selected-colour: #1E4877;
+	--toolbar-static-item-colour: #136FC1;
 	--toolbar-static-item-group-background: rgba(0, 0, 0, 0);
 	
 	/*Loading Indicator Colours*/
@@ -277,14 +285,30 @@
 	--filter-tag-selected-border-color: #FFFFFF;
 	--filter-tag-selected-text-color: #FFFFFF;
 
-	/*Navigation Bar Colors*/
-	--navigation-default-background-colour: #CCDBE6;
-	--navigation-button-background-colour: rgba(0, 0, 0, 0);
-	--navigation-default-item-colour: #136FC1;
-	--navigation-selected-item-colour: #1E4877;
-	--navigation-hover-item-background-colour: rgba(175, 191, 202, 0.8);
-	--navigation-bottom-bar-default-colour: #1E4877;
+	/*Navigation Bars (Tab Layouts)*/
+	--navigation-horizontal-background-colour: #CCDBE6;
+	--navigation-horizontal-button-colour-default: rgba(0, 0, 0, 0);
+	--navigation-horizontal-button-colour-hover: rgba(175, 191, 202, 0.8);
+	--navigation-horizontal-button-colour-active: rgba(0, 0, 0, 0);
+	--navigation-horizontal-button-label-colour-default: #136FC1;
+	--navigation-horizontal-button-label-colour-active: #1E4877;
+	--navigation-horizontal-button-sprite-colour-default: #136FC1;
+	--navigation-horizontal-button-sprite-colour-active: #1E4877;
+	--navigation-horizontal-bar-colour-default: #1E4877;
+	--navigation-horizontal-bar-colour-active: #1E4877;
 	
+	/*Vertical Navigation Bar (Tab Layouts)*/
+	--navigation-vertical-glow-inner-colour: rgba(6, 113, 224, 0.75);
+	--navigation-vertical-glow-outer-colour: rgba(6, 113, 224, 0);
+	--navigation-vertical-background-colour: #E5EAEE;
+	--navigation-vertical-button-colour-default: rgba(0, 0, 0, 0);
+	--navigation-vertical-button-colour-hover: #AFBFCA;
+	--navigation-vertical-button-colour-active: #1E4877;
+	--navigation-vertical-button-label-colour-default: #136FC1;
+	--navigation-vertical-button-label-colour-active: #FFFFFF;
+	--navigation-vertical-button-sprite-colour-default: #136FC1;
+	--navigation-vertical-button-sprite-colour-active: #FFFFFF;
+
 	/*Progress Indicator V1*/
 	--progress-v1-header-back-colour: #CBDBE7;
 
@@ -320,7 +344,7 @@
 	--progress-v2-progress-bar-fill-border-colour: #979797;
 	
 	/*Progress Indicator V3*/
-	--progress-v3-background-colour: #CBDBE7;
+	--progress-v3-background-colour: #E5EAEE;
 	--progress-v3-text-colour-1: #212232;
 	--progress-v3-text-colour-2: #212232;
 	--progress-v3-divider-colour: #212232;
@@ -341,6 +365,16 @@
 	--information-dialog-background-colour: #CBDBE7;
 	--information-dialog-title-label-colour: #212232;
 	--information-dialog-description-label-colour: #212232;
+
+	/* Image Dialog */
+    --image-dialog-image-background: url("../Sprites/UI/ImageDialog_ImageBackground_Sprite.png");
+    --image-dialog-image-background-tint-colour: #AFBFCA;
+    --image-dialog-image-note-background-tint-colour: #1E4877;
+    --image-dialog-background-colour: #CCDBE6;
+    --image-dialog-label-title-colour: #212232;
+    --image-dialog-label-description-colour: #212232;
+    --image-dialog-label-sub-description-colour: #212232;
+    --image-dialog-label-note-colour: #1E4877;
 
 	/*Confirmation Dialog*/
 	--confirmation-dialog-close-button-icon: url("../Sprites/Buttons/CloseButton_Sprite.png");
@@ -375,7 +409,6 @@
 
 	/* Splash Screen */
 	--splash-image-background: url("../Sprites/UI/Splash_Screen_Sprite.png");
-	--splash-logo-conestoga: url("../Sprites/Logos/Conestoga_Sprite.png");
 	--splash-logo-cvri: url("../Sprites/Logos/Condor_Sprite.png");
 	--splash-bar-colour: #FFFFFF;
 	--splash-label-colour: #FFFFFF;
@@ -392,6 +425,8 @@
 	--window-double-foreground-colour: #CCDBE6;
 
 	/* Tables */
+	--table-category-arrow-icon: url("../Sprites/Arrows/ArrowExpand_Sprite.png");
+	--table-entry-delete-button-icon: url("../Sprites/Icons/Trash_Sprite.png");
 	--table-header-colour: #AFBFCA;
 	--table-header-label-colour: #1E4877;
 	--table-header-bottom-colour: #5B92FF;
@@ -403,13 +438,11 @@
 	--table-category-arrow-colour: #1E4877;
 	--table-category-arrow-hover-colour: #CCDBE6;
 	--table-category-arrow-background-hover-colour: #1E4877;
-	--table-category-arrow-icon: url("../Sprites/Arrows/ArrowExpand_Sprite.png");
 	--table-entry-background-colour-1: #CCDBE6;
 	--table-entry-background-colour-2: #FFFFFF;
 	--table-entry-delete-button-colour: #1E4877;
 	--table-entry-delete-button-hover-colour: #FFFFFF;
 	--table-entry-delete-button-background-hover-colour: #1E4877;
-	--table-entry-delete-button-icon: url("../Sprites/Icons/Trash_Sprite.png");
 	--table-element-label-colour: #1E4877;
 	--table-scrollbar-colour: #FFFFFF;
 	--table-scrollbar-background-colour: rgba(135, 150, 164, 0.5);
@@ -488,7 +521,6 @@
 	--scrollbar-dragger-hover-colour: #E0E0E0;
 
 	/* Icon Templates */
-	--default-icon-image: url("../Sprites/Arrows/ArrowBack_Sprite.png");
 	--icon-transparent-colour: rgba(0, 0, 0, 0);
 
 	--icon-default-image-colour: #FFFFFF;
@@ -517,10 +549,32 @@
 	--icon-clicked-v2-border-colour: #136FC1;
 	--icon-disabled-border-colour: #475A70;
 
-	/* Main Menu Variables */
-	--main-menu-background-color: #CCDBE6;
-	--main-menu-tag-text-color: #212232;
-	--main-menu-demo-icon-image: url("../Sprites/Icons/Default_Sprite.png");
+	/* Main Menu Small */
+	--main-menu-small-icon-sprite: url("../Sprites/Icons/Default_Sprite.png");
+	--main-menu-small-background-colour: #CCDBE6;
+	--main-menu-small-label-project-colour: #212232;
+	--main-menu-small-label-description-colour: #212232;
+
+	/* Main Menu Large */
+	--main-menu-large-title-top-sprite: url("../Sprites/UI/Header_Sharp_Large_Sprite.png");
+	--main-menu-large-title-bottom-sprite: url("../Sprites/UI/Header_Sharp_Small_Sprite.png");
+	--main-menu-large-background-sprite: url("../Sprites/Icons/Default_Sprite.png");
+	--main-menu-large-footer-background-colour: #000000;
+	--main-menu-large-title-label-colour: #1E4877;
+	--main-menu-large-title-background-1-colour: #CCDBE6;
+	--main-menu-large-title-background-2-colour: #AFBFCA;
+	--main-menu-large-title-bar-colour: #1E4877;
+	--main-menu-large-button-secondary-default: #FFFFFF;
+	--main-menu-large-button-secondary-hover: #A1A7C4;
+	--main-menu-large-button-secondary-disabled: #FFFFFF;
+	--main-menu-large-button-secondary-border-default: #1E4877;
+	--main-menu-large-button-secondary-border-hover: #1E4877;
+	--main-menu-large-button-secondary-border-disabled: #A1A1A1;
+	--main-menu-large-button-secondary-label-default: #1E4877;
+	--main-menu-large-button-secondary-label-hover: #1E4877;
+	--main-menu-large-button-secondary-label-disabled: #A1A1A1;
+	--main-menu-large-footer-label-colour: #FFFFFF;
+	--main-menu-large-footer-bar-colour: #FFFFFF;
 	
 	/* Listen Button */
 	--listen-button-background-colour: rgba(0, 0, 0, 0);
@@ -531,6 +585,7 @@
 	--listen-button-border-disabled-colour: #A1A1A1;
 	--listen-button-icon: url("../Sprites/Arrows/ArrowExpand_Sprite.png");
 	--listen-button-icon-colour: #1E4877;
+	--listen-button-icon-disabled-colour: #A1A1A1;
 	--listen-button-label-colour: #1E4877;
 	--listen-button-label-disabled-colour: #A1A1A1;
 
@@ -558,4 +613,58 @@
 	--notification-background-colour-success: #097538;
 	--notification-background-colour-info: #0671E0;
 	--notification-background-colour-error: #B00020;
+
+	/* Node Steppers */
+	--node-background-sprite: url("../Sprites/Checkmarks/Checkmark_Rounded_Sprite.png");
+	--node-background-sprite-colour-in-progress: #FFCC33;
+	--node-background-colour-completed: #097538;
+	--node-background-colour-in-progress: #757575;
+	--node-background-colour-not-started: rgba(0, 0, 0, 0);
+	--node-border-colour-completed: #097538;
+	--node-border-colour-in-progress: #FFCC33;
+	--node-border-colour-not-started: #757575;
+	--node-step-background-colour-completed: #097538;
+	--node-step-background-colour-in-progress: #FFCC33;
+	--node-step-background-colour-not-started: #757575;
+	--node-step-border-colour-completed: rgba(0, 0, 0, 0);
+	--node-step-border-colour-in-progress: #757575;
+	--node-step-border-colour-not-started: rgba(0, 0, 0, 0);
+	--node-step-label-colour: #212232;
+
+	/* Arrow Steppers */
+	--arrow-background-start-sprite: url("../Sprites/Steppers/ArrowStepper_Start_Background_Sprite.png");
+	--arrow-border-start-sprite: url("../Sprites/Steppers/ArrowStepper_Start_Border_Sprite.png");
+	--arrow-background-middle-sprite: url("../Sprites/Steppers/ArrowStepper_Middle_Background_Sprite.png");
+	--arrow-border-middle-sprite: url("../Sprites/Steppers/ArrowStepper_Middle_Border_Sprite.png");
+	--arrow-background-end-sprite: url("../Sprites/Steppers/ArrowStepper_End_Background_Sprite.png");
+	--arrow-border-end-sprite: url("../Sprites/Steppers/ArrowStepper_End_Border_Sprite.png");
+	--arrow-background-colour-in-progress: rgba(0, 0, 0, 0);
+	--arrow-background-colour-completed: #1E4877;
+	--arrow-border-colour-in-progress: #1E4877;
+	--arrow-border-colour-completed: #1E4877;
+	--arrow-label-header-colour-in-progress: #1E4877;
+	--arrow-label-header-colour-completed: #FFFFFF;
+	--arrow-label-description-colour-in-progress: #212232;
+	--arrow-label-description-colour-completed: #FFFFFF;
+	
+	/* Tutorial */
+	--toturial-button-primary-sprite: url("../Sprites/Arrows/ArrowRight_Sprite.png");
+	--toturial-button-secondary-sprite: url("../Sprites/Arrows/ArrowLeft_Sprite.png");
+	--tutorial-background-colour: #CBDBE7;
+	--tutorial-border-colour: #1E4877;
+	--tutorial-label-header-colour: #1E4877;
+	--tutorial-label-description-colour: #212232;
+	--tutorial-label-step-colour: #212232;
+	--tutorial-carousel-indicator-colour-default: #AFBFCA;
+	--tutorial-carousel-indicator-colour-hover-active: #132E4D;
+	--tutorial-carousel-indicator-colour-active: #1E4877;
+	--tutorial-button-skip-background-colour-default: rgba(0, 0, 0, 0);
+	--tutorial-button-skip-background-colour-hover: #A1A7C4;
+	--tutorial-button-skip-background-colour-disabled: rgba(0, 0, 0, 0);
+	--tutorial-button-skip-border-colour-default: #1E4877;
+	--tutorial-button-skip-border-colour-hover: #1E4877;
+	--tutorial-button-skip-border-colour-disabled: #A1A1A1;
+	--tutorial-button-skip-label-colour-default: #1E4877;
+	--tutorial-button-skip-label-colour-hover: #1E4877;
+	--tutorial-button-skip-label-colour-disabled: #A1A1A1;
 }

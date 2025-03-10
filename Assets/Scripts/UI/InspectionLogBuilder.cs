@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using VARLab.Velcro;
 
@@ -25,7 +26,12 @@ namespace VARLab.DLX
         /// </summary>
         private List<InspectionData> inspectionList;
 
+        /// <summary>
+        ///     Flag to check if the empty log message has been displayed.
+        /// </summary>
+        private bool isEmptyLogMessageDisplayed = false;
 
+        public UnityEvent<string> DeleteInspection;
 
         /// <summary>
         /// Updates the local inspection list with the provided data.
@@ -47,8 +53,21 @@ namespace VARLab.DLX
             //check if list is empty or null
             if (inspectionList == null || inspectionList.Count <= 0)
             {
-                DisplayEmptyLogMessage();
+                // check if the empty log message has not been displayed yet
+                if (!isEmptyLogMessageDisplayed)
+                {
+                    DisplayEmptyLogMessage();
+                    isEmptyLogMessageDisplayed = true;
+                }
                 return;
+            }
+
+            //if the list is not empty, check if the empty log message has been displayed
+            if (isEmptyLogMessageDisplayed)
+            {
+                //hide the empty log message
+                HideEmptyLogMessage();
+                isEmptyLogMessageDisplayed = false;
             }
             //populate the table with the inspection data.
             PopulateInspectionTable();
@@ -65,6 +84,7 @@ namespace VARLab.DLX
             ContentContainer.Q<TemplateContainer>().style.flexGrow = 1;
             ContentContainer.Q<VisualElement>("unity-content-container").AddToClassList("grow");
             ContentContainer.Q<VisualElement>("unity-content-container").AddToClassList("h-100");
+
             // Define the column headers for the table.
             string[] columns = { "Location", "Item", "Compliancy", "Info" };
             table.HandleDisplayUI(columns);
@@ -78,6 +98,9 @@ namespace VARLab.DLX
                 //Add a new category to the table for this location.
                 table.AddCategory(group.Key);
                 TableCategory category = table.FindCategoryByName(group.Key);
+
+                //subscribed to row removal event
+                category.OnEntryRemoved.AddListener(OnRowRemoved);
 
                 // Loop through each inspection in this group.
                 foreach (var inspection in group)
@@ -102,6 +125,30 @@ namespace VARLab.DLX
                     entry.Elements.ElementAt(3).Text = inspection.HasPhoto ? "View Photo" : "----";
                 }
             }
+        }
+
+        /// <summary>
+        /// Handles the removal of a row from the table.
+        /// Extracts the location and name from the removed entry, constructs an object ID,
+        /// and invokes the DeleteInspection event to remove the corresponding inspection.
+        /// </summary>
+        /// <param name="removedEntry">The TableEntry that was removed.</param>
+        private void OnRowRemoved(TableEntry removedEntry)
+        {
+            string location = removedEntry.Elements.ElementAt(0).Text;
+            string name = removedEntry.Elements.ElementAt(1).Text;
+            Debug.Log($"Row removed location: {location}");
+            Debug.Log($"Row removed name: {name}");
+
+            //create objectId from retrieval
+            string objectId = $"{location}_{name}";
+
+            //Deletes the inspection from the inspection list.
+            DeleteInspection?.Invoke(objectId);
+
+            //// Log for debugging
+            Debug.Log($"Row removed for object: {objectId}");
+
         }
     }
 }

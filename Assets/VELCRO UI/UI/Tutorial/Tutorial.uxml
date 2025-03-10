@@ -1,0 +1,48 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <ui:Template name="Button-Tutorial-Skip" src="project://database/Assets/VELCRO%20UI/UI/Tutorial/Button-Tutorial-Skip.uxml?fileID=9197481963319205126&amp;guid=de973f089c3c64f4db9a89280864b08f&amp;type=3#Button-Tutorial-Skip" />
+    <ui:Template name="Button-Tutorial-Secondary" src="project://database/Assets/VELCRO%20UI/UI/Tutorial/Button-Tutorial-Secondary.uxml?fileID=9197481963319205126&amp;guid=77942f620a797c04ea091442f34ff21e&amp;type=3#Button-Tutorial-Secondary" />
+    <ui:Template name="Button-Tutorial-Primary" src="project://database/Assets/VELCRO%20UI/UI/Tutorial/Button-Tutorial-Primary.uxml?fileID=9197481963319205126&amp;guid=21ca184832deac947b766319d5c9b9d2&amp;type=3#Button-Tutorial-Primary" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-tutorial.uss?fileID=7433441132597879392&amp;guid=a35f62cb18caf9e43b80c52f0ff1626c&amp;type=3#velcro-tutorial" />
+    <ui:VisualElement name="Canvas" class="grow w-100 justify-center align-items-center">
+        <ui:VisualElement name="Tutorial" class="tutorial br-20 bw-1 hide-overflow">
+            <ui:VisualElement name="Image" class="tutorial-image" style="background-image: url(&apos;project://database/Assets/VELCRO%20UI/Sprites/Icons/Default_Sprite.png?fileID=2800000&amp;guid=df9d3b26fba07f7439a7da691d26807d&amp;type=3#Default_Sprite&apos;);">
+                <ui:Instance template="Header" name="Header" />
+            </ui:VisualElement>
+            <ui:VisualElement name="BodyContainer" class="grow pl-40 pr-40 pt-32">
+                <ui:VisualElement name="CarouselContianer" class="w-100 flex-row justify-center align-items-center">
+                    <ui:VisualElement name="IndicatorContainer" class="grow flex-row align-items-center justify-center" />
+                    <ui:VisualElement name="StepContainer" class="absolute tutorial-label-step-container flex-row">
+                        <ui:VisualElement name="MinContainer">
+                            <ui:Label tabindex="-1" text="[MinLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StepMinLabel" class="tutorial-label-step m-0 p-0 fw-400 fs-28 text-wrap" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="TextContainer">
+                            <ui:Label tabindex="-1" text=" of " parse-escape-sequences="true" display-tooltip-when-elided="true" name="StepLabel" class="tutorial-label-step m-0 p-0 fw-400 fs-28 text-wrap" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="MaxContainer">
+                            <ui:Label tabindex="-1" text="[MaxLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StepMaxLabel" class="tutorial-label-step m-0 p-0 fw-400 fs-28 text-wrap" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="ContentContianer" class="mt-20 grow">
+                    <ui:VisualElement name="HeaderContainer" class="mb-12">
+                        <ui:Label tabindex="-1" text="[HeaderLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HeaderLabel" class="tutorial-label-header p-0 m-0 fw-700 fs-36 text-wrap" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DescriptionContainer" class="grow">
+                        <ui:Label tabindex="-1" text="[DescriptionLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DescriptionLabel" class="tutorial-label-description p-0 m-0 fw-400 fs-28 text-wrap" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="FooterContainer" class="flex-row p-40 align-items-center">
+                <ui:VisualElement name="SpaceTakerEaterOfWidth" class="grow">
+                    <ui:Instance template="Button-Tutorial-Skip" name="Button-Tutorial-Skip" />
+                </ui:VisualElement>
+                <ui:Instance template="Button-Tutorial-Secondary" name="Button-Tutorial-Secondary" class="mr-20" />
+                <ui:Instance template="Button-Tutorial-Primary" name="Button-Tutorial-Primary" class="ml-20" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

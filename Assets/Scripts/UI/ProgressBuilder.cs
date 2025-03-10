@@ -129,6 +129,11 @@ namespace VARLab.DLX
         public void GetInspectionsCount(List<InspectionData> list)
         {
             totalInspections = list.Count;
+
+            if (IsOpen)
+            {
+                UIHelper.SetElementText(progressTwoLabel, totalInspections.ToString());
+            }
         }
     }
 }

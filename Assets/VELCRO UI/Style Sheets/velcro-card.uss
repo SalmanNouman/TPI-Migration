@@ -1,4 +1,6 @@
-/* Card version 1 classes */
+/* ===============================================
+Card style 1 classes
+=============================================== */  
 .card-v1-container {
     height: 328px;
     background-color: var(--card-button-element-background-color);
@@ -94,7 +96,11 @@
     --card-v1-outer-shadow: var(--card-v2-outer-shadow-colour);
 }
 
-/* Card version 2 classes */
+
+
+/* ===============================================
+Card style 2 classes
+=============================================== */  
 .card-v2-container {
     width: 250px;
     height: 211px;
@@ -215,7 +221,11 @@
     --card-v2-outer-shadow: var(--card-v2-outer-shadow-colour);
 }
 
-/* Card version 3 classes */
+
+
+/* ===============================================
+Card style 3 classes
+=============================================== */  
 .card-v3-container {
     width: 300px;
     height: 345px;
@@ -298,7 +308,11 @@
     --card-v3-outer-shadow-colour: var(--card-v3-drop-shadow-outer-colour);
 }
 
-/* Card version 4 classes */
+
+
+/* ===============================================
+Card style 4 classes
+=============================================== */  
 .card-v4-container {
     background-color: var(--card-button-element-background-color);
 }
@@ -383,7 +397,11 @@
     height: 145px;
 }
 
-/* Card version 5 classes */
+
+
+/* ===============================================
+Card style 5 classes
+=============================================== */  
 .card-v5-container-base {
     width: 770px;
     height: 760px;
@@ -437,7 +455,7 @@
 }
 
 .card-v5-body-image {
-    -unity-background-image-scale-mode: scale-to-fit;
+    -unity-background-scale-mode: scale-to-fit;
 } 
 
 .card-v5-button-camera {

@@ -1,3 +1,6 @@
+/* ===============================================
+Splash screen classes
+=============================================== */  
 .splash-canvas {
     background-image: var(--splash-image-background);
     transition-duration: 1.5s;
@@ -10,7 +13,7 @@
 }
 
 .splash-logo-conestoga {
-    background-image: var(--splash-logo-conestoga);
+    background-image: var(--image-conestoga-logo);
     -unity-background-scale-mode: scale-to-fit;
     min-height: 400px;
     min-width: 1170px;

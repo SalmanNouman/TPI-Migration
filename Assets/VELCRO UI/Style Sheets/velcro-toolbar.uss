@@ -4,8 +4,8 @@
 
 .toolbar-collapse-item-bar {
     width: 175px;
-    height: 1080px;
-    background-color: var(--toolbar-collapse-background-color);
+    background-color: var(--toolbar-collapse-background-colour);
+    min-height: 1080px;
 }
 
 .toolbar-collapse-contract-container {
@@ -15,11 +15,11 @@
 
 .toolbar-collapse-contract-button {
     background-image: var(--toolbar-collapse-contract-sprite);
-    background-color: var(--toolbar-collapse-contract-expand-background-color);
+    background-color: var(--toolbar-collapse-contract-expand-background-colour);
 }
 
 .toolbar-collapse-contract-button:hover:enabled {
-    background-color: var(--toolbar-collapse-contract-expand-background-color);
+    background-color: var(--toolbar-collapse-contract-expand-background-colour);
 }
 
 .toolbar-collapse-arrow-button {
@@ -53,18 +53,21 @@
 }
 
 .toolbar-collapse-item-group-selected > .toolbar-collapse-content-group > .toolbar-collapse-item-icon {
-    border-color: var(--toolbar-collapse-selected-color);
+    border-color: var(--toolbar-collapse-selected-colour);
 }
 
 .toolbar-collapse-item-group-selected > .toolbar-collapse-content-group > .toolbar-collapse-item-icon > .toolbar-collapse-icon-image {
-    -unity-background-image-tint-color: var(--toolbar-collapse-selected-color);
+    -unity-background-image-tint-color: var(--toolbar-collapse-selected-colour);
 }
 
 .toolbar-collapse-item-group-selected > .toolbar-collapse-content-group > .toolbar-collapse-item-label {
-    color: var(--toolbar-collapse-selected-color);
+    color: var(--toolbar-collapse-selected-colour);
 }
 
 .toolbar-collapse-content-group {
+}
+
+.toolbar-collapse-content-group-complex {
     height: 136px;
 }
 
@@ -90,12 +93,12 @@
     width: 60px;
     height: 60px;
     border-radius: 100px;
-    border-color: var(--toolbar-collapse-item-color);
+    border-color: var(--toolbar-collapse-item-colour);
     margin-bottom: 15px;
 }
 
 .toolbar-collapse-icon-image {
-    -unity-background-image-tint-color: var(--toolbar-collapse-item-color);
+    -unity-background-image-tint-color: var(--toolbar-collapse-item-colour);
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -104,14 +107,14 @@
     height: 56px;
     overflow: hidden;
     white-space: normal;
-    color: var(--toolbar-collapse-item-color);
+    color: var(--toolbar-collapse-item-colour);
+    text-overflow: clip;
 }
 
 .toolbar-collapse-seperator {
     width: 111px;
-    left: 32px;
-    top: 758px;
-    border-color: var(--toolbar-collapse-toolbar-collapse-seperator-line-color);
+    height: 1px;
+    background-color: var(--toolbar-collapse-seperator-line-colour);
 }
 
 .toolbar-collapse-expand-container {
@@ -139,7 +142,7 @@
     width: 97px;
     height: 886px;
     background-color: var(--toolbar-collapse-item-group-background);
-    -unity-background-image-tint-color: var(--toolbar-collapse-expand-button-color);
+    -unity-background-image-tint-color: var(--toolbar-collapse-expand-button-colour);
     border-width: 0;
     background-image: var(--toolbar-collapse-expand-sprite);
 }
@@ -162,22 +165,23 @@
 }
 
 .toolbar-collapse-selected-bar {
-    background-color: var(--toolbar-collapse-selected-color);
+    background-color: var(--toolbar-collapse-selected-colour);
     width: 11px;
     visibility: hidden;
+    overflow: hidden;
 }
 
 .toolbar-static {
     width: 175px;
-    height: 760px;
-    background-color: var(--toolbar-static-background-color);
+    background-color: var(--toolbar-static-background-colour);
     padding-left: 10px;
     padding-top: 30px;
     padding-bottom: 30px;
+    min-height: 760px;
 }
 
 .toolbar-static-icon-image {
-    -unity-background-image-tint-color: var(--toolbar-static-item-color);
+    -unity-background-image-tint-color: var(--toolbar-static-item-colour);
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -186,20 +190,21 @@
     height: 58px;
     overflow: hidden;
     white-space: normal;
-    color: var(--toolbar-static-item-color);
+    color: var(--toolbar-static-item-colour);
 }
 
 .toolbar-static-selected-bar {
-    background-color: var(--toolbar-static-selected-color);
+    background-color: var(--toolbar-static-selected-colour);
     width: 11px;
     visibility: hidden;
+    overflow: hidden;
 }
 
 .toolbar-static-icon-container {
     height: 70px;
     width: 70px;
     border-radius: 100px;
-    border-color: var(--toolbar-static-item-color);
+    border-color: var(--toolbar-static-item-colour);
 }
 
 .toolbar-static-item-group {
@@ -208,15 +213,15 @@
 }
 
 .toolbar-static-item-group-selected > .toolbar-static-content-group > .toolbar-static-icon-container > .toolbar-static-icon-image {
-    -unity-background-image-tint-color: var(--toolbar-static-selected-color);
+    -unity-background-image-tint-color: var(--toolbar-static-selected-colour);
 }
 
 .toolbar-static-item-group-selected > .toolbar-static-content-group > .toolbar-static-icon-container {
-    border-color: var(--toolbar-static-selected-color);
+    border-color: var(--toolbar-static-selected-colour);
 }
 
-.toolbar-static-item-group-selected > .toolbar-collapse-toolbar-static-content-group > .toolbar-static-item-label {
-    color: var(--toolbar-static-selected-color);
+.toolbar-static-item-group-selected > .toolbar-static-content-group > .toolbar-static-item-label {
+    color: var(--toolbar-static-selected-colour);
 }
 
 .toolbar-static-content-group {

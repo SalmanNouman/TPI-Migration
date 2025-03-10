@@ -2,12 +2,13 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-table.uss?fileID=7433441132597879392&amp;guid=34a54c9db1d6a484a82bc2337a5455a2&amp;type=3#velcro-table" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
     <ui:VisualElement name="Table" class="table">
         <ui:VisualElement name="Header" class="flex-row w-100 justify-space-around table-header align-items-center">
             <ui:VisualElement name="BlankSpace" class="w-100" />
         </ui:VisualElement>
         <ui:VisualElement name="HeaderBottom" class="table-header-bottom" />
-        <ui:ScrollView name="CategoryHolder" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" elasticity="0" class="table-category-holder" />
+        <ui:ScrollView name="CategoryHolder" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" elasticity="0" class="scrollbar" />
         <ui:VisualElement name="Footer" class="flex-row w-100 justify-space-around align-items-center table-footer" />
     </ui:VisualElement>
 </ui:UXML>

@@ -1,0 +1,173 @@
+/* ===============================================
+Node stepper container classes
+=============================================== */
+.node-container {
+    max-width: 60px;
+}
+
+
+
+/* ===============================================
+Node stepper node classes
+=============================================== */
+.node {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.node-completed {
+    background-color: var(--node-background-colour-completed);
+    border-color: var(--node-border-colour-completed);
+}
+
+.node-in-progress {
+    background-color: var(--node-background-colour-in-progress);
+    border-color: var(--node-border-colour-in-progress);
+}
+
+.node-not-started {
+    background-color: var(--node-background-colour-not-started);
+    border-color: var(--node-border-colour-not-started);
+}
+
+.node-sprite {
+    -unity-background-scale-mode: scale-to-fit;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+.node-sprite-completed {
+    background-image: var(--node-background-sprite);
+}
+
+.node-sprite-in-progress {
+    background-color: var(--node-background-sprite-colour-in-progress);
+}
+
+.node-sprite-not-started {
+    background-color: var(--node-background-colour-not-started);
+}
+
+
+
+/* ===============================================
+Node stepper step classes
+=============================================== */
+.node-step {
+    height: 10px;
+    margin-top: 25px;
+}
+
+.node-step-completed {
+    background-color: var(--node-step-background-colour-completed);
+    border-color: var(--node-step-border-colour-completed);
+}
+
+.node-step-in-progress {
+    background-color: var(--node-step-background-colour-in-progress);
+    border-color: var(--node-step-border-colour-in-progress);
+}
+
+.node-step-not-started {
+    background-color: var(--node-step-background-colour-not-started);
+    border-color: var(--node-step-border-colour-not-started);
+}
+
+.node-step-label {
+    color: var(--node-step-label-colour);
+}
+
+
+
+/* ===============================================
+Arrow stepper base classes
+=============================================== */  
+.arrow {
+    min-width: 400px;
+    max-height: 80px;
+    -unity-slice-top: 0;
+    -unity-slice-bottom: 0;
+    -unity-slice-right: 25;
+    -unity-slice-left: 25;
+}
+
+.arrow-big {
+    min-height: 80px;
+}
+
+.arrow-small {
+    min-height: 60px;
+}
+
+.arrrow-background-in-progress {
+    -unity-background-image-tint-color: var(--arrow-background-colour-in-progress);
+}
+
+.arrrow-background-completed {
+    -unity-background-image-tint-color: var(--arrow-background-colour-completed);
+}
+
+.arrrow-border-in-progress {
+    -unity-background-image-tint-color: var(--arrow-border-colour-in-progress);
+}
+
+.arrrow-border-completed {
+    -unity-background-image-tint-color: var(--arrow-border-colour-completed);
+}
+
+.arrow-label-header-in-progress {
+    color: var(--arrow-label-header-colour-in-progress);
+}
+
+.arrow-label-header-completed {
+    color: var(--arrow-label-header-colour-completed);
+}
+
+.arrow-label-description-in-progress {
+    color: var(--arrow-label-description-colour-in-progress);
+}
+
+.arrow-label-description-completed {
+    color: var(--arrow-label-description-colour-completed);
+}
+
+
+
+/* ===============================================
+Arrow stepper start classes
+=============================================== */
+.arrrow-background-start {
+    background-image: var(--arrow-background-start-sprite);
+}
+
+.arrrow-border-start {
+    background-image: var(--arrow-border-start-sprite);
+}
+
+
+
+/* ===============================================
+Arrow stepper middle classes
+=============================================== */
+.arrrow-background-middle {
+    background-image: var(--arrow-background-middle-sprite);
+}
+
+.arrrow-border-middle {
+    background-image: var(--arrow-border-middle-sprite);
+}
+
+
+
+/* ===============================================
+Arrow stepper end classes
+=============================================== */
+.arrrow-background-end {
+    background-image: var(--arrow-background-end-sprite);
+}
+
+.arrrow-border-end {
+    background-image: var(--arrow-border-end-sprite);
+}

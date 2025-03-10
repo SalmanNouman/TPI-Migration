@@ -1,3 +1,6 @@
+/* ===============================================
+Notification base classes
+=============================================== */  
 .notification {
     min-width: 200px;
     min-height: 80px;
@@ -27,14 +30,29 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
+
+
+/* ===============================================
+Notification success state classes
+=============================================== */  
 .notification-success {
     background-color: var(--notification-background-colour-success);
 }
 
+
+
+/* ===============================================
+Notification info state classes
+=============================================== */  
 .notification-info {
     background-color: var(--notification-background-colour-info);
 }
 
+
+
+/* ===============================================
+Notification error state classes
+=============================================== */  
 .notification-error {
     background-color: var(--notification-background-colour-error);
 }
