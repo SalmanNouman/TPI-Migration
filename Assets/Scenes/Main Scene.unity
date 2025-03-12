@@ -4664,6 +4664,8 @@ GameObject:
   - component: {fileID: 356010907}
   - component: {fileID: 356010904}
   - component: {fileID: 356010908}
+  - component: {fileID: 356010910}
+  - component: {fileID: 356010909}
   m_Layer: 0
   m_Name: Cloud Save System
   m_TagString: Untagged
@@ -4712,8 +4714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AzureSaveSystem: {fileID: 356010904}
-  Container: azureplayground
-  Blob: 
+  Container: tattoo-piercing-studio-inspection
+  Blob: default
   OnLoadStart:
     m_PersistentCalls:
       m_Calls: []
@@ -4751,7 +4753,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c24e5776369604984599f249adc184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedObjects: []
+  trackedObjects:
+  - TrackedComponent: {fileID: 356010910}
+    Id: ce73e54c-9a2f-4fcb-83d0-8e34c4029603
+    LastKnownName: Cloud Save System
+--- !u!114 &356010909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356010902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a11ec848e786024483cb6c4a52e73f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveHandler: {fileID: 0}
+  CanSave: 0
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInitialize:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFreshLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  MovePlayer:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &356010910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356010902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6648d07edf91c664a8c608645ced32c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastPOI: 
+  VisitedPOIs: []
+  Version: 
+  EndInspection: 0
 --- !u!1 &376188605
 GameObject:
   m_ObjectHideFlags: 0
@@ -10066,6 +10113,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CVRI.DLX.LoginHandler, VARLab.DLX
         m_MethodName: HandleScormMessage
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356010909}
+        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
+        m_MethodName: Initialize
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -27,7 +27,7 @@ namespace VARLab.DLX
             Timestamp = timestamp;
         }
 
-        public string ParseNameFromID(string id) 
+        public string ParseNameFromID(string id)
         {
             string[] split = id.Split('_');
             if (split.Length == 1)

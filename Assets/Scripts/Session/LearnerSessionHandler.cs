@@ -31,7 +31,7 @@ namespace VARLab.DLX
         public static IAnalyticsWrapper Analytics = new CoreAnalyticsWrapper();
 
         // Fields tracking the current user session
-        public string Username = "Development";
+        public string Username;
         public string DisplayName = "Development";
 
         [Header("Events")]
@@ -138,7 +138,9 @@ namespace VARLab.DLX
         /// </remarks>
         protected static IEnumerator CheckDeploymentCoroutine()
         {
+
 #if UNITY_EDITOR
+            Instance.Username = SystemInfo.deviceUniqueIdentifier;
             Logs.Add($"SCORM is unavailable in the Unity Editor. Using default login ID: '{Instance.Username}'");
             Instance.HandleScormMessage(ScormManager.Event.Initialized);
 #endif
