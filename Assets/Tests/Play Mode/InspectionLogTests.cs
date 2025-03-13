@@ -18,7 +18,7 @@ namespace Tests.PlayMode
         private InspectionReviewBuilder inspectionReviewBuilder;
         private InspectionLogBuilder inspectionLogBuilder;
         private VisualElement root;
-        private Table table;
+        private TpiTable table;
         private const string SceneName = "InspectionReviewTestScene";
         private List<InspectionData> inspectionList;
         private InspectableObject inspectable;
@@ -121,17 +121,17 @@ namespace Tests.PlayMode
             yield return new WaitForSeconds(0.2f);
 
             // Create a TableEntry instance.
-            TableEntry tableEntry = new TableEntry();
+            TpiTableEntry tableEntry = new TpiTableEntry();
 
             // reflection is used to access a private field, used in this case to get elements inside table entry class
-            var elementsField = typeof(TableEntry).GetField("elements", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var elementsField = typeof(TpiTableEntry).GetField("elements", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             Assert.IsNotNull(elementsField, "Could not find the private field 'elements' in TableEntry.");//makes sure not null
 
             // Create and assign a new list with test data.
-            var testElements = new List<TableElement>
+            var testElements = new List<TpiTableElement>
             {
-                new TableElement { Text = "Reception" },  // Column 0: Location
-                new TableElement { Text = "Test" }          // Column 1: Item Name
+                new TpiTableElement { Text = "Reception" },  // Column 0: Location
+                new TpiTableElement { Text = "Test" }          // Column 1: Item Name
             };
             elementsField.SetValue(tableEntry, testElements);
 

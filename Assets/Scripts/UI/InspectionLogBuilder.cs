@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
-using VARLab.Velcro;
 
 namespace VARLab.DLX
 {
@@ -14,7 +13,7 @@ namespace VARLab.DLX
     public class InspectionLogBuilder : TabContentBuilder
     {
         [SerializeField]
-        private Table table;
+        private TpiTable table;
 
         [SerializeField]
         private Sprite compliantIcon;
@@ -32,6 +31,7 @@ namespace VARLab.DLX
         private bool isEmptyLogMessageDisplayed = false;
 
         public UnityEvent<string> DeleteInspection;
+        public UnityEvent<string> DisplayPopUp;
 
         /// <summary>
         /// Updates the local inspection list with the provided data.
@@ -97,7 +97,7 @@ namespace VARLab.DLX
             {
                 //Add a new category to the table for this location.
                 table.AddCategory(group.Key);
-                TableCategory category = table.FindCategoryByName(group.Key);
+                TpiTableCategory category = table.FindCategoryByName(group.Key);
 
                 //subscribed to row removal event
                 category.OnEntryRemoved.AddListener(OnRowRemoved);
@@ -122,9 +122,19 @@ namespace VARLab.DLX
                     entry.Elements.ElementAt(2).Icon = inspection.IsCompliant ? compliantIcon : nonCompliantIcon;
 
                     // Column 3: Info – if a photo exists, show a "View Photo" link, otherwise indicate no photo.
-                    entry.Elements.ElementAt(3).Text = inspection.HasPhoto ? "View Photo" : "----";
+                    entry.Elements.ElementAt(3).Text = inspection.HasPhoto ? "View photo" : "----";
+                    if (inspection.HasPhoto)
+                    {
+                        entry.Elements.ElementAt(3).Button.SetEnabled(true);
+                        entry.Elements.ElementAt(3).Button.clicked += () => DisplayPopUPUI(inspection.Obj.ObjectId);
+                    }
                 }
             }
+        }
+
+        public void DisplayPopUPUI(string objectId)
+        {
+            DisplayPopUp?.Invoke(objectId);
         }
 
         /// <summary>
@@ -133,7 +143,7 @@ namespace VARLab.DLX
         /// and invokes the DeleteInspection event to remove the corresponding inspection.
         /// </summary>
         /// <param name="removedEntry">The TableEntry that was removed.</param>
-        private void OnRowRemoved(TableEntry removedEntry)
+        private void OnRowRemoved(TpiTableEntry removedEntry)
         {
             string location = removedEntry.Elements.ElementAt(0).Text;
             string name = removedEntry.Elements.ElementAt(1).Text;

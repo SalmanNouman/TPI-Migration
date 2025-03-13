@@ -1,0 +1,40 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Button-Positive" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Auxilliary/Button-Auxiliary-Positive.uxml?fileID=9197481963319205126&amp;guid=d291c18d53381bf47afbf9c56578f79a&amp;type=3#Button-Auxiliary-Positive" />
+    <engine:Template name="Button-Negative" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Auxilliary/Button-Auxiliary-Negative.uxml?fileID=9197481963319205126&amp;guid=59a0c25e0e290d4429ba7ee075305180&amp;type=3#Button-Auxiliary-Negative" />
+    <engine:Template name="Button-Close" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Close/Button-Close.uxml?fileID=9197481963319205126&amp;guid=342fc01b0760e2e4bbf6fd7de859fd99&amp;type=3#Button-Close" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-review.uss?fileID=7433441132597879392&amp;guid=9788939653f0dd442872fa417ad37e8c&amp;type=3#tpi-inspection-review" />
+    <engine:VisualElement name="Canvas" class="grow justify-center align-items-center">
+        <engine:VisualElement name="DimBackground" class="align-items-center justify-center image-popup-background-dim">
+            <engine:VisualElement name="CardContainer" class="card-v5-container-base card-v5-container-image-only">
+                <VARLab.Velcro.BoxShadowManager blur-width="4" offset-y="4" name="TopShadow" class="br-tl-20 br-tr-20 card-v5-top-shadow card-v5-shadow-variables" />
+                <engine:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center">
+                    <engine:VisualElement name="Image" class="align-self-center w-100 h-100 card-v5-body-image br-tl-20 br-tr-20" style="-unity-background-scale-mode: scale-and-crop;" />
+                    <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CameraButton" class="mr-20 align-self-center ml-0 mt-0 mb-0 p-0 bw-0 card-v5-button-camera absolute" />
+                </engine:VisualElement>
+                <engine:VisualElement name="Bottom" class="card-v5-bottom br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2">
+                    <engine:VisualElement name="Default" class="card-v5-bottom-default grow pl-32 pr-32 justify-space-between pt-20 pb-24">
+                        <engine:VisualElement name="LabelContainer">
+                            <engine:Label tabindex="-1" text="[SecondaryLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Secondary" class="m-0 p-0 fs-24 fw-400 card-v5-bottom-default-secondarylabel text-no-wrap" />
+                            <engine:Label tabindex="-1" text="[PrimaryLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="m-0 p-0 fs-36 fw-700 card-v5-bottom-default-primarylabel mt-4 text-no-wrap" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="Tag" class="card-v5-bottom-default-tag br-10 align-items-center">
+                            <engine:Label tabindex="-1" text="00:00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TagText" class="m-0 p-0 fs-28 card-v5-bottom-default-tag-label fw-400 text-no-wrap" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Buttons" class="card-v5-bottom-buttons grow justify-space-between p-28">
+                        <engine:Label tabindex="-1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BottomLabel" class="m-0 p-0 fw-400 fs-20 text-align-upper-center card-v5-bottom-buttons-label" />
+                        <engine:VisualElement name="ButtonContainer" class="flex-row justify-space-around">
+                            <engine:Instance template="Button-Positive" name="Button-Positive" />
+                            <engine:Instance template="Button-Negative" name="Button-Negative" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:Instance template="Button-Close" name="Button-Close" class="absolute card-v5-button-close" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

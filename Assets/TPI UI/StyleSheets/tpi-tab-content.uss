@@ -59,10 +59,22 @@
     --card-v5-body-border-radius: 15px;
 }
 
+.tpi-card-v5-button {
+    background-color: var(--card-button-element-background-color);
+}
+
+.tpi-card-v5-button:hover:enabled {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.5);
+}
+
 .tpi-card-v5-body-image {
     height: 135px;
     -unity-background-scale-mode: scale-and-crop;
 } 
+
+.tpi-card-v5-body-image:hover:enabled {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.8);
+}
 
 .tpi-card-v5-bottom {
     height: 70px;

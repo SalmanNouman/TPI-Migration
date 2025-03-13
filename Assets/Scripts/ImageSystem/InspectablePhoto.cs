@@ -32,11 +32,11 @@ namespace VARLab.DLX
             string[] split = id.Split('_');
             if (split.Length == 1)
             {
-                return split[0];
+                return split[0].ToString();
             }
             else
             {
-                return split[1];
+                return split[1].ToString();
             }
         }
     }

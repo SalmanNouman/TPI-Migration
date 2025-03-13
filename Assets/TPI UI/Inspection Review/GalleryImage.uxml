@@ -5,16 +5,10 @@
     <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-tab-content.uss?fileID=7433441132597879392&amp;guid=ef7902918bf7c934ca9e7edd792f3af4&amp;type=3#tpi-tab-content" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
     <engine:VisualElement name="CardContainer" class="tpi-card-v5-container-base tpi-card-v5-container-image-only">
-        <VARLab.Velcro.BoxShadowManager blur-width="4" offset-y="4" name="TopShadow" class="br-tl-20 br-tr-20 card-v5-top-shadow card-v5-shadow-variables">
-            <engine:VisualElement name="TopContainer">
-                <engine:VisualElement name="Top" class="card-v5-top br-tl-20 br-tr-20 bw-t-2 bw-l-2 bw-r-2 justify-center">
-                    <engine:Label tabindex="-1" text="Lorem Ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="p-0 card-v5-top-label fs-40 fw-700 mt-0 mr-0 mb-0 ml-20" />
-                </engine:VisualElement>
-            </engine:VisualElement>
-        </VARLab.Velcro.BoxShadowManager>
+        <VARLab.Velcro.BoxShadowManager blur-width="4" offset-y="4" name="TopShadow" class="br-tl-20 br-tr-20 card-v5-top-shadow card-v5-shadow-variables" />
         <engine:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center" style="min-height: 130px; height: 130px;">
-            <engine:Button name="ImageButton" class="p-0 m-0" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); width: 100%; height: 130px;">
-                <engine:VisualElement name="Image" class="align-self-center w-100 h-100 tpi-card-v5-body-image" style="height: 130px;" />
+            <engine:Button name="ImageButton" class="p-0 m-0 w-100 h-100 br-tl-20 br-tr-20 tpi-card-v5-button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0);">
+                <engine:VisualElement name="Image" class="align-self-center w-100 h-100 tpi-card-v5-body-image br-tl-20 br-tr-20" style="height: 130px;" />
             </engine:Button>
         </engine:VisualElement>
         <engine:VisualElement name="Bottom" class="br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2 tpi-card-v5-bottom">

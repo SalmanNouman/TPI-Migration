@@ -32,7 +32,7 @@ namespace Tests.PlayMode
         ///     This test checks if the timer starts at 00:00:00 when restarted.
         /// </summary>
         /// <returns>Passes if the elapsed time is exactly "00:00:00". </returns>
-        [UnityTest]
+        [UnityTest, Order(0)]
         public IEnumerator TimerStartsAtZero()
         {
             // Arrange
@@ -51,7 +51,7 @@ namespace Tests.PlayMode
         ///     This test checks if the timer is running properly after starting.
         /// </summary>
         /// <returns>Passes if the timer is at Least 2 seconds after waiting.</returns>
-        [UnityTest]
+        [UnityTest, Order(1)]
         public IEnumerator TimerIsRunning()
         {
             //Arrange
@@ -70,7 +70,7 @@ namespace Tests.PlayMode
         ///     This test verifies if the timer resets correctly after running.
         /// </summary>
         /// <returns>Passes if the timer resets back to zero after being restarted.</returns>
-        [UnityTest]
+        [UnityTest, Order(2)]
         public IEnumerator TimerIsResetting()
         {
             //Arrange
@@ -96,7 +96,7 @@ namespace Tests.PlayMode
         ///     Example: If an offset of 3 seconds is set, and the timer runs for 1 seconds, the total should be 4 seconds.
         /// </summary>
         /// <returns>Passes if the elapsed time is within the expected range.</returns>
-        [UnityTest]
+        [UnityTest, Order(3)]
         public IEnumerator TimersOffset()
         {
             //Arrange

@@ -29,6 +29,7 @@ namespace VARLab.DLX
         private const int ResWidth = 770;
         private const int ResHeight = 486;
 
+
         #endregion
 
         #region UnityEvents
@@ -47,6 +48,8 @@ namespace VARLab.DLX
         /// Event triggered when an inspection is deleted with the photo.
         /// </summary>
         public UnityEvent<string> DeleteInspection;
+
+        public UnityEvent<InspectablePhoto> OnImageClicked;
 
         #endregion
 
@@ -84,6 +87,7 @@ namespace VARLab.DLX
             DeletePhoto ??= new();
             SaveGallery ??= new();
             DeleteInspection ??= new();
+            OnImageClicked ??= new();
 
             if (photos == null || photos.Count <= 0)
             {
@@ -158,19 +162,21 @@ namespace VARLab.DLX
                 tex.LoadImage(photo.Data);
                 textures.Add(tex);
 
-                image.Q<VisualElement>("Image").style.backgroundImage = tex;
+                image.Q<TemplateContainer>().Q<VisualElement>("Image").style.backgroundImage = tex;
 
                 // Reference of image button that will be used to display the pop-up
-                Button imageBtn = image.Q<Button>("ImageButton");
+                Button imageBtn = image.Q<TemplateContainer>().Q<Button>("ImageButton");
+                imageBtn.clicked += () => DisplayPopUp(photo);
 
                 // Delete button reference
-                Button deleteBtn = image.Q<Button>("DeleteButton");
+                Button deleteBtn = image.Q<TemplateContainer>().Q<Button>("DeleteButton");
 
                 // Set up name and timestamp
-                Label objName = image.Q<Label>("Primary");
-                UIHelper.SetElementText(objName, photo.ParseNameFromID(photo.Id));
+                Label objName = image.Q<TemplateContainer>().Q<Label>("Primary");
+                string objN = photo.ParseNameFromID(photo.Id);
+                UIHelper.SetElementText(objName, objN);
 
-                Label timeStampLabel = image.Q<Label>("TagText");
+                Label timeStampLabel = image.Q<TemplateContainer>().Q<Label>("TagText");
                 UIHelper.SetElementText(timeStampLabel, photo.Timestamp);
 
                 imageRow.Add(image);
@@ -183,6 +189,11 @@ namespace VARLab.DLX
             }
 
             return rowContainer;
+        }
+
+        private void DisplayPopUp(InspectablePhoto photo)
+        {
+            OnImageClicked?.Invoke(photo);
         }
 
         /// <summary>

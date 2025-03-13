@@ -72,3 +72,31 @@
 	color: var(--image-gallery-row-label-colour);
 }
 
+/* Image Pop Up */
+
+.image-popup-background-dim {
+	background-color: var(--canvas-dim-colour);
+	border-radius: 20px;
+	width: 1786px;
+	height: 985px;
+}
+
+.inspection-log-element-label {
+	background-color: rgba(0, 0, 0, 0);
+	border-width: 0px;
+}
+
+.inspection-log-element-label:enabled {
+	color: rgb(5, 141, 241);
+}
+
+.inspection-log-element-label:hover:enabled {
+	color: rgb(5, 141, 241);
+	border-bottom-width: 2px;
+	border-color: rgb(5, 141, 241);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.inspection-log-element-label:disabled {
+	background-color: rgba(0, 0, 0, 0);
+}

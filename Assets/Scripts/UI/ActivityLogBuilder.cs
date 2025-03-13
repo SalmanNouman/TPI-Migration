@@ -58,6 +58,8 @@ namespace VARLab.DLX
         /// </summary>
         private void PopulateActivityLog()
         {
+            ContentContainer.Clear();
+
             Foldout currentFoldout = null;
 
             foreach (var log in activityLog)
