@@ -6,12 +6,34 @@
 .empty-container-icon {
 	height: 190px;
 	width: 190px;
-	-unity-background-scale-mode: scale-to-fit;
-	-unity-background-image-tint-color: var(--empty-container-icon-colour);
+	-unity-background-scale-mode: scale-to-fit;	-unity-background-image-tint-color: var(--empty-container-icon-colour);
 }
 
 .empty-container-label {
 	color: var(--empty-container-label-colour);
 	font-size: 24px;
 	margin-top: 45px;
+}
+
+.tpi-sort-button-filter-tag{
+    background-color: var(--filter-tag-default-background-color);
+    border-color: var(--filter-tag-default-border-color);
+	min-width:100px;
+	height: 42px;
+	border-width: 1px;
+	border-radius: 20px;
+    color: var(--filter-tag-default-text-color);
+    -unity-font-definition: var(--font-regular);
+	font-size: 18px;
+}
+
+.tpi-sort-button-filter-tag-selected{
+	background-color: var(--filter-tag-selected-background-color);
+    border-color: var(--filter-tag-selected-border-color);
+	min-width:100px;
+	height: 42px;
+	border-radius: 20px;
+    color: var(--filter-tag-selected-text-color);
+    -unity-font-definition: var(--font-regular);
+	font-size: 18px;
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using VARLab.Velcro;
 
 namespace VARLab.DLX
 {
@@ -20,6 +21,17 @@ namespace VARLab.DLX
 
         [SerializeField]
         private Sprite nonCompliantIcon;
+
+        private Button allButton;
+        private Button compliantButton;
+        private Button nonCompliantButton;
+
+        //uss classes apply for selected and unselected button
+        private const string FilterSelectedClass = "tpi-sort-button-filter-tag-selected";
+        private const string FilterClass = "tpi-sort-button-filter-tag";
+
+        public Button CurrentButton;
+        
         /// <summary>
         ///     The list of inspection data records.
         /// </summary>
@@ -29,6 +41,18 @@ namespace VARLab.DLX
         ///     Flag to check if the empty log message has been displayed.
         /// </summary>
         private bool isEmptyLogMessageDisplayed = false;
+        //container settings
+        private SortType savedSort;
+
+        /// <summary>
+        ///    This method will sort the logs based on the button clicked
+        /// </summary>
+        private enum SortType
+        {
+            All,
+            Compliant,
+            NonCompliant
+        }
 
         public UnityEvent<string> DeleteInspection;
         public UnityEvent<string> DisplayPopUp;
@@ -50,6 +74,8 @@ namespace VARLab.DLX
         /// </summary>
         public void HandleDisplayInspectionLog()
         {
+            AddSortButtonListener();
+            SelectButton(allButton);
             //check if list is empty or null
             if (inspectionList == null || inspectionList.Count <= 0)
             {
@@ -70,15 +96,18 @@ namespace VARLab.DLX
                 isEmptyLogMessageDisplayed = false;
             }
             //populate the table with the inspection data.
-            PopulateInspectionTable();
+            PopulateInspectionTable(SortType.All); 
         }
 
         /// <summary>
         /// Populates the Velcro Table with inspection data grouped by location.
-        /// It creates table columns, adds categories for each location, and fills each row with inspection details.
+        /// It creates table columns, adds categories for each location, and fills each row with inspection details
+        ///  based on the selected sort type (All, Compliant, or Non-Compliant).
         /// </summary>
-        private void PopulateInspectionTable()
+        private void PopulateInspectionTable( SortType sortType)
         {
+            List<InspectionData> tempList = new List<InspectionData>();
+            UIHelper.Show(SortBtnContainer);
             ContentContainer.Add(table.Root);
             table.Root.style.flexGrow = 1;
             ContentContainer.Q<TemplateContainer>().style.flexGrow = 1;
@@ -89,8 +118,28 @@ namespace VARLab.DLX
             string[] columns = { "Location", "Item", "Compliancy", "Info" };
             table.HandleDisplayUI(columns);
 
+            if (sortType == SortType.All)
+            {
+                tempList = inspectionList;
+            }
+            else 
+            {
+                foreach (InspectionData inspection in inspectionList)
+                {
+                    if (inspection.IsCompliant && sortType == SortType.Compliant)
+                    {
+                        tempList.Add(inspection);
+                    }
+                    else if(!inspection.IsCompliant && sortType == SortType.NonCompliant)
+                    {
+                        tempList.Add(inspection);
+                    }
+                }
+            }
+
+
             // Group inspections by Location.
-            var groupedInspections = inspectionList.GroupBy(i => i.Obj.Location.ToString());
+            var groupedInspections = tempList.GroupBy(i => i.Obj.Location.ToString());
 
             // For each location group, create a category and add entries.
             foreach (var group in groupedInspections)
@@ -159,6 +208,71 @@ namespace VARLab.DLX
             //// Log for debugging
             Debug.Log($"Row removed for object: {objectId}");
 
+        }
+
+        /// <summary>
+        /// Adds click event listeners to the sort buttons, allowing the user 
+        /// to filter inspection data by "All", "Compliant", or "Non-Compliant".
+        /// Updates the saved sort type, repopulates the inspection table, 
+        /// and visually selects the clicked button.
+        /// </summary>
+        public void AddSortButtonListener() 
+        {
+            //Get references to the buttons
+            allButton = SortBtnContainer.Q<Button>("SortBtnOne");
+            compliantButton = SortBtnContainer.Q<Button>("SortBtnTwo");
+            nonCompliantButton = SortBtnContainer.Q<Button>("SortBtnThree");
+
+            List<Button> buttons = new() { allButton, compliantButton, nonCompliantButton };
+
+            allButton.clicked += () =>
+            {
+                savedSort = SortType.All;
+                PopulateInspectionTable(savedSort);
+                SelectButton(allButton);
+            };
+
+            compliantButton.clicked += () =>
+            {
+                savedSort = SortType.Compliant;
+                PopulateInspectionTable(savedSort);
+                SelectButton(compliantButton);
+            };
+
+            nonCompliantButton.clicked += () =>
+            {
+                savedSort = SortType.NonCompliant;
+                PopulateInspectionTable(savedSort);
+                SelectButton(nonCompliantButton);
+            };
+        }
+
+        /// <summary>
+        /// Highlights the selected button by applying the appropriate uss classes.
+        /// </summary>
+        /// <param name="button">The button to be selected.</param>
+        public void SelectButton(Button button)
+        {
+            if (CurrentButton != null)
+            {
+                UnselectButton(CurrentButton);
+            }
+
+            button.AddToClassList(FilterSelectedClass);
+            button.RemoveFromClassList(FilterClass);
+
+            CurrentButton = button;
+        }
+
+        /// <summary>
+        /// Removes the highlight from the currently selected button 
+        /// by swapping its uss classes.
+        /// </summary>
+        /// <param name="button">The button to be unselected.</param>
+        public void UnselectButton(Button button)
+        {
+            button.RemoveFromClassList(FilterSelectedClass);
+            button.AddToClassList(FilterClass);  
         }
     }
 }

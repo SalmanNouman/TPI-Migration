@@ -21,26 +21,30 @@ namespace Tests.PlayMode
         private TpiTable table;
         private const string SceneName = "InspectionReviewTestScene";
         private List<InspectionData> inspectionList;
+        private List<InspectionData> tempList;
         private InspectableObject inspectable;
         private GameObject inspectableGameObject;
-
+        private Button allButton;
+        private Button compliantButton;
+        private Button nonCompliantButton;
+        
+        private enum SortType
+        {
+            All,
+            Compliant,
+            NonCompliant
+        }
+       
         /// <summary>
         /// Loads the inspection review test scene
         /// </summary>
-        [OneTimeSetUp]
+        [UnitySetUp]
         [Category("BuildServer")]
-        public void RunOnce()
+        public IEnumerator RunOnce()
         {
             SceneManager.LoadScene(SceneName);
-        }
-        /// <summary>
-        /// Checks if the test scene is loaded
-        /// </summary>
-        [UnityTest, Order(0)]
-        [Category("BuildServer")]
-        public IEnumerator SceneLoaded()
-        {
-            yield return new WaitUntil(() => SceneManager.GetSceneByName(SceneName).isLoaded);
+            yield return null;
+
             inspectionReviewBuilder = GameObject.FindAnyObjectByType<InspectionReviewBuilder>();
             inspectionReviewDoc = inspectionReviewBuilder.GetComponent<UIDocument>();
             inspectionLogBuilder = GameObject.FindAnyObjectByType<InspectionLogBuilder>();
@@ -56,6 +60,21 @@ namespace Tests.PlayMode
             inspectable.Cam = inspectableGameObject.GetComponent<Camera>();
             inspectionList = new();
             inspectionList.Add(new InspectionData(inspectable, true, true));
+
+            nonCompliantButton = inspectionLogBuilder.SortBtnContainer.Q<Button>("SortBtnThree");
+            allButton = inspectionLogBuilder.SortBtnContainer.Q<Button>("SortBtnOne");
+            compliantButton = inspectionLogBuilder.SortBtnContainer.Q<Button>("SortBtnTwo");
+            yield return null;
+
+        }
+        /// <summary>
+        /// Checks if the test scene is loaded
+        /// </summary>
+        [UnityTest, Order(0)]
+        [Category("BuildServer")]
+        public IEnumerator SceneLoaded()
+        {
+            yield return new WaitUntil(() => SceneManager.GetSceneByName(SceneName).isLoaded);
 
             Debug.Log(inspectionList.ToString());
 
@@ -149,6 +168,54 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue(eventTriggered, "DeleteInspection event was not triggered.");
             Assert.AreEqual("Reception_Test", capturedObjectId, "The objectId passed to DeleteInspection is incorrect.");
+        }
+
+        [UnityTest, Order(4)]
+        [Category("BuildServer")]
+        public IEnumerator WhenClickButtonAllInvokeAddSortButtonListener()
+        {
+            // Arrange
+            inspectionLogBuilder.SelectButton(nonCompliantButton);
+          
+            // Act
+            inspectionLogBuilder.SelectButton(allButton);
+
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(allButton, inspectionLogBuilder.CurrentButton);  
+        }
+
+        [UnityTest, Order(5)]
+        [Category("BuildServer")]
+        public IEnumerator WhenClickButtonCompliantInvokeAddSortButtonListener()
+        {
+            // Arrange
+            inspectionLogBuilder.SelectButton(nonCompliantButton);
+
+            // Act
+            inspectionLogBuilder.SelectButton(compliantButton);
+
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(compliantButton, inspectionLogBuilder.CurrentButton);   
+        }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator WhenClickButtonNonCompliantInvokeAddSortButtonListener()
+        {
+            // Arrange
+            inspectionLogBuilder.SelectButton(nonCompliantButton);
+          
+            // Act
+            inspectionLogBuilder.SelectButton(nonCompliantButton);
+
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(nonCompliantButton, inspectionLogBuilder.CurrentButton);
         }
     }
 }
