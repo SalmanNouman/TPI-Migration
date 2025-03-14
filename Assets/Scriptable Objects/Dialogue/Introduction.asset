@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccbad2dbdf0a2140968a34b0ba58f72, type: 3}
+  m_Name: Introduction
+  m_EditorClassIdentifier: 
+  Name: Introduction
+  TaskText: 'Tattoo & Piercing Studio : Routine Inspection'
+  ButtonText: Go to Office
+  StartDialogueOnLeft: 1
+  dialogue:
+  - Avatar: {fileID: 21300000, guid: e97821f9e93b0f14bbbe880c4d7639b5, type: 3}
+    Speaker: <color=#FFFFFF>Manager</color>
+    Text: <color=#FFFFFF>Hi! Can I help you?</color>
+    AudioClip: {fileID: 0}
+    TextBackgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+    ImageBorderColour: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderRight: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderLeft: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderTop: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderBottom: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+  - Avatar: {fileID: 21300000, guid: a716f56d223c57d4093083a7adf3ffd1, type: 3}
+    Speaker: <color=#BBDDFC>You</color>
+    Text: <color=#000000>Good afternoon, I am a Public Health Inspector with the
+      local health unit, and I am here for a routine inspection. Here is my identification.</color>
+    AudioClip: {fileID: 0}
+    TextBackgroundColour: {r: 0.78431374, g: 0.9254902, b: 0.99215686, a: 1}
+    ImageBorderColour: {r: 0.78431374, g: 0.9254902, b: 0.99215686, a: 1}
+    TextBorderRight: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderLeft: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderTop: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderBottom: {r: 0, g: 0, b: 0, a: 0}
+  - Avatar: {fileID: 21300000, guid: e97821f9e93b0f14bbbe880c4d7639b5, type: 3}
+    Speaker: <color=#FFFFFF>Manager</color>
+    Text: <color=#FFFFFF>Ok, come in.</color>
+    AudioClip: {fileID: 0}
+    TextBackgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+    ImageBorderColour: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderRight: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderLeft: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderTop: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderBottom: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+  - Avatar: {fileID: 21300000, guid: a716f56d223c57d4093083a7adf3ffd1, type: 3}
+    Speaker: <color=#BBDDFC>You</color>
+    Text: <color=#000000>Is there somewhere I can leave my bag?</color>
+    AudioClip: {fileID: 0}
+    TextBackgroundColour: {r: 0.78431374, g: 0.9254902, b: 0.99215686, a: 1}
+    ImageBorderColour: {r: 0.78431374, g: 0.9254902, b: 0.99215686, a: 1}
+    TextBorderRight: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderLeft: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderTop: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderBottom: {r: 0, g: 0, b: 0, a: 0}
+  - Avatar: {fileID: 21300000, guid: e97821f9e93b0f14bbbe880c4d7639b5, type: 3}
+    Speaker: <color=#FFFFFF>Manager</color>
+    Text: <color=#FFFFFF>Sure, you can put it in my office.</color>
+    AudioClip: {fileID: 0}
+    TextBackgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+    ImageBorderColour: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderRight: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}
+    TextBorderLeft: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderTop: {r: 0, g: 0, b: 0, a: 0}
+    TextBorderBottom: {r: 1, g: 0.8039216, b: 0.16078432, a: 1}

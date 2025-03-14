@@ -1,0 +1,15 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
+        <engine:VisualElement name="Window" class="br-20 window-single h-max-95" style="width: 1444px;">
+            <engine:Instance template="Header" name="Header" />
+            <engine:VisualElement name="Top" class="mr-24 ml-24" style="flex-grow: 1; top: -28px;">
+                <engine:Label text="[ScenarioText]" name="TaskText" parse-escape-sequences="true" class="m-0 pr-0 pl-0 fs-28 text-align-middle-right" style="color: rgb(179, 179, 179);" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Content" class="justify-center" style="flex-grow: 1; margin-left: 150px; margin-right: 150px;" />
+            <engine:VisualElement name="Footer" class="flex-row align-items-center justify-center" style="flex-grow: 1;">
+                <engine:Button text="[Primary]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="button-primary button justify-center fs-28 text-align-middle-center bold" style="width: auto; height: auto; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=7443734ac97b95b459c7b63534f942e7&amp;type=3#NotInter-Regular&quot;); margin-top: 38px; margin-right: 16px; margin-bottom: 38px; margin-left: 16px; padding-top: 8px; padding-right: 32px; padding-bottom: 8px; padding-left: 32px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

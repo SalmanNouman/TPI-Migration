@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2436697, y: 0.61061937, z: 1.6530832}
-  m_Center: {x: -1.5130144, y: -0.42959604, z: -0.32654136}
+  m_Size: {x: 1.3, y: 0.12, z: 1.5}
+  m_Center: {x: -1.51, y: -0.5, z: -0.3}
 --- !u!114 &3683145006535159207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -2100,17 +2100,17 @@ PrefabInstance:
     - target: {fileID: 3089422385224052271, guid: 7746602b2baf4544e802d737922e5d4b,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.3584702
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3089422385224052271, guid: 7746602b2baf4544e802d737922e5d4b,
         type: 3}
       propertyPath: m_Center.y
-      value: 4.2885016e-15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3089422385224052271, guid: 7746602b2baf4544e802d737922e5d4b,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.57923514
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7066051751525026818, guid: 7746602b2baf4544e802d737922e5d4b,
         type: 3}

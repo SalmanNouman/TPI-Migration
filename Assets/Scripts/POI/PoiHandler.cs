@@ -18,9 +18,14 @@ namespace VARLab.DLX
         private int interactablePois = 0;
 
         /// <summary>
+        ///     Tracks the player's current POI location.
+        /// </summary>
+        private Poi currentPoi;
+
+        /// <summary>
         /// This event is linked to the <see cref="Poi.OnPoiEnter"/> event and
         /// is invoked every time the poi event is invoked.
-        /// <see cref=""/>
+        /// <see cref="IntroductionTask.HandlePoiEnter"/>
         /// </summary>
         public UnityEvent<Poi> OnPoiEnter;
 
@@ -89,9 +94,14 @@ namespace VARLab.DLX
 
         /// <summary>
         /// Handles when the POI is entered and invokes the event.
+        /// Updates currentPoi to track player location.
         /// </summary>
         /// <param name="poi">The POI that was entered.</param>
-        public void HandlePoiEnter(Poi poi) => OnPoiEnter?.Invoke(poi);
+        public void HandlePoiEnter(Poi poi)
+        {
+            currentPoi = poi; // Update current POI
+            OnPoiEnter?.Invoke(poi);
+        }
 
         /// <summary>
         /// Handles when the POI is exited and invokes the event.

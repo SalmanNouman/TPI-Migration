@@ -1,0 +1,143 @@
+.canvas {
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.modal {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+    border-top-left-radius: 50px;
+    width: 1444px;
+}
+
+.header {
+    width: 100%;
+    height: 75px;
+    flex-direction: row;
+}
+
+.canvas {
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.header-start {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    justify-content: center;
+}
+
+.header-end {
+    width: 100%;
+    align-items: flex-end;
+}
+
+.text {
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    -unity-font-style: bold;
+}
+
+.name {
+    font-size: 36px;
+    -unity-font-style: bold;
+    margin-left: 20px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.content {
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.description {
+    font-size: 28px;
+    white-space: normal;
+    align-self: stretch;
+    width: auto;
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    -unity-text-outline-width: 0.5px;
+    background-color: rgb(187, 221, 255);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    color: rgb(0, 0, 0);
+}
+
+.footer {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header-end {
+    width: 100%;
+    align-items: flex-end;
+}
+
+.body {
+    flex-direction: row;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.body-right {
+    flex-grow: 1;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.caption {
+    align-self: flex-start;
+    font-size: 20px;
+    white-space: normal;
+    -unity-font-style: bold;
+    color: rgb(27, 27, 27);
+}
+
+.btn-primary {
+    background-color: rgb(255, 192, 9);
+    border-color: rgb(255, 192, 9);
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 223, 142);
+    border-color: rgb(255, 223, 142);
+}
+
+.body-left {
+    width: 80px;
+    max-width: 80px;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-right: 8px;
+    margin-left: 8px;
+}

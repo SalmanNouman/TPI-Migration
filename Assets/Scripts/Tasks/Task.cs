@@ -1,8 +1,9 @@
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace VARLab.DLX
 {
-    public abstract class Tasks
+    public abstract class Tasks: MonoBehaviour
     {
         //events
         public UnityEvent OnTaskStarted;
