@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5992845380954535635}
   - component: {fileID: 7880084912652223141}
   - component: {fileID: 1437282159200102816}
+  - component: {fileID: 4103010644111344003}
   m_Layer: 0
   m_Name: Inspection Window
   m_TagString: Untagged
@@ -312,3 +313,30 @@ MonoBehaviour:
   CameraOverride: {fileID: 0}
   RenderTextureOverride: {fileID: 0}
   useMainCameraValues: 0
+--- !u!114 &4103010644111344003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654170876930727764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f4b8f5a99872e4cb77a135c7871e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 0.75
+  solidDuration: 2
+  translateDirection: -5
+  successIcon: {fileID: 21300000, guid: eda8bb74760c759459787978d330cf20, type: 3}
+  errorIcon: {fileID: 21300000, guid: 63d3164d40e5d7144bbcbc2a69f87d4d, type: 3}
+  infoIcon: {fileID: 21300000, guid: ede20acffa277d048a45bac65fb748d7, type: 3}
+  customIcon: {fileID: 21300000, guid: f2c3171f586ffff4a968b57e57a7a2a2, type: 3}
+  customBackgroundColour: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+  customTextColour: {r: 1, g: 1, b: 1, a: 1}
+  OnNotificationShown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNotificationHidden:
+    m_PersistentCalls:
+      m_Calls: []

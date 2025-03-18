@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -40,6 +41,18 @@ namespace Tests.PlayMode
         //notification
         public UnityEvent<NotificationSO> DisplayNotification;
 
+        // Inspection Window Notification
+        private InspectionWindowNotification notification;
+
+        private VisualElement notificationContainer;
+
+        private Sprite successIcon;
+        private Sprite errorIcon;
+        private Sprite infoIcon;
+        private Sprite customIcon;
+
+        
+
         #endregion
 
         #region Test Setup
@@ -70,6 +83,24 @@ namespace Tests.PlayMode
 
             inspectionWindowBuilder.CurrentInspectable = inspectable;
             root = inspectionWindowDoc.rootVisualElement;
+
+            //Load required assets from project files
+            successIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VELCRO UI/Sprites/Icons/Success_Sprite.png");
+            errorIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VELCRO UI/Sprites/Icons/Warning_Sprite.png");
+            infoIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VELCRO UI/Sprites/Icons/Info_Sprite.png");
+            customIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VELCRO UI/Sprites/Checkmarks/Checkmark_Sprite.png");
+
+            notification = inspectionWindowBuilder.GetComponent<InspectionWindowNotification>();
+
+            //Reference icons as SerializedFields
+            SerializedObject so2 = new SerializedObject(notification);
+            so2.FindProperty("successIcon").objectReferenceValue = successIcon;
+            so2.FindProperty("errorIcon").objectReferenceValue = errorIcon;
+            so2.FindProperty("infoIcon").objectReferenceValue = infoIcon;
+            so2.FindProperty("customIcon").objectReferenceValue = customIcon;
+            so2.ApplyModifiedProperties();
+
+            notificationContainer = root.Q<VisualElement>("NotificationContainer");
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
@@ -599,6 +630,230 @@ namespace Tests.PlayMode
             Assert.IsTrue(isWindowClosed, "Window was not closed after confirmation dialog primary button click");
         }
 
+        [UnityTest, Order(22)]
+        [Category("BuildServer")]
+        public IEnumerator HandleDisplayUI_WithSO_SetsRootToDisplayFlex()
+        {
+            //Arrange
+            StyleEnum<DisplayStyle> expectedStyle = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+            NotificationSO notificationSO = ScriptableObject.CreateInstance<NotificationSO>();
+            notificationSO.NotificationType = NotificationType.Success;
+            notificationSO.Alignment = Align.FlexStart;
+            notificationSO.FontSize = FontSize.Medium;
+            notificationSO.Message = "Test notification";
+
+            //Act
+            notification.HandleDisplayUI(notificationSO);
+            yield return null;
+
+            //Assert
+            Assert.AreEqual(expectedStyle, notificationContainer.style.display);
+        }
+
+        [Test, Order(23)]
+        [Category("BuildServer")]
+        public void SetContent_WithSuccessType_ShouldPopulateNotification()
+        {
+            //Arrange
+            StyleBackground expectedIcon = new StyleBackground(successIcon);
+            string expectedMessage = "Test Message";
+
+            //Act
+            notification.SetContent(NotificationType.Success, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedIcon, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreEqual(expectedMessage, notificationContainer.Q<Label>("Text").text);
+        }
+
+        [Test, Order(24)]
+        [Category("BuildServer")]
+        public void SetContent_WithInfoType_ShouldPopulateNotification()
+        {
+            //Arrange
+            StyleBackground expectedIcon = new StyleBackground(infoIcon);
+            string expectedMessage = "Test Message";
+
+            //Act
+            notification.SetContent(NotificationType.Info, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedIcon, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreEqual(expectedMessage, notificationContainer.Q<Label>("Text").text);
+        }
+
+        [Test, Order(25)]
+        [Category("BuildServer")]
+        public void SetContent_WithErrorType_ShouldPopulateNotification()
+        {
+            //Arrange
+            StyleBackground expectedIcon = new StyleBackground(errorIcon);
+            string expectedMessage = "Test Message";
+
+            //Act
+            notification.SetContent(NotificationType.Error, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedIcon, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreEqual(expectedMessage, notificationContainer.Q<Label>("Text").text);
+        }
+
+        [UnityTest, Order(26)]
+        [Category("BuildServer")]
+        public IEnumerator FadeIn_ShouldSetOpacityToOne()
+        {
+            //Arrange
+            float expectedOpacity = 1.0f;
+
+            //Act
+            notification.FadeIn();
+            yield return new WaitForSeconds(1.5f);
+
+            //Assert
+            Assert.AreEqual(expectedOpacity, notificationContainer.resolvedStyle.opacity);
+        }
+
+        [Test, Order(27)]
+        [Category("BuildServer")]
+        public void Show_Triggers_OnNotificationOpened()
+        {
+            bool triggered = false;
+            //Arrange
+            notification.OnNotificationShown.AddListener(() => triggered = true);
+
+            //Act
+            notification.Show();
+
+            //Assert
+            Assert.IsTrue(triggered);
+        }
+
+        [Test, Order(28)]
+        [Category("BuildServer")]
+        public void Hide_Triggers_OnNotificationClosed()
+        {
+            //Arrange
+            bool triggered = false;
+            notification.OnNotificationHidden.AddListener(() => triggered = true);
+
+            //Act
+            notification.Hide();
+
+            //Assert
+            Assert.IsTrue(triggered);
+        }
+
+        [Test, Order(29)]
+        [Category("BuildServer")]
+        public void SetContent_WithCustomType_ShouldPopulateNotification()
+        {
+            //Arrange
+            StyleBackground expectedIcon = new StyleBackground(customIcon);
+            string expectedMessage = "Test Message";
+
+            //Act
+            notification.SetContent(NotificationType.Custom, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedIcon, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreEqual(expectedMessage, notificationContainer.Q<Label>("Text").text);
+        }
+
+        [Test, Order(30)]
+        [Category("BuildServer")]
+        public void SetContent_WithCustomType_ShouldSetInlineValues()
+        {
+            //Act
+            notification.SetContent(NotificationType.Custom, "Test Message");
+
+            //Assert
+            Assert.AreNotEqual(StyleKeyword.Null, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreNotEqual(StyleKeyword.Null, notificationContainer.Q<VisualElement>("NotificationContainer").style.backgroundColor);
+            Assert.AreNotEqual(StyleKeyword.Null, notificationContainer.Q<Label>("Text").style.color);
+        }
+
+        [Test, Order(31)]
+        [Category("BuildServer")]
+        public void SetCustomNotification_WithIcon_SetsValues()
+        {
+            // Arrange
+            StyleBackground expectedIcon = new StyleBackground(customIcon);
+            StyleColor expectedBackgroundColour = new StyleColor(Color.red);
+            StyleColor expectedTextColour = new StyleColor(Color.green);
+
+            //Act
+            notification.SetCustomNotification(Color.red, Color.green, customIcon);
+            notification.HandleDisplayUI(NotificationType.Custom, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedIcon, notificationContainer.Q<VisualElement>("Icon").style.backgroundImage);
+            Assert.AreEqual(expectedBackgroundColour, notificationContainer.Q<VisualElement>("NotificationContainer").style.backgroundColor);
+            Assert.AreEqual(expectedTextColour, notificationContainer.Q<Label>("Text").style.color);
+        }
+
+        [Test, Order(32)]
+        [Category("BuildServer")]
+        public void SetCustomNotification_WithoutIcon_SetsValues()
+        {
+            // Arrange
+            StyleKeyword expectedStyle = StyleKeyword.Null;
+            StyleColor expectedBackgroundColour = new StyleColor(Color.red);
+            StyleColor expectedTextColour = new StyleColor(Color.green);
+
+            //Act
+            notification.SetCustomNotification(Color.red, Color.green);
+            notification.HandleDisplayUI(NotificationType.Custom, "Test Message");
+
+            //Assert
+            Assert.AreEqual(expectedStyle.ToString(), notificationContainer.Q<VisualElement>("Icon").style.backgroundImage.ToString());
+            Assert.AreEqual(expectedBackgroundColour, notificationContainer.Q<VisualElement>("NotificationContainer").style.backgroundColor);
+            Assert.AreEqual(expectedTextColour, notificationContainer.Q<Label>("Text").style.color);
+        }
+
+        [Test, Order(33)]
+        [Category("BuildServer")]
+        public void ClearClasses_WithSuccess_RemovesClass()
+        {
+            // Arrange
+            string disabledClass = "notification-success";
+
+            //Act
+            notification.HandleDisplayUI(NotificationType.Success, "Success Message");
+            notification.ClearClasses();
+
+            //Assert
+            Assert.IsFalse(notificationContainer.Q<VisualElement>("NotificationContainer").ClassListContains(disabledClass));
+        }
+
+        [Test, Order(34)]
+        [Category("BuildServer")]
+        public void ClearClasses_WithInfo_RemovesClass()
+        {
+            // Arrange
+            string disabledClass = "notification-info";
+
+            //Act
+            notification.HandleDisplayUI(NotificationType.Info, "Info Message");
+            notification.ClearClasses();
+
+            //Assert
+            Assert.IsFalse(notificationContainer.Q<VisualElement>("NotificationContainer").ClassListContains(disabledClass));
+        }
+
+        [Test, Order(35)]
+        [Category("BuildServer")]
+        public void ClearClasses_WithError_RemovesClass()
+        {
+            // Arrange
+            string disabledClass = "notification-error";
+
+            //Act
+            notification.HandleDisplayUI(NotificationType.Error, "Error Message");
+            notification.ClearClasses();
+
+            //Assert
+            Assert.IsFalse(notificationContainer.Q<VisualElement>("NotificationContainer").ClassListContains(disabledClass));
+        }
         #endregion
 
         #region Helper Methods
