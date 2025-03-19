@@ -16,7 +16,7 @@ namespace VARLab.DLX
     ///     3. <see cref="OnTaskStarted"/> event is invoked → Connected to <see cref="ConversationBuilder.HandleDisplayConversation"/>
     ///     4. When conversation ends → <see cref="CompleteTask"/> is called
     ///     5. <see cref="OnTaskCompleted"/> event is invoked → Connected to next task
-    ///     6. If player enters restricted area → <see cref="CheckCurrentPoi"/> is called
+    ///     6. If player leaves Reception POI <see cref="Poi.OnPoiExit"/> → <see cref="CheckPoiExit"/> is called
     ///     7. <see cref="OnTaskFailed"/> event is invoked → Connected to <see cref="InformationDialog.HandleDisplayUI"/>
     /// </remarks>
     public class IntroductionTask : Tasks
@@ -25,9 +25,6 @@ namespace VARLab.DLX
 
         [SerializeField, Tooltip("Reference to the Reception POI (allowed area)")]
         private Poi receptionPoi;
-
-        [SerializeField, Tooltip("Reference to the Information Dialog ScriptableObject for task failure")]
-        private InformationDialogSO introductionExitSO;
 
         [SerializeField, Tooltip("The waypoint that starts this introduction task")]
         private Waypoint introductionWaypoint;
@@ -52,14 +49,6 @@ namespace VARLab.DLX
         ///     Used to prevent task failure after completion
         /// </remarks>
         private bool isTaskCompleted = false;
-
-        /// <summary>
-        ///     Reference to the current POI the player is in
-        /// </summary>
-        /// <remarks>
-        ///     Updated in <see cref="CheckCurrentPoi"/>
-        /// </remarks>
-        private Poi currentPoi;
 
         #endregion
 
@@ -93,7 +82,7 @@ namespace VARLab.DLX
         ///     In Inspector connections:
         ///     - Connect to: <see cref="InformationDialog.HandleDisplayUI"/>
         ///     - Purpose: Displays warning dialog when player enters restricted area
-        ///     - Passes: <see cref="introductionExitSO"/> containing failure message
+        ///     - Note: InformationDialogSO reference is directly assigned in the Inspector event connection
         /// </remarks>
         // public UnityEvent OnTaskFailed; (inherited from <see cref="Task.cs"/>)
 
@@ -217,28 +206,21 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        ///     Checks if player entered a restricted area and fails the task if needed.
+        ///     Checks if player exited the Reception POI and fails the Introduction task if needed.
         /// </summary>
         /// <remarks>
         ///     Call flow:
-        ///     - Connected from: <see cref="PoiHandler.OnPoiEnter"/> in the Inspector
-        ///     - Purpose: Monitors player's location to prevent entering restricted areas
-        ///     - Fails the task if: Player enters any POI other than <see cref="receptionPoi"/> before task completion
-        ///     - Invokes: <see cref="Tasks.OnTaskFailed"/> event when player enters restricted area
-        ///     
-        ///     In Inspector connections:
-        ///     - <see cref="Tasks.OnTaskFailed"/> should be connected to:
-        ///       <see cref="InformationDialog.HandleDisplayUI"/> to show failure message
+        ///     - Connected from: <see cref="Poi.OnPoiExit"/> of the Reception POI in the Inspector
+        ///     - Fails the task if: Player exits the Reception POI before introduction task starts
+        ///     - Invokes: <see cref="Tasks.OnTaskFailed"/> event when the task fails
         /// </remarks>
-        /// <param name="poi">The POI that was entered</param>
-        public void CheckCurrentPoi(Poi poi)
+        /// <param name="poi">The POI that was exited (should be Reception)</param>
+        public void CheckPoiExit(Poi poi)
         {
-            currentPoi = poi;
-
-            // Check if player entered a restricted area during introduction task
-            if (!isTaskCompleted && poi != receptionPoi && !isTaskStarted)
+            // Only trigger failure if the task is not started yet and the exited POI is the Reception
+            if (!isTaskStarted && poi == receptionPoi)
             {
-                Debug.Log($"IntroductionTask: Player entered restricted area: {poi.PoiName}. Task failed.");
+                Debug.Log($"IntroductionTask: Player exited allowed area: {poi.PoiName} before introduction. Task failed.");
                 
                 // Invoke task failed event
                 OnTaskFailed?.Invoke();

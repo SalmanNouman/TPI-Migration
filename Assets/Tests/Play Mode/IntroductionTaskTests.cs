@@ -5,6 +5,7 @@ using UnityEngine.TestTools;
 using UnityEngine.Events;
 using VARLab.DLX;
 using System.Reflection;
+using VARLab.Navigation.PointClick;
 
 namespace Tests.PlayMode
 {
@@ -15,7 +16,7 @@ namespace Tests.PlayMode
     ///     Tests the following functionalities:
     ///     - Component initialization
     ///     - Task state management (started, completed, failed)
-    ///     - Trigger detection for task
+    ///     - Waypoint detection for task
     ///     - Early return behaviors for different task states
     ///     - Event invocation verification
     /// </remarks>
@@ -26,20 +27,19 @@ namespace Tests.PlayMode
         private GameObject testObject;
         private IntroductionTask introductionTask;
         private GameObject receptionPoiObject;
-        private GameObject restrictedPoiObject;
         private Poi receptionPoiComponent;
-        private Poi restrictedPoiComponent;
-        private GameObject playerObject;
-        private Collider playerCollider;
+        private GameObject waypointObject;
+        private Waypoint waypointComponent;
 
         // Field info for private fields access
         private FieldInfo receptionPoi;
         private FieldInfo isTaskStarted;
         private FieldInfo isTaskCompleted;
         private FieldInfo conversationDelay;
+        private FieldInfo introductionWaypoint;
         
         // Test constants
-        private const float testDelay = 0.1f;
+        private const float TestDelay = 0.1f;
 
         #endregion
 
@@ -59,15 +59,10 @@ namespace Tests.PlayMode
             receptionPoiObject = new GameObject("TestReceptionPOI");
             receptionPoiComponent = receptionPoiObject.AddComponent<Poi>();
             receptionPoiComponent.PoiName = "Reception";
-
-            restrictedPoiObject = new GameObject("TestRestrictedPOI");
-            restrictedPoiComponent = restrictedPoiObject.AddComponent<Poi>();
-            restrictedPoiComponent.PoiName = "RestrictedArea";
             
-            // Setup player object
-            playerObject = new GameObject("TestPlayer");
-            playerObject.tag = "Player";
-            playerCollider = playerObject.AddComponent<BoxCollider>();
+            // Setup test waypoint
+            waypointObject = new GameObject("TestWaypoint");
+            waypointComponent = waypointObject.AddComponent<Waypoint>();
 
             // Get private fields using reflection
             // * Reflection is used to access a private field
@@ -75,12 +70,16 @@ namespace Tests.PlayMode
             isTaskStarted = typeof(IntroductionTask).GetField("isTaskStarted", BindingFlags.NonPublic | BindingFlags.Instance);
             isTaskCompleted = typeof(IntroductionTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
             conversationDelay = typeof(IntroductionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
+            introductionWaypoint = typeof(IntroductionTask).GetField("introductionWaypoint", BindingFlags.NonPublic | BindingFlags.Instance);
             
             // Set Reception POI as the allowed area
             receptionPoi.SetValue(introductionTask, receptionPoiComponent);
             
+            // Set introduction waypoint
+            introductionWaypoint.SetValue(introductionTask, waypointComponent);
+            
             // Set a small delay for testing
-            conversationDelay.SetValue(introductionTask, testDelay);
+            conversationDelay.SetValue(introductionTask, TestDelay);
         }
 
         /// <summary>
@@ -91,8 +90,7 @@ namespace Tests.PlayMode
         {
             Object.Destroy(testObject);
             Object.Destroy(receptionPoiObject);
-            Object.Destroy(restrictedPoiObject);
-            Object.Destroy(playerObject);
+            Object.Destroy(waypointObject);
         }
 
         #endregion
@@ -117,23 +115,23 @@ namespace Tests.PlayMode
 
         #endregion
 
-        #region OnTriggerEnter Tests
+        #region CheckCurrentWaypoint Tests
 
         /// <summary>
-        ///     Tests if OnTriggerEnter() starts the task when player enters the trigger area.
+        ///     Tests if CheckCurrentWaypoint() starts the task when player reaches the introduction waypoint.
         /// </summary>
         [UnityTest, Order(2)]
         [Category("BuildServer")]
-        public IEnumerator IntroductionTask_OnTriggerEnter_StartsTaskForPlayerCollider()
+        public IEnumerator IntroductionTask_CheckCurrentWaypoint_StartsTaskForIntroductionWaypoint()
         {
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
             
-            // Act - Invoke OnTriggerEnter through reflection
-            MethodInfo onTriggerEnterMethod = typeof(IntroductionTask).GetMethod("OnTriggerEnter", BindingFlags.NonPublic | BindingFlags.Instance);
-            onTriggerEnterMethod.Invoke(introductionTask, new object[] { playerCollider });
-            yield return new WaitForSeconds(testDelay); // Wait for delay to complete
+            // Act
+            introductionTask.CheckCurrentWaypoint(waypointComponent);
+            yield return new WaitForSeconds(TestDelay);
+            yield return null; // Wait for next frame for coroutine to complete
             
             // Assert
             Assert.IsTrue((bool)isTaskStarted.GetValue(introductionTask), "isTaskStarted should be set to true");
@@ -141,29 +139,31 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
-        ///     Tests if OnTriggerEnter starts the DelayedTaskStart coroutine.
+        ///     Tests if CheckCurrentWaypoint does not start the task for non-introduction waypoints.
         /// </summary>
         [UnityTest, Order(3)]
         [Category("BuildServer")]
-        public IEnumerator IntroductionTask_OnTriggerEnter_StartsDelayedTaskCoroutine()
+        public IEnumerator IntroductionTask_CheckCurrentWaypoint_DoesNotStartTaskForNonIntroductionWaypoint()
         {
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
             
-            // Act - Invoke OnTriggerEnter through reflection
-            MethodInfo onTriggerEnterMethod = typeof(IntroductionTask).GetMethod("OnTriggerEnter", BindingFlags.NonPublic | BindingFlags.Instance);
-            onTriggerEnterMethod.Invoke(introductionTask, new object[] { playerCollider });
+            // Create a different waypoint
+            var otherWaypointObject = new GameObject("OtherWaypoint");
+            var otherWaypoint = otherWaypointObject.AddComponent<Waypoint>();
             
-            // Wait less than the delay - task shouldn't be started yet
-            yield return new WaitForSeconds(testDelay * 0.5f);
-            Assert.IsFalse(eventInvoked, "Task should not be started before delay completes");
+            // Act
+            introductionTask.CheckCurrentWaypoint(otherWaypoint);
+            yield return new WaitForSeconds(TestDelay);
+            yield return null; // Wait for next frame for coroutine to complete
             
-            // Wait for the full delay
-            yield return new WaitForSeconds(testDelay * 0.6f);
+            // Assert
+            Assert.IsFalse((bool)isTaskStarted.GetValue(introductionTask), "isTaskStarted should remain false");
+            Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked");
             
-            // Assert - Task should be started after delay
-            Assert.IsTrue(eventInvoked, "OnTaskStarted should be invoked after delay");
+            // Cleanup
+            Object.Destroy(otherWaypointObject);
         }
 
         #endregion
@@ -181,15 +181,17 @@ namespace Tests.PlayMode
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
-            // Act - Invoke OnTriggerEnter to start the DelayedTaskStart coroutine
-            MethodInfo onTriggerEnterMethod = typeof(IntroductionTask).GetMethod("OnTriggerEnter", BindingFlags.NonPublic | BindingFlags.Instance);
-            onTriggerEnterMethod.Invoke(introductionTask, new object[] { playerCollider });
-
-            yield return null;
-            yield return new WaitForSeconds(testDelay); // Wait for delay duration
-            yield return null; // Wait for next frame for coroutine to complete
-
-            // Assert - Task should be started after delay
+            // Act - Call CheckCurrentWaypoint with the introduction waypoint to start DelayedTaskStart
+            introductionTask.CheckCurrentWaypoint(waypointComponent);
+            
+            // Check that task is not started yet (before delay completes)
+            yield return new WaitForSeconds(TestDelay * 0.5f);
+            Assert.IsFalse(eventInvoked, "Task should not be started before delay completes");
+            
+            // Wait for the delay to complete
+            yield return new WaitForSeconds(TestDelay * 0.6f);
+            
+            // Assert
             Assert.IsTrue(eventInvoked, "OnTaskStarted should be invoked after delay");
         }
 
@@ -303,43 +305,43 @@ namespace Tests.PlayMode
 
         #endregion
 
-        #region CheckCurrentPoi Tests
+        #region CheckPoiExit Tests
 
         /// <summary>
-        ///     Tests if CheckCurrentPoi() invokes OnTaskFailed when player enters restricted area.
+        ///     Tests if CheckPoiExit() invokes OnTaskFailed when player exits Reception POI before task starts.
         /// </summary>
         [Test, Order(10)]
         [Category("BuildServer")]
-        public void IntroductionTask_CheckCurrentPoi_InvokesOnTaskFailedForRestrictedArea()
+        public void IntroductionTask_CheckPoiExit_InvokesOnTaskFailedWhenExitingReception()
         {
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
             
-            // Act
-            introductionTask.CheckCurrentPoi(restrictedPoiComponent);
+            // Act - Player exits Reception POI before task starts
+            introductionTask.CheckPoiExit(receptionPoiComponent);
             
             // Assert
-            Assert.IsTrue(eventInvoked, "OnTaskFailed should be invoked when entering restricted area");
+            Assert.IsTrue(eventInvoked, "OnTaskFailed should be invoked when exiting Reception before task starts");
         }
 
         /// <summary>
-        ///     Tests if CheckCurrentPoi() doesn't invoke OnTaskFailed if task is already completed.
+        ///     Tests if CheckPoiExit() doesn't invoke OnTaskFailed if task is already started.
         /// </summary>
         [Test, Order(11)]
         [Category("BuildServer")]
-        public void IntroductionTask_CheckCurrentPoi_DoesNotInvokeOnTaskFailedIfTaskCompleted()
+        public void IntroductionTask_CheckPoiExit_DoesNotInvokeOnTaskFailedIfTaskStarted()
         {
             // Arrange
-            isTaskCompleted.SetValue(introductionTask, true);
+            isTaskStarted.SetValue(introductionTask, true);
             bool eventInvoked = false;
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
             
             // Act
-            introductionTask.CheckCurrentPoi(restrictedPoiComponent);
+            introductionTask.CheckPoiExit(receptionPoiComponent);
             
             // Assert
-            Assert.IsFalse(eventInvoked, "OnTaskFailed should not be invoked if task is already completed");
+            Assert.IsFalse(eventInvoked, "OnTaskFailed should not be invoked if task is already started");
         }
 
         #endregion

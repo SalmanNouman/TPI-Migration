@@ -20,6 +20,7 @@ namespace VARLab.DLX
             Bathroom = 2,
             PiercingArea = 3,
             TattooArea = 4,
+            Office = 5,
         }
 
         #endregion
