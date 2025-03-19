@@ -555,7 +555,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             NotificationSO shownNotification = null;
-            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
+            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification) => shownNotification = notification);
 
             yield return SetupPreviousInspection(isCompliant: true, hasPhoto: true);
 
@@ -582,7 +582,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             NotificationSO shownNotification = null;
-            inspectionWindowBuilder.DisplayNotification.AddListener((notification) => shownNotification = notification);
+            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification) => shownNotification = notification);
 
             yield return SetupPreviousInspection(isCompliant: false, hasPhoto: true);
 
@@ -622,7 +622,7 @@ namespace Tests.PlayMode
             yield return null;
 
             // Act
-            inspectionWindowBuilder.OnConfirmationDialogPrimaryClicked();
+            inspectionWindowBuilder.ConfirmReplaceInspection();
             yield return null;
 
             // Assert

@@ -116,8 +116,19 @@ namespace VARLab.DLX
                 return;
             }
 
+            if (obj.HasPhoto)
+            { 
+                var savedPhoto = Photos.Find(p => p.Id == obj.ObjectId);
+                if (savedPhoto != null)
+                {
+                    savedPhoto.Timestamp = TimerManager.Instance.GetElapsedTime();
+                }
+                return;
+            }
+
             tempPhoto.Timestamp = TimerManager.Instance.GetElapsedTime();
             Photos.Add(tempPhoto);
+            obj.HasPhoto = true;
 
             OnPhotoSaved?.Invoke(obj);
 
