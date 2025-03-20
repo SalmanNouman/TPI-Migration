@@ -504,7 +504,7 @@ namespace Tests.PlayMode
         public IEnumerator InspectionWindow_CompliantToNonCompliant_ShowsConfirmationDialog()
         {
             // Arrange
-            ConfirmationDialogSO shownDialog = null;
+            ConfirmDialogSO shownDialog = null;
             inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
 
             yield return SetupPreviousInspection(isCompliant: true);
@@ -529,7 +529,7 @@ namespace Tests.PlayMode
         public IEnumerator InspectionWindow_NonCompliantToCompliant_ShowsConfirmationDialog()
         {
             // Arrange
-            ConfirmationDialogSO shownDialog = null;
+            ConfirmDialogSO shownDialog = null;
             inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => shownDialog = dialog);
 
             yield return SetupPreviousInspection(isCompliant: false);

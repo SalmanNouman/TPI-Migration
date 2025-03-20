@@ -446,6 +446,9 @@ MonoBehaviour:
   DeleteInspection:
     m_PersistentCalls:
       m_Calls: []
+  DisplayPopUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5849049297039265951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,15 +491,56 @@ MonoBehaviour:
     type: 3}
   galleryImage: {fileID: 9197481963319205126, guid: 818f00b4c95fe1f45a3f47bbbb0aff63,
     type: 3}
+  photoDeleteDialogSO: {fileID: 11400000, guid: 92aa5596fd48c8946be5e4caa63cb9f7,
+    type: 2}
   DeletePhoto:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.ImageHandler, VARLab.DLX
+        m_MethodName: RemovePhoto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   SaveGallery:
     m_PersistentCalls:
       m_Calls: []
   DeleteInspection:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.Inspections, VARLab.DLX
+        m_MethodName: DeleteInspection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnShowConfirmationDialog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.ConfirmationDialog, VARLab.DLX
+        m_MethodName: HandleDisplayUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnImageClicked:
     m_PersistentCalls:
       m_Calls: []

@@ -102,3 +102,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f802a134765084ebc8733275056b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInspectionCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreviousInspectionRetrieved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeleteInspectionLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLog, VARLab.DLX
+        m_MethodName: LogDeletedInspection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeleteInspectionPhoto:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLog, VARLab.DLX
+        m_MethodName: LogDeletedPhoto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

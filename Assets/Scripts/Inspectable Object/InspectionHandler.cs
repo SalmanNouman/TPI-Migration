@@ -99,5 +99,16 @@ namespace VARLab.DLX
 
             OnObjectClicked?.Invoke(inspectable);
         }
+
+        public void SetRemovedPhotoForInspectable(string id)
+        {
+            // Find the inspectable object with the given id
+            InspectableObject inspectable = inspectables.Find(i => i.ObjectId == id);
+            // If the inspectable object is found, set HasPhoto to false
+            if (inspectable != null)
+            {
+                inspectable.PhotoDelete();
+            }
+        }
     }
 }

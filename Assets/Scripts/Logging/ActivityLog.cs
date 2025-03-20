@@ -140,19 +140,25 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        ///     Records photo deletion events. Implementation pending.
+        ///    Records a primary log when the user deletes a photo from an inspectable object.
         /// </summary>
-        public void LogDeletedPhoto()
+        /// <param name="objName"> The name of the inspectable object </param>
+        public void LogDeletedPhoto(string objName)
         {
-            // TODO: This method will be implemented later, once we add the image manager
+            string elapsedTime = TimerManager.Instance.GetElapsedTime();
+            string log = $"{elapsedTime} {objName} - Photo Deleted";
+            AddSecondaryLog(log);
         }
 
         /// <summary>
-        ///     Records inspection deletion events. Implementation pending.
+        ///    Records a primary log when the user deletes an inspection.
         /// </summary>
-        public void LogDeletedInspection()
+        /// <param name="objName"> The name of the inspectable object </param>
+        public void LogDeletedInspection(string objName)
         {
-            // TODO: This method will be implemented later, once we add the ability to delete inspections
+            string elapsedTime = TimerManager.Instance.GetElapsedTime();
+            string log = $"{elapsedTime} {objName} - Visual Inspection Deleted";
+            AddSecondaryLog(log);
         }
 
         /// <summary>

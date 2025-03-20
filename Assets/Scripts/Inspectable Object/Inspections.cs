@@ -26,6 +26,18 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<InspectionData> OnPreviousInspectionRetrieved;
 
+        /// <summary>
+        /// Invoked to log to Activity log when an inspection record is deleted.
+        /// <see cref="ActivityLog.LogDeletedInspection(string)/>
+        /// </summary>
+        public UnityEvent<string> OnDeleteInspectionLog;
+
+        /// <summary>
+        /// Invoked to log to Activity log when an inspection record is deleted.
+        /// <see cref="ActivityLog.LogDeletedPhoto(string)/>
+        /// </summary>
+        public UnityEvent<string> OnDeleteInspectionPhoto;
+
         #endregion
 
         #region Properties
@@ -47,6 +59,8 @@ namespace VARLab.DLX
             OnInspectionCompleted ??= new();
             OnPreviousInspectionRetrieved ??= new();
             InspectionsList ??= new();
+            OnDeleteInspectionLog ??= new();
+            OnDeleteInspectionPhoto ??= new();
         }
 
         /// <summary>
@@ -122,6 +136,7 @@ namespace VARLab.DLX
             if (inspectionToRemove != null)
             {
                 InspectionsList.Remove(inspectionToRemove);
+                OnDeleteInspectionLog?.Invoke(inspectionToRemove.Obj.Name);
                 OnInspectionCompleted?.Invoke(InspectionsList);
             }
         }
@@ -133,6 +148,21 @@ namespace VARLab.DLX
         public List<InspectionData> GetInspectionsList()
         {
             return InspectionsList;
+        }
+
+        /// <summary>
+        ///     Removes a photo from the inspection record for the given object if it exists.
+        /// </summary>
+        /// <param name="obj">The inspectable object whose photo should be removed.</param>
+        public void RemovePhotoFromInspection(string obj)
+        {
+            var inspection = CheckInspection(obj);
+            if (inspection != null)
+            {
+                inspection.HasPhoto = false;
+                OnDeleteInspectionPhoto?.Invoke(inspection.Obj.Name);
+                OnInspectionCompleted?.Invoke(InspectionsList);
+            }
         }
 
         #endregion

@@ -64,11 +64,11 @@ namespace VARLab.DLX
         [Header("Confirmation Dialogs"), Space(10f)]
 
         [Tooltip("Confirmation dialog shown when changing from non-compliant to compliant")]
-        public ConfirmationDialogSO CompliantConfirmationDialog;
+        public ConfirmDialogSO CompliantConfirmationDialog;
 
         [Tooltip("Confirmation dialog shown when changing from compliant to non-compliant")]
-        public ConfirmationDialogSO NonCompliantConfirmationDialog;
-        private ConfirmationDialogSO currentDialog;
+        public ConfirmDialogSO NonCompliantConfirmationDialog;
+        private ConfirmDialogSO currentDialog;
 
         #endregion
 
@@ -133,7 +133,7 @@ namespace VARLab.DLX
         ///     This event is used when changing inspection status requires confirmation.
         ///     <see cref="ConfirmationDialog.HandleDisplayUI"/>
         /// </summary>
-        public UnityEvent<ConfirmationDialogSO> OnShowConfirmationDialog;
+        public UnityEvent<ConfirmDialogSO> OnShowConfirmationDialog;
 
         [Header("Notification Event"), Space(10f)]
         [Tooltip("Invoked to display a notification. The event takes a NotificationSO as its parameter.")]
@@ -305,6 +305,7 @@ namespace VARLab.DLX
 
             // If changing from compliant -> show confirmation dialog
             currentDialog = compliancy ? CompliantConfirmationDialog : NonCompliantConfirmationDialog;
+            currentDialog.SetPrimaryAction(() => SaveInspectionAndNotify(compliancy));
             OnShowConfirmationDialog?.Invoke(currentDialog);
         }
 

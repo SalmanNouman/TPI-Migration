@@ -141,7 +141,7 @@ namespace Tests.PlayMode
             bool wasDeleted = false;
             int expectedResult = 0;
 
-            imageHandler.OnPhotoDeleted.AddListener(() => wasDeleted = true);
+            imageHandler.OnPhotoDeleted.AddListener((id) => wasDeleted = true);
 
             // Act
             imageHandler.RemovePhotoFromList(inspectableObject.ObjectId.ToString());
@@ -165,7 +165,7 @@ namespace Tests.PlayMode
             bool photoDeleted = true;
             bool wasDeleted = false;
 
-            imageHandler.OnPhotoDeleted.AddListener(() => wasDeleted = true);
+            imageHandler.OnPhotoDeleted.AddListener((id) => wasDeleted = true);
 
             // Act
             photoDeleted = imageHandler.RemovePhotoFromList("Object_Id");

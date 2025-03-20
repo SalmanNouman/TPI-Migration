@@ -20,6 +20,9 @@ namespace VARLab.DLX
         [Tooltip("Reference to the Gallery Image UI document")]
         [SerializeField] private VisualTreeAsset galleryImage;
 
+        // Confirmation Modal pop up serialized objects
+        [SerializeField] private ConfirmDialogSO photoDeleteDialogSO;
+
         private List<Texture2D> textures;
 
         private List<InspectablePhoto> photos;
@@ -29,6 +32,11 @@ namespace VARLab.DLX
         private const int ResWidth = 770;
         private const int ResHeight = 486;
 
+        // Flag to track if the log should also be deleted
+        private bool deleteInspectionLogFlag = false;
+
+        private Dictionary<string, TemplateContainer> imageContainers = new Dictionary<string, TemplateContainer>();
+        private Dictionary<string, TemplateContainer> rowContainers = new Dictionary<string, TemplateContainer>();
 
         #endregion
 
@@ -48,6 +56,11 @@ namespace VARLab.DLX
         /// Event triggered when an inspection is deleted with the photo.
         /// </summary>
         public UnityEvent<string> DeleteInspection;
+
+        /// <summary>
+        /// Event triggered to show a confirmation dialog.
+        /// </summary>
+        public UnityEvent<ConfirmDialogSO> OnShowConfirmationDialog;
 
         public UnityEvent<InspectablePhoto> OnImageClicked;
 
@@ -87,6 +100,7 @@ namespace VARLab.DLX
             DeletePhoto ??= new();
             SaveGallery ??= new();
             DeleteInspection ??= new();
+            OnShowConfirmationDialog ??= new();
             OnImageClicked ??= new();
 
             if (photos == null || photos.Count <= 0)
@@ -106,6 +120,8 @@ namespace VARLab.DLX
         private void BuildAllRows()
         {
             ContentContainer.Clear();
+            imageContainers.Clear();
+            rowContainers.Clear();
             foreach (string location in photosByLocation.Keys)
             {
                 TemplateContainer row = PopulateRow(location);
@@ -113,6 +129,7 @@ namespace VARLab.DLX
                 if (row != null)
                 {
                     ContentContainer.Add(row);
+                    rowContainers.Add(location, row);
                 }
             }
         }
@@ -179,7 +196,26 @@ namespace VARLab.DLX
                 Label timeStampLabel = image.Q<TemplateContainer>().Q<Label>("TagText");
                 UIHelper.SetElementText(timeStampLabel, photo.Timestamp);
 
+                // Create button data to store photo information
+                BtnData btnData = new BtnData
+                {
+                    Name = photo.Id,
+                    Location = location
+                };
+
+                // add listeners to delete button
+                deleteBtn.clicked += () =>
+                {
+                    // Set up the confirmation dialog actions
+                    photoDeleteDialogSO.SetPrimaryAction(() => DeletePhotoConfirmed(btnData.Name, btnData.Location));
+                    photoDeleteDialogSO.SetToggleAction((val) => deleteInspectionLogFlag = val);
+
+                    // Show the confirmation dialog
+                    OnShowConfirmationDialog?.Invoke(photoDeleteDialogSO);
+                };
+
                 imageRow.Add(image);
+                imageContainers.Add(photo.Id, image);
             }
 
             // Checks if image row already has children
@@ -208,6 +244,69 @@ namespace VARLab.DLX
                 foreach (var tex in textures)
                 {
                     Destroy(tex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes a photo and optionally its associated inspection based on the checkbox state
+        /// </summary>
+        /// <param name="photoId">ID of the photo to delete</param>
+        /// <param name="location">Location of the photo</param>
+        public void DeletePhotoConfirmed(string photoId, string location)
+        {
+            // First remove the image from the UI immediately for instant feedback
+            RemovePhotoFromTemplateContainer(photoId, location);
+
+            // Trigger the DeletePhoto event with the photo ID
+            DeletePhoto?.Invoke(photoId);
+
+            // If the checkbox was checked, also delete the associated inspection
+            if (deleteInspectionLogFlag)
+            {
+                DeleteInspection?.Invoke(photoId);
+            }
+
+            // Reset the flag for future use
+            deleteInspectionLogFlag = false;
+
+            SaveGallery?.Invoke();
+        }
+
+        /// <summary>
+        /// Removes an image from the UI immediately without waiting for the gallery to rebuild
+        /// </summary>
+        /// <param name="photoId">ID of the photo to remove</param>
+        /// <param name="location">Location of the photo</param>
+        public void RemovePhotoFromTemplateContainer(string photoId, string location)
+        {
+            // Check if we have this image container
+            if (imageContainers.TryGetValue(photoId, out TemplateContainer imageContainer))
+            {
+                // Get the parent row
+                if (rowContainers.TryGetValue(location, out TemplateContainer rowContainer))
+                {
+                    // Get the image scroll container
+                    VisualElement imageRow = rowContainer.Q<VisualElement>("ImageScroll");
+
+                    // Remove the image from its parent
+                    imageRow.Remove(imageContainer);
+
+                    // Remove from our tracking dictionary
+                    imageContainers.Remove(photoId);
+
+                    // If the row is now empty, remove it too
+                    if (imageRow.childCount == 0)
+                    {
+                        ContentContainer.Remove(rowContainer);
+                        rowContainers.Remove(location);
+
+                        // If all photos are removed, show empty message
+                        if (ContentContainer.childCount == 0)
+                        {
+                            DisplayEmptyLogMessage();
+                        }
+                    }
                 }
             }
         }

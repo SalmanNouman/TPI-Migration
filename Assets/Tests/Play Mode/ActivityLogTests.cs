@@ -274,6 +274,52 @@ namespace Tests.PlayMode
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
         }
 
+        /// <summary>
+        ///     Tests if photo deleted interaction is correctly logged.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LogPhotoDeleted_CreatesCorrectLog()
+        {
+            // Arrange
+            activityLog.CanLog = true;
+            yield return null;  // Wait for Start()
+            yield return SetupElapsedTime();  // Add time delay for updating timestamp
+
+            // Act
+            activityLog.LogDeletedPhoto(inspectable.Name);
+
+            // Assert
+            Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
+            Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Photo deleted log was not marked as secondary");
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Photo Deleted";
+            StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
+                $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
+        }
+
+        /// <summary>
+        /// Tests if inspection log deleted interaction is correctly logged.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LogInspectionDeleted_CreatesCorrectLog()
+        {
+            // Arrange
+            activityLog.CanLog = true;
+            yield return null;  // Wait for Start()
+            yield return SetupElapsedTime();  // Add time delay for updating timestamp
+
+            // Act
+            activityLog.LogDeletedInspection(inspectable.Name);
+
+            // Assert
+            Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
+            Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Inspection deleted log was not marked as secondary");
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Visual Inspection Deleted";
+            StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
+                $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
+        }
+
         #endregion
     }
 }

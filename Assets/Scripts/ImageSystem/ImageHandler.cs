@@ -37,7 +37,7 @@ namespace VARLab.DLX
         /// <summary>
         /// Invoked when a photo is deleted
         /// </summary>
-        public UnityEvent OnPhotoDeleted;
+        public UnityEvent<string> OnPhotoDeleted;
 
         public UnityEvent<List<InspectablePhoto>> OnPhotoListChanged;
 
@@ -151,10 +151,20 @@ namespace VARLab.DLX
             }
             Photos.RemoveAt(index);
 
-            OnPhotoDeleted?.Invoke();
+            OnPhotoDeleted?.Invoke(id);
 
             OnPhotoListChanged?.Invoke(Photos);
             return true;
+        }
+
+        /// <summary>
+        /// Void wrapper for RemovePhotoFromList to be used with UnityEvents.
+        /// This method doesn't return a value, making it compatible with the Unity inspector event system.
+        /// </summary>
+        /// <param name="id">InspectablePhoto ID</param>
+        public void RemovePhoto(string id)
+        {
+            RemovePhotoFromList(id);
         }
 
         /// <summary>
