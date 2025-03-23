@@ -50,12 +50,17 @@ namespace VARLab.DLX
         /// </remarks>
         private bool isTaskCompleted = false;
 
+        /// <summary>
+        ///    Reference to the Information Dialog Scriptable Object
+        ///    <see cref="InformationDialog.HandleDisplayUI(InformDialog)"/>
+        /// </summary>
+        [SerializeField] private InformDialog informDialogSO;
+
         #endregion
 
         #region Events
 
         // Note: OnTaskStarted, OnTaskCompleted, and OnTaskFailed are inherited from <see cref="Task.cs"/>
-        
         /// <summary>
         ///     Event triggered when the task starts
         /// </summary>
@@ -86,6 +91,9 @@ namespace VARLab.DLX
         /// </remarks>
         // public UnityEvent OnTaskFailed; (inherited from <see cref="Task.cs"/>)
 
+        public UnityEvent<InformDialog> OnTaskFailedDialogDisplay;
+        public UnityEvent RestartScene;
+
         #endregion
 
         #region Methods
@@ -98,6 +106,8 @@ namespace VARLab.DLX
             OnTaskStarted ??= new();
             OnTaskCompleted ??= new();
             OnTaskFailed ??= new();
+            OnTaskFailedDialogDisplay ??= new();
+            RestartScene ??= new();
 
             // Auto-assign if not set and this component is on a waypoint
             if (introductionWaypoint == null)
@@ -221,9 +231,11 @@ namespace VARLab.DLX
             if (!isTaskStarted && poi == receptionPoi)
             {
                 Debug.Log($"IntroductionTask: Player exited allowed area: {poi.PoiName} before introduction. Task failed.");
-                
+
                 // Invoke task failed event
                 OnTaskFailed?.Invoke();
+                informDialogSO.SetPrimaryAction(() => RestartScene?.Invoke());
+                OnTaskFailedDialogDisplay?.Invoke(informDialogSO);
             }
         }
 

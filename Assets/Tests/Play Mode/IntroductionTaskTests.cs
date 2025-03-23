@@ -37,7 +37,8 @@ namespace Tests.PlayMode
         private FieldInfo isTaskCompleted;
         private FieldInfo conversationDelay;
         private FieldInfo introductionWaypoint;
-        
+        private FieldInfo informDialogSO;
+
         // Test constants
         private const float TestDelay = 0.1f;
 
@@ -71,13 +72,14 @@ namespace Tests.PlayMode
             isTaskCompleted = typeof(IntroductionTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
             conversationDelay = typeof(IntroductionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
             introductionWaypoint = typeof(IntroductionTask).GetField("introductionWaypoint", BindingFlags.NonPublic | BindingFlags.Instance);
-            
+            informDialogSO = typeof(IntroductionTask).GetField("informDialogSO", BindingFlags.NonPublic | BindingFlags.Instance);
+
             // Set Reception POI as the allowed area
             receptionPoi.SetValue(introductionTask, receptionPoiComponent);
-            
+
             // Set introduction waypoint
             introductionWaypoint.SetValue(introductionTask, waypointComponent);
-            
+
             // Set a small delay for testing
             conversationDelay.SetValue(introductionTask, TestDelay);
         }
@@ -317,10 +319,10 @@ namespace Tests.PlayMode
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
-            
+            informDialogSO.SetValue(introductionTask, ScriptableObject.CreateInstance<InformDialog>());
             // Act - Player exits Reception POI before task starts
             introductionTask.CheckPoiExit(receptionPoiComponent);
-            
+
             // Assert
             Assert.IsTrue(eventInvoked, "OnTaskFailed should be invoked when exiting Reception before task starts");
         }

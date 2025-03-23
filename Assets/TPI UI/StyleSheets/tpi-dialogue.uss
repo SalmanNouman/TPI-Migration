@@ -25,17 +25,6 @@
     flex-shrink: 0;
 }
 
-.header-start {
-    width: 30%;
-    height: 100%;
-    position: absolute;
-    justify-content: center;
-}
-
-.header-end {
-    width: 100%;
-    align-items: flex-end;
-}
 
 .text {
     color: rgb(255, 255, 255);
@@ -140,4 +129,26 @@
     align-items: stretch;
     margin-right: 8px;
     margin-left: 8px;
+}
+
+.informationDialogIcon {
+    background-image: var(--information-dialog-image-background);
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.informationDialogIconBackground {
+    background-color: var(--information-dialog-image-background-colour);
+    width: 85px;
+    height: 85px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+
+.body-margin-left {
+    margin-left: 70px;
 }

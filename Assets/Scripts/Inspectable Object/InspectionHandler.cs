@@ -15,6 +15,9 @@ namespace VARLab.DLX
     {
         private List<InspectableObject> inspectables;
 
+        // This will be set whem handwashing task is completed.
+        private bool HandWashingCompleted;
+
         /// <summary>
         ///     Unity Event that is triggered when an inspectable object is clicked.
         /// <see cref="ImageHandler.TakeTempPhoto(InspectableObject)"/>
@@ -36,6 +39,11 @@ namespace VARLab.DLX
         public UnityEvent<InspectableObject> OnInspectionCompleted;
 
         /// <summary>
+        ///     Unity Event that is triggered if handwashing task is found to be not completed after a click on an inspectable.
+        /// </summary>
+        public UnityEvent OnHandwashingTaskNotCompleted;
+
+        /// <summary>
         ///     Initialize events if they are null
         /// </summary>
         private void Awake()
@@ -43,6 +51,7 @@ namespace VARLab.DLX
             OnObjectClicked ??= new();
             OnObjectViewerObjectClicked ??= new();
             OnInspectionCompleted ??= new();
+            OnHandwashingTaskNotCompleted ??= new();
         }
 
         /// <summary>
@@ -88,6 +97,13 @@ namespace VARLab.DLX
         /// <param name="obj">Game object that was clicked.</param>
         public void StartInspection(GameObject obj)
         {
+            // Early exit if handwashing task not completed and invoke event.
+            if (!HandWashingCompleted)
+            {
+                OnHandwashingTaskNotCompleted?.Invoke();
+                return;
+            }
+
             InspectableObject inspectable = obj.GetComponent<InspectableObject>();
 
             if (inspectable == null) { return; }
@@ -110,5 +126,10 @@ namespace VARLab.DLX
                 inspectable.PhotoDelete();
             }
         }
+
+        /// <summary>
+        ///     Sets the handwashing task as completed, allowing inspections to proceed.
+        /// </summary>
+        public void SetHandwashingTaskCompleted() => HandWashingCompleted = true;
     }
 }
