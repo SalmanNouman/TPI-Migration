@@ -18412,12 +18412,12 @@ PrefabInstance:
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
@@ -18441,6 +18441,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -18453,6 +18458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
@@ -18476,6 +18486,11 @@ PrefabInstance:
       objectReference: {fileID: 813259283}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 859144173}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 798535377}
@@ -18489,6 +18504,11 @@ PrefabInstance:
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 813259283}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 859144173}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnThemeTogglePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -18511,6 +18531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -18522,6 +18547,11 @@ PrefabInstance:
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
@@ -18538,6 +18568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Hide
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
@@ -18561,6 +18596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Show
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnThemeTogglePressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleThemeLabel
       objectReference: {fileID: 0}
@@ -18581,6 +18621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: VARLab.DLX.MenuBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.Navigation.PointClick.PointClickNavigation, VARLab.Navigation.PointClick
       objectReference: {fileID: 0}
@@ -18596,12 +18641,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: VARLab.DLX.MenuBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnThemeTogglePressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.Velcro.SettingsMenuComplex, VARLab.Velcro
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
@@ -18636,6 +18691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
+      propertyPath: OnSettingsMenuShown.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -18647,6 +18707,11 @@ PrefabInstance:
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
         type: 3}
       propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
+        type: 3}
+      propertyPath: OnSettingsMenuHidden.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7023562979566413082, guid: 0e9527c6454a63c48ab8e1ad606747d2,
