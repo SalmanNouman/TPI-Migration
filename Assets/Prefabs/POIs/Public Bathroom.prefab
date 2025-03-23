@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857806d03d7497a44a4851f1a9d9b1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransformDetails: {fileID: 0}
+  TransformDetails: {fileID: 11400000, guid: 5dbaee83e0e003e44ad6061d56943c05, type: 2}
   OriginalPosition: {x: 0, y: 0, z: 0}
   OriginalRotation: {x: 0, y: 0, z: 0, w: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -660,7 +660,7 @@ MonoBehaviour:
   OnObjectInspected:
     m_PersistentCalls:
       m_Calls: []
-  FieldOfView: 10
+  FieldOfView: 35
 --- !u!1 &3363125273013434613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857806d03d7497a44a4851f1a9d9b1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransformDetails: {fileID: 0}
+  TransformDetails: {fileID: 11400000, guid: 2536340b830817949a9b37b6d644be2a, type: 2}
   OriginalPosition: {x: 0, y: 0, z: 0}
   OriginalRotation: {x: 0, y: 0, z: 0, w: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   OnObjectInspected:
     m_PersistentCalls:
       m_Calls: []
-  FieldOfView: 30
+  FieldOfView: 35
 --- !u!1 &8382087462984049540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1919,7 +1919,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1935,7 +1935,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1951,7 +1951,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
