@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using VARLab.Velcro;
 using VARLab.Navigation.PointClick;
 
 namespace VARLab.DLX
@@ -22,7 +21,7 @@ namespace VARLab.DLX
     public class OfficeTask : Tasks
     {
         #region Fields
-        
+
         [SerializeField, Tooltip("Delay time before triggering the office conversation")]
         private float conversationDelay = 0.5f;
 
@@ -66,7 +65,7 @@ namespace VARLab.DLX
         #region Events
 
         // Note: OnTaskStarted, OnTaskCompleted are inherited from <see cref="Tasks"/> base class
-        
+
         /// <summary>
         ///     Event triggered when the task starts (after introduction task completion)
         /// </summary>
@@ -77,7 +76,7 @@ namespace VARLab.DLX
         ///     - Connect to: <see cref="PointClickNavigation.EnableCameraPanAndZoom"/> (false) to disable camera controls
         /// </remarks>
         // public UnityEvent OnTaskStarted; (inherited from <see cref="Tasks"/> base class)
-        
+
         /// <summary>
         ///     Event triggered when the player reaches the office waypoint (after a short delay)
         /// </summary>
@@ -88,7 +87,7 @@ namespace VARLab.DLX
         ///     - Connect to: <see cref="Volume.enabled"/> to enable background blur effect
         /// </remarks>
         public UnityEvent OnWaypointReached;
-        
+
         /// <summary>
         ///     Event triggered when the task is completed
         /// </summary>
@@ -186,7 +185,7 @@ namespace VARLab.DLX
             // Wait for the specified delay time before starting the conversation
             yield return new WaitForSeconds(conversationDelay);
             Debug.Log("OfficeTask: Office conversation displayed after delay.");
-            
+
             // Set the flag to indicate that the office conversation has been shown
             isOfficeConversationShown = true;
 
@@ -220,4 +219,4 @@ namespace VARLab.DLX
 
         #endregion
     }
-} 
+}

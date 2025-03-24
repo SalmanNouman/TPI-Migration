@@ -40,6 +40,10 @@ namespace VARLab.DLX
         private Button compliantButton;
         private Button nonCompliantButton;
 
+        // Inspection Message
+        private VisualElement messageContainer;
+        private Label messageText;
+
         private WorldObjectRenderer worldObjectRenderer;
 
         // Inspectable object that is currently displayed in the inspection window.
@@ -140,7 +144,7 @@ namespace VARLab.DLX
         public UnityEvent<NotificationSO> DisplayNotification;
 
         [Tooltip("Event to display the inspection window notification")]
-        public UnityEvent<NotificationSO> DisplayInspectionWindowNotification;
+        public UnityEvent<NotificationSO, bool> DisplayInspectionWindowNotification;
 
         #endregion
 
@@ -190,6 +194,10 @@ namespace VARLab.DLX
             cameraButton = root.Q<Button>("CameraButton");
             compliantButton = root.Q<Button>("PositiveButton");
             nonCompliantButton = root.Q<Button>("NegativeButton");
+
+            // Inspection message
+            messageContainer = root.Q<VisualElement>("InspectionMessage");
+            messageText = root.Q<Label>("MessageLabelText");
         }
 
         /// <summary>
@@ -271,7 +279,7 @@ namespace VARLab.DLX
             notification.Message = $"You have already reported this as {compliancy}.";
             notification.Alignment = Align.Center;
             notification.FontSize = FontSize.Medium;
-            DisplayInspectionWindowNotification?.Invoke(notification);
+            DisplayInspectionWindowNotification?.Invoke(notification, true);
         }
 
         /// <summary>
@@ -366,11 +374,33 @@ namespace VARLab.DLX
                 imageViewer3d.style.display = DisplayStyle.None;
             }
 
+            if (obj.GetComponent<MessageInspectable>())
+            {
+                NotificationSO so = obj.GetComponent<MessageInspectable>().InspectionNotificationCompliant;
+                if (so != null)
+                {
+                    ToggleMessageContainer(true);
+                    messageText.text = so.Message;
+                }
+            }
+
             // Set labels
             UIHelper.SetElementText(locationLabel, CurrentInspectable.Location.ToString());
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
 
             Show();
+        }
+
+        private void ToggleMessageContainer(bool display)
+        {
+            if (display)
+            {
+                UIHelper.Show(messageContainer);
+            }
+            else
+            {
+                UIHelper.Hide(messageContainer);
+            }
         }
 
         /// <summary>
@@ -389,6 +419,11 @@ namespace VARLab.DLX
             // Reset the flag after the selection
             photoTaken = false;
             flashContainer.RemoveFromClassList("card-body-photo-frame");
+
+            if (messageContainer.style.display == DisplayStyle.Flex)
+            {
+                ToggleMessageContainer(false);
+            }
         }
 
         /// <summary>

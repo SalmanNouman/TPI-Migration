@@ -108,7 +108,7 @@ namespace VARLab.DLX
 
             if (inspectable == null) { return; }
 
-            if (inspectable.GetComponent<WorldObject>())
+            if (inspectable.GetComponent<ObjectViewerInspectables>())
             {
                 OnObjectViewerObjectClicked?.Invoke(obj);
             }

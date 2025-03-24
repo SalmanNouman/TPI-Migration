@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -30,7 +29,7 @@ namespace VARLab.DLX
 
         //  ScriptableObject for conversation
         private ConversationSO currentConversation;
-        
+
         // Current dialogue index
         private int currentIndex = 0;
 
@@ -79,7 +78,7 @@ namespace VARLab.DLX
         {
             root = GetComponent<UIDocument>().rootVisualElement;
             OnWindowShow ??= new();
-            OnWindowHide ??= new();  
+            OnWindowHide ??= new();
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace VARLab.DLX
         private void Start()
         {
             GetAllReferences();
-            SetupButtonListeners();          
+            SetupButtonListeners();
             Hide();  // Set initial display state to none
         }
 
@@ -193,11 +192,11 @@ namespace VARLab.DLX
                 VisualElement image = bodyElement.Q<VisualElement>("Image");
                 Label caption = bodyElement.Q<Label>("Caption");
                 Label description = bodyElement.Q<Label>("Description");
-                
+
                 // Dialogue content
                 caption.text = dialogue.Speaker;
                 description.text = dialogue.Text;
-                
+
                 // Avatar image
                 image.style.backgroundImage = dialogue.Avatar.texture;
 

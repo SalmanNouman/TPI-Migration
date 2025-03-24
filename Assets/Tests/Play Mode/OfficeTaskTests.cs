@@ -1,12 +1,11 @@
-using System.Collections;
 using NUnit.Framework;
+using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.TestTools;
-using UnityEngine.Events;
 using VARLab.DLX;
-using System.Reflection;
-using VARLab.Velcro;
 using VARLab.Navigation.PointClick;
+using VARLab.Velcro;
 
 namespace Tests.PlayMode
 {
@@ -37,7 +36,7 @@ namespace Tests.PlayMode
         private FieldInfo isOfficeConversationShown;
         private FieldInfo isTaskCompleted;
         private FieldInfo conversationDelay;
-        
+
         // Test constants
         private const float TestDelay = 0.1f;
 
@@ -54,7 +53,7 @@ namespace Tests.PlayMode
             // Setup test objects
             testObject = new GameObject("TestOfficeTask");
             officeTask = testObject.AddComponent<OfficeTask>();
-            
+
             // Setup test waypoint with OfficeTask component
             waypointObject = new GameObject("TestWaypoint");
             waypointComponent = waypointObject.AddComponent<Waypoint>();
@@ -67,7 +66,7 @@ namespace Tests.PlayMode
             isOfficeConversationShown = typeof(OfficeTask).GetField("isOfficeConversationShown", BindingFlags.NonPublic | BindingFlags.Instance);
             isTaskCompleted = typeof(OfficeTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
             conversationDelay = typeof(OfficeTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
-            
+
             // Set a small delay for testing
             conversationDelay.SetValue(officeTask, TestDelay);
         }
@@ -136,12 +135,12 @@ namespace Tests.PlayMode
             // Arrange - Set task to completed state
             bool eventInvoked = false;
             officeTask.OnTaskStarted.AddListener(() => eventInvoked = true);
-            
+
             isTaskCompleted.SetValue(officeTask, true);
-            
+
             // Act
             officeTask.HandleTask();
-            
+
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked if task is already completed");
         }
@@ -202,7 +201,7 @@ namespace Tests.PlayMode
             Assert.IsTrue((bool)isAutoNavigating.GetValue(officeTask), "isAutoNavigating should still be true");
             Assert.IsFalse(eventInvoked, "OnWaypointReached should not be invoked for non-office waypoints");
             Assert.IsFalse((bool)isOfficeConversationShown.GetValue(officeTask), "isOfficeConversationShown should still be false");
-  
+
             // Cleanup
             Object.Destroy(otherWaypointObject);
         }

@@ -7,3 +7,23 @@
 .card-body-photo-frame{
 	background-image: var(--inspection-window-body-photo-frame-image);
 }
+
+.tpi-notification {
+	 min-width: 200px;
+    min-height: 80px;
+    border-radius: 40px;
+    color: var(--general-13);
+    opacity: 1;
+	background-color: var(--inspection-message-background-colour);
+	margin-bottom: 15px;
+}
+
+.tpi-notification-icon-container {
+	-unity-background-image-tint-color: var(--inspection-message-icon-tint);
+	background-image: var(--inspection-message-icon);
+}
+
+.tpi-notification-label {
+	color: var(--inspection-message-text-colour);
+	-unity-text-align: center;
+}

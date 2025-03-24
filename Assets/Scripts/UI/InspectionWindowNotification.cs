@@ -71,13 +71,25 @@ namespace VARLab.DLX
         /// <param name="message"></param>
         /// <param name="fontSize"></param>
         /// <param name="alignment"></param>
-        public void HandleDisplayUI(NotificationType notificationType, string message, FontSize fontSize = FontSize.Medium, Align alignment = Align.FlexStart)
+        public void HandleDisplayUI(NotificationType notificationType, string message, FontSize fontSize = FontSize.Medium, Align alignment = Align.FlexStart, bool fade = true)
         {
             ClearClasses();
             SetContent(notificationType, message);
             StyleHelper.SetElementFontSize(label, fontSize);
             PositionHelper.SetAbsoluteVerticalPosition(notification, alignment);
-            StartCoroutine(FadeIn());
+
+            if (fade)
+            {
+                StartCoroutine(FadeIn());
+            }
+            else
+            {
+                if (Root.style.display == DisplayStyle.Flex)
+                {
+                    ResetAlert();
+                }
+                Show();
+            }
         }
 
         /// <summary>
@@ -86,13 +98,25 @@ namespace VARLab.DLX
         /// than individual properties if DLX have the ability to predefine their UI contents
         /// </summary>
         /// <param name="notificationSO"></param>
-        public void HandleDisplayUI(NotificationSO notificationSO)
+        public void HandleDisplayUI(NotificationSO notificationSO, bool fade = true)
         {
             ClearClasses();
             SetContent(notificationSO.NotificationType, notificationSO.Message);
             StyleHelper.SetElementFontSize(label, notificationSO.FontSize);
             PositionHelper.SetAbsoluteVerticalPosition(notification, notificationSO.Alignment);
-            StartCoroutine(FadeIn());
+
+            if (fade)
+            {
+                StartCoroutine(FadeIn());
+            }
+            else
+            {
+                if (Root.style.display == DisplayStyle.Flex)
+                {
+                    ResetAlert();
+                }
+                Show();
+            }
         }
 
         /// <summary>

@@ -31,6 +31,14 @@
                             <ui:Label tabindex="-1" text="[Text]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text" class="fw-700 text-wrap m-0 p-0 fs-24" />
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement name="InspectionMessage" class="align-items-center flex-row w-max-60 justify-center align-self-end tpi-notification absolute" style="max-width: 80%; bottom: 0;">
+                        <ui:VisualElement name="MessageIconContainer" class="justify-center notification-icon-container align-items-center p-8 tpi-notification-icon-container" style="flex-shrink: 0;">
+                            <ui:VisualElement name="Icon" class="notification-icon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="MessageLabelContainer" class="mt-16 mb-16 notification-label-container tpi-notification-label fs-20 fw-700">
+                            <ui:Label tabindex="-1" text="[Text]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MessageLabelText" class="fw-700 text-wrap m-0 p-0 fs-20" style="-unity-text-align: upper-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Bottom" class="card-v5-bottom br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2">
                     <ui:VisualElement name="Default" class="card-v5-bottom-default grow pl-32 pr-32 justify-space-between pt-20 pb-24">

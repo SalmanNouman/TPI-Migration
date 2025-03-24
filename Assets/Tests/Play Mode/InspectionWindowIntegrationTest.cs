@@ -51,7 +51,7 @@ namespace Tests.PlayMode
         private Sprite infoIcon;
         private Sprite customIcon;
 
-        
+
 
         #endregion
 
@@ -555,7 +555,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             NotificationSO shownNotification = null;
-            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification) => shownNotification = notification);
+            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification, flag) => shownNotification = notification);
 
             yield return SetupPreviousInspection(isCompliant: true, hasPhoto: true);
 
@@ -582,7 +582,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             NotificationSO shownNotification = null;
-            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification) => shownNotification = notification);
+            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((notification, flag) => shownNotification = notification);
 
             yield return SetupPreviousInspection(isCompliant: false, hasPhoto: true);
 
@@ -853,6 +853,70 @@ namespace Tests.PlayMode
 
             //Assert
             Assert.IsFalse(notificationContainer.Q<VisualElement>("NotificationContainer").ClassListContains(disabledClass));
+        }
+
+        [UnityTest, Order(36)]
+        [Category("BuildServer")]
+        public IEnumerator MessageInspectables_InspectionWindow_MessageDisplayed()
+        {
+            // Arrange
+            GameObject messageInspectableGO = new();
+            messageInspectableGO.AddComponent<BoxCollider>();
+            MessageInspectable messageInspectable = messageInspectableGO.AddComponent<MessageInspectable>();
+            NotificationSO notification = ScriptableObject.CreateInstance<NotificationSO>();
+            notification.Message = "TestMessage";
+            messageInspectable.InspectionNotificationCompliant = notification;
+
+            var messageVisualElement = root.Q<VisualElement>("InspectionMessage");
+
+
+            // Act
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(messageInspectable);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(DisplayStyle.Flex.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
+            inspectionWindowBuilder.Hide();
+        }
+
+        [UnityTest, Order(37)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionMessage_DisplayStyleNone_OnHide()
+        {
+            // Arrange
+            GameObject messageInspectableGO = new();
+            messageInspectableGO.AddComponent<BoxCollider>();
+            MessageInspectable messageInspectable = messageInspectableGO.AddComponent<MessageInspectable>();
+            NotificationSO notification = ScriptableObject.CreateInstance<NotificationSO>();
+            notification.Message = "TestMessage";
+            messageInspectable.InspectionNotificationCompliant = notification;
+
+            var messageVisualElement = root.Q<VisualElement>("InspectionMessage");
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(messageInspectable);
+            Assert.AreEqual(DisplayStyle.Flex.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
+            yield return null;
+
+            // Act
+            inspectionWindowBuilder.Hide();
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(DisplayStyle.None.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
+        }
+
+        [UnityTest, Order(38)]
+        [Category("BuildServer")]
+        public IEnumerator InspectionMessage_DisplayStyleNone_InspectableWithoutMessage()
+        {
+            // Arrange
+            var messageVisualElement = root.Q<VisualElement>("InspectionMessage");
+
+            // Act
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(DisplayStyle.None.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
         }
         #endregion
 
