@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using VARLab.CloudSave;
 using VARLab.DeveloperTools;
 
@@ -28,6 +30,10 @@ namespace VARLab.DLX
         private bool requestDone = false;
 
         private Queue<Action> saveQueue = new();
+
+        [Header("Initial Session Events")]
+        public UnityEvent SaveFileNotFound = new();
+        public UnityEvent SaveFileFound = new();
 
         protected virtual void OnValidate()
         {
@@ -105,8 +111,7 @@ namespace VARLab.DLX
         ///     and updates the 'Blob' name with the specified username.
         /// </summary>
         /// <remarks>
-        ///     Instead of simply loading an existing save file on start, DLX may want to prompt
-        ///     the user to decide whether they want to load an existing save or start from the beginning.
+        ///     It can either load the game state or list the available save files.
         /// </remarks>
         /// <param name="username">
         ///     A unique user ID to provide session identification
@@ -118,6 +123,10 @@ namespace VARLab.DLX
             if (LoadOnStart)
             {
                 Load();
+            }
+            else
+            {
+                List();
             }
         }
 
@@ -141,6 +150,37 @@ namespace VARLab.DLX
         public void SetLoadCompletion(bool completed)
         {
             LoadSuccess = completed;
+        }
+
+        /// <summary>
+        ///     Overrides the <see cref="ExperienceSaveHandler.HandleRequestCompleted(object, RequestCompletedEventArgs)"/>
+        ///     This method has a custom handling for List action.
+        /// </summary>
+        public override void HandleRequestCompleted(object sender, RequestCompletedEventArgs args)
+        {
+            base.HandleRequestCompleted(sender, args);
+
+            if (args == null)
+            {
+                return;
+            }
+
+            // Handle only list action
+            if (args.Action != RequestAction.List)
+            {
+                return;
+            }
+
+            // Error state check
+            if (!args.Success)
+            {
+                return;
+            }
+
+            // Call the appropriate events if the Blob name is one of
+            // the available save files.
+            var tokens = args.Data.Split("\"");
+            (tokens.Contains(Blob) ? SaveFileFound : SaveFileNotFound)?.Invoke();
         }
     }
 }

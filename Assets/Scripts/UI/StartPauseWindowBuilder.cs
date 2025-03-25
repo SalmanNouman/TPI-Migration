@@ -6,18 +6,25 @@ using VARLab.Velcro;
 namespace VARLab.DLX
 {
     /// <summary>
-    ///     Manages the pause window UI and its functionality.
+    ///     Manages the pause/welcome window UI and its functionality.
+    ///     This window can function in two modes:
+    ///     1. Pause mode - Shown when the game is paused, continue button just hides the window
+    ///     2. Welcome mode - Shown at the start, continue button loads saved game data
     /// </summary>
-    public class PauseWindowBuilder : MonoBehaviour, IUserInterface
+    public class StartPauseWindowBuilder : MonoBehaviour, IUserInterface
     {
         #region Fields
 
         // Root visual element from the UI document that contains all UI elements
         private VisualElement root;
 
-        // UI Buttons
+        // UI Elements
         private Button continueButton;
         private Button restartButton;
+        private Label headerLabel;
+
+        // Window mode
+        private bool isWelcomeMode = false;
 
         #endregion
 
@@ -31,9 +38,14 @@ namespace VARLab.DLX
         ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(false)"/>
         ///     <see cref="BlurBackground.Volume.enabled(true)"/>
         ///     <see cref="MenuBuilder.Hide"/>
-        ///     <see cref="TimerManager.PauseTimers"/>
         /// </summary>
         public UnityEvent OnWindowShow;
+
+        /// <summary>
+        ///     Event triggered when the window is shown in pause mode.
+        ///     <see cref="TimerManager.PauseTimers"/>
+        /// </summary>
+        public UnityEvent OnPauseWindowShow;
 
         /// <summary>
         ///     Event triggered when the window is hidden.
@@ -41,15 +53,26 @@ namespace VARLab.DLX
         ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
         ///     <see cref="BlurBackground.Volume.enabled(false)"/>
         ///     <see cref="MenuBuilder.Show"/>
-        ///     <see cref="TimerManager.StartTimers"/>
         /// </summary>
         public UnityEvent OnWindowHide;
 
         /// <summary>
+        ///     Event triggered when the window is hidden from pause mode.
+        ///     <see cref="TimerManager.StartTimers"/>
+        /// </summary>
+        public UnityEvent OnPauseWindowHide;
+
+        /// <summary>
         ///     Event triggered when the restart button is clicked.
-        ///     Will be linked to scene manager's restart functionality.
+        ///     <see cref="SaveDataSupport.OnFreshLoad"/>
         /// </summary>
         public UnityEvent OnRestartScene;
+
+        /// <summary>
+        ///     Event triggered when the continue button is clicked in welcome mode.
+        ///     <see cref="SaveDataSupport.OnLoad"/>
+        /// </summary>
+        public UnityEvent OnContinueSavedGame;
 
         #endregion
 
@@ -64,6 +87,9 @@ namespace VARLab.DLX
             OnWindowShow ??= new();
             OnWindowHide ??= new();
             OnRestartScene ??= new();
+            OnContinueSavedGame ??= new();
+            OnPauseWindowShow ??= new();
+            OnPauseWindowHide ??= new();
         }
 
         /// <summary>
@@ -83,6 +109,8 @@ namespace VARLab.DLX
         {
             continueButton = root.Q<Button>("Continue");
             restartButton = root.Q<Button>("Restart");
+
+            headerLabel = root.Q<Label>("NameLabel");
         }
 
         /// <summary>
@@ -90,29 +118,60 @@ namespace VARLab.DLX
         /// </summary>
         private void SetupButtonListeners()
         {
-            // Continue button simply hides the pause window
-            continueButton.clicked += Hide;
+            // Continue button behavior depends on the window mode
+            continueButton.clicked += () => 
+            {
+                if (isWelcomeMode)
+                {
+                    Debug.Log("Continue button clicked in welcome mode - Loading saved game");
+                    OnContinueSavedGame?.Invoke();
+                }
+                else
+                {
+                    // invoke pause-specific events when in pause mode
+                    OnPauseWindowHide?.Invoke();
+                }
+                
+                Hide();
+            };
 
-            // Restart button hides the pause window and triggers scene restart
+            // Restart button hides the window and triggers scene restart
             restartButton.clicked += () =>
             {
                 Debug.Log("Restart button clicked - Starting from beginning");
                 Hide();
                 OnRestartScene?.Invoke();
+                // This will go through the same event for Loading a fresh game
             };
         }
 
         /// <summary>
-        ///     Shows the pause window and notifies listeners through OnWindowShow event.
+        ///     Shows the window in pause mode and notifies listeners through OnWindowShow event.
         /// </summary>
         public void Show()
         {
+            isWelcomeMode = false;
+            headerLabel.text = "Pause";
+            UIHelper.Show(root);
+            OnWindowShow?.Invoke();
+            
+            // invoke pause-specific events when in pause mode
+            OnPauseWindowShow?.Invoke();
+        }
+
+        /// <summary>
+        ///     Shows the window in welcome mode and notifies listeners through OnWindowShow event.
+        /// </summary>
+        public void ShowAsWelcome()
+        {
+            isWelcomeMode = true;
+            headerLabel.text = "Welcome";
             UIHelper.Show(root);
             OnWindowShow?.Invoke();
         }
 
         /// <summary>
-        ///     Hides the pause window and notifies listeners through OnWindowHide event.
+        ///     Hides the window and notifies listeners through OnWindowHide event.
         /// </summary>
         public void Hide()
         {

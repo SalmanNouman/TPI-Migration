@@ -3119,7 +3119,25 @@ MonoBehaviour:
   OnListComplete:
     m_PersistentCalls:
       m_Calls: []
-  LoadOnStart: 1
+  LoadOnStart: 0
+  SaveFileNotFound:
+    m_PersistentCalls:
+      m_Calls: []
+  SaveFileFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 694841697}
+        m_TargetAssemblyTypeName: VARLab.DLX.StartPauseWindowBuilder, VARLab.DLX
+        m_MethodName: ShowAsWelcome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &356010908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3157,7 +3175,19 @@ MonoBehaviour:
       m_Calls: []
   OnFreshLoad:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1488851811}
+        m_TargetAssemblyTypeName: VARLab.DLX.TPISceneManager, VARLab.DLX
+        m_MethodName: RestartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   MovePlayer:
     m_PersistentCalls:
       m_Calls: []
@@ -8050,7 +8080,7 @@ PrefabInstance:
     - target: {fileID: 233074101795385203, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: m_Name
-      value: PauseWindow
+      value: StartPauseWindow
       objectReference: {fileID: 0}
     - target: {fileID: 4801269695725440683, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -8104,7 +8134,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
+      propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
@@ -8166,7 +8221,32 @@ PrefabInstance:
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1488851811}
+      objectReference: {fileID: 356010909}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2860636502688726886}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2860636502688726886}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -8175,16 +8255,81 @@ PrefabInstance:
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartScene
+      value: OnLoadRestart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356010909}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartTimers
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseTimers
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerLoad
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.TPISceneManager, VARLab.DLX
+      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.TimerManager, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.TimerManager, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

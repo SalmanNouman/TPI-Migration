@@ -118,5 +118,14 @@ namespace VARLab.DLX
             TimeSpan ts = saveData.Time;
             TimerManager.Instance.Offset = ts;
         }
+
+        /// <summary>
+        /// Wrapper method for the <see cref="CustomSaveHandler.OnFreshLoad"/> event.
+        /// </summary>
+        public void OnLoadRestart()
+        {
+            TriggerDelete();
+            OnFreshLoad?.Invoke();
+        }
     }
 }
