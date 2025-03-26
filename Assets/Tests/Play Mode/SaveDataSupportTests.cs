@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -13,6 +14,10 @@ namespace Tests.PlayMode
         private SaveData saveData;
         private CustomSaveHandler customSaveHandler;
         private TimerManager timerManager;
+        private GameObject objectOneGO;
+        private GameObject objectTwoGO;
+        private InspectableObject objectOne;
+        private InspectableObject objectTwo;
 
         private const string SceneName = "CloudSaveTestScene";
 
@@ -46,6 +51,21 @@ namespace Tests.PlayMode
             timerManager = GameObject.FindAnyObjectByType<TimerManager>();
 
             timerManager.StartTimers();
+
+            // Set up inspectable objects
+            objectOneGO = new();
+            objectOneGO.AddComponent<BoxCollider>();
+            objectOne = objectOneGO.AddComponent<InspectableObject>();
+            objectOne.Name = "Obj1";
+            objectOne.Location = PoiList.PoiName.Reception;
+            objectOne.GeneratedId();
+
+            objectTwoGO = new();
+            objectTwoGO.AddComponent<BoxCollider>();
+            objectTwo = objectTwoGO.AddComponent<InspectableObject>();
+            objectTwo.Name = "Obj2";
+            objectTwo.Location = PoiList.PoiName.Reception;
+            objectTwo.GeneratedId();
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
@@ -131,6 +151,25 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsTrue(triggered);
+        }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator SavingInspectionLog_Adds_LogList_To_SaveData()
+        {
+            // Arrange
+            List<InspectionData> inspectionLog = new();
+            InspectionData inspectionDataOne = new(objectOne, true, false);
+            InspectionData inspectionDataTwo = new(objectTwo, true, false);
+            inspectionLog.Add(inspectionDataOne);
+            inspectionLog.Add(inspectionDataTwo);
+
+            // Act
+            saveDataSupport.SaveInspectionLog(inspectionLog);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(inspectionLog.Count, saveData.InspectionLog.Count);
         }
     }
 }

@@ -1,7 +1,10 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static VARLab.DLX.SaveData;
 
 namespace VARLab.DLX
 {
@@ -22,13 +25,24 @@ namespace VARLab.DLX
 
         public static SaveDataSupport Instance;
 
+        /// <summary>
+        /// Unity Event invoked when the learner choose to start from a saved file.
+        /// </summary>
+        [Header("Main Load Events"), Space(5f)]
         public UnityEvent OnLoad;
 
+        /// <summary>
+        /// Initializes the cloud save and if a 
+        /// </summary>
         public UnityEvent OnInitialize;
 
         public UnityEvent OnFreshLoad;
 
+        [Header("Load events for different classes"), Space(5f)]
+
         public UnityEvent<string> MovePlayer;
+
+        public UnityEvent<List<InspectionSaveData>> LoadInspectionList;
 
         private void Start()
         {
@@ -37,9 +51,26 @@ namespace VARLab.DLX
             saveHandler = GetComponent<CustomSaveHandler>();
             saveData = GetComponent<SaveData>();
 
+            // Initialize events
+            OnLoad ??= new();
+            OnInitialize ??= new();
+            OnFreshLoad ??= new();
+            MovePlayer ??= new();
+            LoadInspectionList ??= new();
+
+            AddListeners();
+
 #if UNITY_EDITOR
             Initialize();
 #endif
+        }
+
+        private void AddListeners()
+        {
+            OnLoad.AddListener(() =>
+            {
+                LoadInspectionList?.Invoke(saveData.InspectionLog);
+            });
         }
 
         /// <summary>
@@ -127,5 +158,27 @@ namespace VARLab.DLX
             TriggerDelete();
             OnFreshLoad?.Invoke();
         }
+
+        #region Inspection Data
+        /// <summary>
+        /// Saves the list of inspections made.
+        /// </summary>
+        public void SaveInspectionLog(List<InspectionData> inspectionList)
+        {
+            List<InspectionSaveData> tempList = new();
+
+            foreach (InspectionData data in inspectionList)
+            { 
+                InspectionSaveData saveData = new InspectionSaveData();
+                saveData.ObjectId = data.Obj.ObjectId;
+                saveData.IsCompliant = data.IsCompliant;
+                saveData.HasPhoto = data.HasPhoto;
+                tempList.Add(saveData);
+            }
+
+            saveData.InspectionLog = tempList;
+            TriggerSave();
+        }
+        #endregion
     }
 }

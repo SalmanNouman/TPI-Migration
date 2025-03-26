@@ -223,5 +223,26 @@ namespace Tests.PlayMode
             Assert.AreEqual(expectedInspection.HasPhoto, retrievedInspection.HasPhoto,
                 "Retrieved inspection photo status does not match expected inspection");
         }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator GetSavedList_Triggers_OnInspectionCompleted()
+        {
+            // Arrange
+            List<InspectionData> saveList = new();
+            InspectionData data = new(inspectableOne, false, false);
+            saveList.Add(data);
+            bool wasTriggered = false;
+            inspectionsManager.OnInspectionCompleted.AddListener((list) => wasTriggered = true);
+
+            // Act
+            inspectionsManager.GetSavedList(saveList);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(wasTriggered);
+            Assert.AreEqual(saveList.Count, inspectionsManager.InspectionsList.Count);
+            Assert.AreEqual(saveList[0].Obj.ObjectId, inspectionsManager.InspectionsList[0].Obj.ObjectId);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using VARLab.Interactions;
 using VARLab.ObjectViewer;
+using static VARLab.DLX.SaveData;
 
 
 namespace VARLab.DLX
@@ -44,6 +45,12 @@ namespace VARLab.DLX
         public UnityEvent OnHandwashingTaskNotCompleted;
 
         /// <summary>
+        ///     Event triggered when the learner loads for a saved file 
+        ///     after the inspection list is populated from the save file.
+        /// </summary>
+        public UnityEvent<List<InspectionData>> LoadInspectionLogList;
+
+        /// <summary>
         ///     Initialize events if they are null
         /// </summary>
         private void Awake()
@@ -52,6 +59,7 @@ namespace VARLab.DLX
             OnObjectViewerObjectClicked ??= new();
             OnInspectionCompleted ??= new();
             OnHandwashingTaskNotCompleted ??= new();
+            LoadInspectionLogList ??= new();
         }
 
         /// <summary>
@@ -116,6 +124,10 @@ namespace VARLab.DLX
             OnObjectClicked?.Invoke(inspectable);
         }
 
+        /// <summary>
+        /// <see cref="ImageHandler.OnPhotoDeleted"/>
+        /// </summary>
+        /// <param name="id"></param>
         public void SetRemovedPhotoForInspectable(string id)
         {
             // Find the inspectable object with the given id
@@ -128,8 +140,38 @@ namespace VARLab.DLX
         }
 
         /// <summary>
+        ///     This method is added as a listener of the <see cref="SaveDataSupport.LoadInspectionList"/>
+        ///     to populate the inspection log from the save file.
+        /// </summary>
+        /// <param name="savedList"> list of inspections retrieved from the cloud </param>
+        public void LoadInspectionLog(List<InspectionSaveData> savedList)
+        {
+            List<InspectionData> tempList = new();
+
+            foreach (var data in savedList)
+            {
+                InspectableObject obj = inspectables.Find(o => o.ObjectId == data.ObjectId);
+                if (obj != null)
+                {
+                    InspectionData tempData = new();
+                    tempData.Obj = obj;
+                    tempData.IsCompliant = data.IsCompliant;
+                    tempData.HasPhoto = data.HasPhoto;
+
+                    tempList.Add(tempData);
+                }
+            }
+
+            LoadInspectionLogList?.Invoke(tempList);
+        }
+
+        /// <summary>
         ///     Sets the handwashing task as completed, allowing inspections to proceed.
         /// </summary>
-        public void SetHandwashingTaskCompleted() => HandWashingCompleted = true;
+        public void SetHandwashingTaskCompleted()
+        {
+            HandWashingCompleted = true;
+            SaveDataSupport.Instance.CanSave = true;
+        }
     }
 }

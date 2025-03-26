@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
+using static VARLab.DLX.SaveData;
 
 namespace Tests.PlayMode
 {
@@ -118,6 +119,29 @@ namespace Tests.PlayMode
 
             //assert
             Assert.AreEqual(expectedResult, result);
+        }
+
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator LoadInspectionLog_Triggers_LoadInspectionLogList()
+        {
+            // Arrange
+            bool wasTriggered = false;
+            InspectionHandler inspectionHandler = handlerGameObject.GetComponent<InspectionHandler>();
+            inspectionHandler.LoadInspectionLogList.AddListener((saveList) => wasTriggered = true);
+            List<InspectionSaveData> saveList = new();
+            InspectionSaveData data = new();
+            data.ObjectId = inspectable.GeneratedId();
+            data.IsCompliant = true;
+            data.HasPhoto = false;
+            saveList.Add(data);
+
+            // Act
+            inspectionHandler.LoadInspectionLog(saveList);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(wasTriggered);
         }
 
         public void Ping(InspectableObject ping)

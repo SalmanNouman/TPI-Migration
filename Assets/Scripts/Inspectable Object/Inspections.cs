@@ -165,6 +165,11 @@ namespace VARLab.DLX
             }
         }
 
+        public void GetSavedList(List<InspectionData> savedList)
+        {
+            InspectionsList = savedList;
+            OnInspectionCompleted?.Invoke(InspectionsList);
+        }
         #endregion
     }
 }
