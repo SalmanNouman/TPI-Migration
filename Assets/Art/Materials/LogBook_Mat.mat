@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4613342419675461778
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TrashCan_Mat
+  m_Name: LogBook_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 8c60d3766ce156742928e1a9d61bd1d3,
     type: 3}
   m_Parent: {fileID: 0}
@@ -41,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Color_Map:
-        m_Texture: {fileID: 2800000, guid: 501bd2bbdb28dd74bbcfb9ef4f5319b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: de8c34defcfb09340841aea213061898, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Map:
@@ -53,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MRO_Map:
-        m_Texture: {fileID: 2800000, guid: 7a2606dfcd20c494ab0f1bee1e8d0c84, type: 3}
+        m_Texture: {fileID: 2800000, guid: 27e0a48d0a6222748b1e784c916cc855, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
-        m_Texture: {fileID: 2800000, guid: e8c5c6d9ce9940242b96975925688150, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41e2cadcabe8b0745998c5fd8d62aa0a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Three_Channel_Tint_Mask:
@@ -151,7 +138,7 @@ Material:
     - _Roughness_Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4394597633082377911
+--- !u!114 &6023275322852381340
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,3 +151,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 0
+--- !u!114 &6477852297089712401
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
