@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
+using static VARLab.DLX.SaveData;
 
 namespace Tests.PlayMode
 {
@@ -318,6 +320,124 @@ namespace Tests.PlayMode
             string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Visual Inspection Deleted";
             StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
+        }
+
+        #endregion
+
+        #region Save/Load Tests
+
+        /// <summary>
+        /// Tests if LoadSavedLogs correctly updates the ActivityLogList and triggers the OnLogAdded event.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LoadSavedLogs_UpdatesActivityLogList()
+        {
+            // Arrange
+            bool eventInvoked = false;
+            List<Log> loadedLogs = null;
+            activityLog.OnLogAdded.AddListener((logs) =>
+            {
+                eventInvoked = true;
+                loadedLogs = logs;
+            });
+
+            List<Log> testLogs = new List<Log>
+            {
+                new Log(true, "Test Primary Log"),
+                new Log(false, "Test Secondary Log")
+            };
+
+            // Clear any existing logs
+            activityLog.ActivityLogList.Clear();
+
+            // Act
+            activityLog.LoadSavedLogs(testLogs);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventInvoked, "OnLogAdded event was not invoked after loading logs");
+            Assert.IsNotNull(loadedLogs, "Loaded logs are null");
+            Assert.AreEqual(testLogs.Count, activityLog.ActivityLogList.Count, "ActivityLogList count does not match test logs count");
+
+            // Check content of first log
+            Assert.AreEqual(testLogs[0].IsPrimary, activityLog.ActivityLogList[0].IsPrimary, "Primary flag was not loaded correctly");
+            Assert.AreEqual(testLogs[0].Message, activityLog.ActivityLogList[0].Message, "Log message was not loaded correctly");
+
+            // Check content of second log
+            Assert.AreEqual(testLogs[1].IsPrimary, activityLog.ActivityLogList[1].IsPrimary, "Primary flag was not loaded correctly");
+            Assert.AreEqual(testLogs[1].Message, activityLog.ActivityLogList[1].Message, "Log message was not loaded correctly");
+        }
+
+        /// <summary>
+        /// Tests if LoadSavedLogs handles empty log lists correctly.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LoadSavedLogs_HandlesEmptyLogList()
+        {
+            // Arrange
+            bool eventInvoked = false;
+            activityLog.OnLogAdded.AddListener((logs) => eventInvoked = true);
+
+            // Add some initial logs
+            activityLog.ActivityLogList.Clear();
+            activityLog.ActivityLogList.Add(new Log(true, "Initial Log"));
+
+            // Create empty test logs
+            List<Log> emptyLogs = new List<Log>();
+
+            // Act
+            activityLog.LoadSavedLogs(emptyLogs);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventInvoked, "OnLogAdded event was not invoked after loading empty logs");
+            Assert.AreEqual(0, activityLog.ActivityLogList.Count, "ActivityLogList should be empty after loading empty logs");
+        }
+
+        /// <summary>
+        /// Tests if GetSavedLogs correctly converts ActivityData to Log objects.
+        /// </summary>
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_GetSavedLogs_ConvertsActivityDataToLogs()
+        {
+            // Arrange
+            bool eventInvoked = false;
+            List<Log> loadedLogs = null;
+            activityLog.OnLogAdded.AddListener((logs) =>
+            {
+                eventInvoked = true;
+                loadedLogs = logs;
+            });
+
+            // Create test ActivityData objects (the format used in cloud save)
+            List<ActivityData> savedActivityData = new List<ActivityData>
+            {
+                new ActivityData { IsPrimary = true, LogString = "Test Primary Log" },
+                new ActivityData { IsPrimary = false, LogString = "Test Secondary Log" }
+            };
+
+            // Clear existing logs
+            activityLog.ActivityLogList.Clear();
+
+            // Act
+            activityLog.GetSavedLogs(savedActivityData);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(eventInvoked, "OnLogAdded event was not invoked after loading logs");
+            Assert.IsNotNull(loadedLogs, "Loaded logs are null");
+            Assert.AreEqual(2, activityLog.ActivityLogList.Count, "ActivityLogList should contain 2 logs");
+
+            // Check content of first log
+            Assert.IsTrue(activityLog.ActivityLogList[0].IsPrimary, "First log should be primary");
+            Assert.AreEqual("Test Primary Log", activityLog.ActivityLogList[0].Message, "First log message should match");
+
+            // Check content of second log
+            Assert.IsFalse(activityLog.ActivityLogList[1].IsPrimary, "Second log should be secondary");
+            Assert.AreEqual("Test Secondary Log", activityLog.ActivityLogList[1].Message, "Second log message should match");
         }
 
         #endregion

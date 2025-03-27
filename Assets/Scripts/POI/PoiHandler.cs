@@ -23,6 +23,11 @@ namespace VARLab.DLX
         private Poi currentPoi;
 
         /// <summary>
+        ///     Flag to prevent automatic POI enter events when the game is first loaded.
+        /// </summary>
+        private bool isInitialLoad = true;
+
+        /// <summary>
         /// This event is linked to the <see cref="Poi.OnPoiEnter"/> event and
         /// is invoked every time the poi event is invoked.
         /// <see cref="IntroductionTask.HandlePoiEnter"/>
@@ -67,6 +72,18 @@ namespace VARLab.DLX
 
             OnStart?.Invoke(interactablePois);
             PoiInteracted?.Invoke(poisInteracted);
+
+            // Wait a short time before allowing POI enter events to be processed
+            // This prevents automatic POI enter events when the game is first loaded
+            Invoke("EnablePoiEvents", 1.0f);
+        }
+
+        /// <summary>
+        /// Enables POI enter events after initial load is complete
+        /// </summary>
+        private void EnablePoiEvents()
+        {
+            isInitialLoad = false;
         }
 
         /// <summary>
@@ -99,6 +116,13 @@ namespace VARLab.DLX
         /// <param name="poi">The POI that was entered.</param>
         public void HandlePoiEnter(Poi poi)
         {
+            // Skip POI enter events during initial load
+            if (isInitialLoad)
+            {
+                currentPoi = poi; // Still update current POI
+                return;
+            }
+
             currentPoi = poi; // Update current POI
             OnPoiEnter?.Invoke(poi);
         }

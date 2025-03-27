@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static VARLab.DLX.SaveData;
 
 namespace VARLab.DLX
 {
@@ -162,12 +165,73 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        ///     Loads saved activity log list. Implementation pending.
+        ///     Changes the flag that allows logs to be saved. 
+        ///     If the count of primary logs is 0, a new primary log is created indicating the start of the inspection.
+        /// </summary>
+        /// <param name="canLog">What to set canLog to</param>
+        public void SetCanLog(bool canLog)
+        {
+            CanLog = canLog;
+            if (ActivityLogList.Count == 0)
+            {
+                string elapsedTime = TimerManager.Instance.GetElapsedTime();
+                string primaryLog = $"{elapsedTime} - Inspection Started";
+                AddPrimaryLog(primaryLog);
+            }
+        }
+
+        /// <summary>
+        ///     Gets saved activity logs from the cloud save system.
+        ///     This method is called by the SaveDataSupport.LoadActivityList event.
+        /// </summary>
+        /// <param name="savedLogs">The saved activity logs from the cloud save system.</param>
+        public void GetSavedLogs(List<ActivityData> savedLogs)
+        {
+            // Create a temporary list to store the logs
+            List<Log> tempList = new();
+            // Early return if no logs are found
+            if (savedLogs == null || savedLogs.Count == 0)
+            {
+                return;
+            }
+            // Fill in the temporary list with the saved logs
+            foreach (var savedLog in savedLogs)
+            {
+                Log log = new Log(savedLog.IsPrimary, savedLog.LogString);
+                tempList.Add(log);
+            }
+
+            LoadSavedLogs(tempList);
+        }
+
+        /// <summary>
+        ///     Loads saved activity log list and notifies listeners of the update.
         /// </summary>
         /// <param name="logs">The logs to load.</param>
         public void LoadSavedLogs(List<Log> logs)
         {
-            // TODO: This method will be implemented later, once we add the ability to save and load
+            if (logs == null || logs.Count == 0)
+            {
+                ActivityLogList.Clear();
+                OnLogAdded.Invoke(ActivityLogList);
+                return;
+            }
+
+            // Load logs
+            ActivityLogList = logs;
+
+            // Find the last primary log
+            Log lastPrimaryLog = ActivityLogList.LastOrDefault(log => log.IsPrimary);
+            if (lastPrimaryLog != null)
+            {
+                string elapsedTime = TimerManager.Instance.GetElapsedTime();
+                string lastPrimaryMessage = lastPrimaryLog.Message.Substring(lastPrimaryLog.Message.IndexOf(" ") + 1);
+                // Create simulation loaded log
+                string loadLog = $"{elapsedTime} Simulation Loaded: {lastPrimaryMessage}";
+                AddPrimaryLog(loadLog);
+            }
+
+            OnLogAdded.Invoke(ActivityLogList);
         }
 
         #endregion

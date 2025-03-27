@@ -44,6 +44,8 @@ namespace VARLab.DLX
 
         public UnityEvent<List<InspectionSaveData>> LoadInspectionList;
 
+        public UnityEvent<List<ActivityData>> LoadActivityList;
+
         private void Start()
         {
             Instance = this;
@@ -57,6 +59,7 @@ namespace VARLab.DLX
             OnFreshLoad ??= new();
             MovePlayer ??= new();
             LoadInspectionList ??= new();
+            LoadActivityList ??= new();
 
             AddListeners();
 
@@ -70,6 +73,7 @@ namespace VARLab.DLX
             OnLoad.AddListener(() =>
             {
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
+                LoadActivityList?.Invoke(saveData.ActivityLog);
             });
         }
 
@@ -177,6 +181,27 @@ namespace VARLab.DLX
             }
 
             saveData.InspectionLog = tempList;
+            TriggerSave();
+        }
+        #endregion
+
+        #region Activity Log Data
+        /// <summary>
+        /// Saves the list of activity logs.
+        /// </summary>
+        public void SaveActivityLog(List<Log> activityLogList)
+        {
+            List<ActivityData> tempList = new();
+
+            foreach (Log log in activityLogList)
+            { 
+                ActivityData saveData = new ActivityData();
+                saveData.IsPrimary = log.IsPrimary;
+                saveData.LogString = log.Message;
+                tempList.Add(saveData);
+            }
+
+            saveData.ActivityLog = tempList;
             TriggerSave();
         }
         #endregion

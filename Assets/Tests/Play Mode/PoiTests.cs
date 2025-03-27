@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -61,7 +62,26 @@ namespace Tests.PlayMode
             // Calculate safe distance for efficient POI trigger event testing by ensuring proper enter/exit actions
             safeDistance = poi.GetComponent<BoxCollider>().bounds.extents.x * 2.1f;
 
+            // Disable the isInitialLoad flag for testing
+            DisableInitialLoadFlag();
+
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
+        }
+
+        /// <summary>
+        /// Uses reflection to disable the isInitialLoad flag in PoiHandler for testing purposes
+        /// </summary>
+        private void DisableInitialLoadFlag()
+        {
+            // Get the private field using reflection
+            FieldInfo isInitialLoadField = typeof(PoiHandler).GetField("isInitialLoad", 
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            
+            if (isInitialLoadField != null)
+            {
+                // Set the field to false to allow event invocation during tests
+                isInitialLoadField.SetValue(poiHandler, false);
+            }
         }
         #endregion
 

@@ -171,5 +171,37 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(inspectionLog.Count, saveData.InspectionLog.Count);
         }
+
+        /// <summary>
+        /// Tests if SaveActivityLog correctly adds activity logs to SaveData
+        /// </summary>
+        [UnityTest, Order(7)]
+        [Category("BuildServer")]
+        public IEnumerator SavingActivityLog_Adds_LogList_To_SaveData()
+        {
+            // Arrange
+            saveDataSupport.CanSave = true;
+            List<Log> activityLog = new List<Log>
+            {
+                new Log(true, "Test Primary Log"),
+                new Log(false, "Test Secondary Log")
+            };
+
+            // Act
+            saveDataSupport.SaveActivityLog(activityLog);
+            yield return null;
+
+            // Assert
+            Assert.IsNotNull(saveData.ActivityLog, "Activity log was not saved to SaveData");
+            Assert.AreEqual(activityLog.Count, saveData.ActivityLog.Count, "Activity log count does not match");
+
+            // Check content of first log
+            Assert.AreEqual(activityLog[0].IsPrimary, saveData.ActivityLog[0].IsPrimary, "Primary flag was not saved correctly");
+            Assert.AreEqual(activityLog[0].Message, saveData.ActivityLog[0].LogString, "Log message was not saved correctly");
+
+            // Check content of second log
+            Assert.AreEqual(activityLog[1].IsPrimary, saveData.ActivityLog[1].IsPrimary, "Primary flag was not saved correctly");
+            Assert.AreEqual(activityLog[1].Message, saveData.ActivityLog[1].LogString, "Log message was not saved correctly");
+        }
     }
 }
