@@ -3169,19 +3169,7 @@ MonoBehaviour:
   LoadOnStart: 0
   OnSaveFileStatusCheck:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 356010909}
-        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
-        m_MethodName: HandleSaveFileStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &356010908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3282,19 +3270,7 @@ MonoBehaviour:
         m_CallState: 2
   OnValidSaveFileFound:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 694841697}
-        m_TargetAssemblyTypeName: VARLab.DLX.StartPauseWindowBuilder, VARLab.DLX
-        m_MethodName: ShowAsWelcome
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   MovePlayer:
     m_PersistentCalls:
       m_Calls: []
@@ -3315,34 +3291,10 @@ MonoBehaviour:
         m_CallState: 2
   LoadPhotos:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2084892911}
-        m_TargetAssemblyTypeName: VARLab.DLX.InspectionHandler, VARLab.DLX
-        m_MethodName: LoadPhotos
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   LoadActivityList:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 874318696}
-        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLog, VARLab.DLX
-        m_MethodName: GetSavedLogs
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &356010910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30249,17 +30201,17 @@ PrefabInstance:
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30338,6 +30290,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 798535377}
@@ -30355,6 +30317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30383,6 +30350,16 @@ PrefabInstance:
       objectReference: {fileID: 874318696}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 2860636502688726886}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 356010909}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnTaskFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -30403,8 +30380,18 @@ PrefabInstance:
       objectReference: {fileID: 839905161}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 859144173}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30458,6 +30445,11 @@ PrefabInstance:
       objectReference: {fileID: 839905161}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 859144173}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -30483,7 +30475,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
@@ -30513,8 +30520,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: StartTimers
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: StartAutoSaveTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleButtons
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30523,8 +30545,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleButtons
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30598,8 +30630,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: VARLab.DLX.TimerManager, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.Velcro.Notification, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VARLab.DLX.MenuBuilder, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30623,8 +30670,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.Velcro.Notification, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VARLab.DLX.MenuBuilder, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30634,10 +30701,25 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: 94448274acdd518428b66bad40db97d9,
         type: 2}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnShowInformationDialog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -30700,13 +30782,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: VARLab.Velcro.NotificationSO, VARLab.Velcro
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
+      propertyPath: OnHandwashingEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
       propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: VARLab.Velcro.NotificationSO, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
+        type: 3}
+      propertyPath: OnHandwashingStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30726,7 +30828,7 @@ PrefabInstance:
     - target: {fileID: 630373645135002566, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14350
+      value: 14353
       objectReference: {fileID: 0}
     - target: {fileID: 1672681439014932589, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30787,7 +30889,7 @@ PrefabInstance:
     - target: {fileID: 2565243958018293122, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13501
+      value: 13504
       objectReference: {fileID: 0}
     - target: {fileID: 2566641034537897609, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30807,7 +30909,7 @@ PrefabInstance:
     - target: {fileID: 2939970716558387404, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13163
+      value: 13166
       objectReference: {fileID: 0}
     - target: {fileID: 3218767834738750914, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30942,7 +31044,7 @@ PrefabInstance:
     - target: {fileID: 4587568205583901342, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14091
+      value: 14094
       objectReference: {fileID: 0}
     - target: {fileID: 4797300737147345672, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30967,7 +31069,7 @@ PrefabInstance:
     - target: {fileID: 8170675837713312017, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14937
+      value: 14940
       objectReference: {fileID: 0}
     - target: {fileID: 8671335587995286320, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -30977,7 +31079,7 @@ PrefabInstance:
     - target: {fileID: 8671335587995286320, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11959
+      value: 11962
       objectReference: {fileID: 0}
     - target: {fileID: 8798072155194562589, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -31027,7 +31129,7 @@ PrefabInstance:
     - target: {fileID: 9001616733439942115, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13266
+      value: 13269
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

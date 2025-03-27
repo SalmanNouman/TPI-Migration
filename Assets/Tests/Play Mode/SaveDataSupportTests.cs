@@ -222,5 +222,33 @@ namespace Tests.PlayMode
             Assert.AreEqual(photos.Count, saveData.PhotoIdAndTimeStamp.Count);
             Assert.IsTrue(saveData.PhotoIdAndTimeStamp.ContainsKey(photos[0].Id));
         }
+
+        #region Auto-Save Tests
+
+        /// <summary>
+        /// Tests if auto-save does not trigger when conditions are not met.
+        /// </summary>
+        [UnityTest, Order(9)]
+        [Category("BuildServer")]
+        public IEnumerator AutoSave_DoesNotTriggerWhenConditionsNotMet()
+        {
+            // Arrange
+
+            // Get access to the autoSaveTimer field using reflection
+            var autoSaveTimerField = typeof(SaveDataSupport).GetField("autoSaveTimer",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var autoSaveTimer = (System.Diagnostics.Stopwatch)autoSaveTimerField.GetValue(saveDataSupport);
+
+            // We wont start any timer
+
+            // Act
+            bool autoSaveTriggered = saveDataSupport.CheckAndTriggerAutoSave();
+
+            yield return null;
+
+            // Assert
+            Assert.IsFalse(autoSaveTriggered, "Auto-save should not be triggered when conditions are not met");
+        }
+        #endregion
     }
 }

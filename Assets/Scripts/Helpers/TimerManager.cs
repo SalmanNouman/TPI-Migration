@@ -36,9 +36,6 @@ namespace VARLab.DLX
                 return;
             }
             Offset = new TimeSpan(0);
-
-            // Temporary
-            StartTimers();
         }
 
         /// <summary>

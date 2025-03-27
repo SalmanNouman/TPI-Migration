@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +13,13 @@ namespace VARLab.DLX
     /// </summary>
     public class SaveDataSupport : MonoBehaviour
     {
+        private const int AutoSaveInterval = 180;
+
         private SaveData saveData;
 
         private CustomSaveHandler saveHandler;
+
+        private System.Diagnostics.Stopwatch autoSaveTimer;
 
         public bool CanSave;
 
@@ -90,6 +93,9 @@ namespace VARLab.DLX
             saveHandler = GetComponent<CustomSaveHandler>();
             saveData = GetComponent<SaveData>();
 
+            // Initialize auto save timer
+            autoSaveTimer = new System.Diagnostics.Stopwatch();
+
             // Initialize events
             OnLoad ??= new();
             OnInitialize ??= new();
@@ -114,6 +120,37 @@ namespace VARLab.DLX
             }
         }
 
+        /// <summary>
+        /// Called every frame to check TimerManager timer and trigger save if the SaveDataSupport
+        /// Timer reaches a certain threshold.
+        /// </summary>
+        private void Update()
+        {
+            CheckAndTriggerAutoSave();
+        }
+
+        /// <summary>
+        /// Checks if conditions are met for auto-save and triggers a save if needed.
+        /// This method is extracted from Update to make it testable.
+        /// </summary>
+        /// <returns>True if auto-save was triggered, false otherwise</returns>
+        public bool CheckAndTriggerAutoSave()
+        {
+            // Check if TimeManager timer is running
+            // It will run after handwashingtask is completed so CanSave will be true
+            if (TimerManager.Instance != null && TimerManager.Instance.Timer.IsRunning)
+            {
+                // Check if the timer has reached 3 minutes
+                if (autoSaveTimer.Elapsed.TotalSeconds >= AutoSaveInterval)
+                {
+                    // Invoke save
+                    TriggerSave();
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void AddListeners()
         {
             OnLoad.AddListener(() =>
@@ -121,6 +158,7 @@ namespace VARLab.DLX
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
+                LoadTimer();
             });
         }
 
@@ -151,6 +189,7 @@ namespace VARLab.DLX
             if (CanSave)
             {
                 SaveTimer();
+                autoSaveTimer.Restart();
                 saveHandler.Save();
             }
         }
@@ -288,7 +327,22 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Handles the restart process by deleting the save file and restarting the scene.
+        /// Starts the auto save timer. Will be used to start the auto save timer when the learner completes HandwashingTask.
+        /// </summary>
+        public void StartAutoSaveTimer()
+        {
+            autoSaveTimer.Start();
+        }
+
+        /// <summary>
+        /// Stops the auto save timer. Will determine use case when needed.
+        public void StopAutoSaveTimer()
+        {
+            autoSaveTimer.Stop();
+        }
+
+        /// <summary>
+        /// Wrapper method for the <see cref="CustomSaveHandler.OnFreshLoad"/> event.
         /// </summary>
         /// <remarks>
         /// Called when player clicks the restart button via <see cref="StartPauseWindowBuilder.OnRestartScene"/>
@@ -333,7 +387,7 @@ namespace VARLab.DLX
             List<InspectionSaveData> tempList = new();
 
             foreach (InspectionData data in inspectionList)
-            { 
+            {
                 InspectionSaveData saveData = new InspectionSaveData();
                 saveData.ObjectId = data.Obj.ObjectId;
                 saveData.IsCompliant = data.IsCompliant;
