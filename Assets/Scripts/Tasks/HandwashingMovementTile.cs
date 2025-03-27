@@ -289,8 +289,7 @@ namespace VARLab.DLX
         public void LoadSaveTask()
         {
             isTaskStarted = true;
-            isTaskCompleted = false;
-            CompleteTask();
+            isTaskCompleted = true;
         }
 
         #endregion

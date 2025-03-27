@@ -181,7 +181,16 @@ namespace VARLab.DLX
         {
             foreach (KeyValuePair<InspectableObject, string> kvp in photosAndTimestamps)
             {
+                var obj = kvp.Key;
+                if (obj.GetComponent<ToggleableInspectable>())
+                {
+                    obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                }
                 CaptureImage(kvp.Key);
+                if (obj.GetComponent<ToggleableInspectable>())
+                {
+                    obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                }
                 tempPhoto.Timestamp = kvp.Value;
                 Photos.Add(tempPhoto);
                 kvp.Key.HasPhoto = true;

@@ -217,6 +217,8 @@ namespace VARLab.DLX
                 return;
             }
 
+            SetCanLog(true);
+
             // Load logs
             ActivityLogList = logs;
 
@@ -232,6 +234,7 @@ namespace VARLab.DLX
             }
 
             OnLogAdded.Invoke(ActivityLogList);
+
         }
 
         #endregion

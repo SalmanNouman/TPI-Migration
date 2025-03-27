@@ -129,6 +129,11 @@ namespace VARLab.DLX
                 OnObjectViewerObjectClicked?.Invoke(obj);
             }
 
+            if (inspectable.GetComponent<ToggleableInspectable>())
+            {
+                ToggleInspectable(inspectable);
+            }
+
             OnObjectClicked?.Invoke(inspectable);
         }
 
@@ -197,6 +202,19 @@ namespace VARLab.DLX
         {
             HandWashingCompleted = true;
             SaveDataSupport.Instance.CanSave = true;
+        }
+
+        /// <summary>
+        /// This will toggle the object in a toggle inspectable
+        /// Example: open a lid for an inspection.
+        /// </summary>
+        /// <param name="obj"></param>
+        public void ToggleInspectable(InspectableObject obj)
+        {
+            if (obj.GetComponent<ToggleableInspectable>())
+            {
+                obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+            }
         }
     }
 }

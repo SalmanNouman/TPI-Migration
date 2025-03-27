@@ -165,6 +165,29 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasTriggered);
         }
 
+        [UnityTest]
+        public IEnumerator GameObjects_AreToggled_When_Inspection_Starts()
+        {
+            // Arrange
+            GameObject togObjectGO = new GameObject();
+            togObjectGO.AddComponent<BoxCollider>();
+            ToggleableInspectable togObj = togObjectGO.AddComponent<ToggleableInspectable>();
+            GameObject togOne = new GameObject();
+            GameObject togTwo = new GameObject();
+            togOne.SetActive(false);
+            togTwo.SetActive(true);
+            togObj.Toggleables.Add(togOne);
+            togObj.Toggleables.Add(togTwo);
+
+            // Act
+            handlerGameObject.GetComponent<InspectionHandler>().ToggleInspectable(togObj);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(togOne.activeSelf);
+            Assert.IsFalse(togTwo.activeSelf);
+        }
+
         public void Ping(InspectableObject ping)
         {
             listenerTest = true;

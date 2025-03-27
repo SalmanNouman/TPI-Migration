@@ -94,6 +94,7 @@ namespace VARLab.DLX
         ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
         ///     <see cref="PointClickNavigation.EnableNavigation(true)"/>
         ///     <see cref="MenuBuilder.Show"/>
+        ///     <see cref="InspectionHandler.ToggleInspectable(InspectableObject)"/>
         /// </summary>
         public UnityEvent<InspectableObject> OnWindowClosed;
 
@@ -198,6 +199,8 @@ namespace VARLab.DLX
             // Inspection message
             messageContainer = root.Q<VisualElement>("InspectionMessage");
             messageText = root.Q<Label>("MessageLabelText");
+
+            UIHelper.Hide(messageContainer);
         }
 
         /// <summary>
@@ -209,7 +212,6 @@ namespace VARLab.DLX
             {
                 Debug.Log("Close button clicked");
                 Hide();
-                OnWindowClosed?.Invoke(CurrentInspectable);
             };
 
             cameraButton.clicked += TakePhoto;

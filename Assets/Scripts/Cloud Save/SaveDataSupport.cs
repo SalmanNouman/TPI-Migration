@@ -155,10 +155,10 @@ namespace VARLab.DLX
         {
             OnLoad.AddListener(() =>
             {
+                LoadTimer();
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
-                LoadTimer();
             });
         }
 
@@ -324,6 +324,7 @@ namespace VARLab.DLX
         {
             TimeSpan ts = saveData.Time;
             TimerManager.Instance.Offset = ts;
+            TimerManager.Instance.StartTimers();
         }
 
         /// <summary>
