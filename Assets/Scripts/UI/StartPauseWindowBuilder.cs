@@ -64,13 +64,16 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Event triggered when the restart button is clicked.
-        ///     <see cref="SaveDataSupport.OnFreshLoad"/>
         /// </summary>
+        /// <remarks>
+        ///     Inspector connections:
+        ///     - <see cref="SaveDataSupport.OnLoadRestart"/> to delete save file and restart scene
+        /// </remarks>
         public UnityEvent OnRestartScene;
 
         /// <summary>
         ///     Event triggered when the continue button is clicked in welcome mode.
-        ///     <see cref="SaveDataSupport.OnLoad"/>
+        ///     <see cref="SaveDataSupport.TriggerLoad"/>
         /// </summary>
         public UnityEvent OnContinueSavedGame;
 

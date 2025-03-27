@@ -26,9 +26,13 @@ namespace VARLab.DLX
         /// </summary>
         public bool IsOpen { get; private set; } = false;
 
+        private void Awake()
+        {
+            Root = gameObject.GetComponent<UIDocument>().rootVisualElement;       
+        }
+
         private void Start()
         {
-            Root = gameObject.GetComponent<UIDocument>().rootVisualElement;
             elapsedTimeLabel = Root.Q<Label>("ElapsedTimeLabel");
             timerContainer = Root.Q("CountupTimer");
             arrowBtn = Root.Q<Button>("ArrowBtn");

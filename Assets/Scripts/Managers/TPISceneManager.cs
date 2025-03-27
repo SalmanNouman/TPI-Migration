@@ -24,6 +24,10 @@ namespace VARLab.DLX
         /// <summary>
         ///     Event triggered just before the scene is restarted.
         /// </summary>
+        /// <remarks>
+        ///     Inspector connections:
+        ///     - Called by <see cref="SaveDataSupport.OnLoadRestart"/> after save file deletion
+        /// </remarks>
         public UnityEvent OnSceneRestart;
 
         #endregion

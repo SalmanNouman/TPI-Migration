@@ -1,0 +1,33 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-start-Info-window.uss?fileID=7433441132597879392&amp;guid=d59ce242f279da844bb718c0002d51be&amp;type=3#tpi-start-Info-window" />
+    <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
+        <engine:VisualElement name="Window" class="br-20 start-info-window">
+            <engine:Instance template="Header" name="Header">
+                <AttributeOverrides element-name="NameLabel" text="Welcome" />
+            </engine:Instance>
+            <engine:VisualElement name="Content" class="start-info-window-content" style="flex-grow: 1;">
+                <engine:Label text="Public Health Inspection" name="ContentTiltle" class="start-info-window-content-title-label" />
+                <engine:Label text="You have been asked to conduct a routine inspection&#10;of the tattoo and piercing studio." name="ContentDesc" class="start-info-window-content-desc-label" style="white-space: nowrap;" />
+                <engine:VisualElement name="InfoContainer" class="start-info-window-info-container" style="flex-grow: 0;">
+                    <engine:VisualElement name="Info1" class="start-info-window-info-container-info" style="flex-grow: 0;">
+                        <engine:VisualElement name="Icon" class="start-info-window-info-container-info-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/Mouse_Look.png?fileID=2800000&amp;guid=1ec4b1db04b818245843e6060d56168e&amp;type=3#Mouse_Look&quot;);" />
+                        <engine:Label text="Click and drag your mouse to look around" name="InfoLabel" class="start-info-window-info-container-info-label" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Info2" class="start-info-window-info-container-info" style="flex-grow: 1;">
+                        <engine:VisualElement name="Icon" class="start-info-window-info-container-info-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/Arrow_Target.png?fileID=2800000&amp;guid=67db59bd1cafd004da21f359e950ec76&amp;type=3#Arrow_Target&quot;);" />
+                        <engine:Label text="Click targets on the floor to move" name="InfoLabel" class="start-info-window-info-container-info-label" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Info3" class="start-info-window-info-container-info" style="flex-grow: 1;">
+                        <engine:VisualElement name="Icon" class="start-info-window-info-container-info-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/Arrow_Object.png?fileID=2800000&amp;guid=f6b6932fd7ff39e428a20c083ea4175c&amp;type=3#Arrow_Object&quot;);" />
+                        <engine:Label text="Click highlighted objects to interact" name="InfoLabel" class="start-info-window-info-container-info-label" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:Button text="Begin" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="button-primary button button-medium mb-40" style="margin-bottom: 40px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

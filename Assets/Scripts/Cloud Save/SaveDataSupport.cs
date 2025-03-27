@@ -25,9 +25,17 @@ namespace VARLab.DLX
 
         public static SaveDataSupport Instance;
 
+        // Flags to track save file status
+        private bool saveFileExists = false;
+        private bool isVersionValid = true;
+
         /// <summary>
-        /// Unity Event invoked when the learner choose to start from a saved file.
+        ///     Event triggered when a valid save file is loaded successfully.
+        ///     Used to update in-simulation objects/data based on loaded save data.
         /// </summary>
+        /// <remarks>
+        ///     Inspector connections:
+        /// <remarks>
         [Header("Main Load Events"), Space(5f)]
         public UnityEvent OnLoad;
 
@@ -36,7 +44,24 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent OnInitialize;
 
+        /// <summary>
+        /// Event triggered when a new simulation should be started (no save file, invalid save, or restart).
+        /// </summary>
+        /// <remarks>
+        ///     Inspector connections:
+        /// - <see cref="StartInfoWindowBuilder.Show"/>
+        /// </remarks>
         public UnityEvent OnFreshLoad;
+
+        /// <summary>
+        ///     Event triggered when a valid save file is found
+        ///     Used to show the continue/restart UI.
+        /// </summary>
+        /// <remarks>
+        ///     Inspector connections:
+        ///     - <see cref="StartPauseWindowBuilder.ShowAsWelcome"/>
+        /// </remarks>
+        public UnityEvent OnValidSaveFileFound;
 
         [Header("Load events for different classes"), Space(5f)]
 
@@ -57,6 +82,7 @@ namespace VARLab.DLX
             OnLoad ??= new();
             OnInitialize ??= new();
             OnFreshLoad ??= new();
+            OnValidSaveFileFound ??= new();
             MovePlayer ??= new();
             LoadInspectionList ??= new();
             LoadActivityList ??= new();
@@ -66,6 +92,13 @@ namespace VARLab.DLX
 #if UNITY_EDITOR
             Initialize();
 #endif
+
+             // Check for restart flag with slight delay to ensure it happens after UI initialization
+            if (Restarted)
+            {
+                Debug.Log("SaveDataSupport: Detected restart flag, showing welcome screen");
+                StartCoroutine(DelayedFreshLoad());
+            }
         }
 
         private void AddListeners()
@@ -106,6 +139,92 @@ namespace VARLab.DLX
                 SaveTimer();
                 saveHandler.Save();
             }
+        }
+
+        /// <summary>
+        ///     Handles the save file status check result from cloud
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="CustomSaveHandler.OnSaveFileStatusCheck"/> event
+        ///     - If file exists: Triggers Save Handler's Load method to retrieve the save data
+        ///     - If no file exists: Invokes <see cref="OnFreshLoad"/> to start a new simulation
+        /// </remarks>
+        /// <param name="exists">Whether the save file exists in cloud</param>
+        public void HandleSaveFileStatus(bool exists)
+        {
+            saveFileExists = exists;
+            Debug.Log($"SaveDataSupport: Save file exists: {saveFileExists}");
+            
+            if (exists)
+            {
+                saveHandler.Load();
+                Debug.Log("SaveDataSupport: Save file exists, loading");
+                // Version check will happen in <see cref="HandleLoadComplete"/>
+            }
+            else
+            {
+                // No save file exists, start new simulation
+                Debug.Log("SaveDataSupport: No save file exists, starting new simulation");
+                OnFreshLoad?.Invoke();
+            }
+        }
+
+        /// <summary>
+        ///     Handles the load completion event.
+        ///     Validates save file version and determines simulation loading state.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="CustomSaveHandler.OnLoadComplete(bool)"/> event
+        ///     - If successful load: Checks version validity against application version
+        ///     - If valid version: Invokes <see cref="OnValidSaveFileFound"/> to show continue/restart UI
+        ///     - If invalid version: Deletes save file and invokes <see cref="OnFreshLoad"/>
+        ///     - If load failed: Deletes corrupted save and invokes <see cref="OnFreshLoad"/>
+        /// </remarks>
+        /// <param name="success">Whether the load operation was successful</param>
+        public void HandleLoadComplete(bool success)
+        {
+            if (success)
+            {
+                // Verify version is valid
+                // NOTE: Consider empty version as valid for this branch for testing
+                isVersionValid = saveData.Version == Application.version || string.IsNullOrEmpty(saveData.Version);
+                Debug.Log($"SaveDataSupport: Version check - Save: {saveData.Version ?? "null"}, App: {Application.version}, Valid: {isVersionValid}");
+                
+                if (isVersionValid)
+                {
+                    Debug.Log("SaveDataSupport: Valid save file, showing continue/restart UI");
+                    OnValidSaveFileFound?.Invoke();
+                }
+                else
+                {
+                    // Invalid version - delete old save and start new simulation
+                    Debug.Log("SaveDataSupport: Invalid version, deleting previous save file and starting new simulation");
+                    TriggerDelete();
+                    OnFreshLoad?.Invoke();
+                }
+            }
+            else
+            {
+                    // Load failed - delete the potentially corrupted save file and start new simulation
+                Debug.Log("SaveDataSupport: Load failed, deleting the corrupted save file and starting new simulation");
+                TriggerDelete();
+                OnFreshLoad?.Invoke();
+            }
+        }
+
+        /// <summary>
+        /// Method to invoke OnLoad event
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="StartPauseWindowBuilder.OnContinueSavedGame"/>
+        /// </remarks>
+        public void InvokeOnLoad()
+        {
+            Debug.Log("SaveDataSupport: OnLoadEvent invoked - setting up in-simulation data");
+            OnLoad?.Invoke();
         }
 
         public void TriggerLoad()
@@ -155,11 +274,39 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Wrapper method for the <see cref="CustomSaveHandler.OnFreshLoad"/> event.
+        /// Handles the restart process by deleting the save file and restarting the scene.
         /// </summary>
+        /// <remarks>
+        /// Called when player clicks the restart button via <see cref="StartPauseWindowBuilder.OnRestartScene"/>
+        /// Sets the Restarted flag which will be detected in Start() after scene reload
+        /// </remarks>
         public void OnLoadRestart()
         {
+            Debug.Log("SaveDataSupport: OnLoadRestart called - Deleting save file");
             TriggerDelete();
+            
+            // Set restart flag to true before restarting the scene
+            Debug.Log("SaveDataSupport: Set Restarted flag to true");
+            Restarted = true;
+            
+            Debug.Log("SaveDataSupport: Restarting scene after save file deletion");
+            TPISceneManager.Instance.RestartScene();
+        }
+
+        /// <summary>
+        ///     Invokes OnFreshLoad event with a slight delay to ensure it happens after UI initialization.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Called in <see cref="Start"/> when <see cref="Restarted"/> flag is true
+        ///     - Adds a small delay to ensure UI components are ready
+        ///     - Resets <see cref="Restarted"/> flag to false after processing
+        ///     - Invokes <see cref="OnFreshLoad"/> to start a new simulation
+        private IEnumerator DelayedFreshLoad()
+        {
+            yield return null;
+            yield return new WaitForSeconds(0.1f);
+            Restarted = false; // Reset the flag
             OnFreshLoad?.Invoke();
         }
 

@@ -6,7 +6,7 @@
 @import url("/Assets/TPI UI/StyleSheets/tpi-inspection-window.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
-
+@import url("/Assets/TPI UI/StyleSheets/tpi-start-Info-window.uss");
 
 :root {
     /* Menu Buttons*/
@@ -54,4 +54,8 @@
     --inspection-message-text-colour: #000000;
     --inspection-message-icon-tint: #D9D9D9;
     --inspection-message-icon: url("../../Art/Sprite/Icons/SpeechBubble_Sprite.png");
+
+    /* Start Info Window */
+    --start-info-window-label-colour: #212232;
+    --info-icon-background-color: #63706e;
 }

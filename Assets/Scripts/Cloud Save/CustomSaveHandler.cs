@@ -31,9 +31,15 @@ namespace VARLab.DLX
 
         private Queue<Action> saveQueue = new();
 
-        [Header("Initial Session Events")]
-        public UnityEvent SaveFileNotFound = new();
-        public UnityEvent SaveFileFound = new();
+        [Header("Save File Status Event")]
+        /// <summary>
+        ///     Event that provides the save file existence status as a boolean parameter.
+        /// </summary>
+        /// <remarks>
+        ///     Connected to <see cref="SaveDataSupport.HandleSaveFileStatus"/>
+        ///     True: Save file exists. False: Save file does not exist.
+        /// </remarks>
+        public UnityEvent<bool> OnSaveFileStatusCheck = new();
 
         protected virtual void OnValidate()
         {
@@ -49,7 +55,6 @@ namespace VARLab.DLX
 
             // starts a save background loop
             StartCoroutine(SaveLoop());
-
             OnSaveComplete.AddListener(SetSaveRequestCompletion);
             OnLoadComplete.AddListener(SetLoadCompletion);
         }
@@ -177,10 +182,13 @@ namespace VARLab.DLX
                 return;
             }
 
-            // Call the appropriate events if the Blob name is one of
-            // the available save files.
+            // Check if the Blob name is one of the available save files
             var tokens = args.Data.Split("\"");
-            (tokens.Contains(Blob) ? SaveFileFound : SaveFileNotFound)?.Invoke();
+            Debug.Log($"CustomSaveHandler: Found these tokens in cloud save list: [{string.Join(", ", tokens)}]");
+            
+            // Determine if save file exists and notify through event
+            bool saveFileExists = tokens.Contains(Blob);
+            OnSaveFileStatusCheck?.Invoke(saveFileExists);
         }
     }
 }
