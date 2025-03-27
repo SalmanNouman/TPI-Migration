@@ -32,6 +32,10 @@ namespace VARLab.DLX
         /// <summary>
         ///     Event triggered when a valid save file is loaded successfully.
         ///     Used to update in-simulation objects/data based on loaded save data.
+        ///     <see cref="IntroductionTask.LoadSaveTask"/>
+        ///     <see cref="OfficeTask.LoadSaveTask"/>
+        ///     <see cref="HandwashingMovementTile.LoadSaveTask"/>
+        ///     <see cref="InspectionHandler.SetHandwashingTaskCompleted"/>
         /// </summary>
         /// <remarks>
         ///     Inspector connections:

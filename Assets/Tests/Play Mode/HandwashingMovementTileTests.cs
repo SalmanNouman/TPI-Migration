@@ -390,6 +390,31 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
         }
 
+        /// <summary>
+        /// Call CompleteTask() when run LoadSaveTask
+        /// </summary>
+
+        [Test, Order(12)]
+        [Category("BuildServer")]
+
+        public void HandwashingMovementTile_LoadSaveTask_SetTaskFlagAndCallCompleteTask()
+        {
+            //Arrange
+            isTaskStarted.SetValue(handwashingTask, true);
+            isTaskCompleted.SetValue(handwashingTask, false);
+
+            bool eventInvoked = false;
+            handwashingTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+
+            //Act
+            handwashingTask.LoadSaveTask();
+
+            //Asset
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(handwashingTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue(eventInvoked, "CompleteTask should be called");
+
+        }
+
         #endregion
 
         #region Task Prerequisite Tests
@@ -397,7 +422,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if OnIntroductionCompleted() sets the introduction task as completed.
         /// </summary>
-        [Test, Order(12)]
+        [Test, Order(13)]
         [Category("BuildServer")]
         public void HandwashingMovementTile_OnIntroductionCompleted_SetsIntroductionTaskCompleted()
         {
@@ -411,7 +436,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if OnOfficeTaskCompleted() sets the office task as completed.
         /// </summary>
-        [Test, Order(13)]
+        [Test, Order(14)]
         [Category("BuildServer")]
         public void HandwashingMovementTile_OnOfficeTaskCompleted_SetsOfficeTaskCompleted()
         {
@@ -429,7 +454,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if CheckInspectionAttempt() invokes OnTaskFailed when prerequisites are met but handwashing is not completed.
         /// </summary>
-        [Test, Order(14)]
+        [Test, Order(15)]
         [Category("BuildServer")]
         public void HandwashingMovementTile_CheckInspectionAttempt_InvokesOnTaskFailedWhenPrerequisitesMet()
         {

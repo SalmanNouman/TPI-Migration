@@ -305,6 +305,25 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
         }
 
+        /// <summary>
+        /// Call CompleteTask() when run LoadSaveTask
+        /// </summary>
+
+        [Test, Order(10)]
+        [Category("BuildServer")]
+
+        public void IntroductionTask_LoadSaveTask_SetTaskFlagAndCallCompleteTask()
+        {
+            //Arrange
+            isTaskStarted.SetValue(introductionTask, true);
+            isTaskCompleted.SetValue(introductionTask, true);
+            //Act
+            introductionTask.LoadSaveTask();
+
+            //Asset
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
+        }
+
         #endregion
 
         #region CheckPoiExit Tests
@@ -312,7 +331,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if CheckPoiExit() invokes OnTaskFailed when player exits Reception POI before task starts.
         /// </summary>
-        [Test, Order(10)]
+        [Test, Order(11)]
         [Category("BuildServer")]
         public void IntroductionTask_CheckPoiExit_InvokesOnTaskFailedWhenExitingReception()
         {
@@ -330,7 +349,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if CheckPoiExit() doesn't invoke OnTaskFailed if task is already started.
         /// </summary>
-        [Test, Order(11)]
+        [Test, Order(12)]
         [Category("BuildServer")]
         public void IntroductionTask_CheckPoiExit_DoesNotInvokeOnTaskFailedIfTaskStarted()
         {

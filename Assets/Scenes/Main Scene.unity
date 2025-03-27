@@ -3213,7 +3213,55 @@ MonoBehaviour:
   CanSave: 0
   OnLoad:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1018439561}
+        m_TargetAssemblyTypeName: VARLab.DLX.IntroductionTask, VARLab.DLX
+        m_MethodName: LoadSaveTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9008527691497289222}
+        m_TargetAssemblyTypeName: VARLab.DLX.OfficeTask, VARLab.DLX
+        m_MethodName: LoadSaveTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1554016973}
+        m_TargetAssemblyTypeName: VARLab.DLX.HandwashingMovementTile, VARLab.DLX
+        m_MethodName: LoadSaveTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2084892911}
+        m_TargetAssemblyTypeName: VARLab.DLX.InspectionHandler, VARLab.DLX
+        m_MethodName: SetHandwashingTaskCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInitialize:
     m_PersistentCalls:
       m_Calls: []

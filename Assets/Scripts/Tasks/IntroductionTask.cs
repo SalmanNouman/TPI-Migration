@@ -239,6 +239,15 @@ namespace VARLab.DLX
             }
         }
 
+        /// <summary>
+        /// The tasks are set True when user click on Continue button
+        /// </summary>
+        public void LoadSaveTask()
+        {
+            isTaskStarted = true;
+            isTaskCompleted = true;
+        }
+
         #endregion
     }
 }

@@ -230,6 +230,31 @@ namespace Tests.PlayMode
             Assert.IsFalse((bool)isOfficeConversationShown.GetValue(officeTask), "isOfficeConversationShown should remain false");
         }
 
+        /// <summary>
+        /// Call CompleteTask() when run LoadSaveTask
+        /// </summary>
+        [Test,Order(7)]
+        [Category("BuildServer")]
+
+        public void OfficeTask_LoadSaveTask_SetTaskFlagAndCallCompleteTask()
+        {
+            //Arrange
+            isTaskStarted.SetValue(officeTask, true);
+            isTaskCompleted.SetValue(officeTask, false);
+            isOfficeConversationShown.SetValue(officeTask, true);
+
+            bool eventInvoked = false;
+            officeTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+           
+            //Act
+            officeTask.LoadSaveTask();
+
+            //Asset
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(officeTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue(eventInvoked, "CompleteTask should be called");
+
+        }
+
         #endregion
 
         #region CompleteTask Tests
@@ -237,7 +262,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if CompleteTask() sets task as completed and invokes OnTaskCompleted event.
         /// </summary>
-        [Test, Order(7)]
+        [Test, Order(8)]
         [Category("BuildServer")]
         public void OfficeTask_CompleteTask_SetsTaskCompletedAndInvokesEvent()
         {
@@ -258,7 +283,7 @@ namespace Tests.PlayMode
         /// <summary>
         ///     Tests if CompleteTask() returns early if the office conversation not shown yet.
         /// </summary>
-        [Test, Order(8)]
+        [Test, Order(9)]
         [Category("BuildServer")]
         public void OfficeTask_CompleteTask_ReturnsEarlyIfConversationNotShown()
         {

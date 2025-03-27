@@ -73,7 +73,7 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Event triggered when the continue button is clicked in welcome mode.
-        ///     <see cref="SaveDataSupport.TriggerLoad"/>
+        ///     <see cref="SaveDataSupport.OnLoad"/>
         /// </summary>
         public UnityEvent OnContinueSavedGame;
 
