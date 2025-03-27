@@ -39,6 +39,9 @@ namespace VARLab.DLX
         [SerializeField, Tooltip("Reference to the Information Dialog for task failure")]
         private InformDialog handwashFailureDialog;
 
+        [SerializeField, Tooltip("Reference to the Information Dialog for task failure")]
+        private InformDialog introductionExitDialog;
+
         [SerializeField, Tooltip("The waypoint that starts this handwashing task")]
         private Waypoint handwashingWaypoint;
 
@@ -124,9 +127,9 @@ namespace VARLab.DLX
                 // Check if introduction and office tasks are completed
                 if (!isIntroductionCompleted || !isOfficeTaskCompleted)
                 {
-                    Debug.Log("HandwashingMovementTile: Previous tasks not completed. Showing failure dialog.");
-                    handwashFailureDialog.SetPrimaryAction(() => RestartScene?.Invoke());
-                    OnShowInformationDialog?.Invoke(handwashFailureDialog);
+                    Debug.Log("HandwashingMovementTile: Previous tasks not completed. Showing introduction exit dialog.");
+                    introductionExitDialog.SetPrimaryAction(() => RestartScene?.Invoke());
+                    OnShowInformationDialog?.Invoke(introductionExitDialog);
                     return;
                 }
 
