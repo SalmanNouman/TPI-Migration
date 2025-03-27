@@ -39,6 +39,12 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<string> OnPhotoDeleted;
 
+        /// <summary>
+        /// Invoked when the photos list changes
+        /// <see cref="GalleryBuilder.GetPhotoList(List{InspectablePhoto})"/>
+        /// <see cref="PopUpBuilder.GetPhotosList(List{InspectablePhoto})"/>
+        /// <see cref="SaveDataSupport.SavePhotos(List{InspectablePhoto})"/>
+        /// </summary>
         public UnityEvent<List<InspectablePhoto>> OnPhotoListChanged;
 
         private void Awake()
@@ -47,6 +53,7 @@ namespace VARLab.DLX
             OnTempPhotoTaken ??= new();
             OnPhotoSaved ??= new();
             OnPhotoDeleted ??= new();
+            OnPhotoListChanged ??= new();
 
             // Initialize a new render texture
             renderTexture = new(ResWidth, ResHeight, ResDepth);
@@ -170,9 +177,17 @@ namespace VARLab.DLX
         /// <summary>
         /// This method takes pictures all of the inspectables that have photo on load.
         /// </summary>
-        public void TakePhotoForLoad()
+        public void TakePhotoForLoad(Dictionary<InspectableObject, string> photosAndTimestamps)
         {
-            // TODO: This will be implemented when we add save and load
+            foreach (KeyValuePair<InspectableObject, string> kvp in photosAndTimestamps)
+            {
+                CaptureImage(kvp.Key);
+                tempPhoto.Timestamp = kvp.Value;
+                Photos.Add(tempPhoto);
+                kvp.Key.HasPhoto = true;
+                tempPhoto = null;
+            }
+            OnPhotoListChanged?.Invoke(Photos);
         }
 
         /// <summary>

@@ -67,7 +67,15 @@ namespace VARLab.DLX
 
         public UnityEvent<string> MovePlayer;
 
+        /// <summary>
+        /// <see cref="InspectionHandler.LoadInspectionLog(List{InspectionSaveData})"/>
+        /// </summary>
         public UnityEvent<List<InspectionSaveData>> LoadInspectionList;
+
+        /// <summary>
+        /// <see cref="InspectionHandler.LoadPhotos(Dictionary{string, string})"/>
+        /// </summary>
+        public UnityEvent<Dictionary<string, string>> LoadPhotos;
 
         public UnityEvent<List<ActivityData>> LoadActivityList;
 
@@ -85,6 +93,7 @@ namespace VARLab.DLX
             OnValidSaveFileFound ??= new();
             MovePlayer ??= new();
             LoadInspectionList ??= new();
+            LoadPhotos ??= new();
             LoadActivityList ??= new();
 
             AddListeners();
@@ -106,6 +115,7 @@ namespace VARLab.DLX
             OnLoad.AddListener(() =>
             {
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
+                LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
             });
         }
@@ -331,6 +341,23 @@ namespace VARLab.DLX
             TriggerSave();
         }
         #endregion
+
+        /// <summary>
+        /// Saves the object Id and the photo timestamp
+        /// </summary>
+        /// <param name="photos"></param>
+        public void SavePhotos(List<InspectablePhoto> photos)
+        {
+            Dictionary<string, string> tempDictionary = new Dictionary<string, string>();
+
+            foreach (var photo in photos) 
+            {
+                tempDictionary.Add(photo.Id, photo.Timestamp);
+            }
+
+            saveData.PhotoIdAndTimeStamp = tempDictionary;
+            TriggerSave();
+        }
 
         #region Activity Log Data
         /// <summary>

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -215,6 +216,28 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsTrue(isSaved);
+        }
+
+        [UnityTest, Order(7)]
+        public IEnumerator TakePhotoForLoad_Triggers_OnPhotoListChanged()
+        {
+            // Arrange
+            imageHandler.Photos.Clear();
+
+            Dictionary<InspectableObject, string> savedPhotos = new Dictionary<InspectableObject, string>();
+            savedPhotos.Add(objectViewerObject, "timestamp");
+            savedPhotos.Add(inspectableObject, "timestamp");
+
+            bool wasTriggered = false;
+            imageHandler.OnPhotoListChanged.AddListener((photoList) => wasTriggered = true);
+
+            // Act
+            imageHandler.TakePhotoForLoad(savedPhotos);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(wasTriggered);
+            Assert.AreEqual(savedPhotos.Count, imageHandler.Photos.Count);
         }
     }
 

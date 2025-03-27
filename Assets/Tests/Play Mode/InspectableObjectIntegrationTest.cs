@@ -144,6 +144,27 @@ namespace Tests.PlayMode
             Assert.IsTrue(wasTriggered);
         }
 
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator LoadPhotos_Triggers_LoadSavedPhotos()
+        {
+            // Arrange
+            bool wasTriggered = false;
+            InspectionHandler inspectionHandler = handlerGameObject.GetComponent<InspectionHandler>();
+            inspectionHandler.LoadSavedPhotos.AddListener((saveList) => wasTriggered = true);
+            Dictionary<string, string> saveList = new();
+            inspectable.GeneratedId();
+            saveList.Add(inspectable.ObjectId, "timestamp");
+
+
+            // Act
+            inspectionHandler.LoadPhotos(saveList);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(wasTriggered);
+        }
+
         public void Ping(InspectableObject ping)
         {
             listenerTest = true;

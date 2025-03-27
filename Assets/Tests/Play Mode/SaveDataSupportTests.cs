@@ -203,5 +203,24 @@ namespace Tests.PlayMode
             Assert.AreEqual(activityLog[1].IsPrimary, saveData.ActivityLog[1].IsPrimary, "Primary flag was not saved correctly");
             Assert.AreEqual(activityLog[1].Message, saveData.ActivityLog[1].LogString, "Log message was not saved correctly");
         }
+
+        [UnityTest, Order(8)]
+        [Category("BuildServer")]
+        public IEnumerator SavingPhotos_Adds_ObjectIdAndTimestamp_To_SaveData()
+        {
+            // Arrange
+            List<InspectablePhoto> photos = new();
+            byte[] data = null;
+            InspectablePhoto photoOne = new(data, objectOne.ObjectId, objectOne.Location.ToString(), "Timestamp");
+            photos.Add(photoOne);
+
+            // Act
+            saveDataSupport.SavePhotos(photos);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(photos.Count, saveData.PhotoIdAndTimeStamp.Count);
+            Assert.IsTrue(saveData.PhotoIdAndTimeStamp.ContainsKey(photos[0].Id));
+        }
     }
 }

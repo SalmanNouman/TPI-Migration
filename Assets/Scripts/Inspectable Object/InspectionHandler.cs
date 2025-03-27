@@ -45,10 +45,17 @@ namespace VARLab.DLX
         public UnityEvent OnHandwashingTaskNotCompleted;
 
         /// <summary>
-        ///     Event triggered when the learner loads for a saved file 
+        ///     Event triggered when the learner loads from a saved file 
         ///     after the inspection list is populated from the save file.
+        ///     <see cref="Inspections.GetSavedList(List{InspectionData})"/>
         /// </summary>
         public UnityEvent<List<InspectionData>> LoadInspectionLogList;
+
+        /// <summary>
+        ///     Event invoked when the learner loads from a saved file
+        ///     <see cref="ImageHandler.TakePhotoForLoad(Dictionary{InspectableObject, string})"/>
+        /// </summary>
+        public UnityEvent<Dictionary<InspectableObject, string>> LoadSavedPhotos;
 
         /// <summary>
         ///     Initialize events if they are null
@@ -60,6 +67,7 @@ namespace VARLab.DLX
             OnInspectionCompleted ??= new();
             OnHandwashingTaskNotCompleted ??= new();
             LoadInspectionLogList ??= new();
+            LoadSavedPhotos ??= new();
         }
 
         /// <summary>
@@ -163,6 +171,23 @@ namespace VARLab.DLX
             }
 
             LoadInspectionLogList?.Invoke(tempList);
+        }
+
+        public void LoadPhotos(Dictionary<string, string> photos)
+        {
+            Dictionary<InspectableObject, string> tempObjectsAndTimestamps = new();
+            foreach(KeyValuePair<string, string> kvp in photos)
+            {
+                InspectableObject obj = inspectables.Find(o => o.ObjectId == kvp.Key);
+
+                if (obj != null)
+                { 
+                    tempObjectsAndTimestamps.Add(obj, kvp.Value);
+                    obj.HasPhoto = true;
+                }
+            }
+
+            LoadSavedPhotos?.Invoke(tempObjectsAndTimestamps);
         }
 
         /// <summary>
