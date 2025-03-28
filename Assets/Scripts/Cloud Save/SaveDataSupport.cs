@@ -159,6 +159,7 @@ namespace VARLab.DLX
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
+                MovePlayer?.Invoke(saveData.LastPOI);
             });
         }
 
@@ -400,6 +401,7 @@ namespace VARLab.DLX
             TriggerSave();
         }
         #endregion
+        
 
         /// <summary>
         /// Saves the object Id and the photo timestamp
@@ -437,6 +439,23 @@ namespace VARLab.DLX
             saveData.ActivityLog = tempList;
             TriggerSave();
         }
+        #endregion
+
+        #region POI Data
+
+        /// <summary>
+        ///     Saves the current POI to the save data.
+        ///     Called when player enters a new POI through OnPoiEnter event.
+        /// </summary>
+        /// <param name="poi">The POI that was entered</param>
+        public void SaveLastPOI(Poi poi)
+        {
+            if (!CanSave) return;
+            
+            saveData.LastPOI = poi.SelectedPoiName.ToString();
+            TriggerSave();
+        }
+
         #endregion
     }
 }

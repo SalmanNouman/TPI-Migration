@@ -18,6 +18,8 @@ namespace Tests.PlayMode
         private GameObject objectTwoGO;
         private InspectableObject objectOne;
         private InspectableObject objectTwo;
+        private GameObject poiObject;
+        private Poi poi;
 
         private const string SceneName = "CloudSaveTestScene";
 
@@ -66,6 +68,10 @@ namespace Tests.PlayMode
             objectTwo.Name = "Obj2";
             objectTwo.Location = PoiList.PoiName.Reception;
             objectTwo.GeneratedId();
+
+            // Set up POI object
+            poiObject = new();
+            poi = poiObject.AddComponent<Poi>();
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
@@ -250,5 +256,66 @@ namespace Tests.PlayMode
             Assert.IsFalse(autoSaveTriggered, "Auto-save should not be triggered when conditions are not met");
         }
         #endregion
+
+        /// <summary>
+        ///     Tests if SaveLastPOI() correctly stores the POI name in the save data when CanSave is true.
+        /// </summary>
+        [UnityTest, Order(10)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_SaveLastPOI_StoresPOINameInSaveData()
+        {
+            // Arrange
+            poi.SelectedPoiName = PoiList.PoiName.Reception;
+            saveDataSupport.CanSave = true;
+
+            // Act
+            saveDataSupport.SaveLastPOI(poi);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(poi.SelectedPoiName.ToString(), saveData.LastPOI);
+        }
+
+        /// <summary>
+        ///     Tests if SaveLastPOI() does not modify the save data when CanSave is false.
+        /// </summary>
+        [UnityTest, Order(11)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_SaveLastPOI_DoesNotSaveWhenCanSaveIsFalse()
+        {
+            // Arrange
+            poi.SelectedPoiName = PoiList.PoiName.Bathroom;
+            saveDataSupport.CanSave = false;
+            saveData.LastPOI = "";
+
+            // Act
+            saveDataSupport.SaveLastPOI(poi);
+            yield return null;
+
+            // Assert
+            Assert.AreEqual("", saveData.LastPOI);
+        }
+
+        /// <summary>
+        ///     Tests if MovePlayer event is triggered with LastPOI when OnLoad is invoked.
+        /// </summary>
+        [UnityTest, Order(12)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_OnLoad_InvokesMovePlayerWithLastPOI()
+        {
+            // Arrange
+            string testPOI = "Reception";
+            saveData.LastPOI = testPOI;
+            string movedToPOI = null;
+            saveDataSupport.MovePlayer.RemoveAllListeners();
+            saveDataSupport.MovePlayer.AddListener((poi) => movedToPOI = poi);
+
+            // Act
+            saveDataSupport.OnLoad.Invoke();
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(testPOI, movedToPOI, "MovePlayer event should be invoked with the LastPOI value");
+        }
     }
 }

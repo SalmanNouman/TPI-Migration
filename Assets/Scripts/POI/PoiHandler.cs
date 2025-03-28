@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 namespace VARLab.DLX
 {
@@ -10,6 +11,8 @@ namespace VARLab.DLX
     /// </summary>
     public class PoiHandler : MonoBehaviour
     {
+        [SerializeField] private NavMeshAgent player;
+
         // List containing all the POIs in the scene
         private List<Poi> pois;
 
@@ -52,7 +55,6 @@ namespace VARLab.DLX
         /// <see cref="ProgressBuilder.GetPoiCount(int)"/>
         /// </summary>
         public UnityEvent<int> OnStart;
-
 
         /// <summary>
         /// Initialize events if they are null
@@ -164,6 +166,38 @@ namespace VARLab.DLX
                     interactablePois++;
                 }
             }
+        }
+
+        /// <summary>
+        ///     Warps the player to the default waypoint of the specified POI.
+        ///     Used for loading player position from saved data.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="SaveDataSupport.MovePlayer"/> event
+        ///     - Finds the POI with matching name and its default waypoint
+        ///     - Uses NavMeshAgent.Warp to instantly teleport player
+        /// </remarks>
+        /// <param name="poiName">Name of the POI to warp to</param>
+        public void WarpToLastPOI(string poiName)
+        {
+            poiName = poiName == "" ? "Bathroom" : poiName;
+            Poi lastPoi = pois.Find(p => p.SelectedPoiName.ToString() == poiName);
+            
+            if (lastPoi == null || lastPoi.DefaultWaypoint == null)
+            {
+                Debug.LogWarning($"PoiHandler: Failed to warp - '{poiName}' POI or default waypoint not found");
+                return;
+            }
+            
+            // Temporarily disable POI enter events to prevent triggering them during warp
+            bool prevState = isInitialLoad;
+            isInitialLoad = true;
+            // Instantly teleport player to the POI's default waypoint
+            player.Warp(lastPoi.DefaultWaypoint.transform.position);
+            currentPoi = lastPoi;
+            Debug.Log($"PoiHandler: Player warped to {poiName}'s default waypoint");
+            isInitialLoad = prevState;
         }
     }
 }
