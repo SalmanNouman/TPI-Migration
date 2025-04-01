@@ -26,7 +26,13 @@ namespace Tests.PlayMode
         [Category("BuildServer")]
         public IEnumerator SetUp()
         {
+            // Ensure the previous scene is fully unloaded
+            yield return null;
+
             sceneCounter = ClearScene(sceneCounter, "TableScene");
+
+            // Ensure the scene is fully set up
+            yield return null;
 
             tableObj = new GameObject("Timer Object");
             tableDoc = tableObj.AddComponent<UIDocument>();
@@ -719,11 +725,52 @@ namespace Tests.PlayMode
         /// <returns></returns>
         public static int ClearScene(int sceneCounter, string scenename)
         {
-            SceneManager.SetActiveScene(SceneManager.CreateScene(scenename + sceneCounter));
+            string newSceneName = scenename + sceneCounter;
+
+            // Destroy any InspectionWindowBuilder objects that might be causing null references
+            var inspectionBuilders = Object.FindObjectsOfType<MonoBehaviour>();
+            foreach (var obj in inspectionBuilders)
+            {
+                if (obj.GetType().Name.Contains("InspectionWindowBuilder") ||
+                    obj.GetType().Name.Contains("InspectionHandler"))
+                {
+                    Object.DestroyImmediate(obj.gameObject);
+                }
+            }
+
+            // Check if a scene with this name already exists
+            bool sceneExists = false;
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (scene.name == newSceneName)
+                {
+                    sceneExists = true;
+                    SceneManager.SetActiveScene(scene);
+                    break;
+                }
+            }
+
+            // Only create a new scene if it doesn't already exist
+            if (!sceneExists)
+            {
+                SceneManager.SetActiveScene(SceneManager.CreateScene(newSceneName));
+            }
 
             if (sceneCounter > 0)
             {
-                SceneManager.UnloadSceneAsync(scenename + (sceneCounter - 1));
+                string oldSceneName = scenename + (sceneCounter - 1);
+
+                // Check if the old scene exists before trying to unload it
+                for (int i = 0; i < SceneManager.sceneCount; i++)
+                {
+                    Scene scene = SceneManager.GetSceneAt(i);
+                    if (scene.name == oldSceneName && scene.isLoaded)
+                    {
+                        SceneManager.UnloadSceneAsync(oldSceneName);
+                        break;
+                    }
+                }
             }
 
             return ++sceneCounter;

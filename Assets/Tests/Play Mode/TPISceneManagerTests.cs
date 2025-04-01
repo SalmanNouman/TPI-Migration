@@ -112,7 +112,7 @@ namespace Tests.PlayMode
 
             // Act
             sceneManager.RestartScene();
-            yield return new WaitForSeconds(0.2f); // Wait for coroutine to complete
+            yield return new WaitForFixedUpdate(); // Wait for coroutine to complete
 
             // Assert
             Assert.IsTrue(eventInvoked, "'RestartScene()' did not invoke 'OnSceneRestart' event");

@@ -211,6 +211,12 @@ namespace VARLab.DLX
         /// <param name="obj"></param>
         public void ToggleInspectable(InspectableObject obj)
         {
+            if (obj == null) 
+            {
+                Debug.LogWarning("Toggling an null InspectableObject");
+                return;
+            }
+
             if (obj.GetComponent<ToggleableInspectable>())
             {
                 obj.GetComponent<ToggleableInspectable>().ToggleForInspection();

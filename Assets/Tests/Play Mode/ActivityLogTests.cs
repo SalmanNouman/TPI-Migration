@@ -429,7 +429,8 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue(eventInvoked, "OnLogAdded event was not invoked after loading logs");
             Assert.IsNotNull(loadedLogs, "Loaded logs are null");
-            Assert.AreEqual(2, activityLog.ActivityLogList.Count, "ActivityLogList should contain 2 logs");
+            // 3 logs because it calls LoadSavedLogs and that appends a simulation loaded log
+            Assert.AreEqual(3, activityLog.ActivityLogList.Count, "ActivityLogList should contain 2 logs");
 
             // Check content of first log
             Assert.IsTrue(activityLog.ActivityLogList[0].IsPrimary, "First log should be primary");

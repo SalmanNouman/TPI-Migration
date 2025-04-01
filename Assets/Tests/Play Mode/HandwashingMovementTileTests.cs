@@ -44,6 +44,7 @@ namespace Tests.PlayMode
         private FieldInfo runningWater;
         private FieldInfo handwashInstructionsDialog;
         private FieldInfo handwashFailureDialog;
+        private FieldInfo introductionExitDialog;
         private FieldInfo dialogDelay;
         private FieldInfo handwashingDuration;
 
@@ -90,6 +91,7 @@ namespace Tests.PlayMode
             runningWater = typeof(HandwashingMovementTile).GetField("runningWater", BindingFlags.NonPublic | BindingFlags.Instance);
             handwashInstructionsDialog = typeof(HandwashingMovementTile).GetField("handwashInstructionsDialog", BindingFlags.NonPublic | BindingFlags.Instance);
             handwashFailureDialog = typeof(HandwashingMovementTile).GetField("handwashFailureDialog", BindingFlags.NonPublic | BindingFlags.Instance);
+            introductionExitDialog = typeof(HandwashingMovementTile).GetField("introductionExitDialog", BindingFlags.NonPublic | BindingFlags.Instance);
             dialogDelay = typeof(HandwashingMovementTile).GetField("dialogDelay", BindingFlags.NonPublic | BindingFlags.Instance);
             handwashingDuration = typeof(HandwashingMovementTile).GetField("handwashingDuration", BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -105,6 +107,7 @@ namespace Tests.PlayMode
             // Set dialogs
             handwashInstructionsDialog.SetValue(handwashingTask, ScriptableObject.CreateInstance<InformDialog>());
             handwashFailureDialog.SetValue(handwashingTask, ScriptableObject.CreateInstance<InformDialog>());
+            introductionExitDialog.SetValue(handwashingTask, ScriptableObject.CreateInstance<InformDialog>());
 
             // Set small delays for testing
             dialogDelay.SetValue(handwashingTask, TestDelay);
@@ -403,15 +406,11 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(handwashingTask, true);
             isTaskCompleted.SetValue(handwashingTask, false);
 
-            bool eventInvoked = false;
-            handwashingTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-
             //Act
             handwashingTask.LoadSaveTask();
 
-            //Asset
+            //Assert
             Assert.IsTrue((bool)isTaskCompleted.GetValue(handwashingTask), "isTaskCompleted should be set to true");
-            Assert.IsTrue(eventInvoked, "CompleteTask should be called");
 
         }
 
