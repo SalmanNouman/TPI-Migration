@@ -4,7 +4,7 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
     <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-tab-content.uss?fileID=7433441132597879392&amp;guid=ef7902918bf7c934ca9e7edd792f3af4&amp;type=3#tpi-tab-content" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
-    <engine:VisualElement name="CardContainer" class="tpi-card-v5-container-base tpi-card-v5-container-image-only">
+    <engine:VisualElement name="CardContainer" class="tpi-card-v5-container-base tpi-card-v5-container-image-only tpi-card-v5-container-spacing">
         <VARLab.Velcro.BoxShadowManager blur-width="4" offset-y="4" name="TopShadow" class="br-tl-20 br-tr-20 card-v5-top-shadow card-v5-shadow-variables" />
         <engine:VisualElement name="Body" class="grow card-v5-body bw-2 flex-row justify-center" style="min-height: 130px; height: 130px;">
             <engine:Button name="ImageButton" class="p-0 m-0 w-100 h-100 br-tl-20 br-tr-20 tpi-card-v5-button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0);">
