@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 7307837006310614548}
   - component: {fileID: 3635081538556837517}
   - component: {fileID: 7719178571492961013}
+  - component: {fileID: 6914533190321495621}
   m_Layer: 0
   m_Name: poly_CabinetSet_Top_Straight
   m_TagString: Untagged
@@ -368,6 +369,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6914533190321495621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643198265936879139}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74999976, y: 0.7999999, z: 0.052571483}
+  m_Center: {x: -0.37499994, y: -0.3999999, z: 0.00000011082737}
 --- !u!1 &6844534407820907973
 GameObject:
   m_ObjectHideFlags: 0

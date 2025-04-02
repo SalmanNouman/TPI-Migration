@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 6440345980736893052}
   - component: {fileID: 6707247282796525917}
   - component: {fileID: 2545227567624724218}
+  - component: {fileID: 5453146623548402356}
   m_Layer: 0
   m_Name: poly_CabinetSet_Top_SinkCut
   m_TagString: Untagged
@@ -205,6 +206,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5453146623548402356
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439916916004547521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7157502355951994302, guid: 342856e093ea9f748a56cd0bd09d7fdc, type: 3}
 --- !u!1 &759936749785552250
 GameObject:
   m_ObjectHideFlags: 0
