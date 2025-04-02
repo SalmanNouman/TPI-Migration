@@ -229,7 +229,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -245,7 +245,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -277,7 +277,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1159,7 +1159,8 @@ Transform:
   m_LocalPosition: {x: 0.4493452, y: -0.8084101, z: -0.32751533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3560599863485212310}
   m_Father: {fileID: 5506659409527795203}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!33 &771665933096267178
@@ -1926,7 +1927,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3008190233898151384, guid: 5dcefb7f27b62454f8751ab986424793,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4306994517286386710}
+    - targetCorrespondingSourceObject: {fileID: 8673041528259960707, guid: 5dcefb7f27b62454f8751ab986424793,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8098683994634048289}
+    - targetCorrespondingSourceObject: {fileID: 2624281405615682371, guid: 5dcefb7f27b62454f8751ab986424793,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3439123481354697016}
+    - targetCorrespondingSourceObject: {fileID: 4867661722608262481, guid: 5dcefb7f27b62454f8751ab986424793,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629954222497521555}
   m_SourcePrefab: {fileID: 100100000, guid: 5dcefb7f27b62454f8751ab986424793, type: 3}
 --- !u!23 &1583499477187737204 stripped
 MeshRenderer:
@@ -1946,18 +1963,54 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 248916552502914948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3439123481354697016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818978772005690567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3083674219207901788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3008190233898151384, guid: 5dcefb7f27b62454f8751ab986424793,
     type: 3}
   m_PrefabInstance: {fileID: 248916552502914948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4306994517286386710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083674219207901788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4681840095113933525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4867661722608262481, guid: 5dcefb7f27b62454f8751ab986424793,
     type: 3}
   m_PrefabInstance: {fileID: 248916552502914948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1629954222497521555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681840095113933525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6091975474301524547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6340891408257578439, guid: 5dcefb7f27b62454f8751ab986424793,
@@ -1970,6 +2023,24 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 248916552502914948}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8874485007230693383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8673041528259960707, guid: 5dcefb7f27b62454f8751ab986424793,
+    type: 3}
+  m_PrefabInstance: {fileID: 248916552502914948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8098683994634048289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874485007230693383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &8955101106538232804 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 9165596324631778400, guid: 5dcefb7f27b62454f8751ab986424793,
@@ -2125,34 +2196,261 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTaskStarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableCameraPanAndZoom
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableNavigation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTaskCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableCameraPanAndZoom
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableNavigation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.InspectionHandler, VARLab.DLX
+        m_MethodName: SetHandwashingTaskCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.ActivityLog, VARLab.DLX
+        m_MethodName: SetCanLog
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.TimerManager, VARLab.DLX
+        m_MethodName: StartTimers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
+        m_MethodName: StartAutoSaveTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnTaskFailed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableCameraPanAndZoom
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Navigation.PointClick.PointClickNavigation,
+          VARLab.Navigation.PointClick
+        m_MethodName: EnableNavigation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   handwashingStation: {fileID: 0}
-  runningWater: {fileID: 0}
-  handwashingWater: {fileID: 0}
-  handwashInstructionsDialog: {fileID: 0}
-  handwashFailureDialog: {fileID: 0}
-  introductionExitDialog: {fileID: 0}
-  handwashingWaypoint: {fileID: 0}
-  handwashingDuration: 5
+  runningWater: {fileID: 2496230626483381833}
+  handwashingWater: {fileID: 137971525264782411}
+  handwashInstructionsDialog: {fileID: 11400000, guid: 6fe6feaa36fa2854e9480329225ea584,
+    type: 2}
+  handwashFailureDialog: {fileID: 11400000, guid: 88c2003b0f05ee64e8b683fb7f60cd76,
+    type: 2}
+  introductionExitDialog: {fileID: 11400000, guid: 910a0ea2816fb244a8e12a99ce919ccd,
+    type: 2}
+  handwashingWaypoint: {fileID: 8179543852581529133}
+  handwashingDuration: 3
   dialogDelay: 0.5
   OnShowInformationDialog:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.InformationDialog, VARLab.DLX
+        m_MethodName: HandleDisplayUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHandwashingStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Velcro.Notification, VARLab.Velcro
+        m_MethodName: HandleDisplayUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 94448274acdd518428b66bad40db97d9,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: VARLab.Velcro.NotificationSO, VARLab.Velcro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.MenuBuilder, VARLab.DLX
+        m_MethodName: ToggleButtons
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHandwashingEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.Velcro.Notification, VARLab.Velcro
+        m_MethodName: HandleDisplayUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 16900c12d3e8a184a8b777c5e978ad2a,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: VARLab.Velcro.NotificationSO, VARLab.Velcro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.MenuBuilder, VARLab.DLX
+        m_MethodName: ToggleButtons
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   RestartScene:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.DLX.TPISceneManager, VARLab.DLX
+        m_MethodName: RestartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &2496230626483381833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2388,4 +2686,89 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5083585081996653041, guid: 857490697421a904ea9cea1389f453f9,
     type: 3}
   m_PrefabInstance: {fileID: 7613651470078801304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8051150346049648911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 289781475369354861}
+    m_Modifications:
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0023
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9757
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2377
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50084704
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49914882
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5008497
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.49915156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.19399
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949208253459320132, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_Name
+      value: HandSinkWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949208253459320132, guid: a8ae075a2aa32ae4885ffd159d38b974,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8ae075a2aa32ae4885ffd159d38b974, type: 3}
+--- !u!1 &137971525264782411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7949208253459320132, guid: a8ae075a2aa32ae4885ffd159d38b974,
+    type: 3}
+  m_PrefabInstance: {fileID: 8051150346049648911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3560599863485212310 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6832704055909441433, guid: a8ae075a2aa32ae4885ffd159d38b974,
+    type: 3}
+  m_PrefabInstance: {fileID: 8051150346049648911}
   m_PrefabAsset: {fileID: 0}
