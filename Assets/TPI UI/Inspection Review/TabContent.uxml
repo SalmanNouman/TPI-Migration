@@ -10,9 +10,13 @@
     </engine:VisualElement>
     <engine:VisualElement name="Content" class="p-12" style="flex-grow: 1;">
         <engine:VisualElement name="SortButtonContainer" class="sort-button-container display-hidden" style="flex-direction: row;">
-            <engine:Button text="SortBtnOne" name="SortBtnOne" enabled="true" class="buttonSpacing tpi-sort-button-filter-tag" />
-            <engine:Button name="SortBtnTwo" enabled="true" text="SortBtnTwo" class="buttonSpacing big-button-size tpi-sort-button-filter-tag" />
-            <engine:Button name="SortBtnThree" enabled="true" text="SortBtnThree" class="buttonSpacing big-button-size tpi-sort-button-filter-tag" />
+            <engine:Button text="SortBtnOne" name="SortBtnOne" enabled="true" class="buttonSpacing tpi-sort-button-filter-tag tpi-sort-button-all-filter-tag tpi-sort-button-all-filter-tag-selected" />
+            <engine:Button name="SortBtnTwo" enabled="true" text="SortBtnTwo" emoji-fallback-support="true" class="buttonSpacing big-button-size tpi-sort-button-filter-tag tpi-sort-button-compliant-filter-tag tpi-sort-button-compliant-filter-tag-selected">
+                <engine:VisualElement name="Icon" focusable="false" class="compliant-checkmark-icon icon-btn-size" style="align-self: auto;" />
+            </engine:Button>
+            <engine:Button name="SortBtnThree" enabled="true" text="SortBtnThree" enable-rich-text="false" class="buttonSpacing big-button-size tpi-sort-button-filter-tag tpi-sort-button-non-compliant-filter-tag tpi-sort-button-non-compliant-filter-tag-selected">
+                <engine:VisualElement name="Icon" class="icon-btn-size non-compliant-checkmark-icon" style="align-self: auto;" />
+            </engine:Button>
         </engine:VisualElement>
         <engine:ScrollView name="ScrollView" class="scrollbar grow" />
     </engine:VisualElement>

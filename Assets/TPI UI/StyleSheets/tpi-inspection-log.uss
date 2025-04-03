@@ -18,7 +18,6 @@
 .tpi-sort-button-filter-tag{
     background-color: var(--filter-tag-default-background-color);
     border-color: var(--filter-tag-default-border-color);
-	min-width:100px;
 	height: 42px;
 	border-width: 1px;
 	border-radius: 20px;
@@ -30,10 +29,42 @@
 .tpi-sort-button-filter-tag-selected{
 	background-color: var(--filter-tag-selected-background-color);
     border-color: var(--filter-tag-selected-border-color);
-	min-width:100px;
 	height: 42px;
 	border-radius: 20px;
     color: var(--filter-tag-selected-text-color);
     -unity-font-definition: var(--font-regular);
 	font-size: 18px;
 }
+
+.tpi-sort-button-all-filter-tag,
+.tpi-sort-button-all-filter-tag-selected{
+	min-width: 100px;
+}
+
+.tpi-sort-button-compliant-filter-tag,
+.tpi-sort-button-compliant-filter-tag-selected{
+	min-width: 166px;
+}
+
+.tpi-sort-button-non-compliant-filter-tag,
+.tpi-sort-button-non-compliant-filter-tag-selected{
+	min-width: 202px;
+}
+
+.icon-btn-size {
+    flex-grow: 0;
+    width: 20px;
+    height: 20px;
+	margin-right: 10px;
+    flex-direction: row;
+}
+
+.compliant-checkmark-icon{
+	background-image: var(--inspection-log-compliant-checkmark-icon);
+}
+
+.non-compliant-checkmark-icon{
+	background-image: var(--inspection-log-non-compliant-checkmark-icon);
+}
+
+
