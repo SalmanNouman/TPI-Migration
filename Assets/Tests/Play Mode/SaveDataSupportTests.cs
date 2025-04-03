@@ -317,5 +317,29 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(testPOI, movedToPOI, "MovePlayer event should be invoked with the LastPOI value");
         }
+
+        /// <summary>
+        ///     Tests if OnLoadRestart sets Restarted flag to true when deletion succeeds
+        /// </summary>
+        [UnityTest, Order(13)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_OnLoadRestart_SetsRestartedFlagOnSuccessfulDeletion()
+        {
+            // Arrange
+            SaveDataSupport.Restarted = false;
+            customSaveHandler.DeleteSuccess = null;
+            
+            // Act
+            saveDataSupport.OnLoadRestart();
+            yield return null;
+            customSaveHandler.DeleteSuccess = true;            
+            yield return new WaitForSeconds(0.1f); // Wait for coroutine to process it
+            
+            // Assert
+            Assert.IsTrue(SaveDataSupport.Restarted, "Restarted flag should be set to true on successful deletion");
+            
+            // Cleanup
+            SaveDataSupport.Restarted = false;
+        }
     }
 }

@@ -77,11 +77,9 @@ namespace VARLab.DLX
         private IEnumerator RestartSceneCoroutine()
         {
             // TODO: Reset intro task flags
-
-            OnSceneRestart?.Invoke();  // Invoke the restart event
-
-            // TODO: Implement cloud save deletion
-            // yield return CloudSaveDeleted == true;
+            
+            // Invoke the restart event
+            OnSceneRestart?.Invoke();
 
             LoadCompleted = false;
 

@@ -25,6 +25,11 @@ namespace VARLab.DLX
         public bool LoadOnStart = false;
 
         public bool? LoadSuccess = null;
+        
+        /// <summary>
+        ///     Flag that tracks the success status of the delete operation.
+        /// </summary>
+        public bool? DeleteSuccess = null;
 
         private bool saveFlag = false;
         private bool requestDone = false;
@@ -53,10 +58,15 @@ namespace VARLab.DLX
         {
             CommandInterpreter.Instance?.Add(new CloudSaveCommand(this));
 
+            // Initialize status flags
+            LoadSuccess = null;
+            DeleteSuccess = null;
+
             // starts a save background loop
             StartCoroutine(SaveLoop());
             OnSaveComplete.AddListener(SetSaveRequestCompletion);
             OnLoadComplete.AddListener(SetLoadCompletion);
+            OnDeleteComplete.AddListener(SetDeleteCompletion);
         }
 
         /// <summary>
@@ -155,6 +165,21 @@ namespace VARLab.DLX
         public void SetLoadCompletion(bool completed)
         {
             LoadSuccess = completed;
+        }
+        
+        /// <summary>
+        ///     Gets the response from <see cref="ExperienceSaveHandler.HandleRequestCompleted(object, RequestCompletedEventArgs)"/>
+        ///     Updates the DeleteSuccess flag to track the completion status of the delete operation.
+        /// </summary>
+        /// <remarks>
+        ///     - Connected from <see cref="OnDeleteComplete"/> event
+        ///     - Used by <see cref="SaveDataSupport.OnLoadRestartCoroutine"/> to determine if scene restart should proceed
+        /// </remarks>
+        /// <param name="completed">True: delete succeeded, False: delete failed</param>
+        public void SetDeleteCompletion(bool completed)
+        {
+            DeleteSuccess = completed;
+            Debug.Log($"CustomSaveHandler: Delete operation {(completed ? "succeeded" : "failed")}");
         }
 
         /// <summary>

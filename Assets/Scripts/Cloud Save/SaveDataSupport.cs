@@ -261,7 +261,7 @@ namespace VARLab.DLX
             }
             else
             {
-                    // Load failed - delete the potentially corrupted save file and start new simulation
+                // Load failed - delete the potentially corrupted save file and start new simulation
                 Debug.Log("SaveDataSupport: Load failed, deleting the corrupted save file and starting new simulation");
                 TriggerDelete();
                 OnFreshLoad?.Invoke();
@@ -344,23 +344,56 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Wrapper method for the <see cref="CustomSaveHandler.OnFreshLoad"/> event.
+        ///     Handles save file deletion and scene restart.
         /// </summary>
         /// <remarks>
-        /// Called when player clicks the restart button via <see cref="StartPauseWindowBuilder.OnRestartScene"/>
-        /// Sets the Restarted flag which will be detected in Start() after scene reload
+        ///     Call flow:
+        ///     - Connected from: <see cref="StartPauseWindowBuilder.OnRestartScene"/> when player clicks restart
+        ///     - Calls coroutine <see cref="OnLoadRestartCoroutine"/> to ensure proper deletion before restarting
         /// </remarks>
         public void OnLoadRestart()
         {
             Debug.Log("SaveDataSupport: OnLoadRestart called - Deleting save file");
+            StartCoroutine(OnLoadRestartCoroutine());
+        }
+
+        /// <summary>
+        ///     Manages save deletion flow and conditional scene restart.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Called from <see cref="OnLoadRestart"/>
+        ///     - Triggers save file deletion with <see cref="TriggerDelete"/>
+        ///     - Waits for deletion completion and checks success status
+        ///     - If successful: Sets <see cref="Restarted"/> flag and restarts scene
+        ///     - If failed: Logs error and prevents scene restart to avoid issues
+        /// </remarks>
+        private IEnumerator OnLoadRestartCoroutine()
+        {
+            // Trigger save file deletion
             TriggerDelete();
             
-            // Set restart flag to true before restarting the scene
-            Debug.Log("SaveDataSupport: Set Restarted flag to true");
-            Restarted = true;
+            // Wait until the deletion operation completes (success or failure)
+            Debug.Log("SaveDataSupport: Waiting for save file deletion to complete...");
+            yield return new WaitUntil(() => saveHandler.DeleteSuccess != null);
             
-            Debug.Log("SaveDataSupport: Restarting scene after save file deletion");
-            TPISceneManager.Instance.RestartScene();
+            // Check if deletion was successful
+            if (saveHandler.DeleteSuccess == true)
+            {
+                Debug.Log("SaveDataSupport: Save file deletion completed successfully");
+                
+                // Set restart flag to true before restarting the scene
+                Debug.Log("SaveDataSupport: Set Restarted flag to true");
+                Restarted = true;
+                
+                Debug.Log("SaveDataSupport: Restarting scene after save file deletion");
+                TPISceneManager.Instance.RestartScene();
+            }
+            else
+            {
+                // If deletion failed, do not restart the scene
+                Debug.Log("SaveDataSupport: Save file deletion failed. The simulation will not restart to prevent issues.");
+            }
         }
 
         /// <summary>
