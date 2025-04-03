@@ -32,6 +32,9 @@ namespace VARLab.DLX
         private bool saveFileExists = false;
         private bool isVersionValid = true;
 
+        // Flag to track the load status
+        private bool isAlreadyLoaded = false;
+
         /// <summary>
         ///     Event triggered when a valid save file is loaded successfully.
         ///     Used to update in-simulation objects/data based on loaded save data.
@@ -207,14 +210,21 @@ namespace VARLab.DLX
         /// <param name="exists">Whether the save file exists in cloud</param>
         public void HandleSaveFileStatus(bool exists)
         {
+            // Early return if already loaded
+            if (isAlreadyLoaded)
+            {
+                return;
+            }
+
             saveFileExists = exists;
             Debug.Log($"SaveDataSupport: Save file exists: {saveFileExists}");
             
             if (exists)
             {
                 saveHandler.Load();
+                isAlreadyLoaded = true;
                 Debug.Log("SaveDataSupport: Save file exists, loading");
-                // Version check will happen in <see cref="HandleLoadComplete"/>
+                OnValidSaveFileFound?.Invoke();
             }
             else
             {

@@ -36,6 +36,9 @@ namespace VARLab.DLX
 
         private Queue<Action> saveQueue = new();
 
+        // Flag to track load status
+        private bool isAlreadyLoaded = false;
+
         [Header("Save File Status Event")]
         /// <summary>
         ///     Event that provides the save file existence status as a boolean parameter.
@@ -207,13 +210,20 @@ namespace VARLab.DLX
                 return;
             }
 
+            // early return if the save file has already been loaded
+            if (isAlreadyLoaded)
+            {
+                return;
+            }
+
             // Check if the Blob name is one of the available save files
             var tokens = args.Data.Split("\"");
             Debug.Log($"CustomSaveHandler: Found these tokens in cloud save list: [{string.Join(", ", tokens)}]");
-            
+
             // Determine if save file exists and notify through event
             bool saveFileExists = tokens.Contains(Blob);
             OnSaveFileStatusCheck?.Invoke(saveFileExists);
+            isAlreadyLoaded = true;
         }
     }
 }

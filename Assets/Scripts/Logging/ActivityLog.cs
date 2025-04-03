@@ -216,8 +216,11 @@ namespace VARLab.DLX
                 OnLogAdded.Invoke(ActivityLogList);
                 return;
             }
+            // Clear the current log list and update the UI
+            ActivityLogList.Clear();
+            OnLogAdded.Invoke(ActivityLogList);
 
-            SetCanLog(true);
+            CanLog = true;
 
             // Load logs
             ActivityLogList = logs;
@@ -227,10 +230,21 @@ namespace VARLab.DLX
             if (lastPrimaryLog != null)
             {
                 string elapsedTime = TimerManager.Instance.GetElapsedTime();
-                string lastPrimaryMessage = lastPrimaryLog.Message.Substring(lastPrimaryLog.Message.IndexOf(" ") + 1);
+                string lastPrimaryMessage = "";
+                if (lastPrimaryLog.Message.Contains("Simulation Loaded"))
+                {
+                    // Find the index of the colon that comes after "Simulation Loaded"
+                    int simLoadedIndex = lastPrimaryLog.Message.IndexOf("Simulation Loaded");
+                    int colonIndex = lastPrimaryLog.Message.IndexOf(":", simLoadedIndex);
+                    lastPrimaryMessage = lastPrimaryLog.Message.Substring(colonIndex + 1).Trim();
+                }
+                else
+                {
+                    lastPrimaryMessage = lastPrimaryLog.Message.Substring(lastPrimaryLog.Message.IndexOf(" ") + 1);
+                }
                 // Create simulation loaded log
                 string loadLog = $"{elapsedTime} Simulation Loaded: {lastPrimaryMessage}";
-                AddPrimaryLog(loadLog);
+                ActivityLogList.Add(new Log(true, loadLog));
             }
 
             OnLogAdded.Invoke(ActivityLogList);
