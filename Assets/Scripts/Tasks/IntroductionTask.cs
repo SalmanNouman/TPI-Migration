@@ -23,8 +23,8 @@ namespace VARLab.DLX
     {
         #region Fields
 
-        [SerializeField, Tooltip("Reference to the Reception POI (allowed area)")]
-        private Poi receptionPoi;
+        [SerializeField, Tooltip("Reference to the Lobby POI (allowed area)")]
+        private Poi lobbyPoi;
 
         [SerializeField, Tooltip("The waypoint that starts this introduction task")]
         private Waypoint introductionWaypoint;
@@ -228,7 +228,7 @@ namespace VARLab.DLX
         public void CheckPoiExit(Poi poi)
         {
             // Only trigger failure if the task is not started yet and the exited POI is the Reception
-            if (!isTaskStarted && poi == receptionPoi)
+            if (!isTaskStarted && poi == lobbyPoi)
             {
                 Debug.Log($"IntroductionTask: Player exited allowed area: {poi.PoiName} before introduction. Task failed.");
 

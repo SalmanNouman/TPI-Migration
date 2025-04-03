@@ -26,13 +26,13 @@ namespace Tests.PlayMode
 
         private GameObject testObject;
         private IntroductionTask introductionTask;
-        private GameObject receptionPoiObject;
-        private Poi receptionPoiComponent;
+        private GameObject lobbyPoiObject;
+        private Poi lobbyPoiComponent;
         private GameObject waypointObject;
         private Waypoint waypointComponent;
 
         // Field info for private fields access
-        private FieldInfo receptionPoi;
+        private FieldInfo lobbyPoi;
         private FieldInfo isTaskStarted;
         private FieldInfo isTaskCompleted;
         private FieldInfo conversationDelay;
@@ -57,9 +57,10 @@ namespace Tests.PlayMode
             introductionTask = testObject.AddComponent<IntroductionTask>();
 
             // Setup test POIs
-            receptionPoiObject = new GameObject("TestReceptionPOI");
-            receptionPoiComponent = receptionPoiObject.AddComponent<Poi>();
-            receptionPoiComponent.PoiName = "Reception";
+            lobbyPoiObject = new GameObject("TestLobbyPOI");
+            lobbyPoiComponent = lobbyPoiObject.AddComponent<Poi>();
+            lobbyPoiComponent.PoiName = "Lobby";
+            lobbyPoiComponent.SelectedPoiName = PoiList.PoiName.Lobby;
             
             // Setup test waypoint
             waypointObject = new GameObject("TestWaypoint");
@@ -67,7 +68,7 @@ namespace Tests.PlayMode
 
             // Get private fields using reflection
             // * Reflection is used to access a private field
-            receptionPoi = typeof(IntroductionTask).GetField("receptionPoi", BindingFlags.NonPublic | BindingFlags.Instance);
+            lobbyPoi = typeof(IntroductionTask).GetField("lobbyPoi", BindingFlags.NonPublic | BindingFlags.Instance);
             isTaskStarted = typeof(IntroductionTask).GetField("isTaskStarted", BindingFlags.NonPublic | BindingFlags.Instance);
             isTaskCompleted = typeof(IntroductionTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
             conversationDelay = typeof(IntroductionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -75,7 +76,7 @@ namespace Tests.PlayMode
             informDialogSO = typeof(IntroductionTask).GetField("informDialogSO", BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Set Reception POI as the allowed area
-            receptionPoi.SetValue(introductionTask, receptionPoiComponent);
+            lobbyPoi.SetValue(introductionTask, lobbyPoiComponent);
 
             // Set introduction waypoint
             introductionWaypoint.SetValue(introductionTask, waypointComponent);
@@ -91,7 +92,7 @@ namespace Tests.PlayMode
         public void TearDown()
         {
             Object.Destroy(testObject);
-            Object.Destroy(receptionPoiObject);
+            Object.Destroy(lobbyPoiObject);
             Object.Destroy(waypointObject);
         }
 
@@ -340,7 +341,7 @@ namespace Tests.PlayMode
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
             informDialogSO.SetValue(introductionTask, ScriptableObject.CreateInstance<InformDialog>());
             // Act - Player exits Reception POI before task starts
-            introductionTask.CheckPoiExit(receptionPoiComponent);
+            introductionTask.CheckPoiExit(lobbyPoiComponent);
 
             // Assert
             Assert.IsTrue(eventInvoked, "OnTaskFailed should be invoked when exiting Reception before task starts");
@@ -359,7 +360,7 @@ namespace Tests.PlayMode
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
             
             // Act
-            introductionTask.CheckPoiExit(receptionPoiComponent);
+            introductionTask.CheckPoiExit(lobbyPoiComponent);
             
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskFailed should not be invoked if task is already started");
