@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 using VARLab.DLX;
+using VARLab.Interactions;
 using static VARLab.DLX.SaveData;
 
 namespace Tests.PlayMode
@@ -15,6 +16,7 @@ namespace Tests.PlayMode
         private GameObject handlerGameObject;
         private GameObject toggleable;
         ToggleableInspectable inspectable;
+        private GameObject poi;
 
         [SetUp]
         [Category("BuildServer")]
@@ -37,6 +39,10 @@ namespace Tests.PlayMode
 
             handlerGameObject = new GameObject("HandlerObject");
             handlerGameObject.AddComponent<InspectionHandler>();
+
+            poi = new();
+            poi.AddComponent<Poi>();
+            poi.GetComponent<Poi>().SelectedPoiName = PoiList.PoiName.Reception;
         }
 
         // Test Object Name and Location are set in the Inspectable
@@ -186,6 +192,29 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue(togOne.activeSelf);
             Assert.IsFalse(togTwo.activeSelf);
+        }
+
+        [UnityTest]
+        public IEnumerator Interactions_ForAllGameObjects_GetDisabled_OnStart()
+        {
+            yield return null;
+
+            // Assert
+            Assert.IsFalse(inspectableGameObject.GetComponent<Interactable>().enabled);
+        }
+
+        [UnityTest]
+        public IEnumerator Interactions_GetEnabled_OnPOIEnter()
+        {
+            // Arrange
+            inspectableGameObject.GetComponent<Interactable>().enabled = false;
+
+            // Act
+            yield return null;
+            handlerGameObject.GetComponent<InspectionHandler>().ToggleInteractions(poi.GetComponent<Poi>());
+
+            // Assert
+            Assert.IsTrue(inspectableGameObject.GetComponent<Interactable>().enabled);
         }
 
         public void Ping(InspectableObject ping)

@@ -33,14 +33,17 @@ namespace VARLab.DLX
         /// <summary>
         /// This event is linked to the <see cref="Poi.OnPoiEnter"/> event and
         /// is invoked every time the poi event is invoked.
-        /// <see cref="IntroductionTask.HandlePoiEnter"/>
+        /// <see cref="ActivityLog.LogPoiEnter(Poi)"/>
+        /// <see cref="SaveDataSupport.SaveLastPOI(Poi)"/>
+        /// <see cref="InspectionHandler.ToggleInteractions(Poi)"/>
         /// </summary>
         public UnityEvent<Poi> OnPoiEnter;
 
         /// <summary>
         /// This event is linked to the <see cref="Poi.OnPoiExit"/> event and
         /// is invoked every time the poi event is invoked.
-        /// <see cref=""/>
+        /// <see cref="ActivityLog.LogExitPoi(Poi)"/>
+        /// <see cref="InspectionHandler.ToggleInteractions(Poi)"/>
         /// </summary>
         public UnityEvent<Poi> OnPoiExit;
 

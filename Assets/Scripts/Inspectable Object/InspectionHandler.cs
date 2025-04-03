@@ -16,7 +16,7 @@ namespace VARLab.DLX
     {
         private List<InspectableObject> inspectables;
 
-        // This will be set whem handwashing task is completed.
+        // This will be set when handwashing task is completed.
         private bool HandWashingCompleted;
 
         /// <summary>
@@ -79,6 +79,11 @@ namespace VARLab.DLX
             inspectables = FindObjectsByType<InspectableObject>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
 
             LinkEvents();
+
+            foreach (var inspectableObject in inspectables)
+            { 
+                inspectableObject.GetComponent<Interactable>().enabled = false;
+            }
         }
 
         /// <summary>
@@ -220,6 +225,24 @@ namespace VARLab.DLX
             if (obj.GetComponent<ToggleableInspectable>())
             {
                 obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+            }
+        }
+
+        /// <summary>
+        /// Disables / Enables interactions on POI enter and exit.
+        /// Only inspectables in the current POI should be interactable
+        /// </summary>
+        /// <param name="poi"></param>
+        public void ToggleInteractions(Poi poi)
+        {
+            if (poi != null)
+            {
+                List<InspectableObject> poiInspectables = inspectables.FindAll(i => i.Location == poi.SelectedPoiName);
+
+                foreach (InspectableObject obj in poiInspectables)
+                {
+                    obj.GetComponent<Interactable>().enabled = !obj.GetComponent<Interactable>().enabled;
+                }
             }
         }
     }
