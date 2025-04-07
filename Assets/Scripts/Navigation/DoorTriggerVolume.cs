@@ -14,7 +14,7 @@ namespace VARLab.DLX
         [SerializeField, Tooltip("Value of Start Rotation")]
         private float startRotation;
 
-        public float speed = 5;
+        public float Speed = 5;
 
         private Quaternion targetOpenRotation;
         private Quaternion targetCloseRotation;
@@ -30,7 +30,7 @@ namespace VARLab.DLX
         {
             Quaternion currentTarget = isOpen ? targetOpenRotation : targetCloseRotation;
 
-            door.rotation = Quaternion.Slerp(door.rotation, currentTarget, Time.deltaTime * speed);
+            door.rotation = Quaternion.Slerp(door.rotation, currentTarget, Time.deltaTime * Speed);
         }
         private void OnTriggerEnter(Collider other)
         {

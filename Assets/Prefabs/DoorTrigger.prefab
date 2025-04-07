@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5265189146988835311
+--- !u!1 &7936879850051542468
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6968973588021068532}
-  - component: {fileID: 1699951526978527511}
-  - component: {fileID: 6976166565170966926}
+  - component: {fileID: 7684740552532420150}
+  - component: {fileID: 7920249666538367071}
+  - component: {fileID: 394071452561037610}
   m_Layer: 2
   m_Name: DoorTrigger
   m_TagString: Untagged
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6968973588021068532
+--- !u!4 &7684740552532420150
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265189146988835311}
+  m_GameObject: {fileID: 7936879850051542468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9207103, y: 0.27494, z: 0.84711}
+  m_LocalPosition: {x: 0.7, y: 0.357, z: 3.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1699951526978527511
+--- !u!65 &7920249666538367071
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265189146988835311}
+  m_GameObject: {fileID: 7936879850051542468}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -52,21 +52,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1193652, y: 1, z: 1}
-  m_Center: {x: 0.059683003, y: 0, z: 0}
---- !u!114 &6976166565170966926
+  m_Size: {x: 3.27, y: 0.27, z: 0.9}
+  m_Center: {x: 1.4201574, y: 0, z: 0}
+--- !u!114 &394071452561037610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265189146988835311}
+  m_GameObject: {fileID: 7936879850051542468}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 934c2f48812634c4b848efb4b5a74bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
-  endRotation: -100
+  endRotation: 100
   startRotation: 0
   speed: 5
