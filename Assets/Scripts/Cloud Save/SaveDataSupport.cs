@@ -159,6 +159,7 @@ namespace VARLab.DLX
             OnLoad.AddListener(() =>
             {
                 LoadTimer();
+                StartAutoSaveTimer();
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
