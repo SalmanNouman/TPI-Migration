@@ -38,6 +38,7 @@ namespace VARLab.DLX
         ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(false)"/>
         ///     <see cref="BlurBackground.Volume.enabled(true)"/>
         ///     <see cref="MenuBuilder.Hide"/>
+        ///     <see cref="CountupTimer.Hide"/>
         /// </summary>
         public UnityEvent OnWindowShow;
 
@@ -53,6 +54,7 @@ namespace VARLab.DLX
         ///     <see cref="PointClickNavigation.EnableCameraPanAndZoom(true)"/>
         ///     <see cref="BlurBackground.Volume.enabled(false)"/>
         ///     <see cref="MenuBuilder.Show"/>
+        ///     <see cref="CountupTimer.Show"/>
         /// </summary>
         public UnityEvent OnWindowHide;
 

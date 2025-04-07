@@ -7162,12 +7162,12 @@ PrefabInstance:
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -7187,6 +7187,16 @@ PrefabInstance:
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
@@ -7218,7 +7228,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 2860636502688726886}
+      objectReference: {fileID: 1674516189}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7243,7 +7253,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 2860636502688726886}
+      objectReference: {fileID: 1674516189}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7258,6 +7268,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPauseWindowShow.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: Show
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: Hide
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -7323,6 +7343,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InvokeOnLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: VARLab.DLX.CountupTimer, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: VARLab.DLX.CountupTimer, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -26887,6 +26917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -26929,6 +26964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
@@ -26977,6 +27017,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 874318696}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCanLog
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.ActivityLog, VARLab.DLX
       objectReference: {fileID: 0}
@@ -27002,6 +27057,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ActivityLog, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -27023,6 +27088,11 @@ PrefabInstance:
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
       propertyPath: OnPoiEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1358015959442068550, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,

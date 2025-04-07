@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using System.Collections;
 
 namespace VARLab.DLX
 {
@@ -24,11 +25,6 @@ namespace VARLab.DLX
         ///     Tracks the player's current POI location.
         /// </summary>
         private Poi currentPoi;
-
-        /// <summary>
-        ///     Flag to prevent automatic POI enter events when the game is first loaded.
-        /// </summary>
-        private bool isInitialLoad = true;
 
         /// <summary>
         /// This event is linked to the <see cref="Poi.OnPoiEnter"/> event and
@@ -60,6 +56,12 @@ namespace VARLab.DLX
         public UnityEvent<int> OnStart;
 
         /// <summary>
+        /// Invoked when warpping to a POI is complete.
+        /// <see cref="ActivityLog.SetCanLog(bool)"/>
+        /// </summary>
+        public UnityEvent OnWarpComplete;
+
+        /// <summary>
         /// Initialize events if they are null
         /// </summary>
         private void Awake()
@@ -68,6 +70,7 @@ namespace VARLab.DLX
             OnPoiExit ??= new();
             PoiInteracted ??= new();
             OnStart ??= new();
+            OnWarpComplete ??= new();
         }
 
         private void Start()
@@ -77,18 +80,6 @@ namespace VARLab.DLX
 
             OnStart?.Invoke(interactablePois);
             PoiInteracted?.Invoke(poisInteracted);
-
-            // Wait a short time before allowing POI enter events to be processed
-            // This prevents automatic POI enter events when the game is first loaded
-            Invoke("EnablePoiEvents", 1.0f);
-        }
-
-        /// <summary>
-        /// Enables POI enter events after initial load is complete
-        /// </summary>
-        private void EnablePoiEvents()
-        {
-            isInitialLoad = false;
         }
 
         /// <summary>
@@ -121,13 +112,6 @@ namespace VARLab.DLX
         /// <param name="poi">The POI that was entered.</param>
         public void HandlePoiEnter(Poi poi)
         {
-            // Skip POI enter events during initial load
-            if (isInitialLoad)
-            {
-                currentPoi = poi; // Still update current POI
-                return;
-            }
-
             currentPoi = poi; // Update current POI
             OnPoiEnter?.Invoke(poi);
         }
@@ -186,21 +170,30 @@ namespace VARLab.DLX
         {
             poiName = poiName == "" ? "Bathroom" : poiName;
             Poi lastPoi = pois.Find(p => p.SelectedPoiName.ToString() == poiName);
-            
+
             if (lastPoi == null || lastPoi.DefaultWaypoint == null)
             {
                 Debug.LogWarning($"PoiHandler: Failed to warp - '{poiName}' POI or default waypoint not found");
                 return;
             }
             
-            // Temporarily disable POI enter events to prevent triggering them during warp
-            bool prevState = isInitialLoad;
-            isInitialLoad = true;
-            // Instantly teleport player to the POI's default waypoint
+            StartCoroutine(WarpCoroutine(lastPoi));
+        }
+
+        /// <summary>
+        /// Coroutine to warp the player to a specific POI's default waypoint.
+        /// </summary>
+        /// <param name="lastPoi">POI to warp to</param>
+        /// <returns>IEnumerator for coroutine</returns>
+        private IEnumerator WarpCoroutine(Poi lastPoi)
+        {
             player.Warp(lastPoi.DefaultWaypoint.transform.position);
             currentPoi = lastPoi;
-            Debug.Log($"PoiHandler: Player warped to {poiName}'s default waypoint");
-            isInitialLoad = prevState;
+            Debug.Log($"PoiHandler: Player warped to {lastPoi.PoiName}'s default waypoint");
+
+            yield return new WaitForSeconds(0.1f); // Wait for a short time to ensure the warp is complete
+            
+            OnWarpComplete?.Invoke();
         }
     }
 }

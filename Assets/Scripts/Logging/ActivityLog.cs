@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -216,11 +215,6 @@ namespace VARLab.DLX
                 OnLogAdded.Invoke(ActivityLogList);
                 return;
             }
-            // Clear the current log list and update the UI
-            ActivityLogList.Clear();
-            OnLogAdded.Invoke(ActivityLogList);
-
-            CanLog = true;
 
             // Load logs
             ActivityLogList = logs;
@@ -248,7 +242,6 @@ namespace VARLab.DLX
             }
 
             OnLogAdded.Invoke(ActivityLogList);
-
         }
 
         #endregion

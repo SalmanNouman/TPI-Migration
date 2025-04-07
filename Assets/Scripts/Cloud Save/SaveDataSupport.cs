@@ -161,8 +161,8 @@ namespace VARLab.DLX
                 LoadTimer();
                 StartAutoSaveTimer();
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
-                LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
+                LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 MovePlayer?.Invoke(saveData.LastPOI);
             });
         }
