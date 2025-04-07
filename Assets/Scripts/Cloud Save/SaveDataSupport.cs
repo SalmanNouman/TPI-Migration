@@ -225,7 +225,7 @@ namespace VARLab.DLX
                 saveHandler.Load();
                 isAlreadyLoaded = true;
                 Debug.Log("SaveDataSupport: Save file exists, loading");
-                OnValidSaveFileFound?.Invoke();
+                // <see cref="HandleLoadComplete"/> will validate version and invoke OnValidSaveFileFound
             }
             else
             {
@@ -252,20 +252,19 @@ namespace VARLab.DLX
         {
             if (success)
             {
-                // Verify version is valid
-                // NOTE: Consider empty version as valid for this branch for testing
-                isVersionValid = saveData.Version == Application.version || string.IsNullOrEmpty(saveData.Version);
-                Debug.Log($"SaveDataSupport: Version check - Save: {saveData.Version ?? "null"}, App: {Application.version}, Valid: {isVersionValid}");
+                // Verify version is valid - compare save file version with application version
+                isVersionValid = saveData.Version == Application.version;
+                Debug.Log($"SaveDataSupport: Version check - Save file version: {saveData.Version}, Application version: {Application.version}, Valid: {isVersionValid}");
                 
                 if (isVersionValid)
                 {
-                    Debug.Log("SaveDataSupport: Valid save file, showing continue/restart UI");
+                    Debug.Log("SaveDataSupport: Valid save file version, showing continue/restart UI");
                     OnValidSaveFileFound?.Invoke();
                 }
                 else
                 {
                     // Invalid version - delete old save and start new simulation
-                    Debug.Log("SaveDataSupport: Invalid version, deleting previous save file and starting new simulation");
+                    Debug.Log($"SaveDataSupport: Version mismatch detected, deleting outdated save file and starting new simulation");
                     TriggerDelete();
                     OnFreshLoad?.Invoke();
                 }
