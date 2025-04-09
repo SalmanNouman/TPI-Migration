@@ -190,37 +190,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &4938622603920476488
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6896426487174698012}
-  m_Layer: 0
-  m_Name: Lid
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6896426487174698012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4938622603920476488}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8086957081014012344}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7809900068834307887
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +202,6 @@ GameObject:
   - component: {fileID: 2378704864078207968}
   - component: {fileID: 3880769406174689916}
   - component: {fileID: 130655894735100441}
-  - component: {fileID: 9138412718607225167}
   m_Layer: 0
   m_Name: InspectablePrefab
   m_TagString: Untagged
@@ -257,7 +225,6 @@ Transform:
   - {fileID: 4173942092370905324}
   - {fileID: 8733061034917240042}
   - {fileID: 7679455308418997534}
-  - {fileID: 6896426487174698012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2378704864078207968
@@ -349,31 +316,3 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!114 &9138412718607225167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7809900068834307887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f2f6b6dfdada14c9205a8592a30985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  location: TestLocation
-  camera: {fileID: 794485447720761948}
-  states:
-  - InspectableGameObject: {fileID: 3949614413078367230}
-    Compliancy: 0
-  - InspectableGameObject: {fileID: 2035859969186506966}
-    Compliancy: 1
-  OnObjectClicked:
-    m_PersistentCalls:
-      m_Calls: []
-  OnObjectInspected:
-    m_PersistentCalls:
-      m_Calls: []
-  Toggleables:
-  - {fileID: 4938622603920476488}
