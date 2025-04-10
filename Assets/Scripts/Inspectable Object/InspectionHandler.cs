@@ -166,6 +166,12 @@ namespace VARLab.DLX
         {
             List<InspectionData> tempList = new();
 
+            if (savedList == null || savedList.Count == 0)
+            {
+                Debug.LogWarning("No inspection data found in the save file.");
+                return;
+            }
+
             foreach (var data in savedList)
             {
                 InspectableObject obj = inspectables.Find(o => o.ObjectId == data.ObjectId);
