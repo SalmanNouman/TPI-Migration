@@ -387,7 +387,7 @@ namespace VARLab.DLX
             }
 
             // Set labels
-            UIHelper.SetElementText(locationLabel, CurrentInspectable.Location.ToString());
+            UIHelper.SetElementText(locationLabel, PoiList.GetPoiName(CurrentInspectable.Location.ToString()));
             UIHelper.SetElementText(objectNameLabel, CurrentInspectable.Name);
 
             Show();
