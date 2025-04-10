@@ -3532,6 +3532,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  LoadPiercerInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5498108682654718707}
+        m_TargetAssemblyTypeName: VARLab.DLX.PiercerInteractionTask, VARLab.DLX
+        m_MethodName: LoadPiercerInteraction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &356010910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3548,6 +3563,7 @@ MonoBehaviour:
   VisitedPOIs: []
   Version: 
   EndInspection: 0
+  PiercerInteractionCompleted: 0
 --- !u!43 &356343298
 Mesh:
   m_ObjectHideFlags: 0
@@ -27546,14 +27562,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 233272948}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356010909}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -27566,8 +27597,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SavePiercerInteraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.ConversationBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
@@ -27579,6 +27630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: VARLab.DLX.ConversationSO, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
+        type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2774611264994631899, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}

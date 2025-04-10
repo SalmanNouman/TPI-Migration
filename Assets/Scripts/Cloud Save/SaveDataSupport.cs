@@ -89,6 +89,8 @@ namespace VARLab.DLX
 
         public UnityEvent<List<ActivityData>> LoadActivityList;
 
+        public UnityEvent<bool> LoadPiercerInteraction;
+
         private void Start()
         {
             Instance = this;
@@ -108,6 +110,7 @@ namespace VARLab.DLX
             LoadInspectionList ??= new();
             LoadPhotos ??= new();
             LoadActivityList ??= new();
+            LoadPiercerInteraction ??= new();
 
             AddListeners();
 
@@ -162,6 +165,7 @@ namespace VARLab.DLX
                 StartAutoSaveTimer();
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
+                LoadPiercerInteraction?.Invoke(saveData.PiercerInteractionCompleted);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 MovePlayer?.Invoke(saveData.LastPOI);
             });
@@ -496,6 +500,21 @@ namespace VARLab.DLX
             if (!CanSave) return;
             
             saveData.LastPOI = poi.SelectedPoiName.ToString();
+            TriggerSave();
+        }
+
+        #endregion
+
+        #region Piercer Interaction
+        /// <summary>
+        /// Saves the state of the piercer interaction to the save data.
+        /// Called when the piercer interaction is completed.
+        /// see <see cref="PiercerInteractionTask.OnTaskCompleted"/>
+        /// </summary>
+        /// <param name="isCompleted"></param>
+        public void SavePiercerInteraction(bool isCompleted)
+        {
+            saveData.PiercerInteractionCompleted = isCompleted;
             TriggerSave();
         }
 

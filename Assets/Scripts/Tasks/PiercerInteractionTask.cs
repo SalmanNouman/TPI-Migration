@@ -214,6 +214,27 @@ namespace VARLab.DLX
             Debug.Log("PiercerInteractionTask: Task completed.");
         }
 
+        /// <summary>
+        /// Loads the state of interaction with the Piercer NPC.
+        /// Called from SaveDataSupport through event <see cref="SaveDataSupport.LoadPiercerInteraction"/>
+        /// </summary>
+        public void LoadPiercerInteraction(bool isCompleted)
+        {
+            // If the interaction is completed, show the procedure tray and hide the cutout
+            if (isCompleted)
+            {
+                preparedProcedureTray.SetActive(true);
+                piercerCutout.SetActive(false);
+                isTaskCompleted = true;
+            }
+            else
+            {
+                preparedProcedureTray.SetActive(false);
+                piercerCutout.SetActive(true);
+                isTaskCompleted = false;
+            }
+        }
+
         #endregion
     }
 }

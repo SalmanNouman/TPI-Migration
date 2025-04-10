@@ -37,6 +37,9 @@ namespace VARLab.DLX
         public bool EndInspection = false;
 
         [JsonProperty]
+        public bool PiercerInteractionCompleted = false;
+
+        [JsonProperty]
         public TimeSpan Time;
 
         [JsonObject(MemberSerialization.OptIn)]
