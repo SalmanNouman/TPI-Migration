@@ -58,7 +58,7 @@ namespace Tests.PlayMode
             startInfoWindow = GameObject.FindFirstObjectByType<StartInfoWindowBuilder>();
             startInfoWindowDoc = startInfoWindow.GetComponent<UIDocument>();
             root = startInfoWindowDoc.rootVisualElement;
-            
+
             // Get correct button reference from UXML (named "Button" in the actual UXML)
             beginButton = root.Q<Button>("Button");
 
@@ -109,7 +109,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(DisplayStyle.Flex, root.style.display.value, "Window is not visible after Show()");
             Assert.IsTrue(windowShowEventInvoked, "Show() did not invoke OnWindowShow event");
-            
+
             // Clean up
             startInfoWindow.Hide();
             yield return null;
@@ -141,4 +141,4 @@ namespace Tests.PlayMode
 
         #endregion
     }
-} 
+}

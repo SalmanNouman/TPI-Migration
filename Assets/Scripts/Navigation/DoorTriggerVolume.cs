@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace VARLab.DLX
@@ -40,7 +39,7 @@ namespace VARLab.DLX
 
         private void OnTriggerExit(Collider other)
         {
-            isOpen  = false;
+            isOpen = false;
             Debug.Log("Door trigger exit");
         }
     }

@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using VARLab.Velcro;
 using VARLab.Navigation.PointClick;
 
 namespace VARLab.DLX
@@ -70,7 +69,7 @@ namespace VARLab.DLX
         ///     - Purpose: Displays the introduction conversation when task starts
         /// </remarks>
         // public UnityEvent OnTaskStarted; (inherited from <see cref="Task.cs"/>)
-        
+
         /// <summary>
         ///     Event triggered when the task is completed
         /// </summary>
@@ -79,7 +78,7 @@ namespace VARLab.DLX
         ///     - Should be connected to trigger the next task or scene transition
         /// </remarks>
         // public UnityEvent OnTaskCompleted; (inherited from <see cref="Task.cs"/>)
-        
+
         /// <summary>
         ///     Event triggered when the task fails
         /// </summary>
@@ -133,7 +132,7 @@ namespace VARLab.DLX
             if (!isTaskStarted && !isTaskCompleted && waypoint == introductionWaypoint)
             {
                 Debug.Log("IntroductionTask: Player reached the introduction waypoint: " + waypoint.name);
-                
+
                 // Start coroutine instead of immediately calling HandleTask()
                 StartCoroutine(DelayedTaskStart());
             }
@@ -152,7 +151,7 @@ namespace VARLab.DLX
         {
             // Wait for the specified delay time before starting the conversation
             yield return new WaitForSeconds(conversationDelay);
-            
+
             Debug.Log("IntroductionTask: Starting introduction task after delay.");
             HandleTask();
         }
@@ -208,11 +207,11 @@ namespace VARLab.DLX
                 return;
 
             isTaskCompleted = true;
-            
+
             // Trigger task completed event
             OnTaskCompleted?.Invoke();
-            
-            Debug.Log("IntroductionTask: Task completed. Ready to proceed to the next task.");         
+
+            Debug.Log("IntroductionTask: Task completed. Ready to proceed to the next task.");
         }
 
         /// <summary>

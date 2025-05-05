@@ -114,7 +114,7 @@ namespace Tests.PlayMode
             Assert.AreEqual("Pause", headerLabel.text, "Header text is not set to 'Pause' in pause mode");
             Assert.IsTrue(windowShowEventInvoked, "Show() did not invoke OnWindowShow event");
             Assert.IsTrue(pauseWindowShowEventInvoked, "Show() did not invoke OnPauseWindowShow event");
-            
+
             // Clean up
             pauseWindow.Hide();
             yield return null;
@@ -143,7 +143,7 @@ namespace Tests.PlayMode
             Assert.AreEqual("Welcome", headerLabel.text, "Header text is not set to 'Welcome' in welcome mode");
             Assert.IsTrue(windowShowEventInvoked, "ShowAsWelcome() did not invoke OnWindowShow event");
             Assert.IsFalse(pauseWindowShowEventInvoked, "ShowAsWelcome() incorrectly invoked OnPauseWindowShow event");
-            
+
             // Clean up
             pauseWindow.Hide();
             yield return null;

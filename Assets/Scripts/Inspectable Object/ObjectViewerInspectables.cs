@@ -21,7 +21,7 @@ namespace VARLab.DLX
         /// </summary>
         [Tooltip("Camera field of view value for this specific object. Lower values zoom in, higher values zoom out.")]
         public float FieldOfView = 35.0f;
-        
+
 
         // Note: For additional object transform settings (rotation and scale settings), 
         // use the <see cref="ObjectTransformDetails"/> ScriptableObject and assign it to the TransformDetails field in the WorldObject component.

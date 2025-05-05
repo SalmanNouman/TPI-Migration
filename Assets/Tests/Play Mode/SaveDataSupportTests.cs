@@ -10,9 +10,8 @@ namespace Tests.PlayMode
 {
     public class SaveDataSupportTests
     {
-        private SaveDataSupport saveDataSupport;
-        private SaveData saveData;
         private CustomSaveHandler customSaveHandler;
+        private SaveData saveData;
         private TimerManager timerManager;
         private GameObject objectOneGO;
         private GameObject objectTwoGO;
@@ -47,9 +46,8 @@ namespace Tests.PlayMode
         {
             yield return new WaitUntil(() => SceneManager.GetSceneByName(SceneName).isLoaded);
 
-            saveDataSupport = GameObject.FindAnyObjectByType<SaveDataSupport>();
-            saveData = GameObject.FindAnyObjectByType<SaveData>();
             customSaveHandler = GameObject.FindAnyObjectByType<CustomSaveHandler>();
+            saveData = GameObject.FindAnyObjectByType<SaveData>();
             timerManager = GameObject.FindAnyObjectByType<TimerManager>();
 
             timerManager.StartTimers();
@@ -76,23 +74,6 @@ namespace Tests.PlayMode
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
         }
 
-        [UnityTest, Order(1)]
-        [Category("BuildServer")]
-        public IEnumerator OnInitializeIsInvokedOnStart()
-        {
-            // Arrange
-            var triggered = false;
-            saveDataSupport.OnInitialize.AddListener(() => triggered = true);
-
-            // Act
-            saveDataSupport.Initialize();
-
-            yield return null;
-
-            // Assert
-            Assert.IsTrue(triggered);
-        }
-
         [UnityTest, Order(2)]
         [Category("BuildServer")]
         public IEnumerator SaveDataVersionIsSetToApplicationVersion()
@@ -102,7 +83,7 @@ namespace Tests.PlayMode
             saveData.Version = "1.0.0";
 
             // Act
-            saveDataSupport.SetUpInitialData();
+            customSaveHandler.SetUpInitialData();
             yield return null;
 
             // Assert
@@ -116,10 +97,10 @@ namespace Tests.PlayMode
             // Arrange
             bool triggered = false;
             customSaveHandler.LoadSuccess = true;
-            saveDataSupport.OnLoad.AddListener(() => triggered = true);
+            customSaveHandler.OnLoad.AddListener(() => triggered = true);
 
             // Act
-            saveDataSupport.TriggerLoad();
+            customSaveHandler.TriggerLoad();
             yield return null;
 
             // Assert
@@ -133,10 +114,10 @@ namespace Tests.PlayMode
             // Arrange
             bool triggered = false;
             customSaveHandler.LoadSuccess = false;
-            saveDataSupport.OnLoad.AddListener(() => triggered = true);
+            customSaveHandler.OnLoad.AddListener(() => triggered = true);
 
             // Act
-            saveDataSupport.TriggerLoad();
+            customSaveHandler.TriggerLoad();
             yield return null;
 
             // Assert
@@ -152,7 +133,7 @@ namespace Tests.PlayMode
             customSaveHandler.OnDeleteStart.AddListener(() => triggered = true);
 
             // Act
-            saveDataSupport.TriggerDelete();
+            customSaveHandler.TriggerDelete();
             yield return null;
 
             // Assert
@@ -171,7 +152,7 @@ namespace Tests.PlayMode
             inspectionLog.Add(inspectionDataTwo);
 
             // Act
-            saveDataSupport.SaveInspectionLog(inspectionLog);
+            customSaveHandler.SaveInspectionLog(inspectionLog);
             yield return null;
 
             // Assert
@@ -186,7 +167,7 @@ namespace Tests.PlayMode
         public IEnumerator SavingActivityLog_Adds_LogList_To_SaveData()
         {
             // Arrange
-            saveDataSupport.CanSave = true;
+            customSaveHandler.CanSave = true;
             List<Log> activityLog = new List<Log>
             {
                 new Log(true, "Test Primary Log"),
@@ -194,7 +175,7 @@ namespace Tests.PlayMode
             };
 
             // Act
-            saveDataSupport.SaveActivityLog(activityLog);
+            customSaveHandler.SaveActivityLog(activityLog);
             yield return null;
 
             // Assert
@@ -221,7 +202,7 @@ namespace Tests.PlayMode
             photos.Add(photoOne);
 
             // Act
-            saveDataSupport.SavePhotos(photos);
+            customSaveHandler.SavePhotos(photos);
             yield return null;
 
             // Assert
@@ -241,14 +222,14 @@ namespace Tests.PlayMode
             // Arrange
 
             // Get access to the autoSaveTimer field using reflection
-            var autoSaveTimerField = typeof(SaveDataSupport).GetField("autoSaveTimer",
+            var autoSaveTimerField = typeof(CustomSaveHandler).GetField("autoSaveStopwatch",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            var autoSaveTimer = (System.Diagnostics.Stopwatch)autoSaveTimerField.GetValue(saveDataSupport);
+            var autoSaveTimer = (System.Diagnostics.Stopwatch)autoSaveTimerField.GetValue(customSaveHandler);
 
             // We wont start any timer
 
             // Act
-            bool autoSaveTriggered = saveDataSupport.CheckAndTriggerAutoSave();
+            bool autoSaveTriggered = customSaveHandler.CheckAndTriggerAutoSave();
 
             yield return null;
 
@@ -266,10 +247,10 @@ namespace Tests.PlayMode
         {
             // Arrange
             poi.SelectedPoiName = PoiList.PoiName.Reception;
-            saveDataSupport.CanSave = true;
+            customSaveHandler.CanSave = true;
 
             // Act
-            saveDataSupport.SaveLastPOI(poi);
+            customSaveHandler.SaveLastPOI(poi);
             yield return null;
 
             // Assert
@@ -285,11 +266,11 @@ namespace Tests.PlayMode
         {
             // Arrange
             poi.SelectedPoiName = PoiList.PoiName.Bathroom;
-            saveDataSupport.CanSave = false;
+            customSaveHandler.CanSave = false;
             saveData.LastPOI = "";
 
             // Act
-            saveDataSupport.SaveLastPOI(poi);
+            customSaveHandler.SaveLastPOI(poi);
             yield return null;
 
             // Assert
@@ -307,11 +288,11 @@ namespace Tests.PlayMode
             string testPOI = "Reception";
             saveData.LastPOI = testPOI;
             string movedToPOI = null;
-            saveDataSupport.MovePlayer.RemoveAllListeners();
-            saveDataSupport.MovePlayer.AddListener((poi) => movedToPOI = poi);
+            customSaveHandler.MovePlayer.RemoveAllListeners();
+            customSaveHandler.MovePlayer.AddListener((poi) => movedToPOI = poi);
 
             // Act
-            saveDataSupport.OnLoad.Invoke();
+            customSaveHandler.OnLoad.Invoke();
             yield return null;
 
             // Assert
@@ -326,20 +307,20 @@ namespace Tests.PlayMode
         public IEnumerator SaveDataSupport_OnLoadRestart_SetsRestartedFlagOnSuccessfulDeletion()
         {
             // Arrange
-            SaveDataSupport.Restarted = false;
+            CustomSaveHandler.Restarted = false;
             customSaveHandler.DeleteSuccess = null;
-            
+
             // Act
-            saveDataSupport.OnLoadRestart();
+            customSaveHandler.OnLoadRestart();
             yield return null;
-            customSaveHandler.DeleteSuccess = true;            
+            customSaveHandler.DeleteSuccess = true;
             yield return new WaitForSeconds(0.1f); // Wait for coroutine to process it
-            
+
             // Assert
-            Assert.IsTrue(SaveDataSupport.Restarted, "Restarted flag should be set to true on successful deletion");
-            
+            Assert.IsTrue(CustomSaveHandler.Restarted);
+
             // Cleanup
-            SaveDataSupport.Restarted = false;
+            CustomSaveHandler.Restarted = false;
         }
     }
 }

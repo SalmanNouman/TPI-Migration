@@ -233,7 +233,7 @@ namespace Tests.PlayMode
         /// <summary>
         /// Call CompleteTask() when run LoadSaveTask
         /// </summary>
-        [Test,Order(7)]
+        [Test, Order(7)]
         [Category("BuildServer")]
 
         public void OfficeTask_LoadSaveTask_SetTaskFlagAndCallCompleteTask()
@@ -245,7 +245,7 @@ namespace Tests.PlayMode
 
             bool eventInvoked = false;
             officeTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-           
+
             //Act
             officeTask.LoadSaveTask();
 

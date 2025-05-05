@@ -124,7 +124,7 @@ namespace VARLab.DLX
             }
 
             if (obj.HasPhoto)
-            { 
+            {
                 var savedPhoto = Photos.Find(p => p.Id == obj.ObjectId);
                 if (savedPhoto != null)
                 {

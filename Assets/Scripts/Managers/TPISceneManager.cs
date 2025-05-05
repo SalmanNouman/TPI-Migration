@@ -77,7 +77,7 @@ namespace VARLab.DLX
         private IEnumerator RestartSceneCoroutine()
         {
             // TODO: Reset intro task flags
-            
+
             // Invoke the restart event
             OnSceneRestart?.Invoke();
 

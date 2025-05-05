@@ -28,7 +28,7 @@ namespace VARLab.DLX
 
         private void Awake()
         {
-            Root = gameObject.GetComponent<UIDocument>().rootVisualElement;       
+            Root = gameObject.GetComponent<UIDocument>().rootVisualElement;
         }
 
         private void Start()

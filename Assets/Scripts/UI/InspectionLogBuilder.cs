@@ -31,7 +31,7 @@ namespace VARLab.DLX
         private const string FilterClass = "tpi-sort-button-filter-tag";
 
         public Button CurrentButton;
-        
+
         /// <summary>
         ///     The list of inspection data records.
         /// </summary>
@@ -96,7 +96,7 @@ namespace VARLab.DLX
                 isEmptyLogMessageDisplayed = false;
             }
             //populate the table with the inspection data.
-            PopulateInspectionTable(SortType.All); 
+            PopulateInspectionTable(SortType.All);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace VARLab.DLX
         /// It creates table columns, adds categories for each location, and fills each row with inspection details
         ///  based on the selected sort type (All, Compliant, or Non-Compliant).
         /// </summary>
-        private void PopulateInspectionTable( SortType sortType)
+        private void PopulateInspectionTable(SortType sortType)
         {
             List<InspectionData> tempList = new List<InspectionData>();
             UIHelper.Show(SortBtnContainer);
@@ -122,7 +122,7 @@ namespace VARLab.DLX
             {
                 tempList = inspectionList;
             }
-            else 
+            else
             {
                 foreach (InspectionData inspection in inspectionList)
                 {
@@ -130,7 +130,7 @@ namespace VARLab.DLX
                     {
                         tempList.Add(inspection);
                     }
-                    else if(!inspection.IsCompliant && sortType == SortType.NonCompliant)
+                    else if (!inspection.IsCompliant && sortType == SortType.NonCompliant)
                     {
                         tempList.Add(inspection);
                     }
@@ -216,7 +216,7 @@ namespace VARLab.DLX
         /// Updates the saved sort type, repopulates the inspection table, 
         /// and visually selects the clicked button.
         /// </summary>
-        public void AddSortButtonListener() 
+        public void AddSortButtonListener()
         {
             //Get references to the buttons
             allButton = SortBtnContainer.Q<Button>("SortBtnOne");
@@ -272,7 +272,7 @@ namespace VARLab.DLX
         public void UnselectButton(Button button)
         {
             button.RemoveFromClassList(FilterSelectedClass);
-            button.AddToClassList(FilterClass);  
+            button.AddToClassList(FilterClass);
         }
     }
 }

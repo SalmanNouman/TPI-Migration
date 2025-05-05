@@ -30,16 +30,16 @@ namespace VARLab.DLX
                 // Get direction to target but zero out the y component to get only horizontal direction
                 Vector3 directionToTarget = LookAtTarget.position - Rotator.position;
                 directionToTarget.y = 0; // Ignore vertical difference
-                
+
                 // Only if we have a valid direction (not zero magnitude)
                 if (directionToTarget.sqrMagnitude > 0.001f)
                 {
                     // Create rotation that only rotates around Y axis
                     Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-                    
+
                     // Preserve original rotation except for Y axis rotation
                     targetRotation = Quaternion.Euler(startRotation.eulerAngles.x, targetRotation.eulerAngles.y, startRotation.eulerAngles.z);
-                    
+
                     // Smoothly interpolate to the target rotation
                     currentRotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * LookAtSpeed);
                     Rotator.rotation = currentRotation;

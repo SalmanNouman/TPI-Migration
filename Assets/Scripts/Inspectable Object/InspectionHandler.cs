@@ -81,7 +81,7 @@ namespace VARLab.DLX
             LinkEvents();
 
             foreach (var inspectableObject in inspectables)
-            { 
+            {
                 inspectableObject.GetComponent<Interactable>().enabled = false;
             }
         }
@@ -192,12 +192,12 @@ namespace VARLab.DLX
         public void LoadPhotos(Dictionary<string, string> photos)
         {
             Dictionary<InspectableObject, string> tempObjectsAndTimestamps = new();
-            foreach(KeyValuePair<string, string> kvp in photos)
+            foreach (KeyValuePair<string, string> kvp in photos)
             {
                 InspectableObject obj = inspectables.Find(o => o.ObjectId == kvp.Key);
 
                 if (obj != null)
-                { 
+                {
                     tempObjectsAndTimestamps.Add(obj, kvp.Value);
                     obj.HasPhoto = true;
                 }
@@ -212,7 +212,7 @@ namespace VARLab.DLX
         public void SetHandwashingTaskCompleted()
         {
             HandWashingCompleted = true;
-            SaveDataSupport.Instance.CanSave = true;
+            CustomSaveHandler.Instance.CanSave = true;
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace VARLab.DLX
         /// <param name="obj"></param>
         public void ToggleInspectable(InspectableObject obj)
         {
-            if (obj == null) 
+            if (obj == null)
             {
                 Debug.LogWarning("Toggling an null InspectableObject");
                 return;

@@ -1,10 +1,9 @@
-using System.Collections;
 using NUnit.Framework;
+using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.TestTools;
-using UnityEngine.Events;
 using VARLab.DLX;
-using System.Reflection;
 using VARLab.Navigation.PointClick;
 
 namespace Tests.PlayMode
@@ -61,7 +60,7 @@ namespace Tests.PlayMode
             lobbyPoiComponent = lobbyPoiObject.AddComponent<Poi>();
             lobbyPoiComponent.PoiName = "Lobby";
             lobbyPoiComponent.SelectedPoiName = PoiList.PoiName.Lobby;
-            
+
             // Setup test waypoint
             waypointObject = new GameObject("TestWaypoint");
             waypointComponent = waypointObject.AddComponent<Waypoint>();
@@ -130,12 +129,12 @@ namespace Tests.PlayMode
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
-            
+
             // Act
             introductionTask.CheckCurrentWaypoint(waypointComponent);
             yield return new WaitForSeconds(TestDelay);
             yield return null; // Wait for next frame for coroutine to complete
-            
+
             // Assert
             Assert.IsTrue((bool)isTaskStarted.GetValue(introductionTask), "isTaskStarted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskStarted event should be invoked");
@@ -151,20 +150,20 @@ namespace Tests.PlayMode
             // Arrange
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
-            
+
             // Create a different waypoint
             var otherWaypointObject = new GameObject("OtherWaypoint");
             var otherWaypoint = otherWaypointObject.AddComponent<Waypoint>();
-            
+
             // Act
             introductionTask.CheckCurrentWaypoint(otherWaypoint);
             yield return new WaitForSeconds(TestDelay);
             yield return null; // Wait for next frame for coroutine to complete
-            
+
             // Assert
             Assert.IsFalse((bool)isTaskStarted.GetValue(introductionTask), "isTaskStarted should remain false");
             Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked");
-            
+
             // Cleanup
             Object.Destroy(otherWaypointObject);
         }
@@ -186,14 +185,14 @@ namespace Tests.PlayMode
 
             // Act - Call CheckCurrentWaypoint with the introduction waypoint to start DelayedTaskStart
             introductionTask.CheckCurrentWaypoint(waypointComponent);
-            
+
             // Check that task is not started yet (before delay completes)
             yield return new WaitForSeconds(TestDelay * 0.5f);
             Assert.IsFalse(eventInvoked, "Task should not be started before delay completes");
-            
+
             // Wait for the delay to complete
             yield return new WaitForSeconds(TestDelay * 0.6f);
-            
+
             // Assert
             Assert.IsTrue(eventInvoked, "OnTaskStarted should be invoked after delay");
         }
@@ -231,13 +230,13 @@ namespace Tests.PlayMode
             // Arrange - Set task to completed state
             bool eventInvoked = false;
             introductionTask.OnTaskStarted.AddListener(() => eventInvoked = true);
-            
+
             isTaskStarted.SetValue(introductionTask, true);
             isTaskCompleted.SetValue(introductionTask, true);
-            
+
             // Act
             introductionTask.HandleTask();
-            
+
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked if task is already completed");
         }
@@ -257,10 +256,10 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(introductionTask, true);
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-            
+
             // Act
             introductionTask.CompleteTask();
-            
+
             // Assert
             Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
@@ -277,10 +276,10 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(introductionTask, false);
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-            
+
             // Act
             introductionTask.CompleteTask();
-            
+
             // Assert
             Assert.IsFalse((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should remain false if task is not started");
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
@@ -298,10 +297,10 @@ namespace Tests.PlayMode
             isTaskCompleted.SetValue(introductionTask, true);
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-            
+
             // Act
             introductionTask.CompleteTask();
-            
+
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
         }
@@ -358,10 +357,10 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(introductionTask, true);
             bool eventInvoked = false;
             introductionTask.OnTaskFailed.AddListener(() => eventInvoked = true);
-            
+
             // Act
             introductionTask.CheckPoiExit(lobbyPoiComponent);
-            
+
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskFailed should not be invoked if task is already started");
         }

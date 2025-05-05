@@ -27,14 +27,14 @@ namespace Tests.PlayMode
         private Button allButton;
         private Button compliantButton;
         private Button nonCompliantButton;
-        
+
         private enum SortType
         {
             All,
             Compliant,
             NonCompliant
         }
-       
+
         /// <summary>
         /// Loads the inspection review test scene
         /// </summary>
@@ -176,14 +176,14 @@ namespace Tests.PlayMode
         {
             // Arrange
             inspectionLogBuilder.SelectButton(nonCompliantButton);
-          
+
             // Act
             inspectionLogBuilder.SelectButton(allButton);
 
             yield return null;
 
             // Assert
-            Assert.AreEqual(allButton, inspectionLogBuilder.CurrentButton);  
+            Assert.AreEqual(allButton, inspectionLogBuilder.CurrentButton);
         }
 
         [UnityTest, Order(5)]
@@ -199,7 +199,7 @@ namespace Tests.PlayMode
             yield return null;
 
             // Assert
-            Assert.AreEqual(compliantButton, inspectionLogBuilder.CurrentButton);   
+            Assert.AreEqual(compliantButton, inspectionLogBuilder.CurrentButton);
         }
 
         [UnityTest, Order(6)]
@@ -208,7 +208,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             inspectionLogBuilder.SelectButton(nonCompliantButton);
-          
+
             // Act
             inspectionLogBuilder.SelectButton(nonCompliantButton);
 

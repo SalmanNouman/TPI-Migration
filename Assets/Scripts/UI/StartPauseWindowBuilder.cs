@@ -124,7 +124,7 @@ namespace VARLab.DLX
         private void SetupButtonListeners()
         {
             // Continue button behavior depends on the window mode
-            continueButton.clicked += () => 
+            continueButton.clicked += () =>
             {
                 if (isWelcomeMode)
                 {
@@ -136,7 +136,7 @@ namespace VARLab.DLX
                     // invoke pause-specific events when in pause mode
                     OnPauseWindowHide?.Invoke();
                 }
-                
+
                 Hide();
             };
 
@@ -159,7 +159,7 @@ namespace VARLab.DLX
             headerLabel.text = "Pause";
             UIHelper.Show(root);
             OnWindowShow?.Invoke();
-            
+
             // invoke pause-specific events when in pause mode
             OnPauseWindowShow?.Invoke();
         }

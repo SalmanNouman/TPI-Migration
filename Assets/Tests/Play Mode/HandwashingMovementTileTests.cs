@@ -1,10 +1,9 @@
-using System.Collections;
 using NUnit.Framework;
+using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.TestTools;
-using UnityEngine.Events;
 using VARLab.DLX;
-using System.Reflection;
 using VARLab.Navigation.PointClick;
 
 namespace Tests.PlayMode

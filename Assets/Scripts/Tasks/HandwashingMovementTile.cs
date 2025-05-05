@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using VARLab.Velcro;
 using VARLab.Navigation.PointClick;
 
 namespace VARLab.DLX

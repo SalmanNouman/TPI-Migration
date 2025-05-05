@@ -74,9 +74,9 @@ namespace Tests.PlayMode
         private void DisableInitialLoadFlag()
         {
             // Get the private field using reflection
-            FieldInfo isInitialLoadField = typeof(PoiHandler).GetField("isInitialLoad", 
+            FieldInfo isInitialLoadField = typeof(PoiHandler).GetField("isInitialLoad",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            
+
             if (isInitialLoadField != null)
             {
                 // Set the field to false to allow event invocation during tests

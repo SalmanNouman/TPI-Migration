@@ -2825,7 +2825,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnLogAdded.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 4646845767323176073, guid: f0e76780c3fc11e4694dd194778e1fe6,
         type: 3}
       propertyPath: OnLogAdded.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2839,7 +2839,7 @@ PrefabInstance:
     - target: {fileID: 4646845767323176073, guid: f0e76780c3fc11e4694dd194778e1fe6,
         type: 3}
       propertyPath: OnLogAdded.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 4646845767323176073, guid: f0e76780c3fc11e4694dd194778e1fe6,
         type: 3}
@@ -3244,7 +3244,6 @@ GameObject:
   - component: {fileID: 356010904}
   - component: {fileID: 356010908}
   - component: {fileID: 356010910}
-  - component: {fileID: 356010909}
   m_Layer: 0
   m_Name: Cloud Save System
   m_TagString: Untagged
@@ -3300,19 +3299,7 @@ MonoBehaviour:
       m_Calls: []
   OnLoadComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 356010909}
-        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
-        m_MethodName: HandleLoadComplete
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSaveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -3332,49 +3319,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LoadOnStart: 0
-  OnSaveFileStatusCheck:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 356010909}
-        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
-        m_MethodName: HandleSaveFileStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &356010908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356010902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c24e5776369604984599f249adc184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackedObjects:
-  - TrackedComponent: {fileID: 356010910}
-    Id: ce73e54c-9a2f-4fcb-83d0-8e34c4029603
-    LastKnownName: Cloud Save System
---- !u!114 &356010909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356010902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a11ec848e786024483cb6c4a52e73f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   CanSave: 0
   OnLoad:
     m_PersistentCalls:
@@ -3436,18 +3380,6 @@ MonoBehaviour:
       - m_Target: {fileID: 541081968}
         m_TargetAssemblyTypeName: VARLab.DLX.StartInfoWindowBuilder, VARLab.DLX
         m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 356010909}
-        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
-        m_MethodName: SetUpInitialData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3547,6 +3479,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &356010908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356010902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c24e5776369604984599f249adc184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedObjects:
+  - TrackedComponent: {fileID: 356010910}
+    Id: ce73e54c-9a2f-4fcb-83d0-8e34c4029603
+    LastKnownName: Cloud Save System
 --- !u!114 &356010910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7622,7 +7570,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7672,7 +7620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnPauseWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -7721,7 +7669,7 @@ PrefabInstance:
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -7736,7 +7684,7 @@ PrefabInstance:
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
       propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -7852,18 +7800,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CVRI.DLX.LoginHandler, VARLab.DLX
         m_MethodName: HandleScormMessage
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 356010909}
-        m_TargetAssemblyTypeName: VARLab.DLX.SaveDataSupport, VARLab.DLX
-        m_MethodName: Initialize
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11655,7 +11591,7 @@ PrefabInstance:
     - target: {fileID: 807922626774884228, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 8373
+      value: 8379
       objectReference: {fileID: 0}
     - target: {fileID: 815026318240153985, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12013,7 +11949,7 @@ PrefabInstance:
     - target: {fileID: 862006204094853117, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12742
+      value: 12748
       objectReference: {fileID: 0}
     - target: {fileID: 1173476647939902496, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12033,7 +11969,7 @@ PrefabInstance:
     - target: {fileID: 1303429164617504147, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 8373
+      value: 8379
       objectReference: {fileID: 0}
     - target: {fileID: 1311471059520739169, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12058,7 +11994,7 @@ PrefabInstance:
     - target: {fileID: 1741349792405517688, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13691
+      value: 13697
       objectReference: {fileID: 0}
     - target: {fileID: 1779773546444868443, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12078,7 +12014,7 @@ PrefabInstance:
     - target: {fileID: 1826044840489325875, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5074
+      value: 5080
       objectReference: {fileID: 0}
     - target: {fileID: 1879289921479362893, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12098,7 +12034,7 @@ PrefabInstance:
     - target: {fileID: 2039125826947692939, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11100
+      value: 11106
       objectReference: {fileID: 0}
     - target: {fileID: 2100916095451156028, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12108,7 +12044,7 @@ PrefabInstance:
     - target: {fileID: 2100916095451156028, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12769
+      value: 12775
       objectReference: {fileID: 0}
     - target: {fileID: 2212825204553979167, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12118,7 +12054,7 @@ PrefabInstance:
     - target: {fileID: 2212825204553979167, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5965
+      value: 5971
       objectReference: {fileID: 0}
     - target: {fileID: 2486729561469872828, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12133,7 +12069,7 @@ PrefabInstance:
     - target: {fileID: 2490023177595846506, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12049
+      value: 12055
       objectReference: {fileID: 0}
     - target: {fileID: 2559059000579335411, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12143,7 +12079,7 @@ PrefabInstance:
     - target: {fileID: 2559059000579335411, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4795
+      value: 4801
       objectReference: {fileID: 0}
     - target: {fileID: 2615372025769828056, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12188,7 +12124,7 @@ PrefabInstance:
     - target: {fileID: 2877575840782775319, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5074
+      value: 5080
       objectReference: {fileID: 0}
     - target: {fileID: 2891808616392944451, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12213,7 +12149,7 @@ PrefabInstance:
     - target: {fileID: 3430474838407542676, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4618
+      value: 4624
       objectReference: {fileID: 0}
     - target: {fileID: 3450022018905791180, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12253,7 +12189,7 @@ PrefabInstance:
     - target: {fileID: 3859031523910860448, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 8373
+      value: 8379
       objectReference: {fileID: 0}
     - target: {fileID: 3979897776104686551, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12308,7 +12244,7 @@ PrefabInstance:
     - target: {fileID: 4526072860138651136, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5074
+      value: 5080
       objectReference: {fileID: 0}
     - target: {fileID: 4546492400129165547, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12318,7 +12254,7 @@ PrefabInstance:
     - target: {fileID: 4546492400129165547, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4701
+      value: 4707
       objectReference: {fileID: 0}
     - target: {fileID: 4644833942190801771, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12343,7 +12279,7 @@ PrefabInstance:
     - target: {fileID: 5338484610365384252, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12070
+      value: 12076
       objectReference: {fileID: 0}
     - target: {fileID: 5381717207560783507, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12353,7 +12289,7 @@ PrefabInstance:
     - target: {fileID: 5381717207560783507, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7709
+      value: 7715
       objectReference: {fileID: 0}
     - target: {fileID: 5397833038717325576, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12373,7 +12309,7 @@ PrefabInstance:
     - target: {fileID: 5610289341419105005, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4789
+      value: 4795
       objectReference: {fileID: 0}
     - target: {fileID: 5810222923350280598, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12398,7 +12334,7 @@ PrefabInstance:
     - target: {fileID: 6021127962538495108, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7709
+      value: 7715
       objectReference: {fileID: 0}
     - target: {fileID: 6037093162481015583, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12433,7 +12369,7 @@ PrefabInstance:
     - target: {fileID: 6607512375505749121, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5186
+      value: 5192
       objectReference: {fileID: 0}
     - target: {fileID: 6700981917791611337, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12453,7 +12389,7 @@ PrefabInstance:
     - target: {fileID: 6739174508075671004, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4375
+      value: 4381
       objectReference: {fileID: 0}
     - target: {fileID: 6821598741561903875, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12483,7 +12419,7 @@ PrefabInstance:
     - target: {fileID: 7280843540862854565, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5186
+      value: 5192
       objectReference: {fileID: 0}
     - target: {fileID: 7775751056550349369, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12498,7 +12434,7 @@ PrefabInstance:
     - target: {fileID: 7869774385850101152, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7709
+      value: 7715
       objectReference: {fileID: 0}
     - target: {fileID: 8106986501607689427, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12528,7 +12464,7 @@ PrefabInstance:
     - target: {fileID: 8366563273154538060, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13776
+      value: 13782
       objectReference: {fileID: 0}
     - target: {fileID: 8381389586387595308, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12603,7 +12539,7 @@ PrefabInstance:
     - target: {fileID: 8578472403145352983, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12890
+      value: 12896
       objectReference: {fileID: 0}
     - target: {fileID: 8614687248431236932, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12633,7 +12569,7 @@ PrefabInstance:
     - target: {fileID: 8902948095910579819, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12058
+      value: 12064
       objectReference: {fileID: 0}
     - target: {fileID: 8929286971280922416, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -12648,7 +12584,7 @@ PrefabInstance:
     - target: {fileID: 8947003388005986226, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5186
+      value: 5192
       objectReference: {fileID: 0}
     - target: {fileID: 8954940491198773685, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -18466,7 +18402,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 0}
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -25827,7 +25763,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnTaskFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -26106,7 +26042,7 @@ PrefabInstance:
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 152231325148522291, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26298,7 +26234,7 @@ PrefabInstance:
     - target: {fileID: 630373645135002566, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14395
+      value: 14398
       objectReference: {fileID: 0}
     - target: {fileID: 1672681439014932589, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26359,7 +26295,7 @@ PrefabInstance:
     - target: {fileID: 2565243958018293122, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13546
+      value: 13549
       objectReference: {fileID: 0}
     - target: {fileID: 2566641034537897609, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26379,7 +26315,7 @@ PrefabInstance:
     - target: {fileID: 2939970716558387404, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13208
+      value: 13211
       objectReference: {fileID: 0}
     - target: {fileID: 3218767834738750914, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26479,7 +26415,7 @@ PrefabInstance:
     - target: {fileID: 4493986198929367492, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4493986198929367492, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26489,7 +26425,7 @@ PrefabInstance:
     - target: {fileID: 4493986198929367492, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: outlineTargets.Array.data[2].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4587568205583901342, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26499,7 +26435,7 @@ PrefabInstance:
     - target: {fileID: 4587568205583901342, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14136
+      value: 14139
       objectReference: {fileID: 0}
     - target: {fileID: 4797300737147345672, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26524,7 +26460,7 @@ PrefabInstance:
     - target: {fileID: 8170675837713312017, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14982
+      value: 14985
       objectReference: {fileID: 0}
     - target: {fileID: 8536348212237793601, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26549,7 +26485,7 @@ PrefabInstance:
     - target: {fileID: 8536348212237793601, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: outlineTargets.Array.data[4].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8536348212237793601, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26564,7 +26500,7 @@ PrefabInstance:
     - target: {fileID: 8671335587995286320, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12004
+      value: 12007
       objectReference: {fileID: 0}
     - target: {fileID: 8798072155194562589, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -26614,7 +26550,7 @@ PrefabInstance:
     - target: {fileID: 9001616733439942115, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13311
+      value: 13314
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26731,7 +26667,7 @@ PrefabInstance:
     - target: {fileID: 126470602579380505, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5803
+      value: 5806
       objectReference: {fileID: 0}
     - target: {fileID: 454734780425919819, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26781,7 +26717,7 @@ PrefabInstance:
     - target: {fileID: 2656913433543632650, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14810
+      value: 14813
       objectReference: {fileID: 0}
     - target: {fileID: 2760823583661879211, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26791,7 +26727,7 @@ PrefabInstance:
     - target: {fileID: 2760823583661879211, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11182
+      value: 11185
       objectReference: {fileID: 0}
     - target: {fileID: 3077087131918114099, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26806,7 +26742,7 @@ PrefabInstance:
     - target: {fileID: 4037728621770934621, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12993
+      value: 12996
       objectReference: {fileID: 0}
     - target: {fileID: 4602303765567664391, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26891,7 +26827,7 @@ PrefabInstance:
     - target: {fileID: 6412446659337611809, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13671
+      value: 13674
       objectReference: {fileID: 0}
     - target: {fileID: 7235339957958685169, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26906,7 +26842,7 @@ PrefabInstance:
     - target: {fileID: 7428031654936969376, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13583
+      value: 13586
       objectReference: {fileID: 0}
     - target: {fileID: 7578916045003235637, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26926,7 +26862,7 @@ PrefabInstance:
     - target: {fileID: 7765263250067560807, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4633
+      value: 4636
       objectReference: {fileID: 0}
     - target: {fileID: 7880227064042729899, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26936,7 +26872,7 @@ PrefabInstance:
     - target: {fileID: 7880227064042729899, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12440
+      value: 12443
       objectReference: {fileID: 0}
     - target: {fileID: 8453027869913369564, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
@@ -26956,7 +26892,7 @@ PrefabInstance:
     - target: {fileID: 8839560262242572008, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12728
+      value: 12731
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27025,7 +26961,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPoiEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
       propertyPath: OnPoiEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -27124,7 +27060,7 @@ PrefabInstance:
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
       propertyPath: OnPoiEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
@@ -27584,7 +27520,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
       propertyPath: OnTaskStarted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -27613,7 +27549,7 @@ PrefabInstance:
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 2521143010555776421, guid: 2bbcd2da32d7ab649af1cc2eb227359a,
         type: 3}
@@ -28126,7 +28062,7 @@ PrefabInstance:
     - target: {fileID: 205371244438852932, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5164
+      value: 5167
       objectReference: {fileID: 0}
     - target: {fileID: 776171812184954070, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28146,7 +28082,7 @@ PrefabInstance:
     - target: {fileID: 1805095942326528189, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 15399
+      value: 15402
       objectReference: {fileID: 0}
     - target: {fileID: 2010518697276509973, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28156,7 +28092,7 @@ PrefabInstance:
     - target: {fileID: 2010518697276509973, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6328
+      value: 6331
       objectReference: {fileID: 0}
     - target: {fileID: 2312847140162406221, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28176,7 +28112,7 @@ PrefabInstance:
     - target: {fileID: 3510783381852314523, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14128
+      value: 14131
       objectReference: {fileID: 0}
     - target: {fileID: 3596150960288578330, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28196,7 +28132,7 @@ PrefabInstance:
     - target: {fileID: 3721419521932473537, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13253
+      value: 13256
       objectReference: {fileID: 0}
     - target: {fileID: 4081391558136723011, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28206,7 +28142,7 @@ PrefabInstance:
     - target: {fileID: 4081391558136723011, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13586
+      value: 13589
       objectReference: {fileID: 0}
     - target: {fileID: 4264103459673531676, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28281,7 +28217,7 @@ PrefabInstance:
     - target: {fileID: 5588368969109441777, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11707
+      value: 11710
       objectReference: {fileID: 0}
     - target: {fileID: 5844433740133446763, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28326,7 +28262,7 @@ PrefabInstance:
     - target: {fileID: 7698311311276152056, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13045
+      value: 13048
       objectReference: {fileID: 0}
     - target: {fileID: 7818514776998867898, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28451,7 +28387,7 @@ PrefabInstance:
     - target: {fileID: 9038680487780950816, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14346
+      value: 14349
       objectReference: {fileID: 0}
     - target: {fileID: 9085228382216148373, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
         type: 3}
@@ -28728,7 +28664,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
       propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -28787,7 +28723,7 @@ PrefabInstance:
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
       propertyPath: OnPhotoListChanged.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 841775932623782538, guid: 5a3b61378dca53544a3b4ae189c960ef,
         type: 3}
@@ -29112,7 +29048,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 356010909}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnDeleteInspectionPhoto.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -29201,7 +29137,7 @@ PrefabInstance:
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
       propertyPath: OnInspectionCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 2305321274467313810, guid: 9de92f7587122eb44be3078919ad9e72,
         type: 3}
@@ -29386,7 +29322,7 @@ PrefabInstance:
     - target: {fileID: 1188570083342000634, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14031
+      value: 14034
       objectReference: {fileID: 0}
     - target: {fileID: 1317187416477825258, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29541,7 +29477,7 @@ PrefabInstance:
     - target: {fileID: 3489709187014935144, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5875
+      value: 5878
       objectReference: {fileID: 0}
     - target: {fileID: 3958241701542712341, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29556,7 +29492,7 @@ PrefabInstance:
     - target: {fileID: 4132692121759784627, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13978
+      value: 13981
       objectReference: {fileID: 0}
     - target: {fileID: 4294003374754679526, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29596,7 +29532,7 @@ PrefabInstance:
     - target: {fileID: 5074392274481673346, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11470
+      value: 11473
       objectReference: {fileID: 0}
     - target: {fileID: 5097140923970216523, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29626,7 +29562,7 @@ PrefabInstance:
     - target: {fileID: 5795981995879201439, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12811
+      value: 12814
       objectReference: {fileID: 0}
     - target: {fileID: 5810318194909374808, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29646,7 +29582,7 @@ PrefabInstance:
     - target: {fileID: 5861429675283879048, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12699
+      value: 12702
       objectReference: {fileID: 0}
     - target: {fileID: 5916309541753409392, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29902,7 +29838,7 @@ PrefabInstance:
     - target: {fileID: 5969653246741467145, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 15134
+      value: 15137
       objectReference: {fileID: 0}
     - target: {fileID: 5982747770276316055, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29937,7 +29873,7 @@ PrefabInstance:
     - target: {fileID: 6493024339968269979, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4705
+      value: 4708
       objectReference: {fileID: 0}
     - target: {fileID: 6520762445044987107, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -29947,7 +29883,7 @@ PrefabInstance:
     - target: {fileID: 6520762445044987107, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13264
+      value: 13267
       objectReference: {fileID: 0}
     - target: {fileID: 6876032339719648780, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -30002,7 +29938,7 @@ PrefabInstance:
     - target: {fileID: 8108434744317446537, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13683
+      value: 13686
       objectReference: {fileID: 0}
     - target: {fileID: 8180300281543837385, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -30047,7 +29983,7 @@ PrefabInstance:
     - target: {fileID: 8971779975542669625, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12800
+      value: 12803
       objectReference: {fileID: 0}
     - target: {fileID: 8999118958309594442, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
@@ -30072,7 +30008,7 @@ PrefabInstance:
     - target: {fileID: 9142717399790772550, guid: 051fd1e24762abc4ea72ca5484fcd35b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 11860
+      value: 11863
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

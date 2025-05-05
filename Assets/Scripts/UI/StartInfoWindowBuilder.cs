@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using VARLab.Velcro;
 
 namespace VARLab.DLX
@@ -21,17 +21,17 @@ namespace VARLab.DLX
     public class StartInfoWindowBuilder : MonoBehaviour, IUserInterface
     {
         #region Fields
-        
+
         // Root visual element from the UI document that contains all UI elements
         private VisualElement root;
 
         // UI Buttons
         private Button beginButton;
-        
+
         #endregion
 
         #region Events
-        
+
         [Header("Unity Events")]
         /// <summary>
         ///     Event triggered when the welcome window is shown.
@@ -58,7 +58,7 @@ namespace VARLab.DLX
         ///     - <see cref="CountupTimer.Show()"/>
         /// </remarks>
         public UnityEvent OnWindowHide;
-        
+
         #endregion
 
         #region Methods

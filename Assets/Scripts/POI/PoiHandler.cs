@@ -1,9 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.AI;
-using System.Collections;
+using UnityEngine.Events;
 
 namespace VARLab.DLX
 {
@@ -176,7 +176,7 @@ namespace VARLab.DLX
                 Debug.LogWarning($"PoiHandler: Failed to warp - '{poiName}' POI or default waypoint not found");
                 return;
             }
-            
+
             StartCoroutine(WarpCoroutine(lastPoi));
         }
 
@@ -192,7 +192,7 @@ namespace VARLab.DLX
             Debug.Log($"PoiHandler: Player warped to {lastPoi.PoiName}'s default waypoint");
 
             yield return new WaitForSeconds(0.1f); // Wait for a short time to ensure the warp is complete
-            
+
             OnWarpComplete?.Invoke();
         }
     }
