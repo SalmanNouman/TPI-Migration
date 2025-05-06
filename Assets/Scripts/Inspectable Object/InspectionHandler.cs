@@ -118,16 +118,16 @@ namespace VARLab.DLX
         /// <param name="obj">Game object that was clicked.</param>
         public void StartInspection(GameObject obj)
         {
-            // Early exit if handwashing task not completed and invoke event.
+            InspectableObject inspectable = obj.GetComponent<InspectableObject>();
+
+            if (inspectable == null) { return; }
+
+            // Valid inspectable objects early return if handwashing is not completed
             if (!HandWashingCompleted)
             {
                 OnHandwashingTaskNotCompleted?.Invoke();
                 return;
             }
-
-            InspectableObject inspectable = obj.GetComponent<InspectableObject>();
-
-            if (inspectable == null) { return; }
 
             if (inspectable.GetComponent<ObjectViewerInspectables>())
             {

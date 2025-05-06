@@ -218,19 +218,9 @@ namespace VARLab.DLX
         /// </summary>
         public void LoadPiercerInteraction(bool isCompleted)
         {
-            // If the interaction is completed, show the procedure tray and hide the cutout
-            if (isCompleted)
-            {
-                preparedProcedureTray.SetActive(true);
-                piercerCutout.SetActive(false);
-                isTaskCompleted = true;
-            }
-            else
-            {
-                preparedProcedureTray.SetActive(false);
-                piercerCutout.SetActive(true);
-                isTaskCompleted = false;
-            }
+            preparedProcedureTray.SetActive(isCompleted);
+            piercerCutout.SetActive(!isCompleted);
+            isTaskCompleted = isCompleted;
         }
 
         #endregion

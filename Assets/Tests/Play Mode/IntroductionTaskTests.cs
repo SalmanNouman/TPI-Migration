@@ -37,6 +37,7 @@ namespace Tests.PlayMode
         private FieldInfo conversationDelay;
         private FieldInfo introductionWaypoint;
         private FieldInfo informDialogSO;
+        private FieldInfo managerCutout;
 
         // Test constants
         private const float TestDelay = 0.1f;
@@ -73,6 +74,7 @@ namespace Tests.PlayMode
             conversationDelay = typeof(IntroductionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
             introductionWaypoint = typeof(IntroductionTask).GetField("introductionWaypoint", BindingFlags.NonPublic | BindingFlags.Instance);
             informDialogSO = typeof(IntroductionTask).GetField("informDialogSO", BindingFlags.NonPublic | BindingFlags.Instance);
+            managerCutout = typeof(IntroductionTask).GetField("managerCutout", BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Set Reception POI as the allowed area
             lobbyPoi.SetValue(introductionTask, lobbyPoiComponent);
@@ -254,6 +256,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             isTaskStarted.SetValue(introductionTask, true);
+            managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
@@ -262,6 +265,7 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
+            Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should be set to false");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
         }
 
@@ -274,6 +278,7 @@ namespace Tests.PlayMode
         {
             // Arrange
             isTaskStarted.SetValue(introductionTask, false);
+            managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
@@ -282,6 +287,7 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsFalse((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should remain false if task is not started");
+            Assert.IsTrue(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should remain active if task is not started");
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
         }
 
@@ -312,16 +318,18 @@ namespace Tests.PlayMode
         [Test, Order(10)]
         [Category("BuildServer")]
 
-        public void IntroductionTask_LoadSaveTask_SetTaskFlagAndCallCompleteTask()
+        public void IntroductionTask_LoadSaveTask_SetTaskAndManagerCutoutAndCallCompleteTask()
         {
             //Arrange
             isTaskStarted.SetValue(introductionTask, true);
             isTaskCompleted.SetValue(introductionTask, true);
+            managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
             //Act
             introductionTask.LoadSaveTask();
 
             //Asset
             Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
+            Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should be set to false");
         }
 
         #endregion

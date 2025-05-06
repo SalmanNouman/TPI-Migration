@@ -31,6 +31,9 @@ namespace VARLab.DLX
         [SerializeField, Tooltip("Delay time before starting the conversation")]
         private float conversationDelay = 0.5f;
 
+        [SerializeField, Tooltip("The manager cutout that will be hidden after the conversation")]
+        private GameObject managerCutout;
+
         /// <summary>
         ///     Tracks if the task has been started
         /// </summary>
@@ -207,7 +210,7 @@ namespace VARLab.DLX
                 return;
 
             isTaskCompleted = true;
-
+            managerCutout.SetActive(false);
             // Trigger task completed event
             OnTaskCompleted?.Invoke();
 
@@ -245,6 +248,7 @@ namespace VARLab.DLX
         {
             isTaskStarted = true;
             isTaskCompleted = true;
+            managerCutout.SetActive(false);
         }
 
         #endregion
