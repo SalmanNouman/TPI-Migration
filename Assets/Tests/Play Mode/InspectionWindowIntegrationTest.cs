@@ -484,14 +484,14 @@ namespace Tests.PlayMode
         public IEnumerator HasPhotoFrame()
         {
             // Arrange
-            var flashContainer = root.Q<VisualElement>("FlashContainer");
+            var photoFrame = root.Q<VisualElement>("PhotoBorder");
 
             // Act
             inspectionWindowBuilder.TakePhoto(); // Call the method that triggers the photo frame
             yield return null;
 
             // Assert
-            bool photoFrameAdded = flashContainer.ClassListContains("card-body-photo-frame");
+            bool photoFrameAdded = photoFrame.ClassListContains("photoFrameVisible");
             Assert.IsTrue(photoFrameAdded, "Photo frame was not added to the flash container.");
 
         }
@@ -917,6 +917,40 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.AreEqual(DisplayStyle.None.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
+        }
+
+        [UnityTest, Order(39)]
+        [Category("BuildServer")]
+        public IEnumerator TakePhoto_UpdatesInspectionLabelText()
+        {
+            // Arrange
+            inspectionWindowBuilder.HandleInspectionWindowDisplay(inspectable);
+            Label inspectionLabel = root.Q<Label>("BottomLabel"); // Replace "InspectionLabel" with its actual UXML name
+
+            // Act
+            inspectionWindowBuilder.TakePhoto();
+            yield return null; // Wait a frame for UI changes
+
+            // Assert
+            Assert.IsNotNull(inspectionLabel, "InspectionLabel VisualElement not found.");
+            Assert.AreEqual("To add the photo to the galley, report as compliant or non-compliant.", inspectionLabel.text, "InspectionLabel text was not updated correctly.");
+        }
+
+        [UnityTest, Order(40)]
+        [Category("BuildServer")]
+        public IEnumerator TakePhoto_DisplayInspectionWindowNotificationInvoked()
+        {
+            // Arrange
+            bool invoked = false;
+            bool fade = true;
+            inspectionWindowBuilder.DisplayInspectionWindowNotification.AddListener((data, fade) => invoked = true);
+
+            // Act
+            inspectionWindowBuilder.TakePhoto();
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(invoked);
         }
         #endregion
 

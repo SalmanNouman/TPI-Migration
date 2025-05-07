@@ -28,6 +28,7 @@ namespace VARLab.DLX
         private VisualElement imageViewer3d;
         private VisualElement imageViewer;
         private VisualElement flashContainer;
+        private VisualElement photoFrameBorder;
 
         // Labels
         private Label locationLabel;
@@ -184,6 +185,7 @@ namespace VARLab.DLX
             imageViewer3d = root.Q<VisualElement>("3DViewer");
             imageViewer = root.Q<VisualElement>("Image");
             flashContainer = root.Q<VisualElement>("FlashContainer");
+            photoFrameBorder = root.Q<VisualElement>("PhotoBorder");
 
             // Labels
             locationLabel = root.Q<Label>("Secondary");
@@ -228,8 +230,19 @@ namespace VARLab.DLX
         {
             // TODO: display flash and camera outline
             flashContainer.AddToClassList("card-body-photo-frame");
+            photoFrameBorder.AddToClassList("photoFrameVisible");
             photoTaken = true;
             StartCoroutine(FlashCoroutine());
+
+            // Create a notification SO to display the photo taken message
+            notification.NotificationType = NotificationType.Info;
+            notification.Alignment = Align.FlexStart;
+            notification.FontSize = FontSize.Medium;
+            notification.Message = "Photo taken";
+            DisplayInspectionWindowNotification?.Invoke(notification, true);
+
+            // Temporarily show a selection prompt in inspection label after taking photo
+            UIHelper.SetElementText(inspectionLabel, "To add the photo to the gallery, report as compliant or non-compliant.");
 
             OnPhotoTaken?.Invoke(CurrentInspectable);
         }
@@ -421,6 +434,7 @@ namespace VARLab.DLX
             // Reset the flag after the selection
             photoTaken = false;
             flashContainer.RemoveFromClassList("card-body-photo-frame");
+            photoFrameBorder.RemoveFromClassList("photoFrameVisible");
 
             if (messageContainer.style.display == DisplayStyle.Flex)
             {
