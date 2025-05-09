@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -19,6 +20,11 @@ namespace Tests.PlayMode
         private GalleryBuilder galleryBuilder;
         private VisualElement root;
         private List<InspectablePhoto> photos;
+        private FieldInfo deleteInspectionLogFlagField;
+
+        // Fields for OnPhotoDeleteNotification testing
+        private NotificationSO capturedDeleteNotificationSO;
+        private bool deleteNotificationEventWasInvoked;
 
         private const string SceneName = "InspectionReviewTestScene";
 
@@ -53,6 +59,9 @@ namespace Tests.PlayMode
             photos.Add(new InspectablePhoto(new byte[14000], "Bathroom_SoapDispenser", "Bathroom", TimerManager.Instance.GetElapsedTime()));
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
+
+            // Get the private fields using reflection
+            deleteInspectionLogFlagField = typeof(GalleryBuilder).GetField("deleteInspectionLogFlag", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [UnityTest, Order(1)]
@@ -197,6 +206,79 @@ namespace Tests.PlayMode
             galleryBuilder.OnShowConfirmationDialog.RemoveAllListeners();
             galleryBuilder.DeletePhoto.RemoveAllListeners();
             Object.Destroy(testDialog);
+        }
+
+        [UnityTest, Order(6)]
+        [Category("BuildServer")]
+        public IEnumerator DeletePhoto_ShowsDeletedPhotoNotificationWhileDeleteInspectionLogFlagIsFalse()
+        {
+            // Arrange
+            // Ensure the gallery is built with at least one photo for this test
+            inspectionReviewBuilder.Hide(); // Hide to avoid UI interactions if any
+            galleryBuilder.GetPhotoList(photos); // Assuming 'photos' has at least one item
+            galleryBuilder.BuildGallery();
+            yield return null; // Wait for gallery to build
+
+            deleteInspectionLogFlagField.SetValue(galleryBuilder, false);
+
+            // Setup listener for notification
+            deleteNotificationEventWasInvoked = false;
+            capturedDeleteNotificationSO = null;
+            galleryBuilder.OnPhotoDeleteNotification.AddListener(HandlePhotoDeleteNotification);
+
+            // Act
+            // Ensure photos list is not empty and we are deleting a valid photo
+            Assert.IsTrue(photos.Count > 0, "Photos list should not be empty for this test.");
+            galleryBuilder.DeletePhotoConfirmed(photos[0].Id, photos[0].Location);
+            yield return null; // Wait a frame for event to propagate
+
+            // Assert
+            Assert.IsTrue(deleteNotificationEventWasInvoked, "OnPhotoDeleteNotification event was not invoked.");
+            Assert.IsNotNull(capturedDeleteNotificationSO, "Captured NotificationSO for delete was null.");
+            Assert.AreEqual("Photo deleted", capturedDeleteNotificationSO.Message, "Notification message should be 'Photo deleted'.");
+
+            // Clean up listener
+            galleryBuilder.OnPhotoDeleteNotification.RemoveListener(HandlePhotoDeleteNotification);
+        }
+
+        [UnityTest, Order(7)]
+        [Category("BuildServer")]
+        public IEnumerator DeletePhoto_ShowsDeletedPhotoAndInspectionNotificationWhileDeleteInspectionLogFlagIsTrue()
+        {
+            // Arrange
+            // Ensure the gallery is built with at least one photo for this test
+            inspectionReviewBuilder.Hide(); // Hide to avoid UI interactions if any
+            galleryBuilder.GetPhotoList(photos); // Assuming 'photos' has at least one item
+            galleryBuilder.BuildGallery();
+            yield return null; // Wait for gallery to build
+
+            deleteInspectionLogFlagField.SetValue(galleryBuilder, true);
+
+            // Setup listener for notification
+            deleteNotificationEventWasInvoked = false;
+            capturedDeleteNotificationSO = null;
+            galleryBuilder.OnPhotoDeleteNotification.AddListener(HandlePhotoDeleteNotification);
+
+            // Act
+            // Ensure photos list is not empty and we are deleting a valid photo
+            Assert.IsTrue(photos.Count > 0, "Photos list should not be empty for this test.");
+            galleryBuilder.DeletePhotoConfirmed(photos[0].Id, photos[0].Location);
+            yield return null; // Wait a frame for event to propagate
+
+            // Assert
+            Assert.IsTrue(deleteNotificationEventWasInvoked, "OnPhotoDeleteNotification event was not invoked.");
+            Assert.IsNotNull(capturedDeleteNotificationSO, "Captured NotificationSO for delete was null.");
+            Assert.AreEqual("Photo and inspection deleted", capturedDeleteNotificationSO.Message, "Notification message should be 'Photo and inspection deleted'.");
+
+            // Clean up listener
+            galleryBuilder.OnPhotoDeleteNotification.RemoveListener(HandlePhotoDeleteNotification);
+        }
+
+        // Listener method for OnPhotoDeleteNotification
+        private void HandlePhotoDeleteNotification(NotificationSO so)
+        {
+            deleteNotificationEventWasInvoked = true;
+            capturedDeleteNotificationSO = so;
         }
     }
 }

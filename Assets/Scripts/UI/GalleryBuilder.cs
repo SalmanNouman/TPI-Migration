@@ -38,6 +38,10 @@ namespace VARLab.DLX
         private Dictionary<string, TemplateContainer> imageContainers = new Dictionary<string, TemplateContainer>();
         private Dictionary<string, TemplateContainer> rowContainers = new Dictionary<string, TemplateContainer>();
 
+        private NotificationSO notification;
+
+        public UnityEvent<NotificationSO> OnPhotoDeleteNotification;
+
         #endregion
 
         #region UnityEvents
@@ -102,6 +106,9 @@ namespace VARLab.DLX
             DeleteInspection ??= new();
             OnShowConfirmationDialog ??= new();
             OnImageClicked ??= new();
+            // Create a new instance of NotificationSO to be reused
+            notification = ScriptableObject.CreateInstance<NotificationSO>();
+            OnPhotoDeleteNotification ??= new UnityEvent<NotificationSO>();
 
             if (photos == null || photos.Count <= 0)
             {
@@ -261,11 +268,24 @@ namespace VARLab.DLX
             // Trigger the DeletePhoto event with the photo ID
             DeletePhoto?.Invoke(photoId);
 
+            // Create a notification to inform the user about the deletion
+            notification.NotificationType = NotificationType.Success;
+            notification.Alignment = Align.FlexStart;
+            notification.FontSize = FontSize.Medium;
+
             // If the checkbox was checked, also delete the associated inspection
             if (deleteInspectionLogFlag)
             {
                 DeleteInspection?.Invoke(photoId);
+                notification.Message = "Photo and inspection deleted";
             }
+            else
+            {
+                notification.Message = "Photo deleted";
+            }
+
+            // Show the notification
+            OnPhotoDeleteNotification?.Invoke(notification);
 
             // Reset the flag for future use
             deleteInspectionLogFlag = false;
