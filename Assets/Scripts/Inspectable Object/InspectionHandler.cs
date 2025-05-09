@@ -211,7 +211,7 @@ namespace VARLab.DLX
         /// </summary>
         public void SetHandwashingTaskCompleted()
         {
-            HandWashingCompleted = true;
+            HandWashingCompleted = TPISceneManager.HandWashingCompleted;
             CustomSaveHandler.Instance.CanSave = true;
         }
 

@@ -17,6 +17,12 @@ namespace VARLab.DLX
         // Indicates whether the cloud save data has been deleted.
         public static bool CloudSaveDeleted = false;
 
+        // Indicates whether the handwashing task is completed.
+        public static bool HandWashingCompleted = false;
+
+        // Indicates whether the Introduction task is completed.
+        public static bool IntroductionCompleted = false;
+
         #endregion
 
         #region Events
@@ -82,6 +88,8 @@ namespace VARLab.DLX
             OnSceneRestart?.Invoke();
 
             LoadCompleted = false;
+            HandWashingCompleted = false;
+            IntroductionCompleted = false;
 
             // Load new scene
             // Note: Until the Fade system is implemented, the code after LoadSceneAsync may not execute as the object will be destroyed during scene transition.

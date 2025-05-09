@@ -119,12 +119,12 @@ namespace VARLab.DLX
         public void CheckCurrentWaypoint(Waypoint waypoint)
         {
             // Check if this is the handwashing waypoint and the task hasn't started yet
-            if (!isTaskStarted && !isTaskCompleted && waypoint == handwashingWaypoint)
+            if (!isTaskStarted && !TPISceneManager.HandWashingCompleted && waypoint == handwashingWaypoint)
             {
                 Debug.Log("HandwashingMovementTile: Player reached the handwashing waypoint: " + waypoint.name);
 
                 // Check if introduction and office tasks are completed
-                if (!isIntroductionCompleted || !isOfficeTaskCompleted)
+                if (!TPISceneManager.IntroductionCompleted)
                 {
                     Debug.Log("HandwashingMovementTile: Previous tasks not completed. Showing introduction exit dialog.");
                     introductionExitDialog.SetPrimaryAction(() => RestartScene?.Invoke());
@@ -143,7 +143,7 @@ namespace VARLab.DLX
         public override void HandleTask()
         {
             // Early return if task is already completed
-            if (isTaskCompleted)
+            if (TPISceneManager.HandWashingCompleted)
             {
                 Debug.Log("HandwashingMovementTile: Task has already been completed.");
                 return;
@@ -240,10 +240,10 @@ namespace VARLab.DLX
         public void CompleteTask()
         {
             // Early return if task is not started or already completed
-            if (!isTaskStarted || isTaskCompleted)
+            if (!isTaskStarted || TPISceneManager.HandWashingCompleted)
                 return;
 
-            isTaskCompleted = true;
+            TPISceneManager.HandWashingCompleted = true;
 
             // Trigger task completed event
             OnTaskCompleted?.Invoke();
@@ -288,7 +288,7 @@ namespace VARLab.DLX
         public void LoadSaveTask()
         {
             isTaskStarted = true;
-            isTaskCompleted = true;
+            TPISceneManager.HandWashingCompleted = true;
         }
 
         #endregion

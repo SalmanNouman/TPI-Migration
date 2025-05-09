@@ -163,8 +163,7 @@ namespace Tests.PlayMode
         public IEnumerator HandwashingMovementTile_CheckCurrentWaypoint_StartsTaskWhenPrerequisitesCompleted()
         {
             // Arrange
-            isIntroductionCompleted.SetValue(handwashingTask, true);
-            isOfficeTaskCompleted.SetValue(handwashingTask, true);
+            TPISceneManager.IntroductionCompleted = true;
             bool eventInvoked = false;
             handwashingTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
@@ -185,8 +184,7 @@ namespace Tests.PlayMode
         public IEnumerator HandwashingMovementTile_CheckCurrentWaypoint_ShowsFailureDialogWhenIntroductionNotCompleted()
         {
             // Arrange
-            isIntroductionCompleted.SetValue(handwashingTask, false);
-            isOfficeTaskCompleted.SetValue(handwashingTask, true);
+            TPISceneManager.IntroductionCompleted = false;
             bool dialogShown = false;
             handwashingTask.OnShowInformationDialog.AddListener((dialog) => dialogShown = true);
 
@@ -207,8 +205,7 @@ namespace Tests.PlayMode
         public IEnumerator HandwashingMovementTile_CheckCurrentWaypoint_ShowsFailureDialogWhenOfficeTaskNotCompleted()
         {
             // Arrange
-            isIntroductionCompleted.SetValue(handwashingTask, true);
-            isOfficeTaskCompleted.SetValue(handwashingTask, false);
+            TPISceneManager.IntroductionCompleted = false;
             bool dialogShown = false;
             handwashingTask.OnShowInformationDialog.AddListener((dialog) => dialogShown = true);
 
@@ -229,8 +226,7 @@ namespace Tests.PlayMode
         public IEnumerator HandwashingMovementTile_CheckCurrentWaypoint_DoesNotStartTaskForNonHandwashingWaypoint()
         {
             // Arrange
-            isIntroductionCompleted.SetValue(handwashingTask, true);
-            isOfficeTaskCompleted.SetValue(handwashingTask, true);
+            TPISceneManager.IntroductionCompleted = true;
             bool eventInvoked = false;
             handwashingTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
@@ -348,7 +344,7 @@ namespace Tests.PlayMode
             handwashingTask.CompleteTask();
 
             // Assert
-            Assert.IsTrue((bool)isTaskCompleted.GetValue(handwashingTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue(TPISceneManager.HandWashingCompleted, "isTaskCompleted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
         }
 
@@ -409,7 +405,7 @@ namespace Tests.PlayMode
             handwashingTask.LoadSaveTask();
 
             //Assert
-            Assert.IsTrue((bool)isTaskCompleted.GetValue(handwashingTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue(TPISceneManager.HandWashingCompleted, "isTaskCompleted should be set to true");
 
         }
 

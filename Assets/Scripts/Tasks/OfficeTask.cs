@@ -214,6 +214,7 @@ namespace VARLab.DLX
 
             isTaskCompleted = true;
             OnTaskCompleted?.Invoke();
+            TPISceneManager.IntroductionCompleted = true;
             Debug.Log("OfficeTask: Task completed. Player can now freely navigate.");
         }
 
