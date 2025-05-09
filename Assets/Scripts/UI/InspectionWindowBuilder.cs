@@ -65,6 +65,8 @@ namespace VARLab.DLX
         // Notification instance to be updated and reused.
         private NotificationSO notification;
 
+        private ConfirmDialogSO currentDialog;
+
         // Confirmation dialogs
         [Header("Confirmation Dialogs"), Space(10f)]
 
@@ -73,7 +75,9 @@ namespace VARLab.DLX
 
         [Tooltip("Confirmation dialog shown when changing from compliant to non-compliant")]
         public ConfirmDialogSO NonCompliantConfirmationDialog;
-        private ConfirmDialogSO currentDialog;
+
+        [Tooltip("Confirmation dialog shown when closing the window after taking a photo")]
+        public ConfirmDialogSO PhotoDiscardConfirmationDialog;
 
         #endregion
 
@@ -210,14 +214,24 @@ namespace VARLab.DLX
         /// </summary>
         private void AddButtonListeners()
         {
+            // Add listener to close button
             closeButton.clicked += () =>
             {
-                Debug.Log("Close button clicked");
-                Hide();
+                if (photoTaken)
+                {
+                    PhotoDiscardConfirmationDialog.SetPrimaryAction(() =>
+                    {
+                        Hide();
+                        photoTaken = false;
+                    });
+                    OnShowConfirmationDialog?.Invoke(PhotoDiscardConfirmationDialog);
+                }
+                else
+                {
+                    Hide();
+                }
             };
-
             cameraButton.clicked += TakePhoto;
-
             compliantButton.clicked += () => CompleteInspection(true);
             nonCompliantButton.clicked += () => CompleteInspection(false); ;
         }

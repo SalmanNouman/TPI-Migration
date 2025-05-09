@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System.Reflection;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using VARLab.DLX;
@@ -51,7 +52,7 @@ namespace Tests.PlayMode
         private Sprite infoIcon;
         private Sprite customIcon;
 
-
+        private FieldInfo photoTakenField;
 
         #endregion
 
@@ -103,6 +104,9 @@ namespace Tests.PlayMode
             notificationContainer = root.Q<VisualElement>("NotificationContainer");
 
             Assert.IsTrue(SceneManager.GetSceneByName(SceneName).isLoaded);
+
+            // Get photoTaken private variable using reflection
+            photoTakenField = typeof(InspectionWindowBuilder).GetField("photoTaken", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         #endregion
@@ -933,7 +937,7 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsNotNull(inspectionLabel, "InspectionLabel VisualElement not found.");
-            Assert.AreEqual("To add the photo to the galley, report as compliant or non-compliant.", inspectionLabel.text, "InspectionLabel text was not updated correctly.");
+            Assert.AreEqual("To add the photo to the gallery, report as compliant or non-compliant.", inspectionLabel.text, "InspectionLabel text was not updated correctly.");
         }
 
         [UnityTest, Order(40)]
@@ -951,6 +955,46 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsTrue(invoked);
+        }
+
+        [UnityTest, Order(41)]
+        [Category("BuildServer")]
+        public IEnumerator TakePhoto_DisplayDiscardPhotoConfirmationDialogIfCloseButtonClicked()
+        {
+            // Arrange
+            inspectionWindowBuilder.TakePhoto();
+            yield return null;
+            bool invoked = false;
+            inspectionWindowBuilder.OnShowConfirmationDialog.AddListener((dialog) => invoked = true);
+            Button closeButton = root.Q<TemplateContainer>("Button-Close").Q<Button>("CloseBtn");
+
+            // Act
+            var closeButtonClickEvent = new NavigationSubmitEvent { target = closeButton };
+            closeButton.SendEvent(closeButtonClickEvent);
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(invoked);
+        }
+
+        [UnityTest, Order(42)]
+        [Category("BuildServer")]
+        public IEnumerator TakePhoto_SetsPhotoTakenToFalseAfterConfirmingDiscardPhoto()
+        {
+            // Arrange
+            inspectionWindowBuilder.TakePhoto();
+            yield return null;
+            Button closeButton = root.Q<TemplateContainer>("Button-Close").Q<Button>("CloseBtn");
+            var closeButtonClickEvent = new NavigationSubmitEvent { target = closeButton };
+            closeButton.SendEvent(closeButtonClickEvent);
+            yield return null;
+
+            // Act
+            inspectionWindowBuilder.PhotoDiscardConfirmationDialog.InvokePrimaryAction();
+            yield return null;
+
+            // Assert
+            Assert.IsFalse((bool)photoTakenField.GetValue(inspectionWindowBuilder), "PhotoTaken should be false after confirming discard.");
         }
         #endregion
 
