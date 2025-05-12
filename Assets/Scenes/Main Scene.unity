@@ -3078,6 +3078,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1018439558}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &346227696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8836074582752004911, guid: f7adf71e9d333004aa0048a517ad3335,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028551932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45f7be31d823e6479bbf176a19a659d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &346227698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028551932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &349806119
 Mesh:
   m_ObjectHideFlags: 0
@@ -11480,6 +11498,71 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2123571564}
     m_Modifications:
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949983437295004087, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7102872778937636448, guid: 6b6a8fef6b3e22a4d85ef2c7004a1f18,
         type: 3}
       propertyPath: m_Name
@@ -13087,6 +13170,80 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1028551932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2123571564}
+    m_Modifications:
+    - target: {fileID: 3440439641329582280, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_PanelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 7827057ce5a0f3e41b56f5d5c66f71c7,
+        type: 2}
+    - target: {fileID: 5459982306892194325, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_Name
+      value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.430009
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.492867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.954891
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058671400998223369, guid: f7adf71e9d333004aa0048a517ad3335,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7adf71e9d333004aa0048a517ad3335, type: 3}
 --- !u!43 &1029094144
 Mesh:
   m_ObjectHideFlags: 0
@@ -24333,6 +24490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 346227698}
   - {fileID: 813259282}
   - {fileID: 859144171}
   - {fileID: 510763943}
@@ -28766,6 +28924,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
       propertyPath: OnPauseClicked.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -28776,8 +28954,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346227696}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
       propertyPath: OnPauseClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
@@ -28786,13 +29009,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
       propertyPath: OnPauseClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 694841697}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
       propertyPath: OnSettingsClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
@@ -28821,6 +29069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
       propertyPath: OnInspectionReviewClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -28829,6 +29082,21 @@ PrefabInstance:
       propertyPath: OnInspectionReviewClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1749263010}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.TooltipUI, VARLab.Velcro
+      objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}
       propertyPath: OnInspectionReviewClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -28853,6 +29121,26 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInspectionReviewClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.InspectionReviewBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: OnUnhover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: HideToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
+        type: 3}
+      propertyPath: ShowToolTip.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6885137010594302283, guid: 3b0189a666e488848b88e70f66015da2,
         type: 3}

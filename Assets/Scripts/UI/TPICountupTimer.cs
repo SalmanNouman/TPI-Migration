@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using VARLab.Velcro;
 
@@ -17,10 +18,21 @@ namespace VARLab.DLX
         private VisualElement arrow;
         private Button arrowBtn;
         private Label elapsedTimeLabel;
-
+        
         private const string ClosedClassName = "timer-closed";
         private const string ArrowClosedClassName = "timer-arrow-closed";
 
+        /// <summary>
+        /// This event invoked when hovering on button
+        /// <see cref="TooltipUI.HandleDisplayUI"/>
+        /// </summary>
+        public UnityEvent<VisualElement, TooltipType, string, FontSize> ShowToolTip;
+        
+        /// <summary>
+        /// This event invoked when unhovering on button
+        /// </summary>
+        public UnityEvent HideToolTip;        
+        
         /// <summary>
         /// Whether the timer is expanded or not
         /// </summary>
@@ -37,12 +49,15 @@ namespace VARLab.DLX
             timerContainer = Root.Q("CountupTimer");
             arrowBtn = Root.Q<Button>("ArrowBtn");
             arrow = Root.Q("Arrow");
-
+            
             arrowBtn.clicked += () =>
             {
                 ToggleTimer();
             };
-
+            
+            arrowBtn.RegisterCallback<MouseOverEvent>(evt => 
+                ShowToolTip?.Invoke(arrowBtn, TooltipType.Right, "Show/Hide Time Elapsed", FontSize.Medium));
+            arrowBtn.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
             Show();
         }
 

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -21,7 +22,7 @@ namespace VARLab.DLX
         private Button pauseButton;
         private Button inspectionReviewButton;
         private Button settingsButton;
-
+        
         /// <summary>
         /// Button Events
         /// </summary>
@@ -38,6 +39,18 @@ namespace VARLab.DLX
         /// <see cref="SettingsMenuComplex.Show"/>
         /// </summary>
         public UnityEvent OnSettingsClicked;
+        
+        /// <summary>
+        /// This event invoked when hovering on button
+        /// <see cref="TooltipUI.HandleDisplayUI"/>
+        /// </summary>
+        public UnityEvent<VisualElement, TooltipType, string, FontSize> ShowToolTip;
+        
+        /// <summary>
+        /// This event invoked when unhovering on button
+        /// <see cref="TooltipUI.CloseTooltip"/>
+        /// </summary>
+        public UnityEvent HideToolTip;
 
         /// <summary>
         /// Gets the references to all the buttons and the root visual element.
@@ -47,8 +60,9 @@ namespace VARLab.DLX
             pauseButton = root.Q<Button>("Pause");
             inspectionReviewButton = root.Q<Button>("InspectionReview");
             settingsButton = root.Q<Button>("Settings");
-
+            
             SetListeners();
+            SetToolTips();
         }
 
         private void Awake()
@@ -69,6 +83,22 @@ namespace VARLab.DLX
             settingsButton.clicked += SettingsClicked;
         }
 
+        private void SetToolTips()
+        {
+            pauseButton.RegisterCallback<MouseOverEvent>(evt => 
+                ShowToolTip?.Invoke(pauseButton, TooltipType.Left, "Pause", FontSize.Medium));
+            pauseButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
+            
+            inspectionReviewButton.RegisterCallback<MouseOverEvent>(evt => 
+                ShowToolTip?.Invoke(inspectionReviewButton, TooltipType.Left, "Inspection Review", FontSize.Medium));
+            inspectionReviewButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
+            
+            settingsButton.RegisterCallback<MouseOverEvent>(evt => 
+                ShowToolTip?.Invoke(settingsButton, TooltipType.Left, "Settings", FontSize.Medium));
+            settingsButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
+            
+        }
+        
         /// <summary>
         /// Actions linked to the pause button clicked event.
         /// Invokes the OnPauseclicked event.
