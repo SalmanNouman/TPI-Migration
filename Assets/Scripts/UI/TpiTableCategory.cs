@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using VARLab.Velcro;
 
 namespace VARLab.DLX
 {
@@ -98,13 +100,14 @@ namespace VARLab.DLX
             entry.GenerateElements();
             entries.Add(entry);
 
-            deleteButton.RegisterCallback<ClickEvent, TpiTableEntry>(RemoveEntryFromListAndUI, entry);
+            // Delete button callback to Show the delete confirmation dialog
+            deleteButton.RegisterCallback<ClickEvent>((evt) => { ShowDeleteConfirmationDialog(entry); });
 
             OnEntryAdded.Invoke(entry);
         }
 
         // Button callback
-        private void RemoveEntryFromListAndUI(ClickEvent evt, TpiTableEntry entry)
+        private void RemoveEntryFromListAndUI(TpiTableEntry entry)
         {
             entry.RemoveFromCategory();
         }
@@ -135,7 +138,24 @@ namespace VARLab.DLX
         {
             entries.Remove(entry);
             OnEntryRemoved.Invoke(entry);
-            entry.deleteButton?.UnregisterCallback<ClickEvent, TpiTableEntry>(RemoveEntryFromListAndUI);
+
+            entry.deleteButton.UnregisterCallback<ClickEvent>((evt) => { ShowDeleteConfirmationDialog(entry); });
+        }
+
+        /// <summary>
+        /// Shows the delete confirmation dialog for the user to confirm deletion of the inspection log.
+        public void ShowDeleteConfirmationDialog(TpiTableEntry removedEntry)
+        {
+            removedEntry.Owner.DeleteInspectionSO.SetPrimaryAction(() =>
+            {
+                RemoveEntryFromListAndUI(removedEntry);
+                removedEntry.Owner.Notification = ScriptableObject.CreateInstance<NotificationSO>();
+                removedEntry.Owner.Notification.NotificationType = NotificationType.Success;
+                removedEntry.Owner.Notification.Alignment = Align.FlexStart;
+                removedEntry.Owner.Notification.Message = "Inspection log deleted";
+                removedEntry.Owner.OnDeleteInspectionLog?.Invoke(removedEntry.Owner.Notification);
+            });
+            removedEntry.Owner.OnShowDeleteInspectionDialog?.Invoke(removedEntry.Owner.DeleteInspectionSO);
         }
     }
 }

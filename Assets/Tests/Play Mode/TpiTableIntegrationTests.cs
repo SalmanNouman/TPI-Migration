@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
@@ -21,6 +22,9 @@ namespace Tests.PlayMode
         private VisualElement tableElement;
 
         private Sprite checkmarkIcon;
+
+        private ConfirmDialogSO capturedConfirmDialogSO;
+        private NotificationSO capturedNotificationSO;
 
         [UnitySetUp]
         [Category("BuildServer")]
@@ -65,6 +69,9 @@ namespace Tests.PlayMode
             tableUXML.CloneTree(tableDoc.rootVisualElement);
 
             tableElement = tableDoc.rootVisualElement.Q("Table");
+
+            tableComp.DeleteInspectionSO = ScriptableObject.CreateInstance<ConfirmDialogSO>();
+            tableComp.Notification = null; // Will be created during the test
 
             yield return null;
         }
@@ -696,6 +703,100 @@ namespace Tests.PlayMode
             Assert.AreEqual(expectedEntry, element.Entry);
         }
 
+        [Test, Order(40)]
+        [Category("BuildServer")]
+        public void ShowDeleteConfirmationDialog_InvokesOnShowDeleteInspectionDialog()
+        {
+            // Arrange
+            tableComp.HandleDisplayUI("Location", "Item", "Compliancy", "Photo");
+            tableComp.AddCategory("Test Category");
+            TpiTableCategory category = tableComp.Categories.First();
+            category.AddEntry();
+            TpiTableEntry entry = category.Entries.First();
+
+            bool showDialogEventWasInvoked = false;
+            capturedConfirmDialogSO = null;
+            tableComp.OnShowDeleteInspectionDialog = new UnityEvent<ConfirmDialogSO>();
+            tableComp.OnShowDeleteInspectionDialog.AddListener((dialog) => {
+                showDialogEventWasInvoked = true;
+                capturedConfirmDialogSO = dialog;
+            });
+
+            // Act
+            category.ShowDeleteConfirmationDialog(entry);
+
+            // Assert
+            Assert.IsTrue(showDialogEventWasInvoked, "OnShowDeleteInspectionDialog event was not triggered");
+            Assert.IsNotNull(capturedConfirmDialogSO, "ConfirmDialogSO was not captured");
+            Assert.AreEqual(tableComp.DeleteInspectionSO, capturedConfirmDialogSO, "The dialog shown was not the expected one");
+
+            // Cleanup
+            tableComp.OnShowDeleteInspectionDialog.RemoveAllListeners();
+        }
+
+        [Test, Order(41)]
+        [Category("BuildServer")]
+        public void DeleteConfirmationDialog_PrimaryAction_RemovesEntryFromCategory()
+        {
+            // Arrange
+            tableComp.HandleDisplayUI("Location", "Item", "Compliancy", "Photo");
+            tableComp.AddCategory("Test Category");
+            TpiTableCategory category = tableComp.Categories.First();
+            category.AddEntry();
+            TpiTableEntry entry = category.Entries.First();
+
+            bool entryRemovedEventInvoked = false;
+            category.OnEntryRemoved.AddListener((removedEntry) => {
+                entryRemovedEventInvoked = true;
+            });
+
+            // Act
+            category.ShowDeleteConfirmationDialog(entry);
+            tableComp.DeleteInspectionSO.InvokePrimaryAction();
+
+            // Assert
+            Assert.IsTrue(entryRemovedEventInvoked, "OnEntryRemoved event was not triggered");
+            Assert.AreEqual(0, category.EntryCount, "Entry was not removed from the category");
+
+            // Cleanup
+            category.OnEntryRemoved.RemoveAllListeners();
+        }
+
+        [Test, Order(42)]
+        [Category("BuildServer")]
+        public void DeleteConfirmationDialog_PrimaryAction_CreatesCorrectNotification()
+        {
+            // Arrange
+            tableComp.HandleDisplayUI("Location", "Item", "Compliancy", "Photo");
+            tableComp.AddCategory("Test Category");
+            TpiTableCategory category = tableComp.Categories.First();
+            category.AddEntry();
+            TpiTableEntry entry = category.Entries.First();
+
+            bool deleteLogNotificationEventWasInvoked = false;
+            capturedNotificationSO = null;
+            tableComp.OnDeleteInspectionLog = new UnityEvent<NotificationSO>();
+            tableComp.OnDeleteInspectionLog.AddListener((notification) => {
+                deleteLogNotificationEventWasInvoked = true;
+                capturedNotificationSO = notification;
+            });
+
+            // Act
+            category.ShowDeleteConfirmationDialog(entry);
+            tableComp.DeleteInspectionSO.InvokePrimaryAction();
+
+            // Assert
+            Assert.IsTrue(deleteLogNotificationEventWasInvoked, "OnDeleteInspectionLog event was not triggered");
+            Assert.IsNotNull(capturedNotificationSO, "NotificationSO was not captured");
+            Assert.AreEqual("Inspection log deleted", capturedNotificationSO.Message, "Notification message is not as expected");
+            Assert.AreEqual(NotificationType.Success, capturedNotificationSO.NotificationType, "Notification type is not Success");
+            Assert.AreEqual(Align.FlexStart, capturedNotificationSO.Alignment, "Notification alignment is not FlexStart");
+
+            // Cleanup
+            tableComp.OnDeleteInspectionLog.RemoveAllListeners();
+            if (capturedNotificationSO != null)
+                Object.Destroy(capturedNotificationSO);
+        }
 
         private void Ping()
         {

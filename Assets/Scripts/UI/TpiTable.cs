@@ -74,6 +74,27 @@ namespace VARLab.DLX
         [Tooltip("Invoked when a column is removed from the table.")]
         public UnityEvent<int> OnColumnRemoved;
 
+        /// <summary>
+        ///     Event triggered to display notification message when inspection log is deleted
+        /// </summary>
+        /// <remarks>
+        ///     In Inspector connections:
+        ///     - Connect to: <see cref="Notification.HandleDisplayUI(NotificationSO)"/>
+        /// </remarks>
+        public UnityEvent<NotificationSO> OnDeleteInspectionLog;
+
+        /// <summary>
+        ///     Event triggered to show the delete inspection dialog
+        /// </summary>
+        /// <remarks>
+        ///     In Inspector connections:
+        ///     - Connect to: <see cref="ConfirmationDialog.HandleDisplayUI(ConfirmDialogSO)"/>
+        /// </remarks>
+        public UnityEvent<ConfirmDialogSO> OnShowDeleteInspectionDialog;
+
+        public NotificationSO Notification;
+        public ConfirmDialogSO DeleteInspectionSO;
+
         private const string ExpandButtonClickedClass = "table-category-exapnd-button-clicked";
 
         /// <summary>

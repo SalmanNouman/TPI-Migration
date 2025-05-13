@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -124,14 +125,18 @@ namespace Tests.PlayMode
 
         [UnityTest, Order(3)]
         [Category("BuildServer")]
-        public IEnumerator WhenRowRemovedInvokeDeleteInspection()
+        public IEnumerator WhenRowRemovedInvokeDeleteInspectionIfLogDoesNotHavePhoto()
         {
             // Arrange
-            bool eventTriggered = false; //flag to indicate whether deleteInspection was fired
+            bool deleteInspectionEventTriggered = false; //flag to indicate whether deleteInspection was fired
+            bool deletePhotoEventTriggered = false; //flag to indicate whether deletePhoto was fired
             string capturedObjectId = ""; //holds objectId when event is triggered
             inspectionLogBuilder.DeleteInspection = new UnityEvent<string>(); //subcribe to deleteInspection
             //when event fires, it sets eventTriggered to true and assigns the passed id to captured object ID
-            inspectionLogBuilder.DeleteInspection.AddListener(id => { eventTriggered = true; capturedObjectId = id; });
+            inspectionLogBuilder.DeleteInspection.AddListener(id => { deleteInspectionEventTriggered = true; capturedObjectId = id; });
+            inspectionLogBuilder.DeletePhoto = new UnityEvent<string>();
+            //when event fires, it sets eventTriggered to true
+            inspectionLogBuilder.DeletePhoto.AddListener(id => { deletePhotoEventTriggered = true; });
 
             //gets list to store in inspectionList
             inspectionLogBuilder.GetInspectionList(inspectionList);
@@ -150,7 +155,9 @@ namespace Tests.PlayMode
             var testElements = new List<TpiTableElement>
             {
                 new TpiTableElement { Text = "Reception" },  // Column 0: Location
-                new TpiTableElement { Text = "Test" }          // Column 1: Item Name
+                new TpiTableElement { Text = "Test" },          // Column 1: Item Name
+                new TpiTableElement { Text = "Compliant" }, // Column 2: Compliancy
+                new TpiTableElement { Text = "----" },          // Column 3: No Photo
             };
             elementsField.SetValue(tableEntry, testElements);
 
@@ -166,11 +173,67 @@ namespace Tests.PlayMode
             yield return null;
 
             // Assert
-            Assert.IsTrue(eventTriggered, "DeleteInspection event was not triggered.");
+            Assert.IsTrue(deleteInspectionEventTriggered, "DeleteInspection event was not triggered.");
+            Assert.IsFalse(deletePhotoEventTriggered, "DeletePhoto event was triggered.");
             Assert.AreEqual("Reception_Test", capturedObjectId, "The objectId passed to DeleteInspection is incorrect.");
         }
 
         [UnityTest, Order(4)]
+        [Category("BuildServer")]
+        public IEnumerator WhenRowRemovedInvokeDeleteInspectionAndDeletePhotoIfLogHasPhoto()
+        {
+            // Arrange
+            bool deleteInspectionEventTriggered = false; //flag to indicate whether deleteInspection was fired
+            bool deletePhotoEventTriggered = false; //flag to indicate whether deletePhoto was fired
+            string capturedObjectId = ""; //holds objectId when event is triggered
+            inspectionLogBuilder.DeleteInspection = new UnityEvent<string>(); //subcribe to deleteInspection
+            //when event fires, it sets eventTriggered to true and assigns the passed id to captured object ID
+            inspectionLogBuilder.DeleteInspection.AddListener(id => { deleteInspectionEventTriggered = true; capturedObjectId = id; });
+            inspectionLogBuilder.DeletePhoto = new UnityEvent<string>();
+            //when event fires, it sets eventTriggered to true
+            inspectionLogBuilder.DeletePhoto.AddListener(id => { deletePhotoEventTriggered = true; });
+
+            //gets list to store in inspectionList
+            inspectionLogBuilder.GetInspectionList(inspectionList);
+            //does display
+            inspectionLogBuilder.HandleDisplayInspectionLog();
+            yield return new WaitForSeconds(0.2f);
+
+            // Create a TableEntry instance.
+            TpiTableEntry tableEntry = new TpiTableEntry();
+
+            // reflection is used to access a private field, used in this case to get elements inside table entry class
+            var elementsField = typeof(TpiTableEntry).GetField("elements", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Assert.IsNotNull(elementsField, "Could not find the private field 'elements' in TableEntry.");//makes sure not null
+
+            // Create and assign a new list with test data.
+            var testElements = new List<TpiTableElement>
+            {
+                new TpiTableElement { Text = "Reception" },  // Column 0: Location
+                new TpiTableElement { Text = "Test" },          // Column 1: Item Name
+                new TpiTableElement { Text = "Compliant" }, // Column 2: Compliancy
+                new TpiTableElement { Text = "View photo" },          // Column 3: Photo
+            };
+            elementsField.SetValue(tableEntry, testElements);
+
+            // Act
+            // Invoke the private OnRowRemoved method using reflection.
+            var onRowRemovedMethod = typeof(InspectionLogBuilder)
+                .GetMethod("OnRowRemoved", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Assert.IsNotNull(onRowRemovedMethod, "Could not find the private method OnRowRemoved.");
+
+            onRowRemovedMethod.Invoke(inspectionLogBuilder, new object[] { tableEntry });
+
+            // Wait a frame for events to process.
+            yield return null;
+
+            // Assert
+            Assert.IsTrue(deleteInspectionEventTriggered, "DeleteInspection event was not triggered.");
+            Assert.IsTrue(deletePhotoEventTriggered, "DeletePhoto event was not triggered.");
+            Assert.AreEqual("Reception_Test", capturedObjectId, "The objectId passed to DeleteInspection is incorrect.");
+        }
+
+        [UnityTest, Order(5)]
         [Category("BuildServer")]
         public IEnumerator WhenClickButtonAllInvokeAddSortButtonListener()
         {
@@ -186,7 +249,7 @@ namespace Tests.PlayMode
             Assert.AreEqual(allButton, inspectionLogBuilder.CurrentButton);
         }
 
-        [UnityTest, Order(5)]
+        [UnityTest, Order(6)]
         [Category("BuildServer")]
         public IEnumerator WhenClickButtonCompliantInvokeAddSortButtonListener()
         {
@@ -202,7 +265,7 @@ namespace Tests.PlayMode
             Assert.AreEqual(compliantButton, inspectionLogBuilder.CurrentButton);
         }
 
-        [UnityTest, Order(6)]
+        [UnityTest, Order(7)]
         [Category("BuildServer")]
         public IEnumerator WhenClickButtonNonCompliantInvokeAddSortButtonListener()
         {

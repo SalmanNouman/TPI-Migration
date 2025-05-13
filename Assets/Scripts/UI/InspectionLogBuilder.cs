@@ -30,8 +30,6 @@ namespace VARLab.DLX
         private const string FilterSelectedClass = "tpi-sort-button-filter-tag-selected";
         private const string FilterClass = "tpi-sort-button-filter-tag";
 
-        public Button CurrentButton;
-
         /// <summary>
         ///     The list of inspection data records.
         /// </summary>
@@ -54,7 +52,32 @@ namespace VARLab.DLX
             NonCompliant
         }
 
+        public Button CurrentButton;
+        /// <summary>
+        ///     Event triggered to show the Delete Inspection log from centralized data structure
+        /// </summary>
+        /// <remarks>
+        ///     In Inspector connections:
+        ///     - Connect to: <see cref="Inspections.DeleteInspection(string)"/>
+        /// </remarks>
         public UnityEvent<string> DeleteInspection;
+
+        /// <summary>
+        ///     Event triggered to remove photo from centralized data structure
+        /// </summary>
+        /// <remarks>
+        ///     In Inspector connections:
+        ///     - Connect to: <see cref="ImageHandler.RemovePhoto(string)"/>
+        /// </remarks>
+        public UnityEvent<string> DeletePhoto;
+
+        /// <summary>
+        ///     Event triggered to display pop up UI for photo
+        /// </summary>
+        /// <remarks>
+        ///     In Inspector connections:
+        ///     - Connect to: <see cref="PopUpBuilder.HandleDisplayUIFromInspectionLog(string)"/>
+        /// </remarks>
         public UnityEvent<string> DisplayPopUp;
 
         /// <summary>
@@ -202,9 +225,13 @@ namespace VARLab.DLX
             //create objectId from retrieval
             string objectId = $"{location}_{name}";
 
+            if (removedEntry.Elements.ElementAt(3).Text == "View photo")
+            {
+                DeletePhoto?.Invoke(objectId);
+            }
+
             //Deletes the inspection from the inspection list.
             DeleteInspection?.Invoke(objectId);
-
             //// Log for debugging
             Debug.Log($"Row removed for object: {objectId}");
 

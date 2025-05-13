@@ -6946,6 +6946,78 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2123571564}
     m_Modifications:
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: DeleteInspectionSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 42611f39994b37f418f89cfcc347ffd7,
+        type: 2}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: deleteInspectionSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 42611f39994b37f418f89cfcc347ffd7,
+        type: 2}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 839905161}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2107117251}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.Notification, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ConfirmationDialog, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363603619346203586, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3243856640784438676, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: m_Name
@@ -7089,6 +7161,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: deleteInspectionSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 42611f39994b37f418f89cfcc347ffd7,
+        type: 2}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: sortButtonOneLabel
       value: All
       objectReference: {fileID: 0}
@@ -7104,6 +7182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DisplayPopUp.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7114,14 +7197,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DisplayPopUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 932635050}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DisplayPopUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1184597708}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemovePhoto
+      objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: DisplayPopUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -7139,6 +7242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DeleteInspection.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -7149,13 +7257,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 839905161}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ImageHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DisplayPopUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.PopUpBuilder, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2107117251}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
       propertyPath: DeleteInspection.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.Inspections, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDisplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.Notification, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ConfirmationDialog, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: DeletePhoto.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
@@ -7165,6 +7323,16 @@ PrefabInstance:
     - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: DeleteInspection.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnDeleteInspectionLog.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489627992422057268, guid: b6a03af152e3dd947b8f2311bec7b966,
+        type: 3}
+      propertyPath: OnShowDeleteInspectionDialog.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5849049297039265951, guid: b6a03af152e3dd947b8f2311bec7b966,
