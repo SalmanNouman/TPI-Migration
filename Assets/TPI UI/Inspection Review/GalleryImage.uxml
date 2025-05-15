@@ -11,8 +11,8 @@
                 <engine:VisualElement name="Image" class="align-self-center w-100 h-100 tpi-card-v5-body-image br-tl-20 br-tr-20" style="height: 130px;" />
             </engine:Button>
         </engine:VisualElement>
-        <engine:VisualElement name="Bottom" class="br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2 tpi-card-v5-bottom">
-            <engine:Label tabindex="-1" text="[PrimaryLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="fw-700 card-v5-bottom-default-primarylabel text-no-wrap fs-16 p-0 m-0" />
+        <engine:VisualElement name="Bottom" class="br-bl-20 br-br-20 bw-b-2 bw-l-2 bw-r-2 tpi-card-v5-bottom flex-grow-2">
+            <engine:Label tabindex="-1" text="[PrimaryLabel]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Primary" class="fw-700 card-v5-bottom-default-primarylabel fs-16 p-0 m-0 text-wrap flex-grow-2" />
             <engine:VisualElement name="Tag" class="br-10 align-items-center mt-4 tpi-card-v5-bottom-default-tag">
                 <engine:Label tabindex="-1" text="00:00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TagText" class="m-0 p-0 card-v5-bottom-default-tag-label fw-400 text-no-wrap fs-16" />
             </engine:VisualElement>

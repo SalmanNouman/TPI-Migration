@@ -1,25 +1,29 @@
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
 .empty-container {
-	padding-top: 125px;
-	padding-bottom: 240px;
+    padding-top: 125px;
+    padding-bottom: 240px;
 }
 
 .empty-container-icon {
-	height: 200px;
-	width: 200px;
-	-unity-background-scale-mode: scale-to-fit;
-	-unity-background-image-tint-color: var(--empty-container-icon-colour);
+    height: 200px;
+    width: 200px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--empty-container-icon-colour);
 }
 
 .empty-container-label {
-	color: var(--empty-container-label-colour);
-	font-size: 24px;
-	margin-top: 45px;
+    color: var(--empty-container-label-colour);
+    font-size: 24px;
+    margin-top: 45px;
 }
 
-.sort-button-container{
-	height: 90px;
-	padding-top: 30px;
-	padding-bottom: 30px;
+.sort-button-container {
+    height: 90px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .active-button {
@@ -43,15 +47,13 @@
     width: 160px;
 }
 
-/* Image Galley Image */
-
 .tpi-card-v5-container-base {
     width: 210px;
-    height: 195px;
+    height: 220px;
     border-color: var(--card-v5-border-colour);
 }
 
-.tpi-card-v5-container-image-only { /* Create variant of card v5 without top bar and default bottom section when used in conjunction with base container class */
+.tpi-card-v5-container-image-only {
     --card-v5-top-display: none;
     --card-v5-camera-icon-display: none;
     --card-v5-bottom-default-display: flex;
