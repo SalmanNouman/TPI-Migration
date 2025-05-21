@@ -174,7 +174,8 @@ namespace VARLab.DLX
 
             Label locationLabel = rowContainer.Q<Label>("LocationLabel");
 
-            UIHelper.SetElementText(locationLabel, location);
+            string locationName = PoiList.GetPoiName(location);
+            UIHelper.SetElementText(locationLabel, locationName);
 
             foreach (var photo in photosByLocation[location])
             {

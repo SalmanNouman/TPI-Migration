@@ -82,7 +82,8 @@ namespace VARLab.DLX
 
             imageContainer.style.backgroundImage = photoTexture;
 
-            UIHelper.SetElementText(locationLabel, photo.Location);
+            string locationName = PoiList.GetPoiName(photo.Location);
+            UIHelper.SetElementText(locationLabel, locationName);
             UIHelper.SetElementText(objectLabel, photo.ParseNameFromID(photo.Id));
             UIHelper.SetElementText(timeStampLabel, photo.Timestamp);
         }

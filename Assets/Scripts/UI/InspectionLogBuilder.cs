@@ -162,14 +162,16 @@ namespace VARLab.DLX
 
 
             // Group inspections by Location.
+            // Use raw location name as key for grouping, but we'll display the formatted name
             var groupedInspections = tempList.GroupBy(i => i.Obj.Location.ToString());
 
             // For each location group, create a category and add entries.
             foreach (var group in groupedInspections)
             {
-                //Add a new category to the table for this location.
-                table.AddCategory(group.Key);
-                TpiTableCategory category = table.FindCategoryByName(group.Key);
+                // Add a new category to the table for this location with properly formatted name
+                string formattedLocationName = PoiList.GetPoiName(group.Key);
+                table.AddCategory(formattedLocationName);
+                TpiTableCategory category = table.FindCategoryByName(formattedLocationName);
 
                 //subscribed to row removal event
                 category.OnEntryRemoved.AddListener(OnRowRemoved);
@@ -183,8 +185,8 @@ namespace VARLab.DLX
                     var entry = category.Entries.Last();
 
                     // Set the text for each column in the row:
-                    // Column 0: Location
-                    entry.Elements.ElementAt(0).Text = inspection.Obj.Location.ToString();
+                    // Column 0: Location (with proper formatting)
+                    entry.Elements.ElementAt(0).Text = PoiList.GetPoiName(inspection.Obj.Location.ToString());
 
                     // Column 1: Item.
                     entry.Elements.ElementAt(1).Text = inspection.Obj.Name.ToString();
@@ -193,7 +195,7 @@ namespace VARLab.DLX
                     entry.Elements.ElementAt(2).Text = inspection.IsCompliant ? " " : " ";
                     entry.Elements.ElementAt(2).Icon = inspection.IsCompliant ? compliantIcon : nonCompliantIcon;
 
-                    // Column 3: Info – if a photo exists, show a "View Photo" link, otherwise indicate no photo.
+                    // Column 3: Info â€“ if a photo exists, show a "View Photo" link, otherwise indicate no photo.
                     entry.Elements.ElementAt(3).Text = inspection.HasPhoto ? "View photo" : "----";
                     if (inspection.HasPhoto)
                     {
@@ -217,13 +219,18 @@ namespace VARLab.DLX
         /// <param name="removedEntry">The TableEntry that was removed.</param>
         private void OnRowRemoved(TpiTableEntry removedEntry)
         {
-            string location = removedEntry.Elements.ElementAt(0).Text;
+            // Get the formatted location name from the UI element
+            string formattedLocation = removedEntry.Elements.ElementAt(0).Text;
             string name = removedEntry.Elements.ElementAt(1).Text;
-            Debug.Log($"Row removed location: {location}");
+            Debug.Log($"Row removed location (formatted): {formattedLocation}");
             Debug.Log($"Row removed name: {name}");
 
+            // We need to convert back to the raw enum name for the objectId
+            string rawLocation = formattedLocation.Replace(" ", "");
+
             //create objectId from retrieval
-            string objectId = $"{location}_{name}";
+            string objectId = $"{rawLocation}_{name}";
+            Debug.Log($"Created objectId: {objectId}");
 
             if (removedEntry.Elements.ElementAt(3).Text == "View photo")
             {
@@ -234,7 +241,6 @@ namespace VARLab.DLX
             DeleteInspection?.Invoke(objectId);
             //// Log for debugging
             Debug.Log($"Row removed for object: {objectId}");
-
         }
 
         /// <summary>
