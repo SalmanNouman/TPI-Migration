@@ -211,6 +211,17 @@ namespace VARLab.DLX
 
             isTaskCompleted = true;
             managerCutout.SetActive(false);
+            // Disable manager cutout box collider
+            var boxCollider = managerCutout.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                boxCollider.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("IntroductionTask: BoxCollider component not found on manager cutout.");
+            }
+
             // Trigger task completed event
             OnTaskCompleted?.Invoke();
 
@@ -249,6 +260,16 @@ namespace VARLab.DLX
             isTaskStarted = true;
             isTaskCompleted = true;
             managerCutout.SetActive(false);
+            // Disable manager cutout box collider
+            var boxCollider = managerCutout.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                boxCollider.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("IntroductionTask: BoxCollider component not found on manager cutout.");
+            }
         }
 
         #endregion

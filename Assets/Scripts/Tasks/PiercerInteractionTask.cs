@@ -206,6 +206,17 @@ namespace VARLab.DLX
                 Debug.Log("PiercerInteractionTask: Piercer cutout hidden.");
             }
 
+            // Disable the piercer cutout collider
+            var boxCollider = piercerCutout.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                boxCollider.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("IntroductionTask: BoxCollider component not found on piercer cutout.");
+            }
+
             // Trigger task completed event
             OnTaskCompleted?.Invoke();
 
@@ -220,6 +231,15 @@ namespace VARLab.DLX
         {
             preparedProcedureTray.SetActive(isCompleted);
             piercerCutout.SetActive(!isCompleted);
+            var boxCollider = piercerCutout.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                boxCollider.enabled = !isCompleted;
+            }
+            else
+            {
+                Debug.LogWarning("PiercerInteractionTask: BoxCollider component not found on piercer cutout.");
+            }
             isTaskCompleted = isCompleted;
         }
 

@@ -287,6 +287,7 @@ namespace Tests.PlayMode
             // Disable tray and enable cutout for testing
             preparedProcedureTrayObject.SetActive(false);
             piercerCutoutObject.SetActive(true);
+            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
 
             // Act
             piercerTask.CompleteTask();
@@ -296,6 +297,7 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray should remain inactive if task is not started");
             Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout should remain active if task is not started");
+            Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is not started");
         }
 
         /// <summary>
@@ -314,6 +316,7 @@ namespace Tests.PlayMode
             // Disable tray and enable cutout to check they don't change
             preparedProcedureTrayObject.SetActive(false);
             piercerCutoutObject.SetActive(true);
+            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
 
             // Act
             piercerTask.CompleteTask();
@@ -322,6 +325,7 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray state shouldn't change if task is already completed");
             Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout state shouldn't change if task is already completed");
+            Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is already completed");
         }
 
         /// <summary>
@@ -335,6 +339,7 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(piercerTask, true);
             bool eventInvoked = false;
             piercerTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
 
             // Act
             piercerTask.CompleteTask();
@@ -344,6 +349,7 @@ namespace Tests.PlayMode
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
             Assert.IsFalse(piercerCutoutObject.activeSelf, "Piercer cutout should be inactive after task completes");
+            Assert.IsFalse(boxCollider.enabled, "BoxCollider should be disabled after task completes");
         }
 
         #endregion

@@ -257,6 +257,7 @@ namespace Tests.PlayMode
             // Arrange
             isTaskStarted.SetValue(introductionTask, true);
             managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
+            ((GameObject)managerCutout.GetValue(introductionTask)).AddComponent<BoxCollider>();
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
@@ -266,6 +267,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
             Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should be set to false");
+            Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).GetComponent<BoxCollider>().enabled, "BoxCollider should be disabled");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
         }
 
@@ -279,6 +281,7 @@ namespace Tests.PlayMode
             // Arrange
             isTaskStarted.SetValue(introductionTask, false);
             managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
+            ((GameObject)managerCutout.GetValue(introductionTask)).AddComponent<BoxCollider>();
             bool eventInvoked = false;
             introductionTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
@@ -288,6 +291,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsFalse((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should remain false if task is not started");
             Assert.IsTrue(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should remain active if task is not started");
+            Assert.IsTrue(((GameObject)managerCutout.GetValue(introductionTask)).GetComponent<BoxCollider>().enabled, "BoxCollider should remain enabled if task is not started");
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
         }
 
@@ -324,12 +328,14 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(introductionTask, true);
             isTaskCompleted.SetValue(introductionTask, true);
             managerCutout.SetValue(introductionTask, GameObject.CreatePrimitive(PrimitiveType.Quad));
+            ((GameObject)managerCutout.GetValue(introductionTask)).AddComponent<BoxCollider>();
             //Act
             introductionTask.LoadSaveTask();
 
             //Asset
             Assert.IsTrue((bool)isTaskCompleted.GetValue(introductionTask), "isTaskCompleted should be set to true");
             Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).activeSelf, "managerCutout should be set to false");
+            Assert.IsFalse(((GameObject)managerCutout.GetValue(introductionTask)).GetComponent<BoxCollider>().enabled, "BoxCollider should be disabled");
         }
 
         #endregion
