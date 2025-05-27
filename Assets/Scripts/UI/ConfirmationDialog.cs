@@ -36,17 +36,22 @@ namespace VARLab.DLX
         private VisualElement canvas;
         private Label descriptionLabel;
         private Label nameLabel;
-        private VisualElement checkBoxRow;
-        private Label checkboxLabel;
-        private Toggle checkbox;
+        private VisualElement primaryCheckboxRow;
+        private VisualElement secondaryCheckboxRow;
+        private Label primaryCheckboxLabel;
+        private Label secondaryCheckboxLabel;
+        private Toggle primaryToggle;
+        private Toggle secondaryToggle;
         private Button closeBtn;
         private Button primaryBtn;
         private Button secondaryBtn;
 
         // window variables
         private VisualElement window;
-        private int windowWidth;
-        private int windowHeight;
+
+        // Toggle state tracker variables
+        private bool primaryToggleState;
+        private bool secondaryToggleState;
 
         private const string DimmedBackgroundClass = "confirmation-dialog-canvas";
         private const string CancelButtonMarginClass = "mr-20";
@@ -61,9 +66,15 @@ namespace VARLab.DLX
             canvas = Root.Q<VisualElement>("Canvas");
             descriptionLabel = Root.Q<Label>("DescriptionLabel");
             nameLabel = Root.Q<Label>("NameLabel");
-            checkBoxRow = Root.Q<VisualElement>("CheckboxRow");
-            checkboxLabel = Root.Q<Label>("CheckboxLabel");
-            checkbox = Root.Q<Toggle>("Checkbox");
+
+            // Checkbox elements
+            primaryCheckboxRow = Root.Q<VisualElement>("PrimaryCheckBox");
+            secondaryCheckboxRow = Root.Q<VisualElement>("SecondaryCheckBox");
+            primaryCheckboxLabel = Root.Q<Label>("PrimaryToggleLabel");
+            secondaryCheckboxLabel = Root.Q<Label>("SecondaryToggleLabel");
+            primaryToggle = Root.Q<Toggle>("PrimaryToggle");
+            secondaryToggle = Root.Q<Toggle>("SecondaryToggle");
+
             closeBtn = Root.Q<Button>("CloseBtn");
 
             window = Root.Q<VisualElement>("ConfirmationDialog");
@@ -79,9 +90,14 @@ namespace VARLab.DLX
             };
 
             // Add checkbox value changed event handler
-            if (checkbox != null)
+            if (primaryToggle != null)
             {
-                checkbox.RegisterValueChangedCallback(CheckboxValueChanged);
+                primaryToggle.RegisterValueChangedCallback(CheckboxValueChanged);
+            }
+
+            if (secondaryToggle != null)
+            {
+                secondaryToggle.RegisterValueChangedCallback(CheckboxValueChanged);
             }
 
             UIHelper.Hide(Root);
@@ -120,7 +136,14 @@ namespace VARLab.DLX
             AddSecondaryButton(confirmDialogSO.SecondaryBtnType, confirmDialogSO.SecondaryBtnText);
             AddPrimaryButton(confirmDialogSO.PrimaryBtnType, confirmDialogSO.PrimaryBtnText);
             SetCloseButton(confirmDialogSO.IsCloseBtnVisible);
-            SetCheckbox(confirmDialogSO.IsCheckboxVisible, confirmDialogSO.CheckBoxText);
+            ConfigureCheckbox(confirmDialogSO.PrimaryCheckBoxVisible, confirmDialogSO.PrimaryCheckBoxText,
+                primaryCheckboxLabel, primaryCheckboxRow, primaryToggle);
+            ConfigureCheckbox(confirmDialogSO.SecondaryCheckBoxVisible, confirmDialogSO.SecondaryCheckBoxText,
+                secondaryCheckboxLabel, secondaryCheckboxRow, secondaryToggle);
+
+            primaryBtn.SetEnabled(!confirmDialogSO.IsPrimaryBtnDisabledOnShow);
+            primaryBtn.style.width = confirmDialogSO.PrimaryBtnWidth;
+
             // Need to specify size params for all windows
             window.style.width = confirmDialogSO.WindowWidth;
             window.style.height = confirmDialogSO.WindowHeight;
@@ -143,23 +166,47 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Sets the checkbox to DisplayStyle.Flex or DisplayStyle.None depending on incoming checkBoxVisible
+        /// Shows the checkbox and sets the text and value set to false, otherwise hides the checkbox.
+        /// <param name="isVisible">Whether the checkbox should be visible or not</param>
+        /// <param name="checkboxText">The text to display next to the checkbox</param>
+        /// <param name="checkboxLabel">The label element for the checkbox</param>
+        /// <param name="checkboxElement">The checkbox element itself</param>"</param>
+        /// <param name="checkboxToggle">The toggle element for the checkbox</param>
         /// </summary>
-        /// <param name="checkBoxVisible"></param>
-        /// <param name="checkboxText"></param>
-        public void SetCheckbox(bool checkBoxVisible, string checkboxText)
+        private void ConfigureCheckbox(bool isVisible, string checkboxText, 
+            Label checkboxLabel, VisualElement checkboxElement, Toggle checkboxToggle)
         {
-            if (checkBoxVisible)
+            if (isVisible)
             {
-                UIHelper.Show(checkBoxRow);
+                UIHelper.Show(checkboxElement);
                 UIHelper.Show(checkboxLabel);
                 UIHelper.SetElementText(checkboxLabel, checkboxText);
-                checkbox.value = false;
+                checkboxToggle.value = false;
             }
             else
             {
-                UIHelper.Hide(checkBoxRow);
+                UIHelper.Hide(checkboxElement);
                 UIHelper.Hide(checkboxLabel);
+            }
+        }
+
+        /// <summary>
+        /// Sets the state of the primary button based on the state of the checkboxes. For toggle action
+        /// dialogs.
+        /// </summary>
+        public void UpdatePrimaryButtonState()
+        {
+            if (primaryToggle.value && !currentDialogSO.SecondaryCheckBoxVisible)
+            {
+                primaryBtn.SetEnabled(true);
+            }
+            else if (primaryToggle.value && secondaryToggle.value)
+            {
+                primaryBtn.SetEnabled(true);
+            }
+            else
+            {
+                primaryBtn.SetEnabled(false);
             }
         }
 
@@ -243,7 +290,8 @@ namespace VARLab.DLX
         {
             if (currentDialogSO != null)
             {
-                currentDialogSO.InvokeToggleAction(evt.newValue);
+                currentDialogSO.InvokePrimaryToggleAction(evt.newValue);
+                currentDialogSO.InvokeSecondaryToggleAction(evt.newValue);
             }
         }
 

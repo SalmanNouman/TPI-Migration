@@ -15,11 +15,17 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="Content" class="confirmation-dialog-body br-20 mt-12 pb-24 pr-24 pl-36 pt-36 grow">
                         <ui:Label tabindex="-1" text="[Description]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DescriptionLabel" class="fw-400 m-0 p-0 grow text-wrap fs-28 confirmation-dialog-description-label" />
-                        <ui:VisualElement name="CheckboxRow" class="flex-row mb-48">
-                            <ui:VisualElement name="CheckBox">
-                                <ui:Toggle name="Checkbox" class="checkbox" />
+                        <ui:VisualElement name="PrimaryCheckBox" class="flex-row mb-48">
+                            <ui:VisualElement name="CheckBox" class="checkbox">
+                                <ui:Toggle name="PrimaryToggle" class="checkbox" />
                             </ui:VisualElement>
-                            <ui:Label text="Label" name="CheckboxLabel" class="text-wrap m-0 confirmation-dialog-name-label fw-400 fs-24" />
+                            <ui:Label text="Label" name="PrimaryToggleLabel" class="text-wrap m-0 confirmation-dialog-name-label fw-400 fs-24" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SecondaryCheckBox" class="flex-row mb-48">
+                            <ui:VisualElement name="CheckBox" class="checkbox">
+                                <ui:Toggle name="SecondaryToggle" class="checkbox" />
+                            </ui:VisualElement>
+                            <ui:Label text="Label" name="SecondaryToggleLabel" class="text-wrap m-0 confirmation-dialog-name-label fw-400 fs-24" />
                         </ui:VisualElement>
                         <ui:VisualElement name="ButtonContainer" class="grow flex-row justify-end align-items-end" />
                     </ui:VisualElement>

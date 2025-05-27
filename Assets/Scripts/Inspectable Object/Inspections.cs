@@ -38,6 +38,12 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<string> OnDeleteInspectionPhoto;
 
+        /// <summary>
+        ///     Event invoked when the inspection list data is requested.
+        ///     <see cref="InspectionReviewBuilder.OnEndInspectionConfirmation"/>
+        /// </summary>
+        public UnityEvent<List<InspectionData>> OnGetInspectionLogList;
+
         #endregion
 
         #region Properties
@@ -169,6 +175,13 @@ namespace VARLab.DLX
         {
             InspectionsList = savedList;
             OnInspectionCompleted?.Invoke(InspectionsList);
+        }
+
+        // For use in data retrieval
+        /// Event calls this method to fire off a data sending event with the inspectionsData list.
+        public void GetInspectionDataList()
+        {
+            OnGetInspectionLogList?.Invoke(InspectionsList);
         }
         #endregion
     }

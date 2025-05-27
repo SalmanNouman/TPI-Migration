@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c4c5002d3660945b23d839814831d0, type: 3}
+  m_Name: EndInspectionConfirmation
+  m_EditorClassIdentifier: 
+  Name: Confirm End Inspection
+  Description: Please read before you confirm!
+  PrimaryBtnType: 0
+  PrimaryBtnText: End Inspection to View Summary
+  SecondaryBtnType: 1
+  SecondaryBtnText: Cancel
+  IsCloseBtnVisible: 1
+  IsBackgroundDimmed: 1
+  PrimaryCheckBoxVisible: 1
+  SecondaryCheckBoxVisible: 1
+  PrimaryCheckBoxText: By ending this inspection, I understand that I <color=#FFC009><b>cannot
+    make changes</b></color> in this inspection.
+  SecondaryCheckBoxText: By ending this inspection, I understand that if I do not
+    <color=#FFC009><b>download</b></color> the summary in the next section, this
+    inspection will be <color=#FFC009><b>permanently lost</b></color>.
+  IsPrimaryBtnDisabledOnShow: 1
+  PrimaryBtnWidth: 400
+  WindowWidth: 1092
+  WindowHeight: 488

@@ -216,7 +216,7 @@ namespace VARLab.DLX
                 {
                     // Set up the confirmation dialog actions
                     photoDeleteDialogSO.SetPrimaryAction(() => DeletePhotoConfirmed(btnData.Name, btnData.Location));
-                    photoDeleteDialogSO.SetToggleAction((val) => deleteInspectionLogFlag = val);
+                    photoDeleteDialogSO.SetPrimaryToggleAction((val) => deleteInspectionLogFlag = val);
 
                     // Show the confirmation dialog
                     OnShowConfirmationDialog?.Invoke(photoDeleteDialogSO);

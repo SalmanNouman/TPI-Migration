@@ -216,5 +216,70 @@ namespace Tests.PlayMode
             Assert.IsTrue(tabTwoInvoked);
             Assert.IsTrue(tabThreeInvoked);
         }
+
+        [UnityTest, Order(9)]
+        [Category("BuildServer")]
+        public IEnumerator EndInspectionButtonEventInvokedWhenEndInspectionButtonClicked()
+        {
+            // Arrange
+            bool endInspectionButtonClickedInvoked = false;
+            Button endInspectionButton = root.Q<Button>("PrimaryButton");
+            inspectionReviewBuilder.OnEndInspectionButtonClicked.AddListener((confirmDialog) =>
+            {
+                endInspectionButtonClickedInvoked = true;
+            });
+
+            // Act
+            inspectionReviewBuilder.Show();
+            var e = new NavigationSubmitEvent() { target = endInspectionButton };
+            endInspectionButton.SendEvent(e);
+            yield return new WaitForSeconds(0.1f);
+
+            // Assert
+            Assert.IsTrue(endInspectionButtonClickedInvoked);
+        }
+
+        [UnityTest, Order(10)]
+        [Category("BuildServer")]
+        public IEnumerator EndInspectionDialogInvokesOnInspectionConfirmationEventOnPrimaryActionInvoked()
+        {
+            // Arrange
+            bool endInspectionButtonClickedInvoked = false;
+            bool endInspectionConfirmationInvoked = false;
+            Button endInspectionButton = root.Q<Button>("PrimaryButton");
+            inspectionReviewBuilder.OnEndInspectionButtonClicked.AddListener((confirmDialog) =>
+            {
+                endInspectionButtonClickedInvoked = true;
+                confirmDialog.InvokePrimaryAction();
+            });
+            inspectionReviewBuilder.OnEndInspectionConfirmation.AddListener(() => endInspectionConfirmationInvoked = true);
+            inspectionReviewBuilder.Show();
+
+            // Act
+            var e = new NavigationSubmitEvent() { target = endInspectionButton };
+            endInspectionButton.SendEvent(e);
+            yield return new WaitForSeconds(0.1f);
+
+            // Assert
+            Assert.IsTrue(endInspectionButtonClickedInvoked);
+            Assert.IsTrue(endInspectionConfirmationInvoked);
+        }
+
+        [UnityTest, Order(11)]
+        [Category("BuildServer")]
+        public IEnumerator OnShowEndInspectionButtonIsEnabledAfterHandWashingTaskCompleted()
+        {
+            // Arrange
+            Button endInspectionButton = root.Q<Button>("PrimaryButton");
+            bool isEnabled = endInspectionButton.enabledSelf;
+            // Simulate hand washing task completion
+            TPISceneManager.HandWashingCompleted = true;
+
+            // Act
+            inspectionReviewBuilder.Show();
+            yield return new WaitForSeconds(0.1f);
+            // Assert
+            Assert.IsTrue(isEnabled, "End Inspection button should be enabled after inspection is completed.");
+        }
     }
 }

@@ -97,6 +97,14 @@ MonoBehaviour:
   OnColumnRemoved:
     m_PersistentCalls:
       m_Calls: []
+  OnDeleteInspectionLog:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowDeleteInspectionDialog:
+    m_PersistentCalls:
+      m_Calls: []
+  Notification: {fileID: 0}
+  DeleteInspectionSO: {fileID: 0}
 --- !u!1 &3243856640784438676
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +182,8 @@ MonoBehaviour:
   tabTwo: Activity Log
   iconThree: {fileID: 21300000, guid: d326185c734107342930b10c7875865e, type: 3}
   tabThree: Gallery
+  EndInspectionDialogSO: {fileID: 11400000, guid: 9db7fc65951dba945a0e37eddd3a9297,
+    type: 2}
   OnShow:
     m_PersistentCalls:
       m_Calls:
@@ -421,6 +431,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEndInspectionButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndInspectionConfirmation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4489627992422057268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +460,9 @@ MonoBehaviour:
   compliantIcon: {fileID: 21300000, guid: a5c0509d1b80c0049be886b103378bb0, type: 3}
   nonCompliantIcon: {fileID: 21300000, guid: 63d3164d40e5d7144bbcbc2a69f87d4d, type: 3}
   DeleteInspection:
+    m_PersistentCalls:
+      m_Calls: []
+  DeletePhoto:
     m_PersistentCalls:
       m_Calls: []
   DisplayPopUp:
@@ -493,6 +512,9 @@ MonoBehaviour:
     type: 3}
   photoDeleteDialogSO: {fileID: 11400000, guid: 92aa5596fd48c8946be5e4caa63cb9f7,
     type: 2}
+  OnPhotoDeleteNotification:
+    m_PersistentCalls:
+      m_Calls: []
   DeletePhoto:
     m_PersistentCalls:
       m_Calls:

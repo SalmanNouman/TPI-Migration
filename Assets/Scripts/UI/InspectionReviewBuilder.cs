@@ -54,10 +54,21 @@ namespace VARLab.DLX
 
         private Button currentButton;
 
+        private Button endInspectionButton;
+
         // uss classes
         private const string SelectedTab = "navigation-horizontal-button-selected";
         private const string FontRegular = "fw-400";
         private const string FontBold = "fw-700";
+
+        // Dialog SO for End Inspection pop up
+        public ConfirmDialogSO EndInspectionDialogSO;
+
+        /// <summary>
+        /// Invoked when the toggles are clicked in the end inspection confirmation dialog.
+        /// <see cref="ConfirmationDialog.UpdatePrimaryButtonState"/>
+        /// </summary>
+        public UnityEvent EndInspectionToggleEvent;
 
         /// <summary>
         /// Invoked when Show is called.
@@ -105,11 +116,34 @@ namespace VARLab.DLX
         [Tooltip("Invoked when tab three is selected.")]
         public UnityEvent OnTabThreeSelected;
 
+        /// <summary>
+        /// Invoked when the end inspection button is clicked.
+        /// <see cref="ConfirmationDialog.HandleDisplayUI(ConfirmDialogSO)"/>
+        /// </summary>
+        public UnityEvent<ConfirmDialogSO> OnEndInspectionButtonClicked;
+
+        /// <summary>
+        /// Invoked when the End Inspection dialog is confirmed.
+        /// <see cref="Hide"/>
+        /// <see cref="TimerManager.PauseTimers"/>
+        /// <see cref="PoiHandler.GetPoiList"
+        /// <see cref="InspectionSummaryBuilder.SetDateTimeAndTimer"/>
+        /// <see cref="InspectionSummaryBuilder.Show"/>
+        /// </summary>
+        public UnityEvent OnEndInspectionConfirmation;
+
         private void Start()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
 
             GetAllReferences();
+
+            // Disable the end inspection button by default
+            endInspectionButton.SetEnabled(false);
+
+            // initialize events
+            OnEndInspectionConfirmation ??= new();
+            OnEndInspectionButtonClicked ??= new();
 
             SetContentAnListeners();
 
@@ -143,6 +177,9 @@ namespace VARLab.DLX
             iconOneElement = tabOneButton.Q<VisualElement>("Icon");
             iconTwoElement = tabTwoButton.Q<VisualElement>("Icon");
             iconThreeElement = tabThreeButton.Q<VisualElement>("Icon");
+
+            // End Inspection button
+            endInspectionButton = root.Q<Button>("PrimaryButton");
         }
 
         /// <summary>
@@ -178,6 +215,16 @@ namespace VARLab.DLX
                 SelectTab(tabThreeButton);
                 OnTabThreeSelected?.Invoke();
             };
+
+            // Set up primary button listener
+            endInspectionButton.clicked += () =>
+            {
+                EndInspectionDialogSO.SetPrimaryAction(() => { OnEndInspectionConfirmation?.Invoke(); });
+                EndInspectionDialogSO.SetPrimaryToggleAction((isChecked) => { EndInspectionToggleEvent?.Invoke(); });
+                EndInspectionDialogSO.SetSecondaryToggleAction((isChecked) => { EndInspectionToggleEvent?.Invoke(); });
+
+                OnEndInspectionButtonClicked?.Invoke(EndInspectionDialogSO);
+            };
         }
 
         /// <summary>
@@ -212,6 +259,17 @@ namespace VARLab.DLX
         }
 
         /// <summary>
+        /// Updates the end inspection button state based on task completion status
+        /// Handwashing task must be completed to enable the end inspection button
+        /// </summary>
+        public void UpdateEndInspectionButtonState()
+        {
+            // Enable the end inspection button only when both handwashing is completed
+            bool tasksCompleted = TPISceneManager.HandWashingCompleted;
+            endInspectionButton.SetEnabled(tasksCompleted);
+        }
+
+        /// <summary>
         /// Is called when the menu inspection button is clicked to display the inspection window.
         /// Tab one is always the active tab on show.
         /// OnShow event is invoked.
@@ -220,6 +278,7 @@ namespace VARLab.DLX
         {
             SelectTab(tabOneButton);
             OnTabOneSelected.Invoke();
+            UpdateEndInspectionButtonState();
             UIHelper.Show(root);
             OnShow?.Invoke();
         }

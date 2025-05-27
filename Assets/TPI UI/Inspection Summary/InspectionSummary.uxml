@@ -1,0 +1,179 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspection-summary.uss?fileID=7433441132597879392&amp;guid=9822bbacfe3600a4bbf02cf328f9c418&amp;type=3#tpi-inspection-summary" />
+    <engine:VisualElement name="Canvas" class="shrink grow justify-center align-items-center">
+        <engine:VisualElement name="InspectionSummaryWindow" class="align-self-center br-20 inspectionReviewWindow">
+            <engine:VisualElement name="Header" class="flex-row align-items-stretch align-self-auto justify-start w-100 h-100" style="height: 101px; margin-bottom: 60px;">
+                <engine:VisualElement name="HeaderStart" class="header-start pl-32 flex-row align-items-center" style="width: 563px; height: 100px;">
+                    <engine:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WindowTitle" class="fw-700 fs-36 m-0 p-0 grow text-align-middle-left header-label" style="color: rgb(255, 255, 255);">
+                        <Bindings>
+                            <engine:DataBinding property="text" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" data-source-path="InspectionSummary" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="HeaderEnd" class="absolute w-100 header-end br-tl-20 br-tr-20" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Body" class="w-100 flex-row pt-36 h-100" style="padding-top: 0;">
+                <engine:VisualElement name="BodyLeft" class="pr-44 body-left">
+                    <engine:VisualElement name="Overview" class="bw-r-2 bw-b-4 overview-section pt-8">
+                        <engine:VisualElement name="OverviewTop" class="flex-row w-100 mb-8">
+                            <engine:VisualElement name="InspectionDate" class="overview-grid">
+                                <engine:Label name="InspectionDateLabel" class="fs-24 text-no-wrap bold overview-label">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="InspectionDate" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Date" name="InspectionDateText" class="bold overview-text fs-32" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Facility" class="overview-grid" style="width: 50%;">
+                                <engine:Label name="FacilityLabel" class="fs-24 text-no-wrap bold overview-label" style="margin-left: 75px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="Facility" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label name="FacilityText" class="bold overview-text text-wrap fs-32" style="white-space: normal; margin-left: 75px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="TattooAndPiercingStudio" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Bar" class="align-self-center" style="width: 3px; background-color: rgb(255, 192, 9); height: 100px; margin-top: 15px;" />
+                            <engine:VisualElement name="TotalTime" class="overview-grid" style="width: 33.3%;">
+                                <engine:Label name="TotalTimeLabel" class="fs-24 text-no-wrap bold overview-label" style="margin-left: 27px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="TotalTime" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Time" name="TotalTimeText" class="bold text-align-middle-left overview-text fs-32" style="margin-left: 27px;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement name="OverviewBar" class="align-self-center mt-28 mb-28" style="width: 704px; height: 2px; background-color: rgb(121, 116, 126);" />
+                        <engine:VisualElement name="OverviewBottom" class="flex-row h-50">
+                            <engine:VisualElement name="NonCompliances" class="overview-grid">
+                                <engine:Label name="NonCompliancesLabel" parse-escape-sequences="true" class="fs-24 bold overview-label" style="color: rgb(220, 220, 220);">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="NonCompliances" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Label" name="NonCompliancesText" class="bold overview-text fs-32" style="color: rgb(255, 255, 255);" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Compliances" class="overview-grid" style="width: 50%;">
+                                <engine:Label name="CompliancesLabel" parse-escape-sequences="true" class="bold fs-24 mt-28 overview-label" style="color: rgb(220, 220, 220); margin-left: 75px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="Compliances" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Label" name="CompliancesText" class="bold overview-text fs-32" style="margin-left: 75px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Bar" class="align-self-center" style="width: 3px; height: 118px; background-color: rgb(255, 192, 9);" />
+                            <engine:VisualElement name="Locations" class="overview-grid">
+                                <engine:Label name="LocationsLabel" parse-escape-sequences="true" class="fs-24 bold mt-28 overview-label" style="color: rgba(220, 220, 220, 0.98); margin-left: 27px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="Locations" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Label" name="LocationsText" class="bold overview-text fs-32" style="margin-left: 27px;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Downloads">
+                        <engine:VisualElement name="DownloadsTitle" class="flex-row justify-start w-100 h-45">
+                            <engine:VisualElement name="BarLeft" class="flex-row align-items-auto justify-end align-self-center h-100" style="width: 218px;">
+                                <engine:VisualElement class="justify-center align-self-center" style="width: 170px; height: 1.1px; margin-right: 14px; background-color: rgb(151, 151, 151);" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="IconContainer" class="download-info-icon-background flex-row align-self-center p-8 align-items-center justify-center align-content-auto" style="background-color: rgba(255, 255, 255, 0.2);">
+                                <engine:VisualElement name="InfoIcon" class="download-info-icon" style="background-color: rgba(255, 255, 255, 0);" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="DownloadsLabel" class="flex-row justify-center h-100 w-50 pl-16">
+                                <engine:Label class="align-self-center justify-center bold" style="font-size: 26px; color: rgb(151, 151, 151);">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="DownloadInfo" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="BarRight" class="flex-row justify-end align-items-auto" style="width: 200px;">
+                                <engine:VisualElement class="flex-row-reverse align-self-center" style="background-color: rgb(151, 151, 151); width: 180px; height: 1.1px;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement name="DownloadsBody" class="w-100 flex-row" style="height: 203px;">
+                            <engine:VisualElement name="PDFContent" class="w-50">
+                                <engine:Label class="fs-20 bold downloads-labels">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="PDFContains" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:VisualElement class="flex-row bold downloads-list">
+                                    <engine:VisualElement name="Icon" style="flex-shrink: 0; width: 32px; height: 32px; -unity-background-scale-mode: scale-to-fit; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/check-circle.png?fileID=2800000&amp;guid=5f80a5530234dbd4b87ee747c99cde92&amp;type=3#check-circle&quot;);" />
+                                    <engine:Label class="text-align-middle-left fs-20" style="-unity-font-style: normal; color: rgb(255, 255, 255); margin-left: 15px;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" data-source-path="InspectionSummary" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                                <engine:VisualElement class="flex-row bold downloads-list">
+                                    <engine:VisualElement name="Icon" style="flex-shrink: 0; width: 32px; height: 32px; -unity-background-scale-mode: scale-to-fit; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/check-circle.png?fileID=2800000&amp;guid=5f80a5530234dbd4b87ee747c99cde92&amp;type=3#check-circle&quot;);" />
+                                    <engine:Label class="text-align-middle-left fs-20" style="color: rgb(255, 255, 255); -unity-font-style: normal; margin-left: 15px;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" data-source-path="InspectionLog" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                                <engine:VisualElement class="flex-row bold downloads-list">
+                                    <engine:VisualElement name="Icon" style="height: 32px; width: 32px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/check-circle.png?fileID=2800000&amp;guid=5f80a5530234dbd4b87ee747c99cde92&amp;type=3#check-circle&quot;);" />
+                                    <engine:Label class="text-align-middle-left fs-20" style="color: rgb(255, 255, 255); -unity-font-style: normal; margin-left: 15px;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" data-source-path="ActivityLog" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="ZipContent" class="w-50">
+                                <engine:Label class="fs-20 bold downloads-labels" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 102px;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" data-source-path="ZIPContains" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:VisualElement class="flex-row downloads-list" style="padding-left: 67px;">
+                                    <engine:VisualElement name="Icon" style="width: 32px; height: 32px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0; background-image: url(&quot;project://database/Assets/Art/Sprite/Icons/check-circle.png?fileID=2800000&amp;guid=5f80a5530234dbd4b87ee747c99cde92&amp;type=3#check-circle&quot;);" />
+                                    <engine:Label class="fs-20 text-align-middle-left" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; color: rgb(255, 255, 255);">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" data-source-path="PhotoGallery" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="BodyRight" class="h-100 body-right">
+                    <engine:VisualElement class="body-right-borderBox">
+                        <engine:Label class="w-100 bold" style="height: 33.88px; margin-top: 26.7px; margin-right: 0; margin-bottom: 0; margin-left: 29px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 26px; color: rgb(151, 151, 151);">
+                            <Bindings>
+                                <engine:DataBinding property="text" data-source-path="LocationsNotInspected" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                            </Bindings>
+                        </engine:Label>
+                        <engine:Label name="LocationListLabel" class="fs-24" style="height: 450px; margin-top: 25px; margin-right: 0; margin-bottom: 0; margin-left: 34px; color: rgb(255, 255, 255); -unity-paragraph-spacing: 30px;" />
+                        <engine:Label text="Label" name="LocationCount" class="w-100 fs-20 bold text-align-upper-right" style="height: 31px; padding-top: 0; padding-right: 45px; padding-bottom: 0; padding-left: 0; color: rgb(151, 151, 151);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="FooterBar" class="flex-row align-items-auto justify-end align-self-center" style="width: 100%; justify-content: center;">
+                <engine:VisualElement class="justify-center align-self-center" style="width: 97%; height: 1.1px; margin-right: 14px; background-color: rgb(255, 255, 255); margin-bottom: 43px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" class="flex-row-reverse" style="height: 136px; margin-right: 39px; margin-left: 30px; border-top-width: 1px;">
+                <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrimaryButton" enable-rich-text="false" class="button-primary button justify-center flex-row align-items-center button-medium-icon bold" style="width: 300px; height: 62px; font-size: 26px;">
+                    <Bindings>
+                        <engine:DataBinding property="text" data-source-path="PrimaryButton" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                    </Bindings>
+                </engine:Button>
+                <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondaryButton" class="button-secondary-1 button align-items-center justify-center flex-row button-medium-icon bold" style="width: 300px; height: 62px; margin-right: 29px; font-size: 26px;">
+                    <Bindings>
+                        <engine:DataBinding property="text" data-source-path="SecondaryButton" data-source="project://database/Assets/Scriptable%20Objects/StringResourceSO/UILabels/SummaryStringSO.asset?fileID=11400000&amp;guid=17bb86ca008c58f419a44d414c4c9b75&amp;type=2#SummaryStringSO" binding-mode="ToTarget" />
+                    </Bindings>
+                </engine:Button>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

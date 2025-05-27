@@ -1,102 +1,105 @@
 .inspection-review {
-	width: 1786px;
-	height: 985px;
-	background-color: var(--window-single-background-colour)
+    width: 1786px;
+    height: 985px;
+    background-color: var(--window-single-background-colour);
 }
 
 .inspection-review-header-start {
-	min-width: 563px;
-	min-height: 100px;
-	padding-right: 70px;
-	background-image:  var(--header-start-background-image);
-	-unity-background-image-tint-color:  var(--header-tint-colour);
+    min-width: 563px;
+    min-height: 100px;
+    padding-right: 70px;
+    background-image: var(--header-start-background-image);
+    -unity-background-image-tint-color: var(--header-tint-colour);
 }
 
 .inspection-review-close-button {
-	position: absolute;
-	top: 40px;
-	right: 55px;
+    position: absolute;
+    top: 40px;
+    right: 55px;
 }
 
 .inspection-review-body {
-	height: 740px;
-	padding-left: 110px;
-	padding-top: 60px;
-	padding-bottom: 20px;
-	padding-right: 115px;
+    height: 740px;
+    padding-left: 110px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    padding-right: 115px;
 }
 
 .inspection-review-body-tab-layout {
-	height: 100%;
-	min-width: 1200px;
-	padding-left: 70px;
-	padding-bottom: 20px;
+    height: 100%;
+    min-width: 1200px;
+    padding-left: 70px;
+    padding-bottom: 20px;
 }
 
 .inspection-review-body-navigation-bar {
-	height:105px;
-	min-width: 100%;
-	background-color:  var(--navigation-horizontal-background-colour);
+    height: 105px;
+    min-width: 100%;
+    background-color: var(--navigation-horizontal-background-colour);
 }
 
-.content-container{
+.content-container {
     background-color: var(--navigation-horizontal-button-colour-active);
     width: 380px;
     height: 80px;
 }
 
 .inspection-reveiw-footer {
-	min-height: 145px;
+    min-height: 145px;
 }
 
 .inspection-review-footer-bar {
-	height: 1px;
-	width: 1635px;
-	margin-right:75px;
-	margin-left: 75px;
-	background-color:  var(--navigation-bottom-bar-default-color);
-	align-self: flex-end;
+    height: 1.5px;
+    width: 88%;
+    margin-right: 75px;
+    margin-left: 75px;
+    background-color: var(--navigation-bottom-bar-default-color);
+    align-self: center;
+    margin-top: 10px;
 }
-
-/* Image Gallery */
 
 .image-gallery-location-label {
-	padding-top: 0px;
-	padding-right: 2px;
-	padding-bottom: 4px;
-	padding-left: 1px;
-	margin-top: 0px;
-	margin-right: 4px;
-	margin-bottom: 22px;
-	margin-left: 2px;
-	color: var(--image-gallery-row-label-colour);
+    padding-top: 0;
+    padding-right: 2px;
+    padding-bottom: 4px;
+    padding-left: 1px;
+    margin-top: 0;
+    margin-right: 4px;
+    margin-bottom: 22px;
+    margin-left: 2px;
+    color: var(--image-gallery-row-label-colour);
 }
 
-/* Image Pop Up */
-
 .image-popup-background-dim {
-	background-color: var(--canvas-dim-colour);
-	border-radius: 20px;
-	width: 1786px;
-	height: 985px;
+    background-color: var(--canvas-dim-colour);
+    border-radius: 20px;
+    width: 1786px;
+    height: 985px;
 }
 
 .inspection-log-element-label {
-	background-color: rgba(0, 0, 0, 0);
-	border-width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
 }
 
 .inspection-log-element-label:enabled {
-	color: rgb(5, 141, 241);
+    color: rgb(5, 141, 241);
 }
 
 .inspection-log-element-label:hover:enabled {
-	color: rgb(5, 141, 241);
-	border-bottom-width: 2px;
-	border-color: rgb(5, 141, 241);
-	background-color: rgba(0, 0, 0, 0);
+    color: rgb(5, 141, 241);
+    border-bottom-width: 2px;
+    border-color: rgb(5, 141, 241);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .inspection-log-element-label:disabled {
-	background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.Inspection-review-primaryBtn {
+    align-self: flex-end;
+    margin-top: 35px;
+    padding-right: 87px;
 }

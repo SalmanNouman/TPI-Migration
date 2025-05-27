@@ -1,14 +1,12 @@
-/* ===============================================
-Confirmation dialog classes
-=============================================== */  
 .confirmation-dialog {
-    max-width: 730px;    
+    max-width: 1092px;
     min-width: 730px;
     min-height: 350px;
+    max-height: 488px;
 }
 
 .confirmation-dialog-canvas {
-	background-color: var(--canvas-dim-colour);
+    background-color: var(--canvas-dim-colour);
 }
 
 .confirmation-dialog-background {
@@ -25,4 +23,8 @@ Confirmation dialog classes
 
 .confirmation-dialog-description-label {
     color: var(--confirmation-dialog-description-label-colour);
+}
+
+.checkbox {
+    flex-shrink: 0;
 }

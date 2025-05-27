@@ -34,11 +34,23 @@ namespace VARLab.DLX
         [Tooltip("Whether the background behind the UI is dimmed or not")]
         public bool IsBackgroundDimmed = true;
 
-        [Tooltip("Whether the dialog has a checkbox or not")]
-        public bool IsCheckboxVisible = false;
+        [Tooltip("Whether the dialog has a primary checkbox or not")]
+        public bool PrimaryCheckBoxVisible = false;
+
+        [Tooltip("Whether the dialog has a secondary checkbox or not")]
+        public bool SecondaryCheckBoxVisible = false;
 
         [TextArea(1, 3), Tooltip("The text of the checkbox")]
-        public string CheckBoxText;
+        public string PrimaryCheckBoxText;
+
+        [TextArea(1, 3), Tooltip("The text of the checkbox")]
+        public string SecondaryCheckBoxText;
+
+        [Tooltip("Whether the primary button is disabled on show")]
+        public bool IsPrimaryBtnDisabledOnShow = false;
+
+        [Tooltip("The width of the primary button")]
+        public int PrimaryBtnWidth = 144;
 
         // Window width and height settings
         [Header("Window Settings in Pixels"), Space(5)]
@@ -52,7 +64,8 @@ namespace VARLab.DLX
         // Action delegates for button clicks and checkbox toggle
         private Action primaryAction;
         private Action secondaryAction;
-        private Action<bool> toggleAction;
+        private Action<bool> primaryToggleAction;
+        private Action<bool> secondaryToggleAction;
 
         /// <summary>
         /// Sets the action to be performed when the primary button is clicked
@@ -73,12 +86,21 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Sets the action to be performed when the checkbox is toggled
+        /// Sets the action to be performed when the primary checkbox is toggled
         /// </summary>
         /// <param name="action">The action to perform with the toggle state</param>
-        public void SetToggleAction(Action<bool> action)
+        public void SetPrimaryToggleAction(Action<bool> action)
         {
-            toggleAction = action;
+            primaryToggleAction = action;
+        }
+
+        /// <summary>
+        /// Sets the action to be performed when the secondary checkbox is toggled
+        /// </summary>
+        /// <param name="action">The action to perform with the toggle state</param>
+        public void SetSecondaryToggleAction(Action<bool> action)
+        {
+            secondaryToggleAction = action;
         }
 
         /// <summary>
@@ -98,12 +120,21 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Invokes the toggle action with the provided state if it has been set
+        /// Invokes the Primary toggle action with the provided state if it has been set
         /// </summary>
         /// <param name="isChecked">The state of the checkbox</param>
-        public void InvokeToggleAction(bool isChecked)
+        public void InvokePrimaryToggleAction(bool isChecked)
         {
-            toggleAction?.Invoke(isChecked);
+            primaryToggleAction?.Invoke(isChecked);
+        }
+
+        /// <summary>
+        /// Invokes the Secondary toggle action with the provided state if it has been set
+        /// </summary>
+        /// <param name="isChecked">The state of the checkbox</param>
+        public void InvokeSecondaryToggleAction(bool isChecked)
+        {
+            secondaryToggleAction?.Invoke(isChecked);
         }
     }
 }

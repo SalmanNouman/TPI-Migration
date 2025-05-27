@@ -50,6 +50,12 @@ namespace VARLab.DLX
         public UnityEvent<int> PoiInteracted;
 
         /// <summary>
+        /// Invoked every time a inspectable object is clicked
+        /// <see cref="InspectionSummaryBuilder.HandlePoiDataListReceived(List{Poi})"/>"
+        /// </summary>
+        public UnityEvent<List<Poi>> OnGetPoiList;
+
+        /// <summary>
         /// Invoked on start to get the total number of inspectable pois
         /// <see cref="ProgressBuilder.GetPoiCount(int)"/>
         /// </summary>
@@ -69,6 +75,7 @@ namespace VARLab.DLX
             OnPoiEnter ??= new();
             OnPoiExit ??= new();
             PoiInteracted ??= new();
+            OnGetPoiList ??= new();
             OnStart ??= new();
             OnWarpComplete ??= new();
         }
@@ -194,6 +201,14 @@ namespace VARLab.DLX
             yield return new WaitForSeconds(0.1f); // Wait for a short time to ensure the warp is complete
 
             OnWarpComplete?.Invoke();
+        }
+
+        // For use in data retrieval
+        /// <see cref="InspectionReviewBuilder.OnEndInspectionConfirmation"/>
+        /// Event calls this method to fire off a data sending event with the list of POIs.
+        public void GetPoiList()
+        {
+            OnGetPoiList?.Invoke(pois);
         }
     }
 }

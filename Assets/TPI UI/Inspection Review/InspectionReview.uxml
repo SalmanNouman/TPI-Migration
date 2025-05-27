@@ -81,7 +81,13 @@
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="Footer" class="inspection-reveiw-footer" style="flex-grow: 1;">
-                <engine:VisualElement name="FooterBar" class="inspection-review-footer-bar" />
+                <engine:VisualElement name="FooterBar" class="inspection-review-footer-bar" style="background-color: rgb(245, 242, 242);" />
+                <engine:VisualElement template="Button-Primary-Large" name="Button" class="Inspection-review-primaryBtn">
+                    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+                    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+                    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+                    <engine:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrimaryButton" text="End Inspection" class="button-primary button button-large" />
+                </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>
