@@ -186,10 +186,18 @@ namespace VARLab.DLX
                 {
                     obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
                 }
+                else if (obj.GetComponent<ToggleableMessageInspectable>())
+                {
+                    obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
+                }
                 CaptureImage(kvp.Key);
                 if (obj.GetComponent<ToggleableInspectable>())
                 {
                     obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                }
+                else if (obj.GetComponent<ToggleableMessageInspectable>())
+                {
+                    obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
                 }
                 tempPhoto.Timestamp = kvp.Value;
                 Photos.Add(tempPhoto);

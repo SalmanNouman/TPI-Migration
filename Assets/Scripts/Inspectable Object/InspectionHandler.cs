@@ -134,7 +134,7 @@ namespace VARLab.DLX
                 OnObjectViewerObjectClicked?.Invoke(obj);
             }
 
-            if (inspectable.GetComponent<ToggleableInspectable>())
+            if (inspectable.GetComponent<ToggleableInspectable>() || inspectable.GetComponent<ToggleableMessageInspectable>())
             {
                 ToggleInspectable(inspectable);
             }
@@ -231,6 +231,10 @@ namespace VARLab.DLX
             if (obj.GetComponent<ToggleableInspectable>())
             {
                 obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+            }
+            else if (obj.GetComponent<ToggleableMessageInspectable>())
+            {
+                obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
             }
         }
 

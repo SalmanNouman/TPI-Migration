@@ -403,13 +403,21 @@ namespace VARLab.DLX
                 imageViewer3d.style.display = DisplayStyle.None;
             }
 
-            if (obj.GetComponent<MessageInspectable>())
+            // Handle message display for objects with conditional notification messages
+            var messageInspectable = obj.GetComponent<MessageInspectable>();
+            var toggleableMessageInspectable = obj.GetComponent<ToggleableMessageInspectable>();
+            
+            if (messageInspectable != null || toggleableMessageInspectable != null)
             {
-                NotificationSO so = obj.GetComponent<MessageInspectable>().InspectionNotificationCompliant;
-                if (so != null)
+                // TODO: When scenario system is implemented, determine compliance status from currently active state objects
+                // and select appropriate notification (Compliant vs NonCompliant) based on obj.States
+                NotificationSO notificationSO = messageInspectable?.InspectionNotificationCompliant 
+                                              ?? toggleableMessageInspectable?.InspectionNotificationCompliant;
+                
+                if (notificationSO != null)
                 {
                     ToggleMessageContainer(true);
-                    messageText.text = so.Message;
+                    messageText.text = notificationSO.Message;
                 }
             }
 
