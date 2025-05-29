@@ -3,7 +3,7 @@
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
     <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
     <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-download.uss?fileID=7433441132597879392&amp;guid=29d5d1733577a8548bf4dd19c9e6cdd1&amp;type=3#tpi-download" />
-    <engine:VisualElement name="Canvas">
+    <engine:VisualElement name="Canvas" class="align-items-center justify-center align-self-auto" style="flex-grow: 1;">
         <engine:VisualElement name="InformationWindow" class="confirmation-window">
             <ui:VisualElement xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" template="Header" name="HeaderElement" class="align-self-start w-100">
                 <ui:VisualElement name="Header" class="flex-row w-100">
@@ -16,7 +16,7 @@
             <engine:VisualElement name="Body" class="w-100 align-items-center justify-center align-self-auto confirmation-body">
                 <engine:VisualElement name="Icon" class="flex-row align-items-auto justify-center align-self-auto confirmation-icon" />
                 <engine:VisualElement name="BodyTitle" class="flex-row justify-center align-items-center w-100 mb-12">
-                    <engine:Label text="Wait, Inspector!" name="MessageTitle" class="fs-40 text-no-wrap" style="margin-top: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(225, 225, 225);" />
+                    <engine:Label text="Wait, Inspector!" name="MessageTitle" class="fs-40 text-no-wrap bold" style="margin-top: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(225, 225, 225);" />
                 </engine:VisualElement>
                 <engine:VisualElement name="BodyMessage" class="flex-row align-items-center justify-start w-100">
                     <engine:Label text="Before you close the browser window, check your downloads!" name="MessageBody" class="fs-36 text-wrap w-100" style="-unity-font-definition: url(&quot;project://database/Assets/VELCRO%20UI/Fonts%20&amp;%20Materials/Lato-Regular.ttf?fileID=12800000&amp;guid=96011ca8853d0584d9484fac4d071375&amp;type=3#Lato-Regular&quot;); color: rgb(225, 225, 225); -unity-text-align: upper-center; padding-right: 20px; padding-left: 20px;" />

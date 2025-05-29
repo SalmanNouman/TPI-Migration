@@ -36,8 +36,8 @@ namespace VARLab.DLX
         // List for storing Poi data
         private List<Poi> poiDataList = new();
 
-        // Hardcoded summary strings for now
-        private readonly string[] summaryStrings = new string[]
+        // PDF summary strings
+        private readonly string[] SummaryStrings = new string[]
         {
             "TATTOO PARLOR INSPECTION SIMULATION DETAILS",
             "Thank you for completing the inspection. This document includes the Inspection summary, Compliances, Non-compliances and Activity log.",
@@ -86,8 +86,6 @@ namespace VARLab.DLX
         private void DownloadPDF()
         {
             // Create the PDF document using PDFKit
-            // This will be implemented using JavaScript interop in WebGL
-            // JavaScript function to create a new PDF document
             generatePdf.CreatePDFDocument();
 
             // Add the summary section
@@ -111,12 +109,11 @@ namespace VARLab.DLX
 
             // Generate the filename
             string fileName = "Inspection_Summary_" + GetLearnerName() + "_" +
-                              DateTime.Now.ToString("ddMMMyyyy") + "_" +
-                              DateTime.Now.ToString("HHmmss") + ".pdf";
+                              DateTime.Now.ToString("ddMMMyyyy") + " " +
+                              DateTime.Now.ToString("HH'H'mm'M'ss'S'") + ".pdf";
 
             // Download the PDF
-            generatePdf.DownloadPDF("Inspection Summary_" + GetLearnerName() + "_" +
-            DateTime.Now.ToString("ddMMMyyyy") + " " + DateTime.Now.ToString("HH'H'mm'M'ss'S'") + ".pdf");
+            generatePdf.DownloadPDF(fileName);
         }
 
         /// <summary>
@@ -197,7 +194,7 @@ namespace VARLab.DLX
             generatePdf.AddLine("round", 72, 72, 540, 72, "#44546a");
 
             // Public Health Inspection Title
-            generatePdf.AddContentWithXAndYPositions(summaryStrings[0], 20, Fonts.TimesRoman, "center", "#44546a", 72, 87, 0.5f);
+            generatePdf.AddContentWithXAndYPositions(SummaryStrings[0], 20, Fonts.TimesRoman, "center", "#44546a", 72, 87, 0.5f);
 
             // Bottom Line
             generatePdf.AddLine("round", 72, 140, 540, 140, "#44546a");
@@ -206,10 +203,10 @@ namespace VARLab.DLX
             generatePdf.AddContentWithXAndYPositions("Scenario #", 10.5f, Fonts.TimesRoman, "center", "black", 72, 170, 0);
 
             // add message
-            generatePdf.AddContentWithXAndYPositions(summaryStrings[1], 12, Fonts.TimesItalic, "center", "black", 72, 195, 3.5f);
+            generatePdf.AddContentWithXAndYPositions(SummaryStrings[1], 12, Fonts.TimesItalic, "center", "black", 72, 195, 3.5f);
 
             // add inspection summary title
-            generatePdf.AddTextWithUnderline(summaryStrings[2], Fonts.TimesBold, 16, 1.5f);
+            generatePdf.AddTextWithUnderline(SummaryStrings[2], Fonts.TimesBold, 16, 1.5f);
 
             // Add inspection summary details
             CreateSummaryList();
@@ -234,8 +231,11 @@ namespace VARLab.DLX
                         // Add primary log to the PDF
                         generatePdf.AddContent(log.Message, 12, Fonts.TimesBold, "left", "black");
                     }
-                    // For secondary logs, smaller text
-                    generatePdf.AddContent(log.Message, 11, Fonts.TimesRoman, "left", "black");
+                    else
+                    {
+                        // For secondary logs, smaller text
+                        generatePdf.AddContent(log.Message, 11, Fonts.TimesRoman, "left", "black");
+                    }
                 }
             }
         }
@@ -254,7 +254,7 @@ namespace VARLab.DLX
                 // Reset temp string
                 tempString = "";
                 
-                tempString = summaryStrings[i] + " ";
+                tempString = SummaryStrings[i] + " ";
                 count = tempString.Length;
                 
                 switch (i)
