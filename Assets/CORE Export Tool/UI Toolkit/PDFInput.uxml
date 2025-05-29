@@ -1,0 +1,21 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <engine:VisualElement style="flex-grow: 1; background-color: rgb(0, 0, 0);">
+        <engine:Button text="Click here to create document first" name="CreateBtn" class="unity-text-element__selectable button-primary button" style="width: 264px; height: 39px; align-items: auto; justify-content: flex-start; align-self: center;" />
+        <engine:VisualElement name="Header" style="flex-grow: 1; flex-direction: row; align-items: auto; justify-content: center;">
+            <engine:TextField label="Enter Header" placeholder-text="filler text" name="HeaderTxt" style="width: 40%;" />
+            <engine:Button text="Add Header" name="HeaderBtn" class="button-primary button" style="width: 10%;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Content" style="flex-grow: 1; flex-direction: row; align-items: auto; justify-content: center;">
+            <engine:TextField label="Enter Content" placeholder-text="filler text" name="ContentTxt" multiline="true" style="width: 40%; align-self: center;" />
+            <engine:Button text="Add Content" name="ContentBtn" class="button-primary button" style="width: 10%; align-self: flex-end;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Footer" style="flex-grow: 1; flex-direction: row; align-items: auto; justify-content: center; height: 0;">
+            <engine:TextField label="Enter Footer" placeholder-text="filler text" name="FooterTxt" style="width: 40%;" />
+            <engine:Button text="Add Footer" name="FooterBtn" class="button-primary button" style="width: 10%;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Submit" style="flex-grow: 1; flex-direction: row; align-items: auto; justify-content: center;">
+            <engine:Button text="Download PDF" selectable="true" name="SubmitBtn" class="button-primary button" style="align-self: center; width: 31%; align-items: auto; margin-right: 0; margin-top: 0; margin-bottom: 0; margin-left: 0; height: 30px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
