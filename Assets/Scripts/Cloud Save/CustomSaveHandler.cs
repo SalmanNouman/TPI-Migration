@@ -117,6 +117,8 @@ namespace VARLab.DLX
 
         public UnityEvent<bool> LoadPiercerInteraction;
 
+        public UnityEvent<bool> LoadTattooArtistInteraction;
+
         protected virtual void OnValidate()
         {
             if (m_AzureSaveSystem == null)
@@ -151,6 +153,7 @@ namespace VARLab.DLX
             LoadPhotos ??= new();
             LoadActivityList ??= new();
             LoadPiercerInteraction ??= new();
+            LoadTattooArtistInteraction ??= new();
 
             AddListeners();
 
@@ -186,6 +189,7 @@ namespace VARLab.DLX
                 LoadInspectionList?.Invoke(saveData.InspectionLog);
                 LoadActivityList?.Invoke(saveData.ActivityLog);
                 LoadPiercerInteraction?.Invoke(saveData.PiercerInteractionCompleted);
+                LoadTattooArtistInteraction?.Invoke(saveData.TattooArtistInteractionCompleted);
                 LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 MovePlayer?.Invoke(saveData.LastPOI);
             });
@@ -691,16 +695,28 @@ namespace VARLab.DLX
 
         #endregion
 
-        #region Piercer Interaction
+        #region Artist Interaction
         /// <summary>
         /// Saves the state of the piercer interaction to the save data.
         /// Called when the piercer interaction is completed.
-        /// see <see cref="PiercerInteractionTask.OnTaskCompleted"/>
+        /// see <see cref="ArtistInteractionTask.OnTaskCompleted"/>
         /// </summary>
         /// <param name="isCompleted"></param>
         public void SavePiercerInteraction(bool isCompleted)
         {
             saveData.PiercerInteractionCompleted = isCompleted;
+            TriggerSave();
+        }
+
+        /// <summary>
+        /// Saves the state of the tattoo artist interaction to the save data.
+        /// Called when the tattoo artist interaction is completed.
+        /// see <see cref="ArtistInteractionTask.OnTaskCompleted"/>
+        /// </summary>
+        /// <param name="isCompleted"></param>
+        public void SaveTatooArtistInteraction(bool isCompleted)
+        {
+            saveData.TattooArtistInteractionCompleted = isCompleted;
             TriggerSave();
         }
 

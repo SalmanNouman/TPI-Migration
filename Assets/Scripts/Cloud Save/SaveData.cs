@@ -40,6 +40,9 @@ namespace VARLab.DLX
         public bool PiercerInteractionCompleted = false;
 
         [JsonProperty]
+        public bool TattooArtistInteractionCompleted = false;
+
+        [JsonProperty]
         public TimeSpan Time;
 
         [JsonObject(MemberSerialization.OptIn)]

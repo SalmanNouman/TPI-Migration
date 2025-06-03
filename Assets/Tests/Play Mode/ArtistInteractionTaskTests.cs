@@ -9,35 +9,35 @@ using VARLab.Navigation.PointClick;
 namespace Tests.PlayMode
 {
     /// <summary>
-    ///     Play mode tests for the <see cref="PiercerInteractionTask"/> class.
+    ///     Play mode tests for the <see cref="ArtistInteractionTask"/> class.
     /// </summary>
     /// <remarks>
     ///     Tests the following functionalities:
     ///     - Component initialization
     ///     - Task state management (started, completed)
     ///     - Waypoint detection for task
-    ///     - GameObject activation/deactivation (procedure tray and piercer cutout)
+    ///     - GameObject activation/deactivation (procedure tray and artist cutout)
     ///     - Early return behaviors for different task states
     ///     - Event invocation verification
     /// </remarks>
-    public class PiercerInteractionTaskTests
+    public class ArtistInteractionTaskTests
     {
         #region Fields
 
         private GameObject testObject;
-        private PiercerInteractionTask piercerTask;
+        private ArtistInteractionTask artistTask;
         private GameObject waypointObject;
         private Waypoint waypointComponent;
         private GameObject preparedProcedureTrayObject;
-        private GameObject piercerCutoutObject;
+        private GameObject artistCutoutObject;
 
         // Field info for private fields access
         private FieldInfo isTaskStarted;
         private FieldInfo isTaskCompleted;
         private FieldInfo conversationDelay;
-        private FieldInfo piercerWaypoint;
+        private FieldInfo artistWaypoint;
         private FieldInfo preparedProcedureTray;
-        private FieldInfo piercerCutout;
+        private FieldInfo artistCutout;
 
         // Test constants
         private const float TestDelay = 0.1f;
@@ -53,34 +53,34 @@ namespace Tests.PlayMode
         public void Setup()
         {
             // Setup test objects
-            testObject = new GameObject("TestPiercerInteractionTask");
-            piercerTask = testObject.AddComponent<PiercerInteractionTask>();
+            testObject = new GameObject("TestArtistInteractionTask");
+            artistTask = testObject.AddComponent<ArtistInteractionTask>();
 
             // Setup test waypoint
             waypointObject = new GameObject("TestWaypoint");
             waypointComponent = waypointObject.AddComponent<Waypoint>();
 
-            // Setup test procedure tray and piercer cutout
+            // Setup test procedure tray and artist cutout
             preparedProcedureTrayObject = new GameObject("TestProcedureTray");
-            piercerCutoutObject = new GameObject("TestPiercerCutout");
+            artistCutoutObject = new GameObject("TestArtistCutout");
 
             // Get private fields using reflection
-            isTaskStarted = typeof(PiercerInteractionTask).GetField("isTaskStarted", BindingFlags.NonPublic | BindingFlags.Instance);
-            isTaskCompleted = typeof(PiercerInteractionTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
-            conversationDelay = typeof(PiercerInteractionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
-            piercerWaypoint = typeof(PiercerInteractionTask).GetField("piercerWaypoint", BindingFlags.NonPublic | BindingFlags.Instance);
-            preparedProcedureTray = typeof(PiercerInteractionTask).GetField("preparedProcedureTray", BindingFlags.NonPublic | BindingFlags.Instance);
-            piercerCutout = typeof(PiercerInteractionTask).GetField("piercerCutout", BindingFlags.NonPublic | BindingFlags.Instance);
+            isTaskStarted = typeof(ArtistInteractionTask).GetField("isTaskStarted", BindingFlags.NonPublic | BindingFlags.Instance);
+            isTaskCompleted = typeof(ArtistInteractionTask).GetField("isTaskCompleted", BindingFlags.NonPublic | BindingFlags.Instance);
+            conversationDelay = typeof(ArtistInteractionTask).GetField("conversationDelay", BindingFlags.NonPublic | BindingFlags.Instance);
+            artistWaypoint = typeof(ArtistInteractionTask).GetField("artistWaypoint", BindingFlags.NonPublic | BindingFlags.Instance);
+            preparedProcedureTray = typeof(ArtistInteractionTask).GetField("preparedProcedureTray", BindingFlags.NonPublic | BindingFlags.Instance);
+            artistCutout = typeof(ArtistInteractionTask).GetField("artistCutout", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            // Set piercer waypoint
-            piercerWaypoint.SetValue(piercerTask, waypointComponent);
+            // Set artist waypoint
+            artistWaypoint.SetValue(artistTask, waypointComponent);
 
-            // Set procedure tray and piercer cutout
-            preparedProcedureTray.SetValue(piercerTask, preparedProcedureTrayObject);
-            piercerCutout.SetValue(piercerTask, piercerCutoutObject);
+            // Set procedure tray and artist cutout
+            preparedProcedureTray.SetValue(artistTask, preparedProcedureTrayObject);
+            artistCutout.SetValue(artistTask, artistCutoutObject);
 
             // Set a small delay for testing
-            conversationDelay.SetValue(piercerTask, TestDelay);
+            conversationDelay.SetValue(artistTask, TestDelay);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Tests.PlayMode
             Object.Destroy(testObject);
             Object.Destroy(waypointObject);
             Object.Destroy(preparedProcedureTrayObject);
-            Object.Destroy(piercerCutoutObject);
+            Object.Destroy(artistCutoutObject);
         }
 
         #endregion
@@ -110,9 +110,9 @@ namespace Tests.PlayMode
             yield return null; // Wait for Awake to be called
 
             // Assert
-            Assert.NotNull(piercerTask.OnTaskStarted, "OnTaskStarted event should be initialized");
-            Assert.NotNull(piercerTask.OnTaskCompleted, "OnTaskCompleted event should be initialized");
-            Assert.NotNull(piercerTask.OnTaskFailed, "OnTaskFailed event should be initialized");
+            Assert.NotNull(artistTask.OnTaskStarted, "OnTaskStarted event should be initialized");
+            Assert.NotNull(artistTask.OnTaskCompleted, "OnTaskCompleted event should be initialized");
+            Assert.NotNull(artistTask.OnTaskFailed, "OnTaskFailed event should be initialized");
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Tests.PlayMode
 
             // Assert
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray should be initially inactive");
-            Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout should be initially active");
+            Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout should be initially active");
         }
 
         #endregion
@@ -135,57 +135,57 @@ namespace Tests.PlayMode
         #region CheckCurrentWaypoint Tests
 
         /// <summary>
-        ///     Tests if CheckCurrentWaypoint() starts the task when player reaches the piercer waypoint.
+        ///     Tests if CheckCurrentWaypoint() starts the task when player reaches the artist waypoint.
         /// </summary>
         [UnityTest, Order(3)]
         [Category("BuildServer")]
-        public IEnumerator CheckCurrentWaypoint_StartsTaskForPiercerWaypoint()
+        public IEnumerator CheckCurrentWaypoint_StartsTaskForArtistWaypoint()
         {
             // Arrange
             bool taskStartedEventInvoked = false;
             bool taskCompletedEventInvoked = false;
-            piercerTask.OnTaskStarted.AddListener(() => taskStartedEventInvoked = true);
-            piercerTask.OnTaskCompleted.AddListener(() => taskCompletedEventInvoked = true);
+            artistTask.OnTaskStarted.AddListener(() => taskStartedEventInvoked = true);
+            artistTask.OnTaskCompleted.AddListener(() => taskCompletedEventInvoked = true);
 
             // Act
-            piercerTask.CheckCurrentWaypoint(waypointComponent);
+            artistTask.CheckCurrentWaypoint(waypointComponent);
             yield return new WaitForSeconds(TestDelay);
             yield return null; // Wait for next frame for coroutine to complete
 
             // Assert
-            Assert.IsTrue((bool)isTaskStarted.GetValue(piercerTask), "isTaskStarted should be set to true");
-            Assert.IsTrue((bool)isTaskCompleted.GetValue(piercerTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue((bool)isTaskStarted.GetValue(artistTask), "isTaskStarted should be set to true");
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(taskStartedEventInvoked, "OnTaskStarted event should be invoked");
             Assert.IsTrue(taskCompletedEventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
-            Assert.IsFalse(piercerCutoutObject.activeSelf, "Piercer cutout should be inactive after task completes");
+            Assert.IsFalse(artistCutoutObject.activeSelf, "Artist cutout should be inactive after task completes");
         }
 
         /// <summary>
-        ///     Tests if CheckCurrentWaypoint does not start the task for non-piercer waypoints.
+        ///     Tests if CheckCurrentWaypoint does not start the task for non-artist waypoints.
         /// </summary>
         [UnityTest, Order(4)]
         [Category("BuildServer")]
-        public IEnumerator CheckCurrentWaypoint_DoesNotStartTaskForNonPiercerWaypoint()
+        public IEnumerator CheckCurrentWaypoint_DoesNotStartTaskForNonArtistWaypoint()
         {
             // Arrange
             bool eventInvoked = false;
-            piercerTask.OnTaskStarted.AddListener(() => eventInvoked = true);
+            artistTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
             // Create a different waypoint
             var otherWaypointObject = new GameObject("OtherWaypoint");
             var otherWaypoint = otherWaypointObject.AddComponent<Waypoint>();
 
             // Act
-            piercerTask.CheckCurrentWaypoint(otherWaypoint);
+            artistTask.CheckCurrentWaypoint(otherWaypoint);
             yield return new WaitForSeconds(TestDelay);
             yield return null; // Wait for next frame for coroutine to complete
 
             // Assert
-            Assert.IsFalse((bool)isTaskStarted.GetValue(piercerTask), "isTaskStarted should remain false");
+            Assert.IsFalse((bool)isTaskStarted.GetValue(artistTask), "isTaskStarted should remain false");
             Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray should remain inactive");
-            Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout should remain active");
+            Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout should remain active");
 
             // Cleanup
             Object.Destroy(otherWaypointObject);
@@ -204,10 +204,10 @@ namespace Tests.PlayMode
         {
             // Arrange
             bool eventInvoked = false;
-            piercerTask.OnTaskStarted.AddListener(() => eventInvoked = true);
+            artistTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
-            // Act - Call CheckCurrentWaypoint with the piercer waypoint to start DelayedTaskStart
-            piercerTask.CheckCurrentWaypoint(waypointComponent);
+            // Act - Call CheckCurrentWaypoint with the artist waypoint to start DelayedTaskStart
+            artistTask.CheckCurrentWaypoint(waypointComponent);
 
             // Check that task is not started yet (before delay completes)
             yield return new WaitForSeconds(TestDelay * 0.5f);
@@ -234,15 +234,15 @@ namespace Tests.PlayMode
             // Arrange
             bool taskStartedEventInvoked = false;
             bool taskCompletedEventInvoked = false;
-            piercerTask.OnTaskStarted.AddListener(() => taskStartedEventInvoked = true);
-            piercerTask.OnTaskCompleted.AddListener(() => taskCompletedEventInvoked = true);
+            artistTask.OnTaskStarted.AddListener(() => taskStartedEventInvoked = true);
+            artistTask.OnTaskCompleted.AddListener(() => taskCompletedEventInvoked = true);
 
             // Act
-            piercerTask.HandleTask();
+            artistTask.HandleTask();
 
             // Assert
-            Assert.IsTrue((bool)isTaskStarted.GetValue(piercerTask), "isTaskStarted should be set to true");
-            Assert.IsTrue((bool)isTaskCompleted.GetValue(piercerTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue((bool)isTaskStarted.GetValue(artistTask), "isTaskStarted should be set to true");
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(taskStartedEventInvoked, "OnTaskStarted event should be invoked");
             Assert.IsTrue(taskCompletedEventInvoked, "OnTaskCompleted event should be invoked");
         }
@@ -256,13 +256,13 @@ namespace Tests.PlayMode
         {
             // Arrange - Set task to completed state
             bool eventInvoked = false;
-            piercerTask.OnTaskStarted.AddListener(() => eventInvoked = true);
+            artistTask.OnTaskStarted.AddListener(() => eventInvoked = true);
 
-            isTaskStarted.SetValue(piercerTask, true);
-            isTaskCompleted.SetValue(piercerTask, true);
+            isTaskStarted.SetValue(artistTask, true);
+            isTaskCompleted.SetValue(artistTask, true);
 
             // Act
-            piercerTask.HandleTask();
+            artistTask.HandleTask();
 
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskStarted should not be invoked if task is already completed");
@@ -280,23 +280,23 @@ namespace Tests.PlayMode
         public void CompleteTask_ReturnsEarlyIfTaskNotStarted()
         {
             // Arrange
-            isTaskStarted.SetValue(piercerTask, false);
+            isTaskStarted.SetValue(artistTask, false);
             bool eventInvoked = false;
-            piercerTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+            artistTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
             // Disable tray and enable cutout for testing
             preparedProcedureTrayObject.SetActive(false);
-            piercerCutoutObject.SetActive(true);
-            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
+            artistCutoutObject.SetActive(true);
+            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
 
             // Act
-            piercerTask.CompleteTask();
+            artistTask.CompleteTask();
 
             // Assert
-            Assert.IsFalse((bool)isTaskCompleted.GetValue(piercerTask), "isTaskCompleted should remain false if task is not started");
+            Assert.IsFalse((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should remain false if task is not started");
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray should remain inactive if task is not started");
-            Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout should remain active if task is not started");
+            Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout should remain active if task is not started");
             Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is not started");
         }
 
@@ -308,23 +308,23 @@ namespace Tests.PlayMode
         public void CompleteTask_ReturnsEarlyIfTaskAlreadyCompleted()
         {
             // Arrange
-            isTaskStarted.SetValue(piercerTask, true);
-            isTaskCompleted.SetValue(piercerTask, true);
+            isTaskStarted.SetValue(artistTask, true);
+            isTaskCompleted.SetValue(artistTask, true);
             bool eventInvoked = false;
-            piercerTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+            artistTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
 
             // Disable tray and enable cutout to check they don't change
             preparedProcedureTrayObject.SetActive(false);
-            piercerCutoutObject.SetActive(true);
-            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
+            artistCutoutObject.SetActive(true);
+            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
 
             // Act
-            piercerTask.CompleteTask();
+            artistTask.CompleteTask();
 
             // Assert
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray state shouldn't change if task is already completed");
-            Assert.IsTrue(piercerCutoutObject.activeSelf, "Piercer cutout state shouldn't change if task is already completed");
+            Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout state shouldn't change if task is already completed");
             Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is already completed");
         }
 
@@ -336,19 +336,19 @@ namespace Tests.PlayMode
         public void CompleteTask_SetsTaskCompletedAndModifiesGameObjects()
         {
             // Arrange
-            isTaskStarted.SetValue(piercerTask, true);
+            isTaskStarted.SetValue(artistTask, true);
             bool eventInvoked = false;
-            piercerTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-            var boxCollider = piercerCutoutObject.AddComponent<BoxCollider>();
+            artistTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
+            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
 
             // Act
-            piercerTask.CompleteTask();
+            artistTask.CompleteTask();
 
             // Assert
-            Assert.IsTrue((bool)isTaskCompleted.GetValue(piercerTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
-            Assert.IsFalse(piercerCutoutObject.activeSelf, "Piercer cutout should be inactive after task completes");
+            Assert.IsFalse(artistCutoutObject.activeSelf, "Artist cutout should be inactive after task completes");
             Assert.IsFalse(boxCollider.enabled, "BoxCollider should be disabled after task completes");
         }
 
