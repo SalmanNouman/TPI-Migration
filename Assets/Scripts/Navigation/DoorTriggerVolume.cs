@@ -21,8 +21,8 @@ namespace VARLab.DLX
 
         private void Start()
         {
-            targetOpenRotation = Quaternion.Euler(door.rotation.y, endRotation, door.rotation.z);
-            targetCloseRotation = Quaternion.Euler(door.rotation.y, startRotation, door.rotation.z);
+            targetOpenRotation = Quaternion.Euler(door.rotation.x, endRotation, door.rotation.z);
+            targetCloseRotation = Quaternion.Euler(door.rotation.x, startRotation, door.rotation.z);
         }
 
         private void Update()
