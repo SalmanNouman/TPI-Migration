@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 478952329860099431}
   - component: {fileID: 1331953699223162107}
   - component: {fileID: 2771791004858526878}
-  - component: {fileID: 4787262281424117898}
+  - component: {fileID: 2426872426470582887}
   m_Layer: 0
   m_Name: Autoclave Inspectable
   m_TagString: Untagged
@@ -334,7 +334,7 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!114 &4787262281424117898
+--- !u!114 &2426872426470582887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5459797990269180328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070bd47387b41af469e69837220932db, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f60d593548d68c44969eee80c726fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Autoclave
@@ -361,9 +361,6 @@ MonoBehaviour:
   OnObjectInspected:
     m_PersistentCalls:
       m_Calls: []
-  InspectionNotificationCompliant: {fileID: 11400000, guid: 75cd3a379fe2c094f9aa3f6340deee49,
-    type: 2}
-  InspectionNotificationNonCompliant: {fileID: 0}
 --- !u!1001 &1365881150643491201
 PrefabInstance:
   m_ObjectHideFlags: 0
