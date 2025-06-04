@@ -4782,12 +4782,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1436400806}
+        m_TargetAssemblyTypeName: VARLab.Velcro.SplashScreen, VARLab.Velcro
+        m_MethodName: HandleAllTaskComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnValidSaveFileFound:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 694841697}
         m_TargetAssemblyTypeName: VARLab.DLX.StartPauseWindowBuilder, VARLab.DLX
         m_MethodName: ShowAsWelcome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1436400806}
+        m_TargetAssemblyTypeName: VARLab.Velcro.SplashScreen, VARLab.Velcro
+        m_MethodName: HandleAllTaskComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8965,6 +8989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -9020,6 +9049,11 @@ PrefabInstance:
       objectReference: {fileID: 1674516189}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356010907}
@@ -9035,6 +9069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
       propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: Show
       objectReference: {fileID: 0}
@@ -9042,6 +9081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: Hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: HandleTaskComplete
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -9120,8 +9164,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.SplashScreen, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
       propertyPath: OnRestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -9137,6 +9191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnContinueSavedGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5291691372747057044, guid: 010e0a86ba275934599789782ff87863,
         type: 3}
@@ -9495,6 +9554,85 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &736503058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2123571564}
+    m_Modifications:
+    - target: {fileID: 5554072185338193520, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: splashScreenSO
+      value: 
+      objectReference: {fileID: 11400000, guid: dff271ba2707aed448f8ed0684bf8ad7,
+        type: 2}
+    - target: {fileID: 5554072185338193520, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: messageDuration
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800955984012900797, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Splash Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.98683846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.717276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.229331
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cd4bb43412116e4582bdf8f958af4ef, type: 3}
 --- !u!1001 &737212410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21324,6 +21462,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 698314118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1436400805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7841375440311458800, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 736503058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1436400806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5554072185338193520, guid: 2cd4bb43412116e4582bdf8f958af4ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 736503058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeeb1e3f522e5224aa03bbba020eb7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1441858880
 Mesh:
   m_ObjectHideFlags: 0
@@ -27979,6 +28135,7 @@ Transform:
   - {fileID: 1011485329}
   - {fileID: 541081966}
   - {fileID: 237184084}
+  - {fileID: 1436400805}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &2132079335
@@ -32740,6 +32897,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
         type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
       propertyPath: OnWindowHide.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 798535377}
@@ -32788,6 +32955,31 @@ PrefabInstance:
       propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1674516189}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: HandleAllTaskComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: VARLab.Velcro.SplashScreen, VARLab.Velcro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472627559603912449, guid: a3623b69093a85d4ebd26c5adee39850,
+        type: 3}
+      propertyPath: OnWindowShow.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8958718717202444183, guid: a3623b69093a85d4ebd26c5adee39850,
         type: 3}
       propertyPath: m_Name
