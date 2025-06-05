@@ -1,0 +1,18 @@
+.fade-container {
+    background-colour: --fade-background-colour;
+    opacity: 0;
+}
+
+.fade-in {
+    transition-property: opacity;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out-back;
+    opacity: 1;
+}
+
+.fade-out {
+    transition-property: opacity;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out-back;
+    opacity: 0;
+}

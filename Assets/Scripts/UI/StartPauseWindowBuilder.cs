@@ -129,7 +129,7 @@ namespace VARLab.DLX
                 if (isWelcomeMode)
                 {
                     Debug.Log("Continue button clicked in welcome mode - Loading saved game");
-                    OnContinueSavedGame?.Invoke();
+                    StartCoroutine(Fade.Instance.FadeButtonCoroutine(OnContinueSavedGame.Invoke));
                 }
                 else
                 {
@@ -145,7 +145,7 @@ namespace VARLab.DLX
             {
                 Debug.Log("Restart button clicked - Starting from beginning");
                 Hide();
-                OnRestartScene?.Invoke();
+                StartCoroutine(Fade.Instance.FadeButtonCoroutine(OnRestartScene.Invoke));
                 // This will go through the same event for Loading a fresh game
             };
         }

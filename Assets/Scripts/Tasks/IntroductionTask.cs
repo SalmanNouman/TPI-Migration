@@ -247,7 +247,7 @@ namespace VARLab.DLX
 
                 // Invoke task failed event
                 OnTaskFailed?.Invoke();
-                informDialogSO.SetPrimaryAction(() => RestartScene?.Invoke());
+                informDialogSO.SetPrimaryAction(() => StartCoroutine(Fade.Instance.FadeButtonCoroutine(RestartScene.Invoke)));
                 OnTaskFailedDialogDisplay?.Invoke(informDialogSO);
             }
         }

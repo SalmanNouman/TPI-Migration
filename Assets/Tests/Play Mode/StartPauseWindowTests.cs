@@ -170,7 +170,7 @@ namespace Tests.PlayMode
             // Act
             var e = new NavigationSubmitEvent() { target = restartButton };
             restartButton.SendEvent(e);
-            yield return null;  // Wait for event processing
+            yield return new WaitForSeconds(2f);  // Wait for event processing
 
             // Assert
             Assert.AreEqual(DisplayStyle.None, pauseRoot.style.display.value, "Window is not hidden after clicking restart button");
@@ -200,7 +200,7 @@ namespace Tests.PlayMode
             // Act
             var e = new NavigationSubmitEvent() { target = continueButton };
             continueButton.SendEvent(e);
-            yield return null;  // Wait for event processing
+            yield return new WaitForSeconds(2f);  // Wait for event processing
 
             // Assert
             Assert.AreEqual(DisplayStyle.None, pauseRoot.style.display.value, "Window is not hidden after clicking continue button in pause mode");
@@ -232,7 +232,7 @@ namespace Tests.PlayMode
             // Act
             var e = new NavigationSubmitEvent() { target = continueButton };
             continueButton.SendEvent(e);
-            yield return null;  // Wait for event processing
+            yield return new WaitForSeconds(2f); ;  // Wait for event processing
 
             // Assert
             Assert.AreEqual(DisplayStyle.None, pauseRoot.style.display.value, "Window is not hidden after clicking continue button in welcome mode");

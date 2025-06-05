@@ -275,7 +275,7 @@ namespace VARLab.DLX
         public void FailedInspectionAttempt()
         {
             // Setup the failure dialog's primary action to restart the scene
-            handwashFailureDialog.SetPrimaryAction(() => RestartScene?.Invoke());
+            handwashFailureDialog.SetPrimaryAction(() => StartCoroutine(Fade.Instance.FadeButtonCoroutine(RestartScene.Invoke)));
 
             OnShowInformationDialog?.Invoke(handwashFailureDialog);
             // Trigger task failed event

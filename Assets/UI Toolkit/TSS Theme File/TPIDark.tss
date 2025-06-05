@@ -7,6 +7,8 @@
 @import url("/Assets/TPI UI/StyleSheets/tpi-menu-buttons.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-start-Info-window.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-fade.uss");
+
 
 :root {
     /* Menu Buttons*/
@@ -60,4 +62,7 @@
     /* Start Info Window */
     --start-info-window-label-colour: #FFFFFF;
     --info-icon-background-color: #63706e;
+
+    /* Fade in/out */
+    --fade-background-colour: #000000;
 }
