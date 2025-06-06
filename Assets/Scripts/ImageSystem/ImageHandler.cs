@@ -145,6 +145,28 @@ namespace VARLab.DLX
         }
 
         /// <summary>
+        ///     Creates a temporary photo for ObjectViewer objects using their assigned gallery sprites.
+        /// </summary>
+        /// <remarks>
+        ///     - Connected from: <see cref="InspectionWindowBuilder.OnObjectViewerPhotoTaken"/> event in the Inspector
+        ///     - Triggered when: Camera button is clicked for ObjectViewer-based objects
+        /// </remarks>
+        /// <param name="obj">ObjectViewer-based inspectable object</param>
+        public void CreateObjectViewerTempPhoto(InspectableObject obj)
+        {
+            var objectViewerInspectable = obj.GetComponent<ObjectViewerInspectables>();
+
+            byte[] imageBytes = objectViewerInspectable.GetGalleryImageBytes();
+            if (imageBytes == null)
+            {
+                Debug.LogWarning($"No gallery image available for ObjectViewer object {obj.Name}");
+                return;
+            }
+
+            tempPhoto = new(imageBytes, obj.ObjectId, obj.Location.ToString(), TimerManager.Instance.GetElapsedTime());
+        }
+
+        /// <summary>
         /// Removes a photo from the photos list if it matches the id.
         /// </summary>
         /// <param name="id">InspectablePhoto ID</param>
@@ -175,34 +197,61 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// This method takes pictures all of the inspectables that have photo on load.
+        ///     This method takes pictures all of the inspectables that have photo on load.
+        ///     ObjectViewer objects use sprites instead of camera capture.
         /// </summary>
         public void TakePhotoForLoad(Dictionary<InspectableObject, string> photosAndTimestamps)
         {
             foreach (KeyValuePair<InspectableObject, string> kvp in photosAndTimestamps)
             {
                 var obj = kvp.Key;
-                if (obj.GetComponent<ToggleableInspectable>())
+                
+                // Check if this is an ObjectViewer object
+                var objectViewerInspectable = obj.GetComponent<ObjectViewerInspectables>();
+                if (objectViewerInspectable != null)
                 {
-                    obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                    // ObjectViewer objects: use sprite-based approach
+                    byte[] imageBytes = objectViewerInspectable.GetGalleryImageBytes();
+                    if (imageBytes != null)
+                    {
+                        tempPhoto = new(imageBytes, obj.ObjectId, obj.Location.ToString(), kvp.Value);
+                        Photos.Add(tempPhoto);
+                        obj.HasPhoto = true;
+                        tempPhoto = null;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"No gallery image available for {obj.Name} during load");
+                    }
                 }
-                else if (obj.GetComponent<ToggleableMessageInspectable>())
+                else
                 {
-                    obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
+                    // Regular inspectable objects: use camera capture
+                    if (obj.GetComponent<ToggleableInspectable>())
+                    {
+                        obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                    }
+                    else if (obj.GetComponent<ToggleableMessageInspectable>())
+                    {
+                        obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
+                    }
+                    
+                    CaptureImage(obj);
+                    
+                    if (obj.GetComponent<ToggleableInspectable>())
+                    {
+                        obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
+                    }
+                    else if (obj.GetComponent<ToggleableMessageInspectable>())
+                    {
+                        obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
+                    }
+                    
+                    tempPhoto.Timestamp = kvp.Value;
+                    Photos.Add(tempPhoto);
+                    obj.HasPhoto = true;
+                    tempPhoto = null;
                 }
-                CaptureImage(kvp.Key);
-                if (obj.GetComponent<ToggleableInspectable>())
-                {
-                    obj.GetComponent<ToggleableInspectable>().ToggleForInspection();
-                }
-                else if (obj.GetComponent<ToggleableMessageInspectable>())
-                {
-                    obj.GetComponent<ToggleableMessageInspectable>().ToggleForInspection();
-                }
-                tempPhoto.Timestamp = kvp.Value;
-                Photos.Add(tempPhoto);
-                kvp.Key.HasPhoto = true;
-                tempPhoto = null;
             }
             OnPhotoListChanged?.Invoke(Photos);
         }

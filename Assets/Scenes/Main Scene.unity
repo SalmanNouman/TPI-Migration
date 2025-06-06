@@ -29602,6 +29602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
       propertyPath: OnPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 932635050}
@@ -29772,13 +29777,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 932635050}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
       propertyPath: OnShowConfirmationDialog.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2107117251}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
       propertyPath: OnShowConfirmationDialog.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateObjectViewerTempPhoto
       objectReference: {fileID: 0}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
@@ -29817,6 +29837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ImageHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
       propertyPath: OnShowConfirmationDialog.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VARLab.DLX.ConfirmationDialog, VARLab.DLX
       objectReference: {fileID: 0}
@@ -29843,6 +29868,11 @@ PrefabInstance:
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
         type: 3}
       propertyPath: OnInspectionLog.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,
+        type: 3}
+      propertyPath: OnObjectViewerPhotoTaken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5992845380954535635, guid: 0f35d702d0eec174395314303781432a,

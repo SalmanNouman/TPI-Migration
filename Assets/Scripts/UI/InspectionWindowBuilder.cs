@@ -109,6 +109,12 @@ namespace VARLab.DLX
         public UnityEvent<InspectableObject> OnPhotoTaken;
 
         /// <summary>
+        ///     Unity Event triggered when camera button is clicked for ObjectViewer objects.
+        ///     <see cref="ImageHandler.CreateObjectViewerTempPhoto"/>
+        /// </summary>
+        public UnityEvent<InspectableObject> OnObjectViewerPhotoTaken;
+
+        /// <summary>
         ///     Unity Event that is triggered when the compliant button is clicked.
         /// </summary>
         public UnityEvent<InspectableObject> OnCompliantSelected;
@@ -162,6 +168,7 @@ namespace VARLab.DLX
             OnWindowOpened ??= new();
             OnWindowClosed ??= new();
             OnPhotoTaken ??= new();
+            OnObjectViewerPhotoTaken ??= new();
             OnCompliantSelected ??= new();
             OnNonCompliantSelected ??= new();
             DisplayNotification ??= new UnityEvent<NotificationSO>();
@@ -238,8 +245,12 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Method that is called when the camera button is clicked.
-        ///     This invokes the OnPhotoTaken event.
         /// </summary>
+        /// <remarks>
+        ///     Invokes the appropriate event based on the type of inspectable object.
+        ///     <see cref="ImageHandler.TakePhoto"/> for regular objects
+        ///     <see cref="ImageHandler.CreateObjectViewerTempPhoto"/> for ObjectViewer objects
+        /// </remarks>
         public void TakePhoto()
         {
             // TODO: display flash and camera outline
@@ -258,7 +269,15 @@ namespace VARLab.DLX
             // Temporarily show a selection prompt in inspection label after taking photo
             UIHelper.SetElementText(inspectionLabel, "To add the photo to the gallery, report as compliant or non-compliant.");
 
-            OnPhotoTaken?.Invoke(CurrentInspectable);
+            // Check if this is an ObjectViewer object and call the appropriate event
+            if (CurrentInspectable.GetComponent<ObjectViewerInspectables>())
+            {
+                OnObjectViewerPhotoTaken?.Invoke(CurrentInspectable);
+            }
+            else
+            {
+                OnPhotoTaken?.Invoke(CurrentInspectable);
+            }
         }
 
         /// <summary>
