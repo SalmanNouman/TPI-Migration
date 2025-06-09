@@ -15526,7 +15526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1488851811}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 8957759077988765372, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -15600,7 +15600,7 @@ PrefabInstance:
     - target: {fileID: 8957759077988765372, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartScene
+      value: OnLoadRestart
       objectReference: {fileID: 0}
     - target: {fileID: 8957759077988765372, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -15650,7 +15650,7 @@ PrefabInstance:
     - target: {fileID: 8957759077988765372, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.TPISceneManager, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 8957759077988765372, guid: 21aeefb8980c69a4fbccbb5419112695,
         type: 3}
@@ -22502,7 +22502,7 @@ PrefabInstance:
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
@@ -22513,7 +22513,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1436400806}
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -22522,12 +22522,12 @@ PrefabInstance:
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLoadRestart
+      value: HandleAllTaskComplete
       objectReference: {fileID: 0}
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
       propertyPath: OnSceneRestart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.SaveDataSupport, VARLab.DLX
+      value: VARLab.Velcro.SplashScreen, VARLab.Velcro
       objectReference: {fileID: 0}
     - target: {fileID: 5846215456235382747, guid: b3659a3e93dc57c4f982a4fb5b659050,
         type: 3}
@@ -31342,7 +31342,7 @@ PrefabInstance:
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1488851811}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 3797512638693605233, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -31501,7 +31501,7 @@ PrefabInstance:
     - target: {fileID: 3797512638693605233, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartScene
+      value: OnLoadRestart
       objectReference: {fileID: 0}
     - target: {fileID: 3797512638693605233, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
@@ -31666,7 +31666,7 @@ PrefabInstance:
     - target: {fileID: 3797512638693605233, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
       propertyPath: RestartScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VARLab.DLX.TPISceneManager, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 3797512638693605233, guid: 0b0a0deb4fef8bf429db72864ce59a8d,
         type: 3}
