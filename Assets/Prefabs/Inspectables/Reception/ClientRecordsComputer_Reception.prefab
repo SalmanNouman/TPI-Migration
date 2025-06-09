@@ -329,10 +329,9 @@ MonoBehaviour:
   OnObjectInspected:
     m_PersistentCalls:
       m_Calls: []
-  InspectionNotificationCompliant: {fileID: 11400000, guid: c5a3ce02cf6246148817fa05deeec44c,
-    type: 2}
-  InspectionNotificationNonCompliant: {fileID: 11400000, guid: f57348f5702225847a9fe4cf6d358c49,
-    type: 2}
+  InspectionNotifications:
+  - {fileID: 11400000, guid: c5a3ce02cf6246148817fa05deeec44c, type: 2}
+  - {fileID: 11400000, guid: f57348f5702225847a9fe4cf6d358c49, type: 2}
 --- !u!1 &9207647519141292335
 GameObject:
   m_ObjectHideFlags: 0

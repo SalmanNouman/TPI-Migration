@@ -9,6 +9,7 @@ using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using VARLab.DLX;
 using VARLab.Velcro;
+using System.Collections.Generic;
 
 namespace Tests.PlayMode
 {
@@ -864,15 +865,8 @@ namespace Tests.PlayMode
         public IEnumerator MessageInspectables_InspectionWindow_MessageDisplayed()
         {
             // Arrange
-            GameObject messageInspectableGO = new();
-            messageInspectableGO.AddComponent<BoxCollider>();
-            MessageInspectable messageInspectable = messageInspectableGO.AddComponent<MessageInspectable>();
-            NotificationSO notification = ScriptableObject.CreateInstance<NotificationSO>();
-            notification.Message = "TestMessage";
-            messageInspectable.InspectionNotificationCompliant = notification;
-
+            MessageInspectable messageInspectable = CreateTestMessageInspectable();
             var messageVisualElement = root.Q<VisualElement>("InspectionMessage");
-
 
             // Act
             inspectionWindowBuilder.HandleInspectionWindowDisplay(messageInspectable);
@@ -888,13 +882,7 @@ namespace Tests.PlayMode
         public IEnumerator InspectionMessage_DisplayStyleNone_OnHide()
         {
             // Arrange
-            GameObject messageInspectableGO = new();
-            messageInspectableGO.AddComponent<BoxCollider>();
-            MessageInspectable messageInspectable = messageInspectableGO.AddComponent<MessageInspectable>();
-            NotificationSO notification = ScriptableObject.CreateInstance<NotificationSO>();
-            notification.Message = "TestMessage";
-            messageInspectable.InspectionNotificationCompliant = notification;
-
+            MessageInspectable messageInspectable = CreateTestMessageInspectable();
             var messageVisualElement = root.Q<VisualElement>("InspectionMessage");
             inspectionWindowBuilder.HandleInspectionWindowDisplay(messageInspectable);
             Assert.AreEqual(DisplayStyle.Flex.ToString().Trim(), messageVisualElement.style.display.ToString().Trim());
@@ -1011,6 +999,36 @@ namespace Tests.PlayMode
             var inspection = new InspectionData(inspectable, isCompliant, hasPhoto);
             inspectionWindowBuilder.UpdateInspectionLabel(inspection);
             yield return null;
+        }
+
+        /// <summary>
+        ///     Creates a test MessageInspectable with required components and lists initialized.
+        /// </summary>
+        /// <param name="notificationMessage">The message for the test notification.</param>
+        /// <returns>A configured MessageInspectable for testing.</returns>
+        private MessageInspectable CreateTestMessageInspectable(string notificationMessage = "TestMessage")
+        {
+            GameObject messageInspectableGO = new();
+            messageInspectableGO.AddComponent<BoxCollider>();
+            MessageInspectable messageInspectable = messageInspectableGO.AddComponent<MessageInspectable>();
+            
+            // Initialize required lists to prevent NullReferenceException
+            messageInspectable.InspectionNotifications = new();
+            messageInspectable.States = new();
+            
+            NotificationSO notification = ScriptableObject.CreateInstance<NotificationSO>();
+            notification.Message = notificationMessage;
+            
+            // Set up notification in the list and create a corresponding state
+            messageInspectable.InspectionNotifications.Add(notification);
+            
+            // Create a dummy state for testing
+            GameObject stateGO = new GameObject("TestState");
+            stateGO.transform.SetParent(messageInspectableGO.transform);
+            State testState = new State(stateGO, Compliancy.Compliant);
+            messageInspectable.States.Add(testState);
+
+            return messageInspectable;
         }
 
         #endregion

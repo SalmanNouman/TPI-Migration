@@ -133,5 +133,27 @@ namespace VARLab.DLX
         {
             HasPhoto = false;
         }
+
+        /// <summary>
+        ///     Finds the index of the currently active (visible) state in the States list.
+        /// </summary>
+        /// <remarks>
+        ///     - Checks <see cref="GameObject.activeInHierarchy"/> of each state's InspectableGameObject.
+        ///     - Used by <see cref="MessageInspectable"/> and <see cref="ObjectViewerInspectables"/> for state-dependent operations.
+        /// </remarks>
+        /// <returns>
+        ///     Index of the active state, or '-1' if no active state is found
+        /// </returns>
+        protected int GetActiveStateIndex()
+        {
+            for (int i = 0; i < States.Count; i++)
+            {
+                if (States[i].InspectableGameObject.activeInHierarchy)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

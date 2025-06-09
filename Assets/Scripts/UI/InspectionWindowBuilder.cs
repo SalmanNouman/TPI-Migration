@@ -424,19 +424,19 @@ namespace VARLab.DLX
 
             // Handle message display for objects with conditional notification messages
             var messageInspectable = obj.GetComponent<MessageInspectable>();
-            var toggleableMessageInspectable = obj.GetComponent<ToggleableMessageInspectable>();
-
-            if (messageInspectable != null || toggleableMessageInspectable != null)
+            
+            if (messageInspectable != null)
             {
-                // TODO: When scenario system is implemented, determine compliance status from currently active state objects
-                // and select appropriate notification (Compliant vs NonCompliant) based on obj.States
-                NotificationSO notificationSO = messageInspectable?.InspectionNotificationCompliant
-                                              ?? toggleableMessageInspectable?.InspectionNotificationCompliant;
-
+                NotificationSO notificationSO = messageInspectable.GetInspectionNotification();
+                
                 if (notificationSO != null)
                 {
                     ToggleMessageContainer(true);
                     messageText.text = notificationSO.Message;
+                }
+                else
+                {
+                    ToggleMessageContainer(false);
                 }
             }
 

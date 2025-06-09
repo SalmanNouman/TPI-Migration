@@ -20,34 +20,60 @@ namespace VARLab.DLX
         ///     This value directly determines the initial zoom level when the inspection window opens.
         ///     <see cref="InspectionWindowBuilder.HandleInspectionWindowDisplay"/>
         /// </summary>
+        /// <remarks>
+        ///     For custom transform settings (rotation and scale), use <see cref="ObjectTransformDetails"/> 
+        ///     ScriptableObject in WorldObject's TransformDetails field. Useful for different sized objects.
+        /// </remarks>
         [Tooltip("Camera field of view value for this specific object. Lower values zoom in, higher values zoom out.")]
         public float FieldOfView = 35.0f;
 
-        [Header("Gallery Images"), Space(5f)]
-        [Tooltip("PNG sprites for gallery display")]
+        [Space(5f)]
+        [Tooltip("PNG sprites for gallery display.\nOrder must match States list:\n(The 1st State = The 1st Sprite, ···)")]
         public List<Sprite> GallerySprites = new ();
 
-        // Note: For additional object transform settings (rotation and scale settings), 
-        // use the <see cref="ObjectTransformDetails"/> ScriptableObject and assign it to the TransformDetails field in the WorldObject component.
-        // This is especially useful for objects of different sizes that need custom display adjustments.
-
         /// <summary>
-        ///     Gets the PNG byte data for gallery display from the assigned sprites.
+        ///     Gets PNG byte data of the sprite matching the current active state for gallery display.
         /// </summary>
         /// <remarks>
-        ///     Currently returns the first sprite until scenario system is implemented.
-        ///     TODO: When scenario system is ready, this will select appropriate sprite based on current object state/compliance status.
+        ///     Automatically finds the active (visible) state from the States list and returns 
+        ///     the corresponding sprite from GallerySprites at the same index.
         /// </remarks>
-        /// <returns> PNG byte array of the first sprite's texture, or null if no valid sprites are assigned </returns>
+        /// <returns>PNG byte array of the matching sprite, or 'null' if validation fails</returns>
         public byte[] GetGalleryImageBytes()
         {
-            if (GallerySprites.Count == 0 || GallerySprites[0] == null)
+            if (GallerySprites.Count == 0)
             {
-                Debug.LogWarning($"No valid sprite found for object {Name}. Please assign a sprite to the GallerySprites list.");
+                Debug.LogWarning($"No images assigned for '{Name}'. Please assign sprite assets to the GallerySprites list.");
                 return null;
             }
-            
-            return GallerySprites[0].texture.EncodeToPNG();
+
+            // Find the index of the currently active (visible) state
+            int activeStateIndex = GetActiveStateIndex();
+
+            // Check if no active state is found
+           if (activeStateIndex == -1)
+            {
+                Debug.LogWarning($"No active state found for '{Name}'.");
+                return null;
+            }
+
+            // Check if the active state index exceeds the GallerySprites count
+            if (activeStateIndex >= GallerySprites.Count)
+            {
+                Debug.LogError($"Active state index '{activeStateIndex}' exceeds GallerySprites count '{GallerySprites.Count}' for '{Name}'.");
+                return null;
+            }
+
+            // Check if the sprite at the active state index is null
+            if (GallerySprites[activeStateIndex] == null)
+            {
+                Debug.LogError($"Sprite at index '{activeStateIndex}' is null for '{Name}'. Please assign a valid sprite.");
+                return null;
+            }
+
+            // Encode the sprite to PNG and return the byte array
+            return GallerySprites[activeStateIndex].texture.EncodeToPNG();
         }
+
     }
 }

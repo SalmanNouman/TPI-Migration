@@ -5,27 +5,21 @@ using VARLab.Velcro;
 namespace VARLab.DLX
 {
     /// <summary>
-    ///     Extends <see cref="InspectableObject"/> with element toggling and message display.
+    ///     Extends <see cref="MessageInspectable"/> that extends <see cref="InspectableObject"/>
+    ///     with game object toggling functionality during inspection.
     /// </summary>
     /// <remarks>
-    ///     - Provides ability to toggle (show/hide) game objects when inspected
-    ///     - Supports different notifications for compliant and non-compliant states
-    ///     - Inherits all standard inspectable object functionality
+    ///     - Inherits dynamic state-based notification message selection from <see cref="MessageInspectable"/>
+    ///     - Inherits all standard <see cref="InspectableObject"/> functionality
+    ///     - Toggles (show/hide) game objects
     ///     - Can be used for objects that need to reveal hidden elements during inspection
     /// </remarks>
-    public class ToggleableMessageInspectable : InspectableObject
+    public class ToggleableMessageInspectable : MessageInspectable
     {
         [Header("Toggleable Object Properties"), Space(5f)]
         [Tooltip("List of game objects that will be toggled (activated/deactivated) when this object is inspected")] 
         public List<GameObject> Toggleables = new();
-
-        [Header("Message Properties"), Space(5f)]
-        [Tooltip("Notification to display when in compliant state")]
-        public NotificationSO InspectionNotificationCompliant;
-
-        [Tooltip("Notification to display when in non-compliant state")]
-        public NotificationSO InspectionNotificationNonCompliant;
-
+        
         /// <summary>
         ///     Toggles the visibility of all game objects in the Toggleables list.
         /// </summary>
