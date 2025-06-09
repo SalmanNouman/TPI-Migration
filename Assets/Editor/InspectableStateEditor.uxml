@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-inspectable-state-editor.uss?fileID=7433441132597879392&amp;guid=65e8d4dc95cf4a54eb352466cd969845&amp;type=3#tpi-inspectable-state-editor" />
+    <ui:VisualElement name="ve_window" class="state-viewer-root">
+        <ui:VisualElement name="Header" class="inspectable-viewer-label">
+            <ui:Label tabindex="-1" text="Inspectable State Editor" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lbl_title" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 20px; margin-bottom: 0; margin-top: 0;" />
+            <ui:DropdownField label="Load File" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ddf_loadFile" class="load-file-dropdown inspectable-viewer-popup-field__input" />
+        </ui:VisualElement>
+        <ui:ScrollView name="sv_states" style="background-color: rgb(56, 56, 56); border-left-width: 1px; border-right-width: 1px; border-top-width: 0; border-bottom-width: 1px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ve_footer" class="dark-background" style="height: 100px;">
+        <ui:TextField label="File Name:" name="tf_fileName" class="file-text-input file-entry-textfield file-text-label inspectable-viewer-popup-field__input" />
+        <ui:VisualElement name="ve_btnContainer" class="inspectable-viewer-button flex-row-items" style="height: 50%; align-items: stretch; justify-content: center; margin-left: 20px; margin-right: 20px; margin-bottom: 2px;">
+            <ui:Button text="Save Scenario" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn_saveScenario" style="flex-grow: 1; color: rgb(255, 255, 255); background-color: rgb(65, 65, 65);" />
+            <ui:Button text="Apply Scenario" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn_ApplyScenario" style="flex-grow: 1; word-spacing: 0; min-width: 50%; color: rgb(255, 255, 255); background-color: rgb(65, 65, 65);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

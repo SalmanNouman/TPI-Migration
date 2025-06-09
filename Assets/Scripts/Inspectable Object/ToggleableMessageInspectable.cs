@@ -20,12 +20,12 @@ namespace VARLab.DLX
         public List<GameObject> Toggleables = new();
 
         [Header("Message Properties"), Space(5f)]
-        [Tooltip("Notification to display when in compliant state")] 
+        [Tooltip("Notification to display when in compliant state")]
         public NotificationSO InspectionNotificationCompliant;
-        
-        [Tooltip("Notification to display when in non-compliant state")] 
+
+        [Tooltip("Notification to display when in non-compliant state")]
         public NotificationSO InspectionNotificationNonCompliant;
-        
+
         /// <summary>
         ///     Toggles the visibility of all game objects in the Toggleables list.
         /// </summary>

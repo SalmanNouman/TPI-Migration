@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2347272900578716705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8857241656380004661}
+  m_Layer: 0
+  m_Name: Compliant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8857241656380004661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347272900578716705}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.18945885, y: 0.067908406, z: 0.21981812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 663521149446059642}
+  - {fileID: 6323317751151579677}
+  - {fileID: 3899732508542270799}
+  m_Father: {fileID: 8864109569345847354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3810501277041126692
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,9 +198,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3663064880450765166}
-  - {fileID: 663521149446059642}
-  - {fileID: 6323317751151579677}
-  - {fileID: 3899732508542270799}
+  - {fileID: 8857241656380004661}
   - {fileID: 3943954480542040080}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -324,7 +356,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -340,7 +372,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -356,7 +388,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -493,7 +525,7 @@ MonoBehaviour:
   Location: 4
   Cam: {fileID: 17896063674840030}
   States:
-  - InspectableGameObject: {fileID: 7447641610134841005}
+  - InspectableGameObject: {fileID: 2347272900578716705}
     Compliancy: 0
   ObjectId: 
   HasPhoto: 0
@@ -513,7 +545,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8864109569345847354}
+    m_TransformParent: {fileID: 8857241656380004661}
     m_Modifications:
     - target: {fileID: 294440532553483465, guid: 8b902a8e2c07b0042b3409727ce7cbfe,
         type: 3}
@@ -533,17 +565,17 @@ PrefabInstance:
     - target: {fileID: 2170163742403469672, guid: 8b902a8e2c07b0042b3409727ce7cbfe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.219
+      value: -0.40845895
       objectReference: {fileID: 0}
     - target: {fileID: 2170163742403469672, guid: 8b902a8e2c07b0042b3409727ce7cbfe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.594
+      value: 0.5260916
       objectReference: {fileID: 0}
     - target: {fileID: 2170163742403469672, guid: 8b902a8e2c07b0042b3409727ce7cbfe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.21981812
       objectReference: {fileID: 0}
     - target: {fileID: 2170163742403469672, guid: 8b902a8e2c07b0042b3409727ce7cbfe,
         type: 3}
@@ -757,7 +789,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8864109569345847354}
+    m_TransformParent: {fileID: 8857241656380004661}
     m_Modifications:
     - target: {fileID: 2398560325637217332, guid: 246e53ced9f5c96448523c9d888c4ed1,
         type: 3}
@@ -777,17 +809,17 @@ PrefabInstance:
     - target: {fileID: 4305111163785282620, guid: 246e53ced9f5c96448523c9d888c4ed1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.267
+      value: 0.07754111
       objectReference: {fileID: 0}
     - target: {fileID: 4305111163785282620, guid: 246e53ced9f5c96448523c9d888c4ed1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.565
+      value: 0.49709153
       objectReference: {fileID: 0}
     - target: {fileID: 4305111163785282620, guid: 246e53ced9f5c96448523c9d888c4ed1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.21981812
       objectReference: {fileID: 0}
     - target: {fileID: 4305111163785282620, guid: 246e53ced9f5c96448523c9d888c4ed1,
         type: 3}
@@ -935,7 +967,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8864109569345847354}
+    m_TransformParent: {fileID: 8857241656380004661}
     m_Modifications:
     - target: {fileID: 336258898215218087, guid: 3275e5bb3f5d0cd459b15c27dd296d23,
         type: 3}
@@ -950,17 +982,17 @@ PrefabInstance:
     - target: {fileID: 805707811794141627, guid: 3275e5bb3f5d0cd459b15c27dd296d23,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.18945885
       objectReference: {fileID: 0}
     - target: {fileID: 805707811794141627, guid: 3275e5bb3f5d0cd459b15c27dd296d23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.067908406
       objectReference: {fileID: 0}
     - target: {fileID: 805707811794141627, guid: 3275e5bb3f5d0cd459b15c27dd296d23,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.21981812
       objectReference: {fileID: 0}
     - target: {fileID: 805707811794141627, guid: 3275e5bb3f5d0cd459b15c27dd296d23,
         type: 3}

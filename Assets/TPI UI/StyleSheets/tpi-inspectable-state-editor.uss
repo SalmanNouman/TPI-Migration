@@ -1,0 +1,87 @@
+.state-viewer-root {
+    background-color: rgb(56, 56, 56);
+    flex-grow: 1;
+    color: rgb(88, 88, 88);
+    height: 100%;
+}
+
+.inspectable-viewer-label {
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    align-items: stretch;
+    flex-grow: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 80px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    max-height: 80px;
+}
+
+.inspectable-viewer-popup-field__input {
+    border-color: rgb(36, 36, 36);
+}
+
+.inspectable-viewer-button {
+}
+
+.load-file-dropdown {
+    margin: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: auto;
+    margin-left: 10px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: rgb(251, 251, 251);
+    background-color: rgb(56, 56, 56);
+    font-size: 17px;
+}
+
+.file-text-input {
+    margin: 5px;
+    align-items: center;
+    align-self: auto;
+    height: 50%;
+    margin-bottom: 0;
+    margin-left: 18px;
+    padding-left: 1px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+}
+
+.file-entry-textfield {
+    border-color: rgb(36, 36, 36);
+}
+
+.file-text-label {
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.dark-background {
+    background-color: rgb(46, 46, 46);
+}
+
+.flex-row-items {
+    flex-direction: row;
+}
+
+.StateViewItems {
+    background-color: rgb(88, 88, 88);
+    border-color: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
