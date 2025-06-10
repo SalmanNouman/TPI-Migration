@@ -200,11 +200,11 @@ namespace VARLab.DLX
             }
 
             // Hide the piercer cutout
-            if (artistCutout != null)
+            /*if (artistCutout != null)
             {
                 artistCutout.SetActive(false);
                 Debug.Log("ArtistInteractionTask: artist cutout hidden.");
-            }
+            }*/
 
             // Disable the piercer cutout collider
             var boxCollider = artistCutout.GetComponent<BoxCollider>();
@@ -230,7 +230,6 @@ namespace VARLab.DLX
         public void LoadArtistInteraction(bool isCompleted)
         {
             preparedProcedureTray.SetActive(isCompleted);
-            artistCutout.SetActive(!isCompleted);
             var boxCollider = artistCutout.GetComponent<BoxCollider>();
             if (boxCollider != null)
             {

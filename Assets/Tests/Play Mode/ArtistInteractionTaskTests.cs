@@ -158,7 +158,6 @@ namespace Tests.PlayMode
             Assert.IsTrue(taskStartedEventInvoked, "OnTaskStarted event should be invoked");
             Assert.IsTrue(taskCompletedEventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
-            Assert.IsFalse(artistCutoutObject.activeSelf, "Artist cutout should be inactive after task completes");
         }
 
         /// <summary>
@@ -348,7 +347,6 @@ namespace Tests.PlayMode
             Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
-            Assert.IsFalse(artistCutoutObject.activeSelf, "Artist cutout should be inactive after task completes");
             Assert.IsFalse(boxCollider.enabled, "BoxCollider should be disabled after task completes");
         }
 
