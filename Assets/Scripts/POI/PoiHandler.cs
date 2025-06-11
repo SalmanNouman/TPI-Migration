@@ -175,7 +175,6 @@ namespace VARLab.DLX
         /// <param name="poiName">Name of the POI to warp to</param>
         public void WarpToLastPOI(string poiName)
         {
-            poiName = poiName == "" ? "Bathroom" : poiName;
             Poi lastPoi = pois.Find(p => p.SelectedPoiName.ToString() == poiName);
 
             if (lastPoi == null || lastPoi.DefaultWaypoint == null)
