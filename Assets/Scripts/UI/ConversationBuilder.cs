@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using VARLab.Navigation.PointClick;
 using VARLab.Velcro;
 
 namespace VARLab.DLX
@@ -26,6 +28,7 @@ namespace VARLab.DLX
         private Label titleLabel;
         private Label taskTextLabel;
         private Button primaryButton;
+        private List<AudioClip> audioClips;
 
         //  ScriptableObject for conversation
         private ConversationSO currentConversation;
@@ -148,6 +151,7 @@ namespace VARLab.DLX
         {
             UIHelper.Hide(root);
             OnWindowHide?.Invoke();
+            VoiceOverManager.Instance.StopAllClips();
         }
 
         /// <summary>
@@ -161,6 +165,7 @@ namespace VARLab.DLX
             currentConversation = conversation;
 
             HandleSetContent();
+            VoiceOverManager.Instance.PlayAudioClipsFromList(audioClips, 0.5f, 0.5f);
             StartCoroutine(InteractionsRoutine());
             Show();
         }
@@ -181,7 +186,9 @@ namespace VARLab.DLX
         ///     Creates and displays all dialogue items
         /// </summary>
         private void SetupAllDialogues()
-        {
+        {                
+            audioClips = new List<AudioClip>();
+
             // Create and display all dialogue items
             foreach (ConversationSO.Dialogue dialogue in currentConversation.dialogue)
             {
@@ -192,6 +199,7 @@ namespace VARLab.DLX
                 VisualElement image = bodyElement.Q<VisualElement>("Image");
                 Label caption = bodyElement.Q<Label>("Caption");
                 Label description = bodyElement.Q<Label>("Description");
+                audioClips.Add(dialogue.AudioClip);
 
                 // Dialogue content
                 caption.text = dialogue.Speaker;
