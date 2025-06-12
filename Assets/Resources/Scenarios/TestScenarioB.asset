@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c098f40ba8aa7c49a8789f371af8a40, type: 3}
+  m_Name: TestScenarioB
+  m_EditorClassIdentifier: 
+  ScenarioName: TestScenarioB
+  InspectablesAndStates:
+  - InspectableID: Bathroom_Hand Sink
+    InspectableState: Compliant
+  - InspectableID: Bathroom_Trash Can
+    InspectableState: NonCompliant_Garbage
+  - InspectableID: PiercingArea_Alcohol Swab
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Alcohol Swab Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Area Rug
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Client Chair
+    InspectableState: NonCompliant_Fabric
+  - InspectableID: PiercingArea_Cotton Swab Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Cotton Swabs
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Dermal Punch / Biopsy Punch
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Forceps
+    InspectableState: NonCompliant Closed
+  - InspectableID: PiercingArea_Hand Sanitizer
+    InspectableState: Non-compliant
+  - InspectableID: PiercingArea_Handwashing Station
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Jewellery
+    InspectableState: NonCompliant_Assembled
+  - InspectableID: PiercingArea_Kneeler Chair
+    InspectableState: NonCompliant_Fabric
+  - InspectableID: PiercingArea_Marker and Ruler
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Piercing Needle
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Receiving Tube
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Sanitizing Wipes
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Service Tray
+    InspectableState: NonCompliant
+  - InspectableID: PiercingArea_Sharps Container
+    InspectableState: NonCompliant_LidMissing
+  - InspectableID: PiercingArea_Sterilized Dermal Punch Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Sterilized Forceps Containers
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Sterilized Marker and Ruler Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Sterilized Needle Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Sterilized Receiving Tube Container
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Tool Chest
+    InspectableState: Compliant
+  - InspectableID: PiercingArea_Trash Can
+    InspectableState: NonCompliant_Garbage
+  - InspectableID: Reception_After Care Instructions
+    InspectableState: Compliant
+  - InspectableID: Reception_Business Licence
+    InspectableState: Compliant
+  - InspectableID: Reception_Client Records
+    InspectableState: Compliant
+  - InspectableID: ReprocessingArea_Autoclave
+    InspectableState: Compliant
+  - InspectableID: ReprocessingArea_Autoclave Cassette
+    InspectableState: Compliant
+  - InspectableID: ReprocessingArea_Autoclave Records
+    InspectableState: NonCompliant
+  - InspectableID: ReprocessingArea_Autoclave Spore Test Records
+    InspectableState: NonCompliant
+  - InspectableID: ReprocessingArea_Sink
+    InspectableState: NonCompliant
+  - InspectableID: ReprocessingArea_Ultrasonic Cleaner
+    InspectableState: Compliant
+  - InspectableID: TattooArea_Client Chair
+    InspectableState: NonCompliant_Fabric
+  - InspectableID: TattooArea_Hand Sanitizer
+    InspectableState: Non-compliant
+  - InspectableID: TattooArea_Handwashing Station
+    InspectableState: Compliant
+  - InspectableID: TattooArea_Kneeler Chair
+    InspectableState: NonCompliant_Fabric
+  - InspectableID: TattooArea_Popsicle Stick
+    InspectableState: Compliant
+  - InspectableID: TattooArea_Popsicle Sticks Container
+    InspectableState: Compliant
+  - InspectableID: TattooArea_Sanitizing Wipes
+    InspectableState: NonCompliant
+  - InspectableID: TattooArea_Service Tray
+    InspectableState: NonCompliant
+  - InspectableID: TattooArea_Tattoo Pen
+    InspectableState: NonCompliant_SheathingMissing
+  - InspectableID: TattooArea_Trash Can
+    InspectableState: NonCompliant_Garbage
+  - InspectableID: TattooArea_Vaseline
+    InspectableState: NonCompliant

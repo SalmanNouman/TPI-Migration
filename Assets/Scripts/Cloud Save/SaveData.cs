@@ -45,6 +45,9 @@ namespace VARLab.DLX
         [JsonProperty]
         public TimeSpan Time;
 
+        [JsonProperty]
+        public string CurrentScenarioName;
+
         [JsonObject(MemberSerialization.OptIn)]
         public struct ActivityData
         {

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5616429804475310438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3268344724937539382}
+  - component: {fileID: 4347584547400637985}
+  m_Layer: 0
+  m_Name: ScenarioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3268344724937539382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616429804475310438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4347584547400637985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616429804475310438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a6c4f5b8a8c5f44ba0aa97bef197b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableScenarios:
+  - {fileID: 11400000, guid: 583f7be3bf7e5714ab80f6e3846cc44a, type: 2}
+  - {fileID: 11400000, guid: 4691b1c58545d854f997a779a84e1051, type: 2}
+  - {fileID: 11400000, guid: 42fdea8e194429b498755d71a7beb3eb, type: 2}
+  currentScenarioName: 
+  OnScenarioApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNewScenarioLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSavedScenarioLoaded:
+    m_PersistentCalls:
+      m_Calls: []

@@ -81,11 +81,12 @@ namespace VARLab.DLX
         public UnityEvent OnInitialize;
 
         /// <summary>
-        /// Event triggered when a new simulation should be started (no save file, invalid save, or restart).
+        ///     Event triggered when a new simulation should be started (no save file, invalid save, or restart).
         /// </summary>
         /// <remarks>
         ///     Inspector connections:
-        /// - <see cref="StartInfoWindowBuilder.Show"/>
+        ///     - <see cref="StartInfoWindowBuilder.Show"/>
+        ///     - <see cref="ScenarioManager.LoadRandomScenario"/> (loads random scenario when starting new simulation)
         /// </remarks>
         public UnityEvent OnFreshLoad;
 
@@ -118,6 +119,11 @@ namespace VARLab.DLX
         public UnityEvent<bool> LoadPiercerInteraction;
 
         public UnityEvent<bool> LoadTattooArtistInteraction;
+
+        /// <summary>
+        ///     <see cref="ScenarioManager.LoadScenarioByName(string)"/>
+        /// </summary>
+        public UnityEvent<string> LoadSavedScenario;
 
         protected virtual void OnValidate()
         {
@@ -154,6 +160,7 @@ namespace VARLab.DLX
             LoadActivityList ??= new();
             LoadPiercerInteraction ??= new();
             LoadTattooArtistInteraction ??= new();
+            LoadSavedScenario ??= new();
 
             AddListeners();
 
@@ -190,8 +197,8 @@ namespace VARLab.DLX
                 LoadActivityList?.Invoke(saveData.ActivityLog);
                 LoadPiercerInteraction?.Invoke(saveData.PiercerInteractionCompleted);
                 LoadTattooArtistInteraction?.Invoke(saveData.TattooArtistInteractionCompleted);
-                LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
                 MovePlayer?.Invoke(saveData.LastPOI);
+                LoadSavedScenario?.Invoke(saveData.CurrentScenarioName);
             });
         }
 
@@ -225,6 +232,35 @@ namespace VARLab.DLX
         public void SetUpInitialData()
         {
             saveData.Version = Application.version;
+        }
+
+        /// <summary>
+        ///     Saves the scenario name to save data
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="ScenarioManager.OnNewScenarioLoaded"/> event
+        /// </remarks>
+        /// <param name="scenarioName">The name of the loaded scenario</param>
+        public void SaveNewScenario(string scenarioName)
+        {
+            if (string.IsNullOrEmpty(scenarioName)) return;
+            
+            saveData.CurrentScenarioName = scenarioName;
+            Debug.Log($"CustomSaveHandler: Saved scenario '{scenarioName}' for new game.");
+        }
+
+        /// <summary>
+        ///     Invokes LoadPhotos event after saved scenario loading is completed.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Connected from: <see cref="ScenarioManager.OnSavedScenarioLoaded"/> event
+        /// </remarks>
+        public void InvokeLoadPhotos()
+        {
+            LoadPhotos?.Invoke(saveData.PhotoIdAndTimeStamp);
+            Debug.Log("CustomSaveHandler: Invoked LoadPhotos event after saved scenario loading.");
         }
 
         /// <summary>
@@ -696,6 +732,7 @@ namespace VARLab.DLX
         #endregion
 
         #region Artist Interaction
+
         /// <summary>
         /// Saves the state of the piercer interaction to the save data.
         /// Called when the piercer interaction is completed.
