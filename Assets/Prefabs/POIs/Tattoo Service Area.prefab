@@ -822,6 +822,7 @@ Transform:
   - {fileID: 4494339230204108331}
   - {fileID: 5597858505191782591}
   - {fileID: 1150861870424089227}
+  - {fileID: 4441723228960187023}
   m_Father: {fileID: 7678587093834847862}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 20.737}
 --- !u!1 &2112934271755145878
@@ -4107,7 +4108,7 @@ PrefabInstance:
     - target: {fileID: 4386576582402062549, guid: 3b5b41f11efd147409b8aa7ba63ff2ec,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4386576582402062549, guid: 3b5b41f11efd147409b8aa7ba63ff2ec,
         type: 3}
@@ -5454,6 +5455,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1646467242941430438}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1804293895616101450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2368029343951966168}
+    m_Modifications:
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.16149013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.005004257
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.014299989
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5135137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5135137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.48611084
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.48611084
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -66.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005161275582205419, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092500901615514062, guid: bc30ab3a26237ea40a0719153a8f2684,
+        type: 3}
+      propertyPath: m_Name
+      value: PopsicleStick_TattooArea
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc30ab3a26237ea40a0719153a8f2684, type: 3}
+--- !u!4 &4441723228960187023 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2643058841807199941, guid: bc30ab3a26237ea40a0719153a8f2684,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804293895616101450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1854387738208383339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6561,12 +6641,12 @@ PrefabInstance:
     - target: {fileID: 7170417438527894092, guid: 6decf7c1bfdb4c1488fd392a1d701c66,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7170417438527894092, guid: 6decf7c1bfdb4c1488fd392a1d701c66,
         type: 3}
       propertyPath: outlineTargets.Array.data[1].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6714,7 +6794,7 @@ PrefabInstance:
     - target: {fileID: 786211245087036315, guid: 7bb2db42c79c70047a804e78cb1e2110,
         type: 3}
       propertyPath: outlineTargets.Array.data[3].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 786211245087036315, guid: 7bb2db42c79c70047a804e78cb1e2110,
         type: 3}
@@ -8730,17 +8810,17 @@ PrefabInstance:
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
       propertyPath: outlineTargets.Array.data[1].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
       propertyPath: outlineTargets.Array.data[2].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
@@ -8750,7 +8830,7 @@ PrefabInstance:
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
       propertyPath: outlineTargets.Array.data[4].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130655894735100441, guid: 00c62f1598329134594a59a24cdfab12,
         type: 3}
@@ -11487,12 +11567,12 @@ PrefabInstance:
     - target: {fileID: 7189981084424946710, guid: 03aaf9be4e0ac29488fed3d48cecaaa9,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7189981084424946710, guid: 03aaf9be4e0ac29488fed3d48cecaaa9,
         type: 3}
       propertyPath: outlineTargets.Array.data[1].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7189981084424946710, guid: 03aaf9be4e0ac29488fed3d48cecaaa9,
         type: 3}
@@ -11502,7 +11582,7 @@ PrefabInstance:
     - target: {fileID: 7189981084424946710, guid: 03aaf9be4e0ac29488fed3d48cecaaa9,
         type: 3}
       propertyPath: outlineTargets.Array.data[3].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7189981084424946710, guid: 03aaf9be4e0ac29488fed3d48cecaaa9,
         type: 3}
@@ -12373,7 +12453,7 @@ PrefabInstance:
     - target: {fileID: 4548197471446048874, guid: 6bc5c973961345345ad8f3d356b7005a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7700001
+      value: -0.815
       objectReference: {fileID: 0}
     - target: {fileID: 4548197471446048874, guid: 6bc5c973961345345ad8f3d356b7005a,
         type: 3}
@@ -12383,7 +12463,7 @@ PrefabInstance:
     - target: {fileID: 4548197471446048874, guid: 6bc5c973961345345ad8f3d356b7005a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.21169
+      value: 6.509
       objectReference: {fileID: 0}
     - target: {fileID: 4548197471446048874, guid: 6bc5c973961345345ad8f3d356b7005a,
         type: 3}
