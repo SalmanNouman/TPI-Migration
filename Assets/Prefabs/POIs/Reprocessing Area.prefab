@@ -1498,6 +1498,7 @@ Transform:
   - {fileID: 6824744368112357761}
   - {fileID: 6686927019995792993}
   - {fileID: 4013423850294599142}
+  - {fileID: 3674364644812503784}
   m_Father: {fileID: 5447103255016583205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3044061426587024494
@@ -6617,6 +6618,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 328986305257259036}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &417506132890490430
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3164237007572976976}
+    m_Modifications:
+    - target: {fileID: 3739332986470670314, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_Name
+      value: IntegratorStrip_ReprocessingArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.7004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9627
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5249
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.83208895
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5546422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -67.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688849757332968961, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688849757332968961, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[1].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af152fcf861a7664bbd1b6543bd5f2c6, type: 3}
+--- !u!4 &3674364644812503784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3978561594600828118, guid: af152fcf861a7664bbd1b6543bd5f2c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 417506132890490430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &720577120788614353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6863,12 +6948,62 @@ PrefabInstance:
     - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
         type: 3}
       propertyPath: outlineTargets.Array.data[1].IsVisible
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[2].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[3].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[4].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[5].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[6].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[7].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[8].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[9].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[10].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888158236297903775, guid: 84e8e1d8d723a584cabdc563849fcc34,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[11].IsVisible
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7772825581738470718, guid: 84e8e1d8d723a584cabdc563849fcc34,
         type: 3}
@@ -7021,12 +7156,12 @@ PrefabInstance:
     - target: {fileID: 2390912880345364322, guid: 64bf9cb36c141254bb2ccf6c7ca46d19,
         type: 3}
       propertyPath: outlineTargets.Array.data[12].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2390912880345364322, guid: 64bf9cb36c141254bb2ccf6c7ca46d19,
         type: 3}
       propertyPath: outlineTargets.Array.data[13].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5520360889837011540, guid: 64bf9cb36c141254bb2ccf6c7ca46d19,
         type: 3}
@@ -7240,27 +7375,27 @@ PrefabInstance:
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[5].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[6].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[7].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[8].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[9].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7488,12 +7623,12 @@ PrefabInstance:
     - target: {fileID: 3905659721598373942, guid: 3d840a1b55c6dd441bb18c1b2043e3af,
         type: 3}
       propertyPath: outlineTargets.Array.data[12].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3905659721598373942, guid: 3d840a1b55c6dd441bb18c1b2043e3af,
         type: 3}
       propertyPath: outlineTargets.Array.data[13].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4218085984450898158, guid: 3d840a1b55c6dd441bb18c1b2043e3af,
         type: 3}
@@ -8639,202 +8774,202 @@ PrefabInstance:
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[2].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[3].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[4].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[5].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[6].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[7].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[8].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[9].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[10].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[11].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[12].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[13].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[14].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[15].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[16].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[17].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[18].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[19].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[20].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[21].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[22].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[23].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[24].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[25].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[26].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[27].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[28].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[29].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[30].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[31].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[32].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[33].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[34].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[35].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[36].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[37].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[38].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[39].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8000432536460928308, guid: de77729886520aa42a38c16f5d0e396f,
         type: 3}
       propertyPath: outlineTargets.Array.data[40].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

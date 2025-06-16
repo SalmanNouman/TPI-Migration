@@ -87,7 +87,7 @@ namespace Tests.PlayMode
             Debug.Log(TimerManager.Instance.GetTimeSpan().TotalSeconds);
 
             //Assert
-            Assert.Less(TimerManager.Instance.GetTimeSpan().TotalSeconds, expectedResultTwo);
+            Assert.Less(Math.Round(TimerManager.Instance.GetTimeSpan().TotalSeconds), expectedResultTwo);
             Debug.Log(TimerManager.Instance.GetTimeSpan().TotalSeconds);
         }
 
