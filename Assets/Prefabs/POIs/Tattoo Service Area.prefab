@@ -826,6 +826,7 @@ Transform:
   - {fileID: 6833726708430494488}
   - {fileID: 4175152124675893317}
   - {fileID: 2051944710800216817}
+  - {fileID: 1065042674770538895}
   m_Father: {fileID: 7678587093834847862}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 20.737}
 --- !u!1 &1932960108106032484
@@ -6438,6 +6439,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5001553928375460621, guid: 5cb51cc544ffdea4398b70364241d06b,
     type: 3}
   m_PrefabInstance: {fileID: 1348355568291369373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1398283719002060545
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2368029343951966168}
+    m_Modifications:
+    - target: {fileID: 142016411697504281, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_Name
+      value: Razor_TattooArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.174341
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13258867
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d47fa2696c762304e8d463942513fdec, type: 3}
+--- !u!4 &1065042674770538895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2134839303774144142, guid: d47fa2696c762304e8d463942513fdec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398283719002060545}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1505828763802812443
 PrefabInstance:
@@ -12318,7 +12393,7 @@ PrefabInstance:
     - target: {fileID: 1897491721244317886, guid: c251e2231f253db4a916d6ab783e6595,
         type: 3}
       propertyPath: outlineTargets.Array.data[2].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6337085933164821801, guid: c251e2231f253db4a916d6ab783e6595,
         type: 3}
