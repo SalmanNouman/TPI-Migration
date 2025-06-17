@@ -1,5 +1,7 @@
+using EPOOutline;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using VARLab.Navigation.PointClick;
 
 namespace VARLab.DLX
@@ -199,22 +201,12 @@ namespace VARLab.DLX
                 Debug.Log("ArtistInteractionTask: Procedure tray revealed.");
             }
 
-            // Hide the piercer cutout
-            /*if (artistCutout != null)
+            // Disable outlinable component from the cutout
+            var outlinable = artistCutout.GetComponent<Outlinable>();
+            if (outlinable != null)
             {
-                artistCutout.SetActive(false);
-                Debug.Log("ArtistInteractionTask: artist cutout hidden.");
-            }*/
-
-            // Disable the piercer cutout collider
-            var boxCollider = artistCutout.GetComponent<BoxCollider>();
-            if (boxCollider != null)
-            {
-                boxCollider.enabled = false;
-            }
-            else
-            {
-                Debug.LogWarning("ArtistInteractionTask: BoxCollider component not found on artist cutout.");
+                outlinable.enabled = false;
+                Debug.Log("ArtistInteractionTask: Outlinable component disabled.");
             }
 
             // Trigger task completed event
@@ -230,14 +222,11 @@ namespace VARLab.DLX
         public void LoadArtistInteraction(bool isCompleted)
         {
             preparedProcedureTray.SetActive(isCompleted);
-            var boxCollider = artistCutout.GetComponent<BoxCollider>();
-            if (boxCollider != null)
+            var outlinable = artistCutout.GetComponent<Outlinable>();
+            if (outlinable != null)
             {
-                boxCollider.enabled = !isCompleted;
-            }
-            else
-            {
-                Debug.LogWarning("ArtistInteractionTask: BoxCollider component not found on artist cutout.");
+                outlinable.enabled = false;
+                Debug.Log("ArtistInteractionTask: Outlinable component disabled.");
             }
             isTaskCompleted = isCompleted;
         }

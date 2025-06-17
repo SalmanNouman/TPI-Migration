@@ -1,3 +1,4 @@
+using EPOOutline;
 using NUnit.Framework;
 using System.Collections;
 using System.Reflection;
@@ -78,6 +79,7 @@ namespace Tests.PlayMode
             // Set procedure tray and artist cutout
             preparedProcedureTray.SetValue(artistTask, preparedProcedureTrayObject);
             artistCutout.SetValue(artistTask, artistCutoutObject);
+            artistCutoutObject.AddComponent<Outlinable>(); // Add Outlinable component for testing
 
             // Set a small delay for testing
             conversationDelay.SetValue(artistTask, TestDelay);
@@ -286,7 +288,7 @@ namespace Tests.PlayMode
             // Disable tray and enable cutout for testing
             preparedProcedureTrayObject.SetActive(false);
             artistCutoutObject.SetActive(true);
-            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
+            var outlinable = artistCutoutObject.GetComponent<Outlinable>();
 
             // Act
             artistTask.CompleteTask();
@@ -296,7 +298,7 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is not started");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray should remain inactive if task is not started");
             Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout should remain active if task is not started");
-            Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is not started");
+            Assert.IsTrue(outlinable.enabled, "Outlinable component on artist cutout should remain enabled if task is not started");
         }
 
         /// <summary>
@@ -315,7 +317,6 @@ namespace Tests.PlayMode
             // Disable tray and enable cutout to check they don't change
             preparedProcedureTrayObject.SetActive(false);
             artistCutoutObject.SetActive(true);
-            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
 
             // Act
             artistTask.CompleteTask();
@@ -324,7 +325,6 @@ namespace Tests.PlayMode
             Assert.IsFalse(eventInvoked, "OnTaskCompleted should not be invoked if task is already completed");
             Assert.IsFalse(preparedProcedureTrayObject.activeSelf, "Procedure tray state shouldn't change if task is already completed");
             Assert.IsTrue(artistCutoutObject.activeSelf, "Artist cutout state shouldn't change if task is already completed");
-            Assert.IsTrue(boxCollider.enabled, "BoxCollider should remain enabled if task is already completed");
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace Tests.PlayMode
             isTaskStarted.SetValue(artistTask, true);
             bool eventInvoked = false;
             artistTask.OnTaskCompleted.AddListener(() => eventInvoked = true);
-            var boxCollider = artistCutoutObject.AddComponent<BoxCollider>();
+            var outlinable = artistCutoutObject.GetComponent<Outlinable>();
 
             // Act
             artistTask.CompleteTask();
@@ -347,7 +347,7 @@ namespace Tests.PlayMode
             Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
             Assert.IsTrue(eventInvoked, "OnTaskCompleted event should be invoked");
             Assert.IsTrue(preparedProcedureTrayObject.activeSelf, "Procedure tray should be active after task completes");
-            Assert.IsFalse(boxCollider.enabled, "BoxCollider should be disabled after task completes");
+            Assert.IsFalse(outlinable.enabled, "Outlinable component on artist cutout should be disabled after task completes");
         }
 
         #endregion

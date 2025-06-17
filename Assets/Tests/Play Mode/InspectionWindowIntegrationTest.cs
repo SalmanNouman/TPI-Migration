@@ -474,11 +474,12 @@ namespace Tests.PlayMode
 
             // Act
             inspectionWindowBuilder.TakePhoto();
-            yield return null;
+            // Assert if the flash effect was enabled by adding the class
+            Assert.IsTrue(flashContainer.ClassListContains("card-body-flash"), "Flash effect was not enabled on the flash container.");
+            yield return new WaitForSeconds(0.2f);
 
-            // Assert if the flash effect was triggered by adding the class
-            bool flashAdded = flashContainer.ClassListContains("card-body-flash");
-            Assert.IsTrue(flashAdded, "Flash effect was not triggered on the flash container.");
+            // Assert if the flash effect was disabled by removing the class
+            Assert.IsFalse(flashContainer.ClassListContains("card-body-flash"), "Flash effect was not disabled on the flash container.");
         }
 
         /// <summary>
