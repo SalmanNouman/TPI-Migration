@@ -1,6 +1,7 @@
 using EPOOutline;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using VARLab.Navigation.PointClick;
 
@@ -56,6 +57,7 @@ namespace VARLab.DLX
         #region Events
 
         // Note: OnTaskStarted, OnTaskCompleted, and OnTaskFailed are inherited from <see cref="Task.cs"/>
+        public UnityEvent OnTaskTransition;
 
         #endregion
 
@@ -117,7 +119,7 @@ namespace VARLab.DLX
             if (!isTaskStarted && !isTaskCompleted && waypoint == artistWaypoint)
             {
                 Debug.Log("ArtistInteractionTask: Player reached the artist waypoint: " + waypoint.name);
-
+                OnTaskTransition?.Invoke();
                 // Start coroutine instead of immediately calling HandleTask()
                 StartCoroutine(DelayedTaskStart());
             }

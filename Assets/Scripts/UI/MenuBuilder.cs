@@ -1,4 +1,4 @@
-using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -17,12 +17,27 @@ namespace VARLab.DLX
         private VisualElement root;
 
         /// <summary>
+        /// Tracks whether each button has shown its tooltip for the first time
+        /// </summary>
+        private Dictionary<Button, bool> hasShownTooltip = new Dictionary<Button, bool>();
+
+        /// <summary>
+        /// Debounce timer for tooltip events
+        /// </summary>
+        private float lastTooltipEventTime = 0f;
+
+        /// <summary>
+        /// Minimum time between tooltip events (in seconds)
+        /// </summary>
+        private const float ToolTipDebounceTime = 0.1f;
+
+        /// <summary>
         /// Menu buttons
         /// </summary>
         private Button pauseButton;
         private Button inspectionReviewButton;
         private Button settingsButton;
-        
+
         /// <summary>
         /// Button Events
         /// </summary>
@@ -61,6 +76,11 @@ namespace VARLab.DLX
             inspectionReviewButton = root.Q<Button>("InspectionReview");
             settingsButton = root.Q<Button>("Settings");
             
+            // Initialize tracking for each button
+            hasShownTooltip[pauseButton] = false;
+            hasShownTooltip[inspectionReviewButton] = false;
+            hasShownTooltip[settingsButton] = false;
+            
             SetListeners();
             SetToolTips();
         }
@@ -71,6 +91,9 @@ namespace VARLab.DLX
             OnPauseClicked ??= new();
             OnInspectionReviewClicked ??= new();
             OnSettingsClicked ??= new();
+            
+            // Initialize the dictionary
+            hasShownTooltip = new Dictionary<Button, bool>();
         }
 
         /// <summary>
@@ -82,23 +105,106 @@ namespace VARLab.DLX
             inspectionReviewButton.clicked += InspectionReviewClicked;
             settingsButton.clicked += SettingsClicked;
         }
-
+        /// <summary>
+        /// Sets the tooltips for all the buttons with debounced events to prevent jittering tooltips.
+        /// </summary>
         private void SetToolTips()
         {
-            pauseButton.RegisterCallback<MouseOverEvent>(evt => 
-                ShowToolTip?.Invoke(pauseButton, TooltipType.Left, "Pause", FontSize.Medium));
-            pauseButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
+            // Add debounced tooltip events for pause button
+            pauseButton.RegisterCallback<MouseOverEvent>(evt =>
+            {
+                if (!hasShownTooltip[pauseButton])
+                {
+                    // First show - apply debounce
+                    if (ShouldProcessTooltipEvent())
+                    {
+                        ShowToolTip?.Invoke(pauseButton, TooltipType.Left, "Pause", FontSize.Medium);
+                        hasShownTooltip[pauseButton] = true;
+                    }
+                }
+                else
+                {
+                    // After first show - no debounce
+                    ShowToolTip?.Invoke(pauseButton, TooltipType.Left, "Pause", FontSize.Medium);
+                }
+            });
+
+            pauseButton.RegisterCallback<MouseOutEvent>(evt =>
+            {
+                if (ShouldProcessTooltipEvent())
+                {
+                    HideToolTip?.Invoke();
+                }
+            });
             
-            inspectionReviewButton.RegisterCallback<MouseOverEvent>(evt => 
-                ShowToolTip?.Invoke(inspectionReviewButton, TooltipType.Left, "Inspection Review", FontSize.Medium));
-            inspectionReviewButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
+            // Add debounced tooltip events for inspection review button
+            inspectionReviewButton.RegisterCallback<MouseOverEvent>(evt =>
+            {
+                if (!hasShownTooltip[inspectionReviewButton])
+                {
+                    // First show - apply debounce
+                    if (ShouldProcessTooltipEvent())
+                    {
+                        ShowToolTip?.Invoke(inspectionReviewButton, TooltipType.Left, "Inspection Review", FontSize.Medium);
+                        hasShownTooltip[inspectionReviewButton] = true;
+                    }
+                }
+                else
+                {
+                    // After first show - no debounce
+                    ShowToolTip?.Invoke(inspectionReviewButton, TooltipType.Left, "Inspection Review", FontSize.Medium);
+                }
+            });
+
+            inspectionReviewButton.RegisterCallback<MouseOutEvent>(evt =>
+            {
+                HideToolTip?.Invoke();
+            });
             
-            settingsButton.RegisterCallback<MouseOverEvent>(evt => 
-                ShowToolTip?.Invoke(settingsButton, TooltipType.Left, "Settings", FontSize.Medium));
-            settingsButton.RegisterCallback<MouseOutEvent>(evt => HideToolTip?.Invoke());
-            
+            // Add debounced tooltip events for settings button
+            settingsButton.RegisterCallback<MouseOverEvent>(evt =>
+            {
+                if (!hasShownTooltip[settingsButton])
+                {
+                    // First show - apply debounce
+                    if (ShouldProcessTooltipEvent())
+                    {
+                        ShowToolTip?.Invoke(settingsButton, TooltipType.Left, "Settings", FontSize.Medium);
+                        hasShownTooltip[settingsButton] = true;
+                    }
+                }
+                else
+                {
+                    // After first show - no debounce
+                    ShowToolTip?.Invoke(settingsButton, TooltipType.Left, "Settings", FontSize.Medium);
+                }
+            });
+
+            settingsButton.RegisterCallback<MouseOutEvent>(evt =>
+            {
+                HideToolTip?.Invoke();
+            });
         }
-        
+
+        /// <summary>
+        /// Determines if enough time has passed to process a new tooltip event
+        /// </summary>
+        /// <returns>True if the event should be processed, false if it should be ignored</returns>
+        private bool ShouldProcessTooltipEvent()
+        {
+            float currentTime = Time.time;
+            
+            // Check if enough time has passed since the last tooltip event
+            if (currentTime - lastTooltipEventTime < ToolTipDebounceTime)
+            {
+                return false; // Ignore this event (debounce)
+            }
+            
+            // Update the last event time and allow this event
+            lastTooltipEventTime = currentTime;
+            return true;
+        }
+
         /// <summary>
         /// Actions linked to the pause button clicked event.
         /// Invokes the OnPauseclicked event.

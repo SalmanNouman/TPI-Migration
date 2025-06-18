@@ -98,6 +98,8 @@ namespace VARLab.DLX
         /// </remarks>
         // public UnityEvent OnTaskCompleted; (inherited from <see cref="Tasks"/> base class)
 
+        public UnityEvent OnTaskTransition;
+
         #endregion
 
         #region Methods
@@ -165,6 +167,7 @@ namespace VARLab.DLX
             if (isAutoNavigating && waypoint.GetComponent<OfficeTask>() != null)
             {
                 isAutoNavigating = false;
+                OnTaskTransition?.Invoke();
                 Debug.Log("OfficeTask: Player reached office waypoint. Starting office conversation after delay.");
                 StartCoroutine(StartConversationAfterDelay());
             }

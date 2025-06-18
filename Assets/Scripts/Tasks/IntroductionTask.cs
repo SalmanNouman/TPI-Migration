@@ -96,6 +96,8 @@ namespace VARLab.DLX
         public UnityEvent<InformDialog> OnTaskFailedDialogDisplay;
         public UnityEvent RestartScene;
 
+        public UnityEvent OnTaskTransition;
+
         #endregion
 
         #region Methods
@@ -135,7 +137,7 @@ namespace VARLab.DLX
             if (!isTaskStarted && !isTaskCompleted && waypoint == introductionWaypoint)
             {
                 Debug.Log("IntroductionTask: Player reached the introduction waypoint: " + waypoint.name);
-
+                OnTaskTransition?.Invoke();
                 // Start coroutine instead of immediately calling HandleTask()
                 StartCoroutine(DelayedTaskStart());
             }
