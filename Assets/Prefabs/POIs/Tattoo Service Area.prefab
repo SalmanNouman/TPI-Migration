@@ -1426,6 +1426,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2859833524818140115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5095765796529476725}
+  m_Layer: 0
+  m_Name: TattooArtistTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5095765796529476725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859833524818140115}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6955601, y: 0.12726408, z: 0.12726408, w: 0.6955601}
+  m_LocalPosition: {x: -1.058, y: 1.461, z: 6.888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6219102384110995728}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 20.737}
 --- !u!1 &2920145742050830547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,6 +2320,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1418099818725129849}
+  - {fileID: 5095765796529476725}
   - {fileID: 2880463262431288309}
   - {fileID: 8830616871417960830}
   m_Father: {fileID: 4655211758061508299}
@@ -5276,6 +5309,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &8535692081723524327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418099818725129849}
+  m_Layer: 0
+  m_Name: TrayTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1418099818725129849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535692081723524327}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6955601, y: 0.12726408, z: 0.12726408, w: 0.6955601}
+  m_LocalPosition: {x: -0.562, y: 0.982, z: 7.244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6219102384110995728}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 20.737}
 --- !u!1 &9026557194093710895
 GameObject:
   m_ObjectHideFlags: 0
@@ -16771,6 +16835,9 @@ MonoBehaviour:
   conversationDelay: 0.5
   preparedProcedureTray: {fileID: 1826840590947641673}
   artistCutout: {fileID: 7355929575401359099}
+  OnTaskTransition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4988146376797470060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4548197471446048874, guid: 6bc5c973961345345ad8f3d356b7005a,
