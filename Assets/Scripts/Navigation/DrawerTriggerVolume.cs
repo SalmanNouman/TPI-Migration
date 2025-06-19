@@ -203,5 +203,45 @@ namespace VARLab.DLX
         }
 
         #endregion
+
+        #region Public Methods for External Control
+
+        /// <summary>
+        ///     Instantly opens all objects to their target positions without animation.
+        /// </summary>
+        /// <remarks>
+        ///     Used during save file loading to ensure objects inside drawers are visible for photo capture.
+        ///     Called from: <see cref="ImageHandler.TakePhotoForLoad(Dictionary{InspectableObject, string})"/>
+        /// </remarks>
+        public void OpenAllDrawersInstantly()
+        {
+            for (int i = 0; i < drawerSettings.Count; i++)
+            {
+                if (drawerSettings[i].Drawer == null) continue;
+                
+                // Set position directly to target open position
+                drawerSettings[i].Drawer.localPosition = targetOpenPositions[i];
+            }
+        }
+
+        /// <summary>
+        ///     Instantly closes all objects to their original positions without animation.
+        /// </summary>
+        /// <remarks>
+        ///     Used after photo capture during save file loading to restore original state.
+        ///     Called from: <see cref="ImageHandler.TakePhotoForLoad(Dictionary{InspectableObject, string})"/>
+        /// </remarks>
+        public void CloseAllDrawersInstantly()
+        {
+            for (int i = 0; i < drawerSettings.Count; i++)
+            {
+                if (drawerSettings[i].Drawer == null) continue;
+                
+                // Set position directly to original position
+                drawerSettings[i].Drawer.localPosition = originalPositions[i];
+            }
+        }
+
+        #endregion
     }
 }

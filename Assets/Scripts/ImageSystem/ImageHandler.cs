@@ -197,11 +197,26 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        ///     This method takes pictures all of the inspectables that have photo on load.
-        ///     ObjectViewer objects use sprites instead of camera capture.
+        ///     Takes pictures of all inspectables that have photos on save file load.
         /// </summary>
+        /// <remarks>
+        ///     - ObjectViewer objects use sprites instead of camera capture.
+        ///     - Opens all drawers before taking photos to ensure objects inside drawers are visible.
+        /// </remarks>
         public void TakePhotoForLoad(Dictionary<InspectableObject, string> photosAndTimestamps)
         {
+            // Find all drawer trigger volumes in the scene and open them instantly
+            DrawerTriggerVolume[] allDrawerTriggers = FindObjectsOfType<DrawerTriggerVolume>();
+            foreach (DrawerTriggerVolume drawerTrigger in allDrawerTriggers)
+            {
+                drawerTrigger.OpenAllDrawersInstantly();
+            }
+            
+            if (allDrawerTriggers.Length > 0)
+            {
+                Debug.Log($"ImageHandler: Opened all drawers ({allDrawerTriggers.Length} drawer trigger volumes) for photo retaking.");
+            }
+            
             foreach (KeyValuePair<InspectableObject, string> kvp in photosAndTimestamps)
             {
                 var obj = kvp.Key;
@@ -253,6 +268,18 @@ namespace VARLab.DLX
                     tempPhoto = null;
                 }
             }
+            
+            // Close all drawers back to their original state
+            foreach (DrawerTriggerVolume drawerTrigger in allDrawerTriggers)
+            {
+                drawerTrigger.CloseAllDrawersInstantly();
+            }
+            
+            if (allDrawerTriggers.Length > 0)
+            {
+                Debug.Log($"ImageHandler: Closed all drawers ({allDrawerTriggers.Length} drawer trigger volumes) after photo retaking.");
+            }
+            
             OnPhotoListChanged?.Invoke(Photos);
         }
 

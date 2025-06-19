@@ -10,7 +10,6 @@ namespace VARLab.DLX
     ///     Manages scenario operations
     /// </summary>
     /// <remarks>
-    ///     TPI-343 implementation:
     ///     - Loads random scenario when new game starts (no save file or deleted save file)
     ///     - Saves scenario name when scenario loading completes
     ///     - Updates inspectables according to saved scenario when continuing game
@@ -63,7 +62,7 @@ namespace VARLab.DLX
         /// </summary>
         /// <remarks>
         ///     Inspector connections:
-        ///     - <see cref="CustomSaveHandler.SaveNewScenario(string)"/> (TPI-343: Save scenario for new games)
+        ///     - <see cref="CustomSaveHandler.SaveNewScenario(string)"/> (Save scenario for new games)
         /// </remarks>
         public UnityEvent<string> OnNewScenarioLoaded;
 
