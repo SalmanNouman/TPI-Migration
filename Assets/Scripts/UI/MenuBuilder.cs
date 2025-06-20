@@ -29,7 +29,7 @@ namespace VARLab.DLX
         /// <summary>
         /// Minimum time between tooltip events (in seconds)
         /// </summary>
-        private const float ToolTipDebounceTime = 0.1f;
+        private const float ToolTipDebounceTime = 0.001f;
 
         /// <summary>
         /// Menu buttons
