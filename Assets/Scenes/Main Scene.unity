@@ -4685,6 +4685,7 @@ GameObject:
   - component: {fileID: 356010904}
   - component: {fileID: 356010908}
   - component: {fileID: 356010910}
+  - component: {fileID: 356010911}
   m_Layer: 0
   m_Name: Cloud Save System
   m_TagString: Untagged
@@ -4733,8 +4734,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AzureSaveSystem: {fileID: 356010904}
+  m_CookieSaveSystem: {fileID: 356010911}
   Container: tattoo-piercing-studio-inspection
   Blob: default
+  AutoSwitchToLocalStorage: 1
   OnLoadStart:
     m_PersistentCalls:
       m_Calls: []
@@ -5036,6 +5039,18 @@ MonoBehaviour:
   PiercerInteractionCompleted: 0
   TattooArtistInteractionCompleted: 0
   CurrentScenarioName: 
+--- !u!114 &356010911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356010902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dca75671c1204bddb5d38e89017b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &356343298
 Mesh:
   m_ObjectHideFlags: 0

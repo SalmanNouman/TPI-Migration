@@ -61,6 +61,14 @@ namespace VARLab.DLX
         private const int AutoSaveInterval = 180;
         private Stopwatch autoSaveStopwatch = new Stopwatch();
 
+        // boolean to track if the ping to cloud storage was successful
+        private bool pingSuccess = false;
+
+        // Maximum number of ping attempts before giving up
+        private const int MaxPingAttempts = 3;
+        // Time to wait between ping attempts in seconds
+        private const float PingRetryInterval = 1.0f;
+
         [Header("Load Events")]
         /// <summary>
         ///     Event triggered when a valid save file is loaded successfully.
@@ -148,7 +156,15 @@ namespace VARLab.DLX
         {
             CommandInterpreter.Instance?.Add(new CloudSaveCommand(this));
 
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+               Destroy(gameObject);
+            }
+
             CanSave = false;
 
             saveData = GetComponent<SaveData>();
@@ -323,12 +339,7 @@ namespace VARLab.DLX
         /// </summary>
         public override void Save()
         {
-            if (!enabled) { return; }
-
-            OnSaveStart?.Invoke();
-
             saveQueue.Enqueue(SaveAction);
-
             saveFlag = true;
         }
 
@@ -339,14 +350,17 @@ namespace VARLab.DLX
         {
             var data = CloudSerializer.Serialize();
             var save = SaveSystem.Save(FilePath, data);
+            base.Save();
         }
 
         /// <summary>
         ///     Receives a username externally (typically from SCORM, may soon be from LTI)
         ///     and updates the 'Blob' name with the specified username.
+        ///     Initiates cloud save system connectivity check with fallback to local save.
         /// </summary>
         /// <remarks>
-        ///     It can either load the game state or list the available save files.
+        ///     This method sets the Blob name and initiates the cloud connectivity check process.
+        ///     The actual save system selection is handled by the PingCloudStorage coroutine.
         /// </remarks>
         /// <param name="username">
         ///     A unique user ID to provide session identification
@@ -355,13 +369,77 @@ namespace VARLab.DLX
         {
             Blob = $"TPI_{username}";
 
-            if (LoadOnStart)
+            // The PingCloudStorage coroutine will handle the save system selection
+            // Start ping process to verify cloud connectivity
+            StartCoroutine(PingCloudStorage());
+        }
+
+        /// <summary>
+        /// Pings the cloud storage to check connectivity with retry attempts. If all retry attempts fail, 
+        /// we falls back to local save system.
+        /// </summary>
+        /// <returns>Coroutine that handles ping attempts and callbacks</returns>
+        private IEnumerator PingCloudStorage()
+        {
+            Debug.Log("CustomSaveHandler: Starting cloud storage ping check");
+            
+            int attempts = 0;
+            
+            // Try to ping the cloud storage up to MaxPingAttempts times
+            while (attempts < MaxPingAttempts && !pingSuccess)
             {
-                Load();
-            }
-            else
-            {
+                attempts++;
+                Debug.Log($"CustomSaveHandler: Ping attempt {attempts} of {MaxPingAttempts}");
+
+                // Use the AzureSaveSystem's List method as a ping
                 List();
+
+                // Check if the operation completed successfully
+                if (pingSuccess)
+                {
+                    Debug.Log("CustomSaveHandler: Cloud storage ping successful");
+
+                    // Cloud save is available, use List to retrieve available save files
+                    List();
+                }
+                else
+                {
+                    Debug.LogWarning($"CustomSaveHandler: Cloud storage ping failed (attempt {attempts} of {MaxPingAttempts})");
+
+                    // If we haven't reached max attempts, wait before trying again
+                    if (attempts < MaxPingAttempts)
+                    {
+                        yield return new WaitForSeconds(PingRetryInterval);
+                    }
+                }
+            }
+            
+            // If all ping attempts failed, switch to local save
+            if (!pingSuccess)
+            {
+                Debug.LogWarning($"CustomSaveHandler: All {MaxPingAttempts} ping attempts failed, switching to local save system");
+
+                // autoswitching will occur to local save system
+                Debug.Log("CustomSaveHandler: Using local save system (CookieSaveSystem)");
+                try
+                {
+                    // Check if isAlreadyLoaded is unexpectedly true
+                    if (isAlreadyLoaded)
+                    {
+                        throw new InvalidOperationException("isAlreadyLoaded was unexpectedly true before local load attempt");
+                    }
+                    Debug.Log("CustomSaveHandler: Attempting to load from local storage");
+                    Load();
+                    // OnLoadComplete(bool success) will handle the result
+                    // Attached listener HandleLoadComplete will be called when the load operation completes
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"CustomSaveHandler: Error during local load attempt: {ex.Message}\n{ex.StackTrace}");
+                    // Ensure LoadSuccess is set so we don't hang waiting for it
+                    LoadSuccess = false;
+                    TPISceneManager.Instance.RestartScene();
+                }
             }
         }
 
@@ -404,43 +482,54 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Overrides the <see cref="ExperienceSaveHandler.HandleRequestCompleted(object, RequestCompletedEventArgs)"/>
-        ///     This method has a custom handling for List action.
+        ///     This method has a custom handling for all request actions for full control over the save/load/delete/list operations.
         /// </summary>
         public override void HandleRequestCompleted(object sender, RequestCompletedEventArgs args)
         {
-            base.HandleRequestCompleted(sender, args);
-
+            // Early return if no arguments in the event args
             if (args == null)
             {
                 return;
             }
-
-            // Handle only list action
-            if (args.Action != RequestAction.List)
+            // Early return if request is list and set ping successful/unsuccessful
+            if (args.Action == RequestAction.List && !pingSuccess)
             {
+                pingSuccess = args.Success;
+                Debug.Log($"CustomSaveHandler: Ping completed with success: {pingSuccess}");
                 return;
             }
-
-            // Error state check
-            if (!args.Success)
+            // Handling load request here
+            if (args.Action == RequestAction.Load)
             {
-                return;
+                if (isAlreadyLoaded)
+                {
+                    return;
+                }
+                ParseData(args.Data);
+                OnLoadComplete?.Invoke(args.Success);
+                isAlreadyLoaded = true;
             }
-
-            // early return if the save file has already been loaded
-            if (isAlreadyLoaded)
+            // Handling save request here
+            if (args.Action == RequestAction.Save)
             {
-                return;
+                OnSaveComplete?.Invoke(args.Success);
             }
+            // Handling delete request here
+            if (args.Action == RequestAction.Delete)
+            {
+                OnDeleteComplete?.Invoke(args.Success);
+            }
+            // Handling only list request here
+            if (args.Action == RequestAction.List && args.Success)
+            {
+                // Check if the Blob name is one of the available save files
+                var tokens = args.Data.Split("\"");
+                Debug.Log($"CustomSaveHandler: Found these tokens in cloud save list: [{string.Join(", ", tokens)}]");
 
-            // Check if the Blob name is one of the available save files
-            var tokens = args.Data.Split("\"");
-            Debug.Log($"CustomSaveHandler: Found these tokens in cloud save list: [{string.Join(", ", tokens)}]");
-
-            // Determine if save file exists and notify through event
-            bool saveFileExists = tokens.Contains(Blob);
-            HandleSaveFileStatus(saveFileExists);
-            isAlreadyLoaded = true;
+                // Determine if save file exists and notify through event
+                bool saveFileExists = tokens.Contains(Blob);
+                HandleSaveFileStatus(saveFileExists);
+            }
         }
 
         /// <summary>
@@ -466,9 +555,25 @@ namespace VARLab.DLX
 
             if (exists)
             {
-                Load();
-                isAlreadyLoaded = true;
                 Debug.Log("SaveDataSupport: Save file exists, loading");
+                try
+                {
+                    // Check if isAlreadyLoaded is unexpectedly true
+                    if (isAlreadyLoaded)
+                    {
+                        throw new InvalidOperationException("isAlreadyLoaded was unexpectedly true before cloud load attempt");
+                    }
+                    Debug.Log("CustomSaveHandler: Attempting to load from cloud storage");
+                    Load();
+                    // OnLoadComplete(bool success) will handle the result
+                    // Attached listener HandleLoadComplete will be called when the load operation completes
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"CustomSaveHandler: Error during cloud load attempt: {ex.Message}\n{ex.StackTrace}");
+                    LoadSuccess = false;
+                    TPISceneManager.Instance.RestartScene();
+                }
             }
             else
             {
