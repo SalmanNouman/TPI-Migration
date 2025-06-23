@@ -354,12 +354,34 @@ namespace VARLab.DLX
                 return;
             }
 
-            // Deactivate all state GameObjects and activate only the selected state
-            foreach (var state in inspectable.States)
+            // Check if the target state has any children
+            bool hasChildren = false;
+            if (targetState.InspectableGameObject != null)
             {
-                if (state.InspectableGameObject != null)
+                // Count active children in the target state
+                int childCount = targetState.InspectableGameObject.transform.childCount;
+                hasChildren = childCount > 0;
+            }
+
+            if (!hasChildren)
+            {
+                // If the target state has no children, deactivate the entire inspectable object
+                Debug.Log($"ScenarioManager: State '{stateName}' in '{inspectable.Name}' has no children. Deactivating the entire object.");
+                inspectable.gameObject.SetActive(false);
+                return;
+            }
+            else
+            {
+                // Make sure the inspectable object is active
+                inspectable.gameObject.SetActive(true);
+                
+                // Deactivate all state GameObjects and activate only the selected state
+                foreach (var state in inspectable.States)
                 {
-                    state.InspectableGameObject.SetActive(state == targetState);
+                    if (state.InspectableGameObject != null)
+                    {
+                        state.InspectableGameObject.SetActive(state == targetState);
+                    }
                 }
             }
         }

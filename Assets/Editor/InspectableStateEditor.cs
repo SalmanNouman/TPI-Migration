@@ -405,12 +405,33 @@ public class InspectableStateEditor : EditorWindow
 
                         if (stateName == dropdown.value)
                         {
-                            // Activate the selected state's GameObject and deactivate others
-                            foreach (var otherState in inspectableObject.States)
+                            // Check if the target state has any children
+                            bool hasChildren = false;
+                            if (state.InspectableGameObject != null)
                             {
-                                if (otherState.InspectableGameObject != null)
+                                // Count active children in the target state
+                                int childCount = state.InspectableGameObject.transform.childCount;
+                                hasChildren = childCount > 0;
+                            }
+
+                            if (!hasChildren)
+                            {
+                                // If the target state has no children, deactivate the entire inspectable object
+                                Debug.Log($"InspectableStateEditor: State '{stateName}' in '{inspectableObject.Name}' has no children. Deactivating the entire object.");
+                                inspectableObject.gameObject.SetActive(false);
+                            }
+                            else
+                            {
+                                // Make sure the inspectable object is active
+                                inspectableObject.gameObject.SetActive(true);
+                                
+                                // Activate the selected state's GameObject and deactivate others
+                                foreach (var otherState in inspectableObject.States)
                                 {
-                                    otherState.InspectableGameObject.SetActive(otherState == state);
+                                    if (otherState.InspectableGameObject != null)
+                                    {
+                                        otherState.InspectableGameObject.SetActive(otherState == state);
+                                    }
                                 }
                             }
                             break;
