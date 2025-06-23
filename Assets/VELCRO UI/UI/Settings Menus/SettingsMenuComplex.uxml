@@ -17,7 +17,7 @@
                 <ui:Instance template="Button-Close" name="Button-Close" />
             </ui:VisualElement>
             <ui:VisualElement name="Body" class="grow body mt-48 body-complex">
-                <ui:VisualElement name="ThemeContainer" class="flex-row grow align-items-center m-28">
+                <ui:VisualElement name="ThemeContainer" class="flex-row grow align-items-center m-28 display-hidden">
                     <ui:VisualElement name="Left" class="flex-row grow align-items-center w-50">
                         <ui:Label tabindex="-1" text="Theme" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ThemeLabel" class="m-0 p-0 fw-700 fs-40 body-label text-align-middle-left" />
                     </ui:VisualElement>
