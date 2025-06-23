@@ -125,6 +125,17 @@ namespace VARLab.DLX
         /// </summary>
         public UnityEvent<string> LoadSavedScenario;
 
+        /// <summary>
+        ///     Event invoked to load visited POIs data when restoring save state.
+        ///     Passes the list of previously visited POI names to restore interaction states.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Invoked from: <see cref="OnLoad"/> event during save data loading
+        ///     - Connected to: <see cref="PoiHandler.LoadVisitedPOIs(List{string})"/> to restore POI interaction states
+        /// </remarks>
+        public UnityEvent<List<string>> LoadVisitedPOIs;
+
         protected virtual void OnValidate()
         {
             if (m_AzureSaveSystem == null)
@@ -161,6 +172,7 @@ namespace VARLab.DLX
             LoadPiercerInteraction ??= new();
             LoadTattooArtistInteraction ??= new();
             LoadSavedScenario ??= new();
+            LoadVisitedPOIs ??= new();
 
             AddListeners();
 
@@ -199,6 +211,7 @@ namespace VARLab.DLX
                 LoadTattooArtistInteraction?.Invoke(saveData.TattooArtistInteractionCompleted);
                 MovePlayer?.Invoke(saveData.LastPOI);
                 LoadSavedScenario?.Invoke(saveData.CurrentScenarioName);
+                LoadVisitedPOIs?.Invoke(saveData.VisitedPOIs);
             });
         }
 
@@ -727,6 +740,26 @@ namespace VARLab.DLX
 
             saveData.LastPOI = poi.SelectedPoiName.ToString();
             TriggerSave();
+        }
+
+        /// <summary>
+        ///     Saves a POI as visited when the player interacts with an inspectable object in that POI.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Called from: <see cref="PoiHandler.OnNewPoiInteracted"/> event when a POI is first interacted with
+        ///     - Adds POI name to <see cref="SaveData.VisitedPOIs"/> list if not already present
+        ///     - Calls <see cref="TriggerSave"/> to persist the updated data
+        /// </remarks>
+        /// <param name="poiName">The name of the POI that was interacted with</param>
+        public void SaveVisitedPOI(string poiName)
+        {
+            if (!saveData.VisitedPOIs.Contains(poiName))
+            {
+                saveData.VisitedPOIs.Add(poiName);
+                TriggerSave();
+                Debug.Log($"CustomSaveHandler: Added '{poiName}' to visited POIs list");
+            }
         }
 
         #endregion

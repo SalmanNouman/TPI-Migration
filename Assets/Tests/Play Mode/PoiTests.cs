@@ -209,11 +209,11 @@ namespace Tests.PlayMode
         #region POI Handler
         [UnityTest]
         [Category("BuildServer")]
-        public IEnumerator CheckPoiInteracted_TriggersPoiInteracted_IfPoiNotInteracted()
+        public IEnumerator CheckPoiInteracted_TriggersOnPoiCountUpdated_IfPoiNotInteracted()
         {
             // Arrange
             bool wasTriggered = false;
-            poiHandler.PoiInteracted.AddListener((int count) => wasTriggered = true);
+            poiHandler.OnPoiCountUpdated.AddListener((int count) => wasTriggered = true);
             GameObject inspectableGO = new("Inspectable");
             inspectableGO.AddComponent<BoxCollider>();
             InspectableObject inspectable = inspectableGO.AddComponent<InspectableObject>();
@@ -234,11 +234,11 @@ namespace Tests.PlayMode
 
         [UnityTest]
         [Category("BuildServer")]
-        public IEnumerator CheckPoiInteracted_DoesNotTriggersPoiInteracted_IfPoiInteracted()
+        public IEnumerator CheckPoiInteracted_DoesNotTriggersOnPoiCountUpdated_IfPoiInteracted()
         {
             // Arrange
             bool wasTriggered = false;
-            poiHandler.PoiInteracted.AddListener((int count) => wasTriggered = true);
+            poiHandler.OnPoiCountUpdated.AddListener((int count) => wasTriggered = true);
             obj.Interacted = true;
             poi.Interacted = true;
 

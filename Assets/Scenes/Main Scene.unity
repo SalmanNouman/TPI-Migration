@@ -4986,6 +4986,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  LoadVisitedPOIs:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1416477005}
+        m_TargetAssemblyTypeName: VARLab.DLX.PoiHandler, VARLab.DLX
+        m_MethodName: LoadVisitedPOIs
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &356010908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34122,6 +34137,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -34140,6 +34165,11 @@ PrefabInstance:
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2084892911}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
       propertyPath: OnGetPoiList.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -34257,13 +34287,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1749263014}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356010907}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
       propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetCanLog
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateInspectedPois
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356010907}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveVisitedPOI
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
@@ -34274,6 +34344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPoiExit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: VARLab.DLX.InspectionHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveVisitedPOI
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
@@ -34309,6 +34384,21 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.ProgressBuilder, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
@@ -34348,6 +34438,21 @@ PrefabInstance:
     - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
         type: 3}
       propertyPath: OnWarpComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiCountUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnNewPoiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 449282214540894883, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,
+        type: 3}
+      propertyPath: OnPoiFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1358015959442068550, guid: 9ece3f6241b5fe54d95f4a9ebcea64dc,

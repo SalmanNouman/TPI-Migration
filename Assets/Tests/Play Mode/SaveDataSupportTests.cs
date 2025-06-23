@@ -300,6 +300,68 @@ namespace Tests.PlayMode
         }
 
         /// <summary>
+        ///     Tests if SaveVisitedPOI correctly adds POI name to VisitedPOIs list when POI is not already visited.
+        /// </summary>
+        [UnityTest, Order(13)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_SaveVisitedPOI_AddsPOIToVisitedList()
+        {
+            // Arrange
+            string testPOI = "Reception";
+            saveData.VisitedPOIs.Clear();
+
+            // Act
+            customSaveHandler.SaveVisitedPOI(testPOI);
+            yield return null;
+
+            // Assert
+            Assert.Contains(testPOI, saveData.VisitedPOIs, "POI should be added to VisitedPOIs list");
+        }
+
+        /// <summary>
+        ///     Tests if SaveVisitedPOI does not add duplicate POI names to VisitedPOIs list.
+        /// </summary>
+        [UnityTest, Order(14)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_SaveVisitedPOI_DoesNotAddDuplicatePOI()
+        {
+            // Arrange
+            string testPOI = "Reception";
+            saveData.VisitedPOIs.Clear();
+            saveData.VisitedPOIs.Add(testPOI);
+
+            // Act
+            customSaveHandler.SaveVisitedPOI(testPOI); // Try to add same POI again
+            yield return null;
+
+            // Assert
+            Assert.AreEqual(1, saveData.VisitedPOIs.Count, "VisitedPOIs list should not contain duplicate entries");
+            Assert.Contains(testPOI, saveData.VisitedPOIs, "POI should still be in the VisitedPOIs list");
+        }
+
+        /// <summary>
+        ///     Tests if LoadVisitedPOIs event is invoked with visited POIs list when OnLoad is invoked.
+        /// </summary>
+        [UnityTest, Order(15)]
+        [Category("BuildServer")]
+        public IEnumerator SaveDataSupport_OnLoad_InvokesLoadVisitedPOIsWithVisitedList()
+        {
+            // Arrange
+            List<string> testVisitedPOIs = new List<string> { "Reception", "TattooArea", "Bathroom" };
+            saveData.VisitedPOIs = testVisitedPOIs;
+            List<string> loadedPOIs = null;
+            customSaveHandler.LoadVisitedPOIs.RemoveAllListeners();
+            customSaveHandler.LoadVisitedPOIs.AddListener((pois) => loadedPOIs = pois);
+
+            // Act
+            customSaveHandler.OnLoad.Invoke();
+            yield return null;
+
+            // Assert
+            CollectionAssert.AreEqual(testVisitedPOIs, loadedPOIs, "Loaded POIs should match saved POIs");
+        }
+
+        /// <summary>
         ///     Tests if OnLoadRestart sets Restarted flag to true when deletion succeeds
         /// </summary>
         //[UnityTest, Order(13)]

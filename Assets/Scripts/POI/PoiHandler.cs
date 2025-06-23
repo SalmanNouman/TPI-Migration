@@ -44,10 +44,27 @@ namespace VARLab.DLX
         public UnityEvent<Poi> OnPoiExit;
 
         /// <summary>
-        /// Invoked every time a inspectable object is clicked
-        /// <see cref="ProgressBuilder.UpdateInspectedPois(int)"/>
+        ///     Event invoked when POI interaction count is updated.
+        ///     Used for UI progress updates and display.
         /// </summary>
-        public UnityEvent<int> PoiInteracted;
+        /// <remarks>
+        ///     Invoked from:
+        ///     - <see cref="CheckPoiInteracted(InspectableObject)"/> when a new POI is interacted with
+        ///     - <see cref="LoadVisitedPOIs(List{string})"/> when loading saved POI states
+        ///     Connected to:
+        ///     - <see cref="ProgressBuilder.UpdateInspectedPois(int)"/> to update UI progress display
+        /// </remarks>
+        public UnityEvent<int> OnPoiCountUpdated;
+
+        /// <summary>
+        ///     Event invoked when a new POI is interacted with for the first time.
+        ///     Used for data saving and logging purposes.
+        /// </summary>
+        /// <remarks>
+        ///     - Invoked from: <see cref="CheckPoiInteracted(InspectableObject)"/> when a POI is first interacted with
+        ///     - Connected to: <see cref="CustomSaveHandler.SaveVisitedPOI(string)"/> to save visited POI data
+        /// </remarks>
+        public UnityEvent<string> OnNewPoiInteracted;
 
         /// <summary>
         /// Invoked every time a inspectable object is clicked
@@ -74,10 +91,11 @@ namespace VARLab.DLX
         {
             OnPoiEnter ??= new();
             OnPoiExit ??= new();
-            PoiInteracted ??= new();
+            OnPoiCountUpdated ??= new();
             OnGetPoiList ??= new();
             OnStart ??= new();
             OnWarpComplete ??= new();
+            OnNewPoiInteracted ??= new();
         }
 
         private void Start()
@@ -86,7 +104,7 @@ namespace VARLab.DLX
             InteractablePoiCount();
 
             OnStart?.Invoke(interactablePois);
-            PoiInteracted?.Invoke(poisInteracted);
+            OnPoiCountUpdated?.Invoke(poisInteracted);
         }
 
         /// <summary>
@@ -130,12 +148,17 @@ namespace VARLab.DLX
         public void HandlePoiExit(Poi poi) => OnPoiExit?.Invoke(poi);
 
         /// <summary>
-        /// Checks the POI of the object that was clicked and if it has
-        /// not been interacted it will increment the POI interacted counter
-        /// and invoke the POI Interacted event. This will update the progress
-        /// indicator in the inspection review window.
+        ///     Checks and updates POI interaction state when an inspectable object is clicked.
+        ///     Increments the interaction counter and invokes events for first-time POI interactions.
         /// </summary>
-        /// <param name="obj">Inspectable object clicked.</param>
+        /// <remarks>
+        ///     Called from:
+        ///     - <see cref="InspectionHandler.OnObjectClicked"/> when inspectable objects are clicked
+        ///     Invokes:
+        ///     - <see cref="OnPoiCountUpdated"/> to update UI progress display
+        ///     - <see cref="OnNewPoiInteracted"/> to save visited POI data
+        /// </remarks>
+        /// <param name="obj">The inspectable object that was clicked</param>
         public void CheckPoiInteracted(InspectableObject obj)
         {
             var poi = pois.Find(p => p.SelectedPoiName.ToString() == obj.Location.ToString());
@@ -145,7 +168,8 @@ namespace VARLab.DLX
             }
             poi.Interacted = true;
             poisInteracted++;
-            PoiInteracted?.Invoke(poisInteracted);
+            OnPoiCountUpdated?.Invoke(poisInteracted);
+            OnNewPoiInteracted?.Invoke(poi.SelectedPoiName.ToString());
         }
 
         /// <summary>
@@ -208,6 +232,42 @@ namespace VARLab.DLX
         public void GetPoiList()
         {
             OnGetPoiList?.Invoke(pois);
+        }
+
+        /// <summary>
+        ///     Loads visited POIs from save data and restores their interaction states.
+        ///     Restores POI interaction progress when loading a saved game.
+        /// </summary>
+        /// <remarks>
+        ///     Call flow:
+        ///     - Called from: <see cref="CustomSaveHandler.LoadVisitedPOIs"/> event when loading save data
+        ///     - Restores POI.Interacted states for previously visited POIs
+        ///     - Invokes <see cref="OnPoiCountUpdated"/> to update UI with restored interaction count
+        /// </remarks>
+        /// <param name="visitedPois">List of POI names that were previously interacted with</param>
+        public void LoadVisitedPOIs(List<string> visitedPois)
+        {
+            if (visitedPois == null || visitedPois.Count == 0)
+            {
+                Debug.Log("PoiHandler: No visited POIs to load");
+                return;
+            }
+
+            poisInteracted = 0;
+            
+            foreach (var poi in pois)
+            {
+                if (visitedPois.Contains(poi.SelectedPoiName.ToString()))
+                {
+                    poi.Interacted = true;
+                    poisInteracted++;
+                    Debug.Log($"PoiHandler: Restored interaction state for '{poi.PoiName}'");
+                }
+            }
+            
+            // Update the UI with the restored count
+            OnPoiCountUpdated?.Invoke(poisInteracted);
+            Debug.Log($"PoiHandler: Loaded {poisInteracted} visited POIs from save data");
         }
     }
 }
