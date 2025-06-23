@@ -48,6 +48,9 @@ namespace VARLab.DLX
         [JsonProperty]
         public string CurrentScenarioName;
 
+        [JsonProperty]
+        public Dictionary<PoiList.PoiName, List<bool>> OneTimeCameraLookAtFlags = new();
+        
         [JsonObject(MemberSerialization.OptIn)]
         public struct ActivityData
         {

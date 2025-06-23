@@ -132,6 +132,8 @@ namespace VARLab.DLX
         ///     <see cref="ScenarioManager.LoadScenarioByName(string)"/>
         /// </summary>
         public UnityEvent<string> LoadSavedScenario;
+        
+        public UnityEvent<Dictionary<PoiList.PoiName, List<bool>>> LoadCameraNavigationCameraTriggers;
 
         /// <summary>
         ///     Event invoked to load visited POIs data when restoring save state.
@@ -188,6 +190,7 @@ namespace VARLab.DLX
             LoadPiercerInteraction ??= new();
             LoadTattooArtistInteraction ??= new();
             LoadSavedScenario ??= new();
+            LoadCameraNavigationCameraTriggers ??= new();
             LoadVisitedPOIs ??= new();
 
             AddListeners();
@@ -227,6 +230,7 @@ namespace VARLab.DLX
                 LoadTattooArtistInteraction?.Invoke(saveData.TattooArtistInteractionCompleted);
                 MovePlayer?.Invoke(saveData.LastPOI);
                 LoadSavedScenario?.Invoke(saveData.CurrentScenarioName);
+                LoadCameraNavigationCameraTriggers?.Invoke(saveData.OneTimeCameraLookAtFlags);
                 LoadVisitedPOIs?.Invoke(saveData.VisitedPOIs);
             });
         }
@@ -896,5 +900,28 @@ namespace VARLab.DLX
         }
 
         #endregion
+        
+        /// <summary>
+        /// Saves the one time camera look at target flags for navigations mats
+        /// </summary>
+        /// <param name="targets"></param>
+        public void SaveOneTimeLookAtTargetsFlags(List<TargetsInPoi> targets)
+        {
+            var result = new Dictionary<PoiList.PoiName, List<bool>>();
+
+            foreach (var poi in targets)
+            {
+                var boolList = new List<bool>();
+                foreach (var target in poi.TargetsWithLookAt)
+                {
+                    boolList.Add(target.OneTimeTargetTriggered);
+                }
+                result[poi.Location] = boolList;
+            }
+
+            saveData.OneTimeCameraLookAtFlags = result;
+        }
+        
+        
     }
 }

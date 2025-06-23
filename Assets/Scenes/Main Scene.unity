@@ -4989,6 +4989,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  LoadCameraNavigationCameraTriggers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1206430530}
+        m_TargetAssemblyTypeName: VARLab.DLX.NavigationCamHandler, VARLab.DLX
+        m_MethodName: LoadOneTimeLookAtFlags
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   LoadVisitedPOIs:
     m_PersistentCalls:
       m_Calls:
@@ -18601,6 +18616,21 @@ MonoBehaviour:
       Target: {fileID: 3868690587409790342}
       OneTimeTarget: {fileID: 3868690587409790341}
       OneTimeTargetTriggered: 0
+  SaveTargetsOneTimeTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 356010907}
+        m_TargetAssemblyTypeName: VARLab.DLX.CustomSaveHandler, VARLab.DLX
+        m_MethodName: SaveOneTimeLookAtTargetsFlags
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!43 &1210805839
 Mesh:
   m_ObjectHideFlags: 0
