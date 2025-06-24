@@ -366,7 +366,7 @@ namespace VARLab.DLX
             if (!hasChildren)
             {
                 // If the target state has no children, deactivate the entire inspectable object
-                Debug.Log($"ScenarioManager: State '{stateName}' in '{inspectable.Name}' has no children. Deactivating the entire object.");
+                Debug.Log($"ScenarioManager: State '{stateName}' in '{inspectable.Name}' in '{inspectable.Location}' has no children. Deactivating the entire object.");
                 inspectable.gameObject.SetActive(false);
                 return;
             }

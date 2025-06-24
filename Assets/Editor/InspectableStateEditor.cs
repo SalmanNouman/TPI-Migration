@@ -417,7 +417,7 @@ public class InspectableStateEditor : EditorWindow
                             if (!hasChildren)
                             {
                                 // If the target state has no children, deactivate the entire inspectable object
-                                Debug.Log($"InspectableStateEditor: State '{stateName}' in '{inspectableObject.Name}' has no children. Deactivating the entire object.");
+                                Debug.Log($"InspectableStateEditor: State '{stateName}' in '{inspectableObject.Name}' in '{inspectableObject.Location}' has no children. Deactivating the entire object.");
                                 inspectableObject.gameObject.SetActive(false);
                             }
                             else
