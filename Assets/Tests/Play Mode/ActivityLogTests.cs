@@ -271,7 +271,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
             Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Photo taken log was not marked as secondary");
-            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Photo Taken";
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Photo taken";
             StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
         }
@@ -294,7 +294,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
             Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Photo deleted log was not marked as secondary");
-            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Photo Deleted";
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Photo deleted";
             StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
         }
@@ -317,19 +317,59 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
             Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Inspection deleted log was not marked as secondary");
-            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Visual Inspection Deleted";
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} {inspectable.Name} - Inspection deleted";
             StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
         }
 
-        #endregion
-
-        #region Save/Load Tests
-
-        /// <summary>
-        /// Tests if LoadSavedLogs correctly updates the ActivityLogList and triggers the OnLogAdded event.
-        /// </summary>
         [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LogArtistInteraction_CreatesCorrectLog()
+        {
+            // Arrange
+            activityLog.CanLog = true;
+            yield return null;  // Wait for Start()
+            yield return SetupElapsedTime();  // Add time delay for updating timestamp
+
+            // Act
+            activityLog.LogArtistInteraction("Test Artist");
+
+            // Assert
+            Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
+            Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Artist interaction log was not marked as secondary");
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} - Requested Test Artist to set up the procedure tray";
+            StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
+                $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
+        }
+
+        [UnityTest]
+        [Category("BuildServer")]
+        public IEnumerator ActivityLog_LogEndInspection_CreatesCorrectLog()
+        {
+            // Arrange
+            activityLog.CanLog = true;
+            yield return null;  // Wait for Start()
+            yield return SetupElapsedTime();  // Add time delay for updating timestamp
+
+            // Act
+            activityLog.LogEndInspection();
+
+            // Assert
+            Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
+            Assert.IsTrue(activityLog.ActivityLogList[0].IsPrimary, "End inspection log was not marked as primary");
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} - Ended Inspection";
+            StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
+                $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
+        }
+
+            #endregion
+
+            #region Save/Load Tests
+
+            /// <summary>
+            /// Tests if LoadSavedLogs correctly updates the ActivityLogList and triggers the OnLogAdded event.
+            /// </summary>
+            [UnityTest]
         [Category("BuildServer")]
         public IEnumerator ActivityLog_LoadSavedLogs_UpdatesActivityLogList()
         {

@@ -113,7 +113,7 @@ namespace VARLab.DLX
             string elapsedTime = TimerManager.Instance.GetElapsedTime();
             string objectName = inspectionData.Obj.Name;
             string photoStatus = inspectionData.HasPhoto ? "with photo" : "without photo";
-            string complianceStatus = inspectionData.IsCompliant ? "compliant" : "non compliant";
+            string complianceStatus = inspectionData.IsCompliant ? "compliant" : "non-compliant";
 
             string message = $"{elapsedTime} {objectName} - Visual Inspection {photoStatus} - {complianceStatus}";
             AddSecondaryLog(message);
@@ -126,7 +126,7 @@ namespace VARLab.DLX
         public void LogPhotoTaken(InspectableObject obj)
         {
             string elapsedTime = TimerManager.Instance.GetElapsedTime();
-            string message = $"{elapsedTime} {obj.Name} - Photo Taken";
+            string message = $"{elapsedTime} {obj.Name} - Photo taken";
             AddSecondaryLog(message);
         }
 
@@ -148,7 +148,7 @@ namespace VARLab.DLX
         public void LogDeletedPhoto(string objName)
         {
             string elapsedTime = TimerManager.Instance.GetElapsedTime();
-            string log = $"{elapsedTime} {objName} - Photo Deleted";
+            string log = $"{elapsedTime} {objName} - Photo deleted";
             AddSecondaryLog(log);
         }
 
@@ -159,10 +159,30 @@ namespace VARLab.DLX
         public void LogDeletedInspection(string objName)
         {
             string elapsedTime = TimerManager.Instance.GetElapsedTime();
-            string log = $"{elapsedTime} {objName} - Visual Inspection Deleted";
+            string log = $"{elapsedTime} {objName} - Inspection deleted";
             AddSecondaryLog(log);
         }
 
+        /// <summary>
+        ///     Records a secondary log when the artist is requested to set up the procedure tray.
+        /// </summary>
+        /// <param name="artistName"> The name of the artist interacted with </param>
+        public void LogArtistInteraction(string artistName)
+        {
+            string elapsedTime = TimerManager.Instance.GetElapsedTime();
+            string message = $"{elapsedTime} - Requested {artistName} to set up the procedure tray.";
+            AddSecondaryLog(message);
+        }
+
+        /// <summary>
+        ///     Records a primary log when the inspection Ends.
+        /// </summary>
+        public void LogEndInspection()
+        {
+            string elapsedTime = TimerManager.Instance.GetElapsedTime();
+            string message = $"{elapsedTime} - Ended Inspection";
+            AddPrimaryLog(message);
+        }
         /// <summary>
         ///     Changes the flag that allows logs to be saved. 
         ///     If the count of primary logs is 0, a new primary log is created indicating the start of the inspection.

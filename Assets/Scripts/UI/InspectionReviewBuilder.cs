@@ -129,6 +129,7 @@ namespace VARLab.DLX
         /// <see cref="PoiHandler.GetPoiList"
         /// <see cref="InspectionSummaryBuilder.SetDateTimeAndTimer"/>
         /// <see cref="InspectionSummaryBuilder.Show"/>
+        /// <see cref="ActivityLog.LogEndInspection"/>
         /// </summary>
         public UnityEvent OnEndInspectionConfirmation;
 

@@ -59,6 +59,12 @@ namespace VARLab.DLX
         // Note: OnTaskStarted, OnTaskCompleted, and OnTaskFailed are inherited from <see cref="Task.cs"/>
         public UnityEvent OnTaskTransition;
 
+        /// <summary>
+        ///     Event invoked when the player interacts with the artist NPC.
+        ///     <see cref="ActivityLog.LogArtistInteraction(string)"/>
+        /// </summary>
+        public UnityEvent<string> OnInteractedLog;
+
         #endregion
 
         #region Methods
@@ -71,6 +77,7 @@ namespace VARLab.DLX
             OnTaskStarted ??= new();
             OnTaskCompleted ??= new();
             OnTaskFailed ??= new();
+            OnInteractedLog ??= new();
 
             // Auto-assign if not set and this component is on a waypoint
             if (artistWaypoint == null)
@@ -170,6 +177,15 @@ namespace VARLab.DLX
             {
                 isTaskStarted = true;
                 OnTaskStarted?.Invoke();
+                // log the interaction with the artist with artist type
+                if (artistWaypoint.gameObject.name.Contains("Tattoo"))
+                {
+                    OnInteractedLog?.Invoke("tattoo artist");
+                }
+                else if (artistWaypoint.gameObject.name.Contains("Piercer"))
+                {
+                    OnInteractedLog?.Invoke("piercer");
+                }
                 CompleteTask();
                 Debug.Log("ArtistInteractionTask: Task started successfully.");
             }

@@ -235,8 +235,11 @@ namespace Tests.PlayMode
             // Arrange
             bool taskStartedEventInvoked = false;
             bool taskCompletedEventInvoked = false;
+            bool interactedLogEventInvoked = false;
             artistTask.OnTaskStarted.AddListener(() => taskStartedEventInvoked = true);
+            artistTask.OnInteractedLog.AddListener((artistName) => interactedLogEventInvoked = true);
             artistTask.OnTaskCompleted.AddListener(() => taskCompletedEventInvoked = true);
+            waypointObject.gameObject.name = "TpiWaypoint_PiercerInteractionTask"; // Ensure waypoint has one of two expected names
 
             // Act
             artistTask.HandleTask();
@@ -244,6 +247,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.IsTrue((bool)isTaskStarted.GetValue(artistTask), "isTaskStarted should be set to true");
             Assert.IsTrue((bool)isTaskCompleted.GetValue(artistTask), "isTaskCompleted should be set to true");
+            Assert.IsTrue(interactedLogEventInvoked, "OnInteractedLog event should be invoked for artist interaction");
             Assert.IsTrue(taskStartedEventInvoked, "OnTaskStarted event should be invoked");
             Assert.IsTrue(taskCompletedEventInvoked, "OnTaskCompleted event should be invoked");
         }
