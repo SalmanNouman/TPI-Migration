@@ -236,11 +236,13 @@ GameObject:
   - component: {fileID: 5082566513556890326}
   - component: {fileID: 7920535377676235836}
   - component: {fileID: 952510533889412685}
+  - component: {fileID: 4400616368207898457}
   - component: {fileID: 4985580382369029695}
   - component: {fileID: 7573256718856949544}
   - component: {fileID: 3880769406174689916}
   - component: {fileID: 130655894735100441}
   - component: {fileID: 7528015420105390896}
+  - component: {fileID: 2328593908947600197}
   m_Layer: 0
   m_Name: ClientChair
   m_TagString: Untagged
@@ -307,8 +309,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8628452, y: 0.11718607, z: 0.45477593}
-  m_Center: {x: -0.004876074, y: 0.70963955, z: -0.07072785}
+  m_Size: {x: 0.2, y: 0.11718607, z: 0.56}
+  m_Center: {x: 0.36, y: 0.70963955, z: -0.13}
 --- !u!65 &952510533889412685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +332,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5913545, y: 0.099974275, z: 0.5099658}
   m_Center: {x: 0.00015261775, y: 0.5038559, z: -0.0011385679}
+--- !u!65 &4400616368207898457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809900068834307887}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.11718607, z: 0.56}
+  m_Center: {x: -0.36, y: 0.70963955, z: -0.13}
 --- !u!65 &4985580382369029695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -903,6 +926,27 @@ MonoBehaviour:
   OnObjectInspected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &2328593908947600197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809900068834307887}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.79, y: 0.2, z: 0.2}
+  m_Center: {x: 0.0000054355755, y: 0.66, z: -0.36}
 --- !u!1001 &1222735397611417642
 PrefabInstance:
   m_ObjectHideFlags: 0
