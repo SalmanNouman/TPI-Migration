@@ -81,8 +81,9 @@ namespace VARLab.DLX
         /// <summary>
         /// Invoked when warpping to a POI is complete.
         /// <see cref="ActivityLog.SetCanLog(bool)"/>
+        /// <see cref="WelcomeBackWindowBuilder.Show(Poi)"/>
         /// </summary>
-        public UnityEvent OnWarpComplete;
+        public UnityEvent<Poi> OnWarpComplete;
 
         /// <summary>
         /// Initialize events if they are null
@@ -223,7 +224,7 @@ namespace VARLab.DLX
 
             yield return new WaitForSeconds(0.1f); // Wait for a short time to ensure the warp is complete
 
-            OnWarpComplete?.Invoke();
+            OnWarpComplete?.Invoke(currentPoi);
         }
 
         // For use in data retrieval

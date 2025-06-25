@@ -8,6 +8,7 @@
 @import url("/Assets/TPI UI/StyleSheets/tpi-tab-content.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-start-Info-window.uss");
 @import url("/Assets/TPI UI/StyleSheets/tpi-fade.uss");
+@import url("/Assets/TPI UI/StyleSheets/tpi-welcome-back-window.uss");
 
 
 :root {
@@ -65,4 +66,9 @@
 
       /* Fade in/out */
     --fade-background-colour: #000000;
+
+    /* Welcome Back Window */
+    --welcome-back-location-pin-icon: url("../../Art/Sprite/Icons/LocationPin.png");
+    --welcome-back-location-text-color: #1E4877;
+    --welcome-back-instruction-text-color: #212232;
 }

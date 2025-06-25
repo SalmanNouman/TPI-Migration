@@ -1,0 +1,28 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Header" src="project://database/Assets/VELCRO%20UI/Templates/Header%20and%20Windows/Header.uxml?fileID=9197481963319205126&amp;guid=4ddcdeade465a68488f2568fcfa1742c&amp;type=3#Header" />
+    <engine:Template name="Button-Primary-Large" src="project://database/Assets/VELCRO%20UI/Templates/Button%20Primary/Button-Primary-Large.uxml?fileID=9197481963319205126&amp;guid=47282cdbd7717774691bb11a42a24414&amp;type=3#Button-Primary-Large" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-style.uss?fileID=7433441132597879392&amp;guid=ad7e253722514894984c83194c8b004b&amp;type=3#velcro-style" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-card.uss?fileID=7433441132597879392&amp;guid=fabc9f5bdad1d9246a028b46ef9896e8&amp;type=3#velcro-card" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-structure.uss?fileID=7433441132597879392&amp;guid=70d8b977a9d8e034a8a39d12ad97ed33&amp;type=3#velcro-structure" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-dialogue.uss?fileID=7433441132597879392&amp;guid=90c6cdc0c1331a645bb7855c18b24e20&amp;type=3#tpi-dialogue" />
+    <Style src="project://database/Assets/TPI%20UI/StyleSheets/tpi-welcome-back-window.uss?fileID=7433441132597879392&amp;guid=a1b2c3d4e5f6789012345678901234ab&amp;type=3#tpi-welcome-back-window" />
+    <engine:VisualElement name="Canvas" class="grow align-items-center justify-center">
+        <engine:VisualElement name="Window" class="br-20 window-single welcome-back-window">
+            <engine:Instance template="Header" name="Header">
+                <AttributeOverrides element-name="NameLabel" text="Welcome Back" />
+            </engine:Instance>
+            <engine:VisualElement name="Content" class="welcome-back-content">
+                <engine:VisualElement name="LocationGroup" class="align-items-center flex-row welcome-back-location-group">
+                    <engine:VisualElement name="LocationIcon" class="mr-24 welcome-back-location-icon" />
+                    <engine:Label text="LocationText" name="LocationText" class="fs-40 welcome-back-location-text" />
+                </engine:VisualElement>
+                <engine:Label text="Please review your Inspection Log to see where you left off." name="InstructionText" class="fs-40 text-wrap welcome-back-instruction-text" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" class="align-items-center welcome-back-footer">
+                <engine:Instance template="Button-Primary-Large" name="CloseButton">
+                    <AttributeOverrides element-name="Button" text="Close" />
+                </engine:Instance>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

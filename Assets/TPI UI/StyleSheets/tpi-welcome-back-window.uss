@@ -1,0 +1,52 @@
+/* Welcome Back Window Styles */
+
+/* Main Window Container */
+.welcome-back-window {
+    max-width: 1000px;
+    width: 1000px;
+    min-width: 1000px;
+    max-height: 500px;
+    height: 500px;
+}
+
+/* Content Area */
+.welcome-back-content {
+    flex-grow: 1;
+    padding: 0 70px; /* top/bottom: 0, left/right: 70px */
+    height: auto;
+}
+
+/* Location Group Container */
+.welcome-back-location-group {
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+/* Location Pin Icon */
+.welcome-back-location-icon {
+    width: 85px;
+    height: 85px;
+    background-image: var(--welcome-back-location-pin-icon);
+    padding: 0;
+}
+
+/* Location Text Label */
+.welcome-back-location-text {
+    color: var(--welcome-back-location-text-color);
+    margin: 0;
+    padding: 0;
+    -unity-font-definition: var(--font-bold);
+}
+
+/* Instruction Text */
+.welcome-back-instruction-text {
+    color: var(--welcome-back-instruction-text-color);
+    margin: 0;
+    padding: 0 20px 0 0; /* top: 0, right: 20px, bottom: 0, left: 0 */
+    -unity-font-definition: var(--font-bold);
+}
+
+/* Footer Container */
+.welcome-back-footer {
+    margin: 48px 0; /* top/bottom: 48px, left/right: 0 */
+} 
