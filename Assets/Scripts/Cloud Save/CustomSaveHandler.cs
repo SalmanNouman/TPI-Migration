@@ -132,8 +132,18 @@ namespace VARLab.DLX
         ///     <see cref="ScenarioManager.LoadScenarioByName(string)"/>
         /// </summary>
         public UnityEvent<string> LoadSavedScenario;
-        
+
         public UnityEvent<Dictionary<PoiList.PoiName, List<bool>>> LoadCameraNavigationCameraTriggers;
+
+        public UnityEvent<bool> LoadSoundToggle;
+
+        public UnityEvent<string, float> LoadMasterVolume;
+
+        public UnityEvent<string, float> LoadSoundEffectsVolume;
+
+        public UnityEvent<string, float> LoadDialogueVolume;
+
+        public UnityEvent<float> LoadCameraSensitivity;
 
         /// <summary>
         ///     Event invoked to load visited POIs data when restoring save state.
@@ -192,6 +202,33 @@ namespace VARLab.DLX
             LoadSavedScenario ??= new();
             LoadCameraNavigationCameraTriggers ??= new();
             LoadVisitedPOIs ??= new();
+            LoadSoundToggle ??= new();
+            LoadMasterVolume ??= new();
+            LoadSoundEffectsVolume ??= new();
+            LoadDialogueVolume ??= new();
+            LoadCameraSensitivity ??= new();
+
+            // Settings Setup
+            if (saveData.VolumeSettings == null)
+            {
+                saveData.VolumeSettings = new Dictionary<string, float>();
+            }
+
+            // Check if volume settings exist, if not, set defaults
+            if (!saveData.VolumeSettings.ContainsKey("Volume"))
+            {
+                saveData.VolumeSettings["Volume"] = 80f; // Default to max volume (0dB)
+            }
+
+            if (!saveData.VolumeSettings.ContainsKey("SoundEffects"))
+            {
+                saveData.VolumeSettings["SoundEffects"] = 80f; // Default to max volume (0dB)
+            }
+
+            if (!saveData.VolumeSettings.ContainsKey("Dialogue"))
+            {
+                saveData.VolumeSettings["Dialogue"] = 80f; // Default to max volume (0dB)
+            }
 
             AddListeners();
 
@@ -232,6 +269,11 @@ namespace VARLab.DLX
                 LoadSavedScenario?.Invoke(saveData.CurrentScenarioName);
                 LoadCameraNavigationCameraTriggers?.Invoke(saveData.OneTimeCameraLookAtFlags);
                 LoadVisitedPOIs?.Invoke(saveData.VisitedPOIs);
+                LoadSoundToggle?.Invoke(saveData.IsSoundEnabled);
+                LoadMasterVolume?.Invoke("Volume", saveData.VolumeSettings["Volume"]);
+                LoadSoundEffectsVolume?.Invoke("SoundEffects", saveData.VolumeSettings["SoundEffects"]);
+                LoadDialogueVolume?.Invoke("Dialogue", saveData.VolumeSettings["Dialogue"]);
+                LoadCameraSensitivity?.Invoke(saveData.CameraSensitivity);
             });
         }
 
@@ -921,7 +963,28 @@ namespace VARLab.DLX
 
             saveData.OneTimeCameraLookAtFlags = result;
         }
-        
-        
+
+        public void SaveSoundToggle(bool isSoundEnabled)
+        {
+            saveData.IsSoundEnabled = isSoundEnabled;
+            TriggerSave();
+        }
+
+        public void SaveVolumeSetting(string group, float volume)
+        {
+            // Add the group if it doesn't exist
+            if (!saveData.VolumeSettings.ContainsKey(group))
+            {
+                saveData.VolumeSettings[group] = new();
+            }
+            saveData.VolumeSettings[group] = volume;
+            TriggerSave();
+        }
+
+        public void SaveCameraSensitivity(float cameraSensitivity)
+        {
+            saveData.CameraSensitivity = cameraSensitivity;
+            TriggerSave();
+        }
     }
 }

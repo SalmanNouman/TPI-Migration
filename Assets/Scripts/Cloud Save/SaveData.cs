@@ -50,7 +50,17 @@ namespace VARLab.DLX
 
         [JsonProperty]
         public Dictionary<PoiList.PoiName, List<bool>> OneTimeCameraLookAtFlags = new();
-        
+
+        // Settings properties
+        [JsonProperty]
+        public bool IsSoundEnabled = true;
+
+        [JsonProperty]
+        public Dictionary<string, float> VolumeSettings = new();
+
+        [JsonProperty]
+        public float CameraSensitivity = 0.25f;
+
         [JsonObject(MemberSerialization.OptIn)]
         public struct ActivityData
         {
