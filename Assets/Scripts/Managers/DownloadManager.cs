@@ -200,7 +200,7 @@ namespace VARLab.DLX
             generatePdf.AddLine("round", 72, 140, 540, 140, "#44546a");
 
             // add scenario number
-            generatePdf.AddContentWithXAndYPositions("Scenario #", 10.5f, Fonts.TimesRoman, "center", "black", 72, 170, 0);
+            generatePdf.AddContentWithXAndYPositions($"{ScenarioManager.Instance.CurrentScenarioName}", 10.5f, Fonts.TimesRoman, "center", "black", 72, 170, 0);
 
             // add message
             generatePdf.AddContentWithXAndYPositions(SummaryStrings[1], 12, Fonts.TimesItalic, "center", "black", 72, 195, 3.5f);
