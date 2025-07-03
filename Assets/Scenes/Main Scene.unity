@@ -1705,12 +1705,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &163751859 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2880463262431288309, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
-    type: 3}
-  m_PrefabInstance: {fileID: 3868690587409790336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &169523663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3268344724937539382, guid: accde79f7f2f3a74f836f37d3188a652,
@@ -3995,6 +3989,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2054336380}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &274128036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2376091995600031484, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3868690587409790336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &289053370
 Mesh:
   m_ObjectHideFlags: 0
@@ -19442,10 +19442,6 @@ MonoBehaviour:
       Target: {fileID: 5501600806540061460}
       OneTimeTarget: {fileID: 0}
       OneTimeTargetTriggered: 0
-    - Waypoint: {fileID: 5501600806540061454}
-      Target: {fileID: 5501600806540061455}
-      OneTimeTarget: {fileID: 0}
-      OneTimeTargetTriggered: 0
   - Location: 6
     TargetsWithLookAt:
     - Waypoint: {fileID: 1018439562}
@@ -19460,10 +19456,6 @@ MonoBehaviour:
       OneTimeTargetTriggered: 0
   - Location: 4
     TargetsWithLookAt:
-    - Waypoint: {fileID: 1275109312}
-      Target: {fileID: 163751859}
-      OneTimeTarget: {fileID: 0}
-      OneTimeTargetTriggered: 0
     - Waypoint: {fileID: 3868690587409790340}
       Target: {fileID: 3868690587409790338}
       OneTimeTarget: {fileID: 0}
@@ -19471,6 +19463,10 @@ MonoBehaviour:
     - Waypoint: {fileID: 726365744}
       Target: {fileID: 3868690587409790342}
       OneTimeTarget: {fileID: 3868690587409790341}
+      OneTimeTargetTriggered: 0
+    - Waypoint: {fileID: 3868690587409790343}
+      Target: {fileID: 274128036}
+      OneTimeTarget: {fileID: 0}
       OneTimeTargetTriggered: 0
   SaveTargetsOneTimeTriggered:
     m_PersistentCalls:
@@ -20642,18 +20638,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1275109312 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8301092542049202845, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
-    type: 3}
-  m_PrefabInstance: {fileID: 3868690587409790336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68112a74f26a1e4ba9717f2472223f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1276752544
 Mesh:
   m_ObjectHideFlags: 0
@@ -35775,6 +35759,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3868690587409790336}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3868690587409790343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4785443888652650817, guid: 92f9ddcd49f0c8d458488e6d3fe76baf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3868690587409790336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68112a74f26a1e4ba9717f2472223f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3873750711930740226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42586,24 +42582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab48c81032acc24d9fe124cc4ec2543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5501600806540061454 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5853475968599161592, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5501600806540061452}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68112a74f26a1e4ba9717f2472223f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &5501600806540061455 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5524360552847116209, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5501600806540061452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5501600806540061456 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5951176352819291387, guid: 7cf22d5a5ab95ad4a8ea7ee035ab3e6f,
