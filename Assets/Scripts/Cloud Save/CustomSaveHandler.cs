@@ -53,9 +53,8 @@ namespace VARLab.DLX
 
         private SaveData saveData;
 
-        // Flags to track save file status
+        // Flag to track save file status
         private bool saveFileExists = false;
-        private bool isVersionValid = true;
 
         // Auto Save settings
         private const int AutoSaveInterval = 180;
@@ -300,13 +299,14 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Sets the save data version to the application version.
-        /// This is used to check if the application saved version matches the application version.
-        /// If the versions do not match the save file is not valid.
+        ///     Initializes save data for fresh simulation.
+        ///     Sets version to current application version and resets inspection state.
         /// </summary>
         public void SetUpInitialData()
         {
             saveData.Version = Application.version;
+            saveData.EndInspection = false; // Reset EndInspection flag for fresh simulation
+            Debug.Log($"CustomSaveHandler: Initialized save data - Version: {saveData.Version}, EndInspection: {saveData.EndInspection}");
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// If CanSave is true the elapsed time is saved and the 
+        ///     Triggers save operation if saving is enabled.
         /// </summary>
         private void TriggerSave()
         {
@@ -352,8 +352,8 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// This is the coroutine that runs in the background looping handling actions if they are queued otherwise just does nothing.
-        /// This ensures that saves don't get completed out of order.
+        ///     This is the coroutine that runs in the background looping handling actions if they are queued otherwise just does nothing.
+        ///     This ensures that saves don't get completed out of order.
         /// </summary>
         private IEnumerator SaveLoop()
         {
@@ -379,9 +379,9 @@ namespace VARLab.DLX
         }
 
         /// <summary>
-        /// Overrides the <see cref="ExperienceSaveHandler.Save"/>
-        /// Instead of saving we are adding the save actions to a queue to ensure they 
-        /// don't get saved out of order.
+        ///     Overrides the <see cref="ExperienceSaveHandler.Save"/>
+        ///     Instead of saving we are adding the save actions to a queue to ensure they 
+        ///     don't get saved out of order.
         /// </summary>
         public override void Save()
         {
@@ -631,14 +631,14 @@ namespace VARLab.DLX
 
         /// <summary>
         ///     Handles the load completion event.
-        ///     Validates save file version and determines simulation loading state.
+        ///     Validates save file version and checks EndInspection status to determine simulation loading state.
         /// </summary>
         /// <remarks>
         ///     Call flow:
         ///     - Connected from: <see cref="CustomSaveHandler.OnLoadComplete(bool)"/> event
-        ///     - If successful load: Checks version validity against application version
-        ///     - If valid version: Invokes <see cref="OnValidSaveFileFound"/> to show continue/restart UI
-        ///     - If invalid version: Deletes save file and invokes <see cref="OnFreshLoad"/>
+        ///     - If successful load: Checks version validity and EndInspection flag
+        ///     - If valid version AND inspection ongoing: Invokes <see cref="OnValidSaveFileFound"/> to show continue/restart UI
+        ///     - If invalid version OR inspection completed: Deletes save file and invokes <see cref="OnFreshLoad"/>
         ///     - If load failed: Deletes corrupted save and invokes <see cref="OnFreshLoad"/>
         /// </remarks>
         /// <param name="success">Whether the load operation was successful</param>
@@ -647,18 +647,29 @@ namespace VARLab.DLX
             if (success)
             {
                 // Verify version is valid - compare save file version with application version
-                isVersionValid = saveData.Version == Application.version;
+                bool isVersionValid = saveData.Version == Application.version;
+                bool isInspectionCompleted = saveData.EndInspection;
+                
                 Debug.Log($"SaveDataSupport: Version check - Save file version: {saveData.Version}, Application version: {Application.version}, Valid: {isVersionValid}");
+                Debug.Log($"SaveDataSupport: Inspection status: {(isInspectionCompleted ? "Completed" : "Ongoing")}");
 
-                if (isVersionValid)
+                if (isVersionValid && !isInspectionCompleted)
                 {
-                    Debug.Log("SaveDataSupport: Valid save file version, showing continue/restart UI");
+                    Debug.Log("SaveDataSupport: Valid save file with ongoing inspection, showing continue/restart UI");
                     OnValidSaveFileFound?.Invoke();
                 }
                 else
                 {
-                    // Invalid version - delete old save and start new simulation
-                    Debug.Log($"SaveDataSupport: Version mismatch detected, deleting outdated save file and starting new simulation");
+                    if (!isVersionValid)
+                    {
+                        Debug.Log("SaveDataSupport: Version mismatch detected");
+                    }
+                    if (isInspectionCompleted)
+                    {
+                        Debug.Log("SaveDataSupport: Inspection was completed");
+                    }
+                    
+                    Debug.Log("SaveDataSupport: Deleting save file and starting fresh simulation");
                     TriggerDelete();
                     OnFreshLoad?.Invoke();
                 }
@@ -984,6 +995,21 @@ namespace VARLab.DLX
         public void SaveCameraSensitivity(float cameraSensitivity)
         {
             saveData.CameraSensitivity = cameraSensitivity;
+            TriggerSave();
+        }
+
+        /// <summary>
+        ///      Sets inspection completion flag for fresh restart.
+        /// </summary>
+        /// <remarks>
+        ///     - Connected from: <see cref="InspectionReviewBuilder.OnEndInspectionConfirmation"/> event in Unity Inspector
+        ///     - Sets EndInspection flag to true in save data
+        ///     - Next simulation load will detect this flag and trigger fresh start
+        /// </remarks>
+        public void SaveEndInspection()
+        {
+            Debug.Log("CustomSaveHandler: Saving EndInspection flag - simulation will start fresh on next load");
+            saveData.EndInspection = true;
             TriggerSave();
         }
     }

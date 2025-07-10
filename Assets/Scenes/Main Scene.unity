@@ -8389,7 +8389,7 @@ PrefabInstance:
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: OnEndInspectionConfirmation.m_PersistentCalls.m_Calls.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
@@ -8495,7 +8495,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnEndInspectionConfirmation.m_PersistentCalls.m_Calls.Array.data[7].m_Target
       value: 
-      objectReference: {fileID: 909355758}
+      objectReference: {fileID: 356010907}
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: OnEndInspectionConfirmation.m_PersistentCalls.m_Calls.Array.data[8].m_Target
@@ -8599,7 +8599,7 @@ PrefabInstance:
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: OnEndInspectionConfirmation.m_PersistentCalls.m_Calls.Array.data[7].m_MethodName
-      value: Show
+      value: SaveEndInspection
       objectReference: {fileID: 0}
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
@@ -8654,7 +8654,7 @@ PrefabInstance:
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
       propertyPath: OnEndInspectionConfirmation.m_PersistentCalls.m_Calls.Array.data[7].m_TargetAssemblyTypeName
-      value: VARLab.DLX.InspectionSummaryBuilder, VARLab.DLX
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 4088054012953337547, guid: b6a03af152e3dd947b8f2311bec7b966,
         type: 3}
@@ -13015,6 +13015,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
       propertyPath: Download.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -13083,6 +13088,11 @@ PrefabInstance:
       propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
       objectReference: {fileID: 1674516189}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 356010907}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
       propertyPath: PlayAgain.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -13160,6 +13170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
       propertyPath: PlayAgain.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356010907}
@@ -13222,6 +13237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
       value: Hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: TriggerDelete
       objectReference: {fileID: 0}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
@@ -13312,6 +13332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
       value: VARLab.DLX.CountupTimer, VARLab.DLX
+      objectReference: {fileID: 0}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: VARLab.DLX.CustomSaveHandler, VARLab.DLX
       objectReference: {fileID: 0}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
@@ -13406,6 +13431,11 @@ PrefabInstance:
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
         type: 3}
       propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
+        type: 3}
+      propertyPath: OnShow.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 324114396396965465, guid: 0905857e6be16414f804481560752a01,
