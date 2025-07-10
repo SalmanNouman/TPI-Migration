@@ -2737,7 +2737,7 @@ Transform:
   m_GameObject: {fileID: 5263757692219152161}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000005177435, y: -0.707107, z: -0.70710665, w: 0.00000052154064}
-  m_LocalPosition: {x: -1.8862001, y: 0.048097372, z: 1.6163597}
+  m_LocalPosition: {x: -1.8862001, y: 0.048, z: 1.663}
   m_LocalScale: {x: 1, y: 3.465043, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3745,6 +3745,92 @@ Transform:
   - {fileID: 2284862965369377223}
   m_Father: {fileID: 5447103255016583205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8217796085334266677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7366263234322920381}
+  - component: {fileID: 196807882588237984}
+  - component: {fileID: 5615416709394345509}
+  m_Layer: 0
+  m_Name: poly_Trim_Wooden_Straight (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7366263234322920381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217796085334266677}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4.472, y: 0.048, z: -1.808}
+  m_LocalScale: {x: 1, y: 3.465043, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5257348988302934705}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &196807882588237984
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217796085334266677}
+  m_Mesh: {fileID: 2058111692790665661, guid: 53e3c6c0703555f48ad2f4fea58d21e7, type: 3}
+--- !u!23 &5615416709394345509
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217796085334266677}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 37dbce6fe248f364986cf5f2ebc4b34c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8910209513482607238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,6 +3867,7 @@ Transform:
   - {fileID: 6722931021663971818}
   - {fileID: 6794599405349000596}
   - {fileID: 7383257513580810480}
+  - {fileID: 7366263234322920381}
   - {fileID: 4395110297949692270}
   - {fileID: 2864274517327355541}
   - {fileID: 5399237889172892513}
@@ -6536,7 +6623,7 @@ PrefabInstance:
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6209047840002134657, guid: 3cd0dd1ca2775244aa3b229f97740999,
         type: 3}
@@ -7873,6 +7960,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CabinetNearCorner
       objectReference: {fileID: 0}
+    - target: {fileID: 97007824890266181, guid: eb272190f7c82394292955537f6f9598,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2593656369562592338, guid: eb272190f7c82394292955537f6f9598,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8396,6 +8488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CabinetInsideCorner
+      objectReference: {fileID: 0}
+    - target: {fileID: 882097607947074466, guid: 42f425a54251d0b44b5c90e187da6e94,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1277420964700189797, guid: 42f425a54251d0b44b5c90e187da6e94,
         type: 3}
@@ -9199,6 +9296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CabinetDoorsBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205553968593618059, guid: ed9c9c9760cfdcb479e0e35e0d6caed2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

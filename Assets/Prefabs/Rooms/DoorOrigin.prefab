@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2773460348668346182}
   - component: {fileID: 1632002652517567154}
   - component: {fileID: 1699624603335753042}
+  - component: {fileID: 4124187591075187650}
   m_Layer: 0
   m_Name: poly_Door_Wooden_TurnHandleStyle
   m_TagString: Untagged
@@ -141,6 +142,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03500002, y: 0.9100008, z: 2.1300008}
   m_Center: {x: -3.2756045e-14, y: -0.4550004, z: 1.0650004}
+--- !u!208 &4124187591075187650
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179329894348147304}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.018000001, y: 0.455, z: 1.065}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.455, z: 1.065}
+  m_TimeToStationary: 0.5
 --- !u!1 &2404776740243922888
 GameObject:
   m_ObjectHideFlags: 0
