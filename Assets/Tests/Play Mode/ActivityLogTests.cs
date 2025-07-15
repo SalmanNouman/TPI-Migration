@@ -337,7 +337,7 @@ namespace Tests.PlayMode
             // Assert
             Assert.AreEqual(1, activityLog.ActivityLogList.Count, "Log entry was not created");
             Assert.IsFalse(activityLog.ActivityLogList[0].IsPrimary, "Artist interaction log was not marked as secondary");
-            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} - Requested Test Artist to set up the procedure tray";
+            string expectedFormat = $"{TimerManager.Instance.GetElapsedTime()} Requested Test Artist to set up the procedure tray";
             StringAssert.IsMatch(expectedFormat, activityLog.ActivityLogList[0].Message,
                 $"Expected message format: '{expectedFormat}', Current Result: '{activityLog.ActivityLogList[0].Message}'");
         }

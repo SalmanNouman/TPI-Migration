@@ -170,7 +170,7 @@ namespace VARLab.DLX
         public void LogArtistInteraction(string artistName)
         {
             string elapsedTime = TimerManager.Instance.GetElapsedTime();
-            string message = $"{elapsedTime} - Requested {artistName} to set up the procedure tray.";
+            string message = $"{elapsedTime} Requested {artistName} to set up the procedure tray";
             AddSecondaryLog(message);
         }
 
