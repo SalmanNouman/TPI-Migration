@@ -4,4 +4,5 @@
 <br>  
 This is the project repository for the Public Health Inspection Tattoo and Piercing Studio Inspection.
 <br>  
-Confluence Page: [LSM9.01B PHI Tattoo and Piercing Studio Inspection](https://varlab-dev.atlassian.net/wiki/spaces/VAR/pages/1550090242/PHI+-+Tattoo+and+Piercing+Studio+Inspection) 
+NOTE: This project is now part of CC-Open-Learning open-source repository (`https://github.com/CC-Open-Learning/DLX-public-health-inspection`)
+I am strictly using it to retain my contributions to my github profile as it was part of a broader bitbucket repository library.
