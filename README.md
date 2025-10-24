@@ -4,5 +4,5 @@
 <br>  
 This is the project repository for the Public Health Inspection Tattoo and Piercing Studio Inspection.
 <br>  
-NOTE: This project is now part of CC-Open-Learning open-source repository (`https://github.com/CC-Open-Learning/DLX-public-health-inspection`)
+NOTE: This project is now part of CC-Open-Learning open-source repository (`https://github.com/CC-Open-Learning/DLX-tattoo-piercing-inspection`)
 I am strictly using it to retain my contributions to my github profile as it was part of a broader bitbucket repository library.
